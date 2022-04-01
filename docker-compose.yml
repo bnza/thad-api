@@ -33,7 +33,7 @@ services:
       - php_socket:/var/run/php
 ###> doctrine/doctrine-bundle ###
   database:
-    image: postgis/postgis:${POSTGRES_VERSION}-${POSTGIS_VERSION}-alpine
+    image: postgres:13-alpine
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
