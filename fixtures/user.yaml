@@ -1,0 +1,6 @@
+App\Entity\User:
+  user_1:
+    email: base_user@example.com
+    password: \$2y\$13\$Xup3dTbvhQ2nTJDGbVHSEenigs0qRIe/0rEvac2zeBtowidBxhraK
+    roles: []
+

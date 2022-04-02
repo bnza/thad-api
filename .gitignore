@@ -12,3 +12,19 @@
 /tools/php-cs-fixer/composer.lock
 /.php-cs-fixer.cache
 .idea
+
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+/bin/phpunit
+###< phpunit/phpunit ###
+
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###
