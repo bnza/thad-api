@@ -1,0 +1,14 @@
+App\Entity\User:
+  collectionOperations:
+    me:
+      pagination_enable: false
+      path: '/users/me'
+      method: 'GET'
+      controller: App\Controller\MeController
+      read: false
+      normalization_context:
+        groups: [ 'read' ]
+      security: 'is_granted("ROLE_USER")'
+
+
+

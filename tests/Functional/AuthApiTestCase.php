@@ -4,10 +4,6 @@ namespace App\Tests\Functional;
 
 use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
-use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
@@ -19,27 +15,49 @@ class AuthApiTestCase extends ApiTestCase
     private const BASE_USER_PW = '0000';
 
     protected HttpClientInterface $client;
+    private string $jwtToken = '';
 
-    protected function authenticate(?string $username = self::BASE_USER, ?string $password = self::BASE_USER_PW): ResponseInterface
+    protected function getClient(): HttpClientInterface
     {
         if (!isset($this->client)) {
             $this->client = $this->createClient();
         }
-        return $this->client->request('POST', '/api/login', [
+        return $this->client;
+    }
+
+    protected function authenticate(?string $username = self::BASE_USER, ?string $password = self::BASE_USER_PW, $throw = true): ResponseInterface
+    {
+
+        $response = $this->getClient()->request('POST', '/api/login', [
             'json' => [
                 'username' => $username,
                 'password' => $password,
             ],
         ]);
+
+        if ($response->getStatusCode() < 300) {
+            $content = json_decode($response->getContent($throw), true);
+            $this->jwtToken = $content['token'];
+        }
+
+        return $response;
     }
-    /**
-     * @throws TransportExceptionInterface
-     * @throws ServerExceptionInterface
-     * @throws RedirectionExceptionInterface
-     * @throws ClientExceptionInterface
-     */
-    protected function getToken(?string $username, ?string $password): string
+
+    protected function request(string $method, string $url, array $options = []): ResponseInterface
     {
-        return $this->authenticate($username, $password)->getContent();
+        return $this->getClient()->request($method, $url, $this->setAuthenticationHeader($options));
+    }
+
+    private function setAuthenticationHeader(array &$options = []): array
+    {
+        if (!$this->jwtToken) {
+            return $options;
+        }
+        if (!array_key_exists('headers', $options)) {
+            $options['headers'] = [];
+        }
+        $options['headers']['Authorization'] = "Bearer $this->jwtToken";
+
+        return $options;
     }
 }

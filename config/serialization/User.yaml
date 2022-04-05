@@ -1,0 +1,9 @@
+App\Entity\User:
+  attributes:
+    id:
+      groups: ['read']
+    email:
+      groups: ['read']
+    roles:
+      groups: ['read']
+
