@@ -3,6 +3,7 @@
 namespace App\Tests\Functional;
 
 use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
@@ -11,8 +12,12 @@ class AuthApiTestCase extends ApiTestCase
 {
     use RefreshDatabaseTrait;
 
-    protected const BASE_USER = 'base_user@example.com';
-    protected const BASE_USER_PW = '0000';
+    protected const USER_BASE = 'user_base@example.com';
+    protected const USER_BASE_PW = '0000';
+    protected const USER_EDITOR = 'user_editor@example.com';
+    protected const USER_EDITOR_PW = '0001';
+    protected const USER_ADMIN = 'user_admin@example.com';
+    protected const USER_ADMIN_PW = '0002';
 
     protected HttpClientInterface $client;
     private string $jwtToken = '';
@@ -26,7 +31,12 @@ class AuthApiTestCase extends ApiTestCase
         return $this->client;
     }
 
-    protected function authenticate(?string $username = self::BASE_USER, ?string $password = self::BASE_USER_PW, $throw = true): ResponseInterface
+    protected function getEntityRepository(string $class): ServiceEntityRepositoryInterface
+    {
+        return self::getContainer()->get('doctrine')->getManager()->getRepository($class);
+    }
+
+    protected function authenticate(?string $username = self::USER_BASE, ?string $password = self::USER_BASE_PW, $throw = true): ResponseInterface
     {
         $response = $this->getClient()->request('POST', '/api/login', [
             'json' => [
@@ -48,13 +58,29 @@ class AuthApiTestCase extends ApiTestCase
         return $this->getClient()->request($method, $url, $this->setAuthenticationHeader($options));
     }
 
-    protected function setRequestAcceptHeader(string $contentType, array &$options = []): array
+    protected function setRequestAcceptHeader(string $accept, array $options = []): array
     {
-        $options['headers']['Accept'] = $contentType;
+        $options['headers']['Accept'] = $accept;
+
         return $options;
     }
 
-    private function setAuthenticationHeader(array &$options = []): array
+    protected function setContentTypeHeader(string $contentType, array $options = []): array
+    {
+        if (!array_key_exists('headers', $options)) {
+            $options['headers'] = [];
+        }
+        $options['headers']['Content-Type'] = $contentType;
+
+        return $options;
+    }
+
+    protected function setPatchContentTypeHeader(array $options = []): array
+    {
+        return $this->setContentTypeHeader(' application/merge-patch+json', $options);
+    }
+
+    private function setAuthenticationHeader(array $options = []): array
     {
         if (!$this->jwtToken) {
             return $options;

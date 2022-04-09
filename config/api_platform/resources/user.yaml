@@ -5,7 +5,7 @@ App\Entity\User:
       groups: [ 'read:User' ]
   itemOperations:
     get: ~
-    patch: ~
+    patch:
     delete: ~
   collectionOperations:
     post: ~
