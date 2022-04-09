@@ -2,17 +2,77 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\MeController;
 use App\Validator as AppAssert;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Validator\Constraints as Assert;
 
+#[ApiResource(
+    collectionOperations: [
+        'post' => null,
+        'me' => [
+            'controller' => MeController::class,
+            'formats' => [
+                'json' => ['application/json'],
+            ],
+            'method' => 'GET',
+            'openapi_context' => [
+                'responses' => [
+                    '200' => [
+                        'content' => [
+                            'application/json' => [
+                                'schema' => [
+                                    '$ref' => '#/components/schemas/User-read.User',
+                                ],
+                            ],
+                        ],
+                        'description' => 'Current user.',
+                    ],
+                    '401' => [
+                        'content' => [
+                            'application/json' => [
+                                'schema' => [
+                                    '$ref' => '#/components/schemas/SecurityError',
+                                ],
+                            ],
+                        ],
+                        'description' => 'Security issue.',
+                    ],
+                ],
+                'summary' => 'Retrieves the information about the current user.',
+            ],
+            'pagination_enabled' => false,
+            'path' => '/users/me',
+            'security' => 'is_granted("ROLE_USER")',
+        ],
+    ],
+    itemOperations: [
+        'get' => null,
+        'patch' => null,
+        'delete' => null,
+    ],
+    denormalizationContext: [
+        'write:User',
+        'change_password:User',
+    ],
+    normalizationContext: [
+        'groups' => [
+            'read:User',
+        ],
+    ],
+    security: 'is_granted("ROLE_ADMIN")'
+)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    #[Groups(['read:User'])]
     private Uuid $id;
 
     #[Assert\Email]
+    #[Groups(['read:User', 'write:User'])]
     private string $email;
 
     #[Assert\All([
@@ -20,6 +80,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         new Assert\Type(type: 'string'),
         new AppAssert\IsValidRoles(),
        ])]
+    #[Groups(['read:User', 'write:User'])]
     private array $roles = [];
 
     #[Assert\NotBlank(groups: ['write:User'])]
@@ -44,6 +105,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         message: 'Your password must contains at lest one not alphanumeric character',
         groups: ['write:User']
     )]
+    #[Groups(['write:User', 'change_password:User'])]
     private string $password;
 
     public function getId(): ?Uuid
