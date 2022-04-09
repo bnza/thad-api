@@ -11,8 +11,8 @@ class AuthApiTestCase extends ApiTestCase
 {
     use RefreshDatabaseTrait;
 
-    private const BASE_USER = 'base_user@example.com';
-    private const BASE_USER_PW = '0000';
+    protected const BASE_USER = 'base_user@example.com';
+    protected const BASE_USER_PW = '0000';
 
     protected HttpClientInterface $client;
     private string $jwtToken = '';
@@ -22,12 +22,12 @@ class AuthApiTestCase extends ApiTestCase
         if (!isset($this->client)) {
             $this->client = $this->createClient();
         }
+
         return $this->client;
     }
 
     protected function authenticate(?string $username = self::BASE_USER, ?string $password = self::BASE_USER_PW, $throw = true): ResponseInterface
     {
-
         $response = $this->getClient()->request('POST', '/api/login', [
             'json' => [
                 'username' => $username,
@@ -46,6 +46,12 @@ class AuthApiTestCase extends ApiTestCase
     protected function request(string $method, string $url, array $options = []): ResponseInterface
     {
         return $this->getClient()->request($method, $url, $this->setAuthenticationHeader($options));
+    }
+
+    protected function setRequestAcceptHeader(string $contentType, array &$options = []): array
+    {
+        $options['headers']['Accept'] = $contentType;
+        return $options;
     }
 
     private function setAuthenticationHeader(array &$options = []): array

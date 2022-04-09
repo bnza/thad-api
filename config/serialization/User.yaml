@@ -1,9 +1,9 @@
 App\Entity\User:
   attributes:
     id:
-      groups: ['read']
+      groups: ['read:User']
     email:
-      groups: ['read']
+      groups: ['read:User']
     roles:
-      groups: ['read']
+      groups: ['read:User']
 

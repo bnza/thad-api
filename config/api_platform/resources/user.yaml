@@ -1,14 +1,42 @@
 App\Entity\User:
+  attributes:
+    security: 'is_granted("ROLE_USER")'
+    normalization_context:
+      groups: [ 'read:User' ]
+  itemOperations:
+    get: ~
+    patch: ~
+    delete: ~
   collectionOperations:
+    post: ~
     me:
-      pagination_enable: false
+      formats:
+        json: ['application/json']
+      pagination_enabled: false
       path: '/users/me'
       method: 'GET'
       controller: App\Controller\MeController
       read: false
       normalization_context:
-        groups: [ 'read' ]
-      security: 'is_granted("ROLE_USER")'
+        groups: [ 'read:User' ]
+      openapi_context:
+        summary: 'Retrieves the information about the current user'
+        description: 'Retrieves the information about the current user'
+        responses:
+          200:
+            description: 'Current user'
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/User-read.User'
+          401:
+            description: 'Security issue'
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/SecurityError'
+
+
 
 
 

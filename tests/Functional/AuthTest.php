@@ -2,7 +2,7 @@
 
 namespace App\Tests\Functional;
 
-class LoginTest extends AuthApiTestCase
+class AuthTest extends AuthApiTestCase
 {
     public function testInvalidCredentialsRequest(): void
     {
@@ -21,15 +21,22 @@ class LoginTest extends AuthApiTestCase
 
     public function testAnonymousUserMeEndpoint(): void
     {
-        $this->request('GET', '/api/users/me');
+        $this->request(
+            'GET',
+            '/api/users/me',
+            $this->setRequestAcceptHeader('application/json')
+        );
         $this->assertResponseStatusCodeSame(401);
     }
 
     public function testAuthenticatedUserMeEndpoint(): void
     {
         $this->authenticate();
-        $this->request('GET', '/api/users/me');
-
+        $this->request(
+            'GET',
+            '/api/users/me',
+            $this->setRequestAcceptHeader('application/json')
+        );
         $this->assertResponseIsSuccessful();
     }
 }
