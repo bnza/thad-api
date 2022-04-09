@@ -1,17 +1,19 @@
 App\Entity\User:
   attributes:
-    security: 'is_granted("ROLE_USER")'
+    security: 'is_granted("ROLE_ADMIN")'
     normalization_context:
-      groups: [ 'read:User' ]
+      groups: [ 'read:User', 'write:User' ]
   itemOperations:
     get: ~
-    patch:
+    patch: ~
     delete: ~
   collectionOperations:
-    post: ~
+    post:
+      groups: [ 'write:User' ]
     me:
       formats:
         json: ['application/json']
+      security: 'is_granted("ROLE_USER")'
       pagination_enabled: false
       path: '/users/me'
       method: 'GET'

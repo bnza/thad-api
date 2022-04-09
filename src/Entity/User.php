@@ -2,18 +2,48 @@
 
 namespace App\Entity;
 
+use App\Validator as AppAssert;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Uid\Uuid;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     private Uuid $id;
 
+    #[Assert\Email]
     private string $email;
 
+    #[Assert\All([
+        new Assert\NotBlank(),
+        new Assert\Type(type: 'string'),
+        new AppAssert\IsValidRoles(),
+       ])]
     private array $roles = [];
 
+    #[Assert\NotBlank(groups: ['write:User'])]
+    #[Assert\Length(min: 8, groups: ['write:User'])]
+    #[Assert\Regex(
+        pattern: '/\d/',
+        message: 'Your password must contains at lest one digit',
+        groups: ['write:User']
+    )]
+    #[Assert\Regex(
+        pattern: '/[A-Z]+/',
+        message: 'Your password must contains at lest one uppercase character',
+        groups: ['write:User']
+    )]
+    #[Assert\Regex(
+        pattern: '/[a-z]+/',
+        message: 'Your password must contains at lest one lowercase character',
+        groups: ['write:User']
+    )]
+    #[Assert\Regex(
+        pattern: '/\W/',
+        message: 'Your password must contains at lest one not alphanumeric character',
+        groups: ['write:User']
+    )]
     private string $password;
 
     public function getId(): ?Uuid

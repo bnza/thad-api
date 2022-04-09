@@ -53,6 +53,9 @@ class AuthApiTestCase extends ApiTestCase
         return $response;
     }
 
+    /**
+     * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
+     */
     protected function request(string $method, string $url, array $options = []): ResponseInterface
     {
         return $this->getClient()->request($method, $url, $this->setAuthenticationHeader($options));

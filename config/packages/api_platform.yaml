@@ -1,5 +1,6 @@
 api_platform:
     title: 'Tell Hatarah Database API'
+    version: '0.1'
     show_webby: false
     mapping:
         paths: ['%kernel.project_dir%/config/api_platform/resources','%kernel.project_dir%/src/Entity']

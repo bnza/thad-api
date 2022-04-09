@@ -1,9 +1,12 @@
 App\Entity\User:
   attributes:
+    validation_groups: ['write:User']
     id:
       groups: ['read:User']
     email:
-      groups: ['read:User']
+      groups: ['read:User', 'write:User']
     roles:
-      groups: ['read:User']
+      groups: ['read:User', 'write:User']
+    password:
+      groups: ['write:User']
 

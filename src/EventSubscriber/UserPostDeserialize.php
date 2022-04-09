@@ -3,6 +3,7 @@
 namespace App\EventSubscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
+use ApiPlatform\Core\Validator\ValidatorInterface;
 use App\Entity\User;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,8 +13,10 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserPostDeserialize implements EventSubscriberInterface
 {
-    public function __construct(private UserPasswordHasherInterface $passwordHasher)
-    {
+    public function __construct(
+        private UserPasswordHasherInterface $passwordHasher,
+        private ValidatorInterface $validator
+    ) {
     }
 
     public static function getSubscribedEvents()
@@ -37,6 +40,7 @@ class UserPostDeserialize implements EventSubscriberInterface
         if (!$user instanceof User || !in_array($method, [Request::METHOD_POST, Request::METHOD_PATCH])) {
             return;
         }
+        $this->validator->validate($user, ['groups' => ['write:User']]);
 
         $user->setPassword($hashed = $this->passwordHasher->hashPassword($user, $user->getPassword()));
     }
