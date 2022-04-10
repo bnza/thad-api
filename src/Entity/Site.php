@@ -24,7 +24,9 @@ use Symfony\Component\Validator\Constraints as Assert;
         'delete' => null,
     ],
     denormalizationContext: [
-        'write:Site',
+        'groups' => [
+            'write:Site',
+        ],
     ],
     normalizationContext: [
         'groups' => [
@@ -48,12 +50,15 @@ class Site
     #[Groups([
         'read:Area',
         'read:Site',
+        'read:SU',
     ])]
     private int $id;
 
     #[Groups([
         'read:Area',
         'read:Site',
+        'read:SU',
+        'write:Site',
     ])]
     #[Assert\NotBlank]
     private string $code;
@@ -61,6 +66,8 @@ class Site
     #[Groups([
         'read:Area',
         'read:Site',
+        'read:SU',
+        'write:Site',
     ])]
     #[Assert\NotBlank]
     private string $name;
@@ -68,6 +75,8 @@ class Site
     #[Groups([
         'read:Area',
         'read:Site',
+        'read:SU',
+        'write:Site',
     ])]
     private ?string $description;
 

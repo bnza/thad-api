@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -48,12 +50,14 @@ class Area
     #[Groups([
         'read:Area',
         'read:Site',
+        'read:SU',
     ])]
     private int $id;
 
     #[Groups([
         'read:Area',
         'read:Site',
+        'read:SU',
         'write:Area',
     ])]
     #[Assert\NotBlank]
@@ -62,6 +66,7 @@ class Area
     #[Groups([
         'read:Area',
         'read:Site',
+        'read:SU',
         'write:Area',
     ])]
     #[Assert\NotBlank]
@@ -70,16 +75,26 @@ class Area
     #[Groups([
         'read:Area',
         'read:Site',
+        'read:SU',
         'write:Area',
     ])]
     private ?string $description;
 
     #[Groups([
         'read:Area',
+        'read:SU',
         'write:Area',
     ])]
     #[Assert\NotNull]
     private Site $site;
+
+    #[ApiSubresource(maxDepth: 1)]
+    private iterable $stratigraphicUnits;
+
+    public function __construct()
+    {
+        $this->stratigraphicUnits = new ArrayCollection();
+    }
 
     public function getId(): int
     {
@@ -130,6 +145,18 @@ class Area
     public function setSite(Site $site): Area
     {
         $this->site = $site;
+
+        return $this;
+    }
+
+    public function getStratigraphicUnits(): iterable|ArrayCollection
+    {
+        return $this->stratigraphicUnits;
+    }
+
+    public function setStratigraphicUnits(iterable|ArrayCollection $stratigraphicUnits): SU
+    {
+        $this->stratigraphicUnits = $stratigraphicUnits;
 
         return $this;
     }

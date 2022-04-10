@@ -1,0 +1,43 @@
+App\Entity\SU:
+  su_TH_1:
+    area: '@area_TH_A'
+    number: 1
+    date: <createImmutableDate('2022-04-10')>
+    description: 'The first stratigraphic unit description'
+    summary: 'The first stratigraphic unit summary'
+    interpretation: 'The first stratigraphic unit interpretation'
+  su_TH_2:
+    area: '@area_TH_A'
+    number: 2
+    date: <createImmutableDate('2022-04-11')>
+    description: 'The second stratigraphic unit description'
+    summary: 'The second stratigraphic unit summary'
+    interpretation: 'The second stratigraphic unit interpretation'
+  su_TH_3:
+    area: '@area_TH_B'
+    number: 3
+    date: <createImmutableDate('2022-04-12')>
+    description: 'The 3rd stratigraphic unit description'
+    summary: 'The 3rd stratigraphic unit summary'
+    interpretation: 'The 3rd stratigraphic unit interpretation'
+  su_TH_4:
+    area: '@area_TH_B'
+    number: 4
+    date: <createImmutableDate('2022-04-12')>
+    description: 'The 4th stratigraphic unit description'
+    summary: 'The 4th stratigraphic unit summary'
+    interpretation: 'The 4th stratigraphic unit interpretation'
+  su_TH_5:
+    area: '@area_TH_A'
+    number: 5
+    date: <createImmutableDate('2022-04-12')>
+    description: 'The 5th stratigraphic unit description'
+    summary: 'The 5th stratigraphic unit summary'
+    interpretation: 'The 5th stratigraphic unit interpretation'
+  su_WW_1:
+    area: '@area_WW_A'
+    number: 1
+    date: <createImmutableDate('2022-04-12')>
+    description: 'The 1st stratigraphic unit description WW'
+    summary: 'The 1st stratigraphic unit summary WW'
+    interpretation: 'The 1st stratigraphic unit interpretation WW'
