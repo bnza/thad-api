@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\Validator as AppAssert;
 
 #[ApiResource(
     collectionOperations: [
@@ -32,6 +33,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
     ],
     security: 'is_granted("ROLE_EDITOR")'
 )]
+#[AppAssert\UniqueSUNumberInSite]
 class SU
 {
     #[Groups([

@@ -113,6 +113,20 @@ class AuthApiTestCase extends ApiTestCase
     protected function getIdFromResponse(ResponseInterface $response): int
     {
         $content = json_decode($response->getContent(), true);
+
         return $content['id'];
+    }
+
+    protected function adminPostCollectionRequest(string $url, array $json): ResponseInterface
+    {
+        $this->authenticate(self::USER_ADMIN, self::USER_ADMIN_PW);
+
+        return $this->request(
+                    'POST',
+                    $url,
+                    [
+                        'json' => $json,
+                    ]
+                );
     }
 }
