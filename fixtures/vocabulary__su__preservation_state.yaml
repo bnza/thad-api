@@ -1,0 +1,4 @@
+App\Entity\Vocabulary\SU\PreservationState:
+  voc__su__type_{1..4}:
+    value:  <getVocabularyProperty('vocSuPreservationState', 'value', <current()>, true)>
+    description:  <getVocabularyProperty('vocSuPreservationState', 'description', <current()>)>

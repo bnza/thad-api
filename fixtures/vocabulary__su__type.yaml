@@ -1,0 +1,4 @@
+App\Entity\Vocabulary\SU\Type:
+  voc__su__type_{1..8}:
+    value:  <getVocabularyProperty('vocSuType', 'value', <current()>, true)>
+    description:  <getVocabularyProperty('vocSuType', 'description', <current()>)>
