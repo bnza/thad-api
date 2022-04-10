@@ -55,9 +55,14 @@ use Symfony\Component\Validator\Constraints as Assert;
         'patch' => null,
         'delete' => null,
     ],
+    attributes: [
+        'validation_groups' => ['Default', 'post:User:Validation'],
+    ],
     denormalizationContext: [
-        'write:User',
-        'change_password:User',
+        'groups' => [
+            'write:User',
+            'change_password:User',
+        ],
     ],
     normalizationContext: [
         'groups' => [
@@ -71,7 +76,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups(['read:User'])]
     private Uuid $id;
 
-    #[Assert\Email]
+    #[Assert\Email(
+        groups: ['post:User:Validation']
+    )]
     #[Groups(['read:User', 'write:User'])]
     private string $email;
 
@@ -79,16 +86,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         new Assert\NotBlank(),
         new Assert\Type(type: 'string'),
         new AppAssert\IsValidRoles(),
-       ])]
+        ],
+        groups: ['post:User:Validation']
+    )]
     #[Groups(['read:User', 'write:User'])]
     private array $roles = [];
 
-    #[Assert\NotBlank(groups: ['write:User'])]
-    #[Assert\Length(min: 8, groups: ['write:User'])]
+    #[Assert\NotBlank(
+        groups: ['post:User:Validation']
+    )]
+    #[Assert\Length(min: 8, groups: ['post:User:Validation'])]
     #[Assert\Regex(
         pattern: '/\d/',
         message: 'Your password must contains at lest one digit',
-        groups: ['write:User']
+        groups: ['post:User:Validation']
     )]
     #[Assert\Regex(
         pattern: '/[A-Z]+/',
@@ -98,12 +109,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\Regex(
         pattern: '/[a-z]+/',
         message: 'Your password must contains at lest one lowercase character',
-        groups: ['write:User']
+        groups: ['post:User:Validation']
     )]
     #[Assert\Regex(
         pattern: '/\W/',
         message: 'Your password must contains at lest one not alphanumeric character',
-        groups: ['write:User']
+        groups: ['post:User:Validation']
     )]
     #[Groups(['write:User', 'change_password:User'])]
     private string $password;

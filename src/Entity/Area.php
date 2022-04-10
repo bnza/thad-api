@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -24,26 +22,28 @@ use Symfony\Component\Validator\Constraints as Assert;
         'delete' => null,
     ],
     denormalizationContext: [
-        'write:Site',
+        'groups' => [
+            'write:Area',
+        ],
     ],
     normalizationContext: [
         'groups' => [
-            'read:Site',
+            'read:Area',
         ],
     ],
     security: 'is_granted("ROLE_ADMIN")'
 )]
 #[UniqueEntity(
-    fields: ['code'],
-    message: 'Duplicate site code.',
+    fields: ['site', 'code'],
+    message: 'This area code is already used in that site.',
     errorPath: 'code',
 )]
 #[UniqueEntity(
-    fields: ['name'],
-    message: 'Duplicate site name.',
+    fields: ['site', 'name'],
+    message: 'This area name is already used in that site.',
     errorPath: 'name',
 )]
-class Site
+class Area
 {
     #[Groups([
         'read:Area',
@@ -54,6 +54,7 @@ class Site
     #[Groups([
         'read:Area',
         'read:Site',
+        'write:Area',
     ])]
     #[Assert\NotBlank]
     private string $code;
@@ -61,6 +62,7 @@ class Site
     #[Groups([
         'read:Area',
         'read:Site',
+        'write:Area',
     ])]
     #[Assert\NotBlank]
     private string $name;
@@ -68,28 +70,20 @@ class Site
     #[Groups([
         'read:Area',
         'read:Site',
+        'write:Area',
     ])]
     private ?string $description;
 
-    #[ApiSubresource(maxDepth: 1)]
-    #[Groups(['read:Site'])]
-    private iterable $areas;
-
-    public function __construct()
-    {
-        $this->areas = new ArrayCollection();
-    }
+    #[Groups([
+        'read:Area',
+        'write:Area',
+    ])]
+    #[Assert\NotNull]
+    private Site $site;
 
     public function getId(): int
     {
         return $this->id;
-    }
-
-    public function setId(int $id): Site
-    {
-        $this->id = $id;
-
-        return $this;
     }
 
     public function getCode(): string
@@ -97,7 +91,7 @@ class Site
         return $this->code;
     }
 
-    public function setCode(string $code): Site
+    public function setCode(string $code): Area
     {
         $this->code = $code;
 
@@ -109,7 +103,7 @@ class Site
         return $this->name;
     }
 
-    public function setName(string $name): Site
+    public function setName(string $name): Area
     {
         $this->name = $name;
 
@@ -121,21 +115,21 @@ class Site
         return $this->description;
     }
 
-    public function setDescription(?string $description): Site
+    public function setDescription(?string $description): Area
     {
         $this->description = $description;
 
         return $this;
     }
 
-    public function getAreas(): iterable|ArrayCollection
+    public function getSite(): Site
     {
-        return $this->areas;
+        return $this->site;
     }
 
-    public function setAreas(iterable|ArrayCollection $areas): Site
+    public function setSite(Site $site): Area
     {
-        $this->areas = $areas;
+        $this->site = $site;
 
         return $this;
     }

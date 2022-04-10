@@ -1,0 +1,28 @@
+App\Entity\Area:
+  area_A_TH:
+    code: 'A'
+    name: 'A'
+    description: 'The first TH area'
+    site: '@site_th'
+  area_B_TH:
+    code: 'B'
+    name: 'B'
+    description: 'The second TH area'
+    site: '@site_th'
+  area_S_TH:
+    code: 'S'
+    name: 'south'
+    description: 'The southern TH area'
+    site: '@site_th'
+  area_A_WW:
+    code: 'A'
+    name: 'A'
+    description: 'The first WW area'
+    site: '@site_ww'
+  area_N_WW:
+    code: 'N'
+    name: 'north'
+    description: 'The WW site''d northern area'
+    site: '@site_ww'
+
+

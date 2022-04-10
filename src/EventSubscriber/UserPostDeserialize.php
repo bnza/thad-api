@@ -40,7 +40,7 @@ class UserPostDeserialize implements EventSubscriberInterface
         if (!$user instanceof User || !in_array($method, [Request::METHOD_POST, Request::METHOD_PATCH])) {
             return;
         }
-        $this->validator->validate($user, ['groups' => ['write:User']]);
+        $this->validator->validate($user, ['groups' => ['post:User:Validation']]);
 
         $user->setPassword($hashed = $this->passwordHasher->hashPassword($user, $user->getPassword()));
     }

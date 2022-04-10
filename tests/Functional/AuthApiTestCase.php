@@ -61,6 +61,20 @@ class AuthApiTestCase extends ApiTestCase
         return $this->getClient()->request($method, $url, $this->setAuthenticationHeader($options));
     }
 
+    protected function patchRequest(string $url, array $json): ResponseInterface
+    {
+        $options = $this->setContentTypeHeader('application/merge-patch+json',
+            [
+                'json' => $json,
+            ]);
+
+        return $this->request(
+            'PATCH',
+            $url,
+            $options
+        );
+    }
+
     protected function setRequestAcceptHeader(string $accept, array $options = []): array
     {
         $options['headers']['Accept'] = $accept;
@@ -94,5 +108,11 @@ class AuthApiTestCase extends ApiTestCase
         $options['headers']['Authorization'] = "Bearer $this->jwtToken";
 
         return $options;
+    }
+
+    protected function getIdFromResponse(ResponseInterface $response): int
+    {
+        $content = json_decode($response->getContent(), true);
+        return $content['id'];
     }
 }

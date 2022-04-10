@@ -1,0 +1,9 @@
+App\Entity\Site:
+  site_th:
+    code: 'TH'
+    name: 'Tell Hatarah'
+    description: 'The site we''re working on'
+  site_ww:
+    code: 'WW'
+    name: 'Tell Wadi'
+    description: 'A nice site'

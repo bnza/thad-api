@@ -72,16 +72,11 @@ class UserResourceTest extends AuthApiTestCase
         $newPassword = '12345aB!';
         $newUser = $this->addUser($username, $password);
 
-        $options = $this->setContentTypeHeader('application/merge-patch+json',
+        $this->patchRequest(
+            sprintf('/api/users/%s', $newUser->getId()),
             [
-                'json' => [
-                    'password' => $newPassword,
-                ],
-            ]);
-        $this->request(
-            'PATCH',
-            '/api/users/'.$newUser->getId(),
-            $options
+                'password' => $newPassword,
+            ]
         );
         $this->assertResponseIsSuccessful();
         $this->authenticate($username, $newPassword);
