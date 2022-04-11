@@ -6,6 +6,10 @@ App\Entity\SU:
     description: 'The first stratigraphic unit description'
     summary: 'The first stratigraphic unit summary'
     interpretation: 'The first stratigraphic unit interpretation'
+    bottomElevation: 230.89
+    topElevation: 231.09
+    type: '@voc__su__type_2'
+    preservationState: '@voc__su__preservation_state_3'
   su_TH_2:
     area: '@area_TH_A'
     number: 2
@@ -13,6 +17,8 @@ App\Entity\SU:
     description: 'The second stratigraphic unit description'
     summary: 'The second stratigraphic unit summary'
     interpretation: 'The second stratigraphic unit interpretation'
+    type: '@voc__su__type_1'
+    preservationState: '@voc__su__preservation_state_3'
   su_TH_3:
     area: '@area_TH_B'
     number: 3
@@ -20,6 +26,8 @@ App\Entity\SU:
     description: 'The 3rd stratigraphic unit description'
     summary: 'The 3rd stratigraphic unit summary'
     interpretation: 'The 3rd stratigraphic unit interpretation'
+    type: '@voc__su__type_1'
+    preservationState: '@voc__su__preservation_state_2'
   su_TH_4:
     area: '@area_TH_B'
     number: 4
@@ -27,6 +35,8 @@ App\Entity\SU:
     description: 'The 4th stratigraphic unit description'
     summary: 'The 4th stratigraphic unit summary'
     interpretation: 'The 4th stratigraphic unit interpretation'
+    bottomElevation: 230.58
+    topElevation: 231.12
   su_TH_5:
     area: '@area_TH_A'
     number: 5

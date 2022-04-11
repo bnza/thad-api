@@ -3,6 +3,7 @@
 namespace App\Entity\Vocabulary\SU;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ApiResource(
     collectionOperations: [
@@ -15,8 +16,16 @@ use ApiPlatform\Core\Annotation\ApiResource;
 )]
 class PreservationState
 {
+    #[Groups([
+        'read:Area',
+        'read:SU',
+    ])]
     private int $id;
 
+    #[Groups([
+        'read:Area',
+        'read:SU',
+    ])]
     private string $value;
 
     private ?string $description;

@@ -3,8 +3,11 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use Symfony\Component\Serializer\Annotation\Groups;
+use App\Entity\Vocabulary\SU\PreservationState;
+use App\Entity\Vocabulary\SU\Type;
 use App\Validator as AppAssert;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
     collectionOperations: [
@@ -47,18 +50,22 @@ class SU
         'read:SU',
         'write:SU',
     ])]
+    #[Assert\NotBlank]
+    #[Assert\Positive]
     private int $number;
 
     #[Groups([
         'read:SU',
         'write:SU',
     ])]
+    #[Assert\NotBlank]
     private Area $area;
 
     #[Groups([
         'read:SU',
         'write:SU',
     ])]
+    #[Assert\NotNull]
     private \DateTimeImmutable $date;
 
     #[Groups([
@@ -81,6 +88,49 @@ class SU
         'write:SU',
     ])]
     private ?string $summary;
+
+    #[Groups([
+        'read:Area',
+        'read:SU',
+        'write:SU',
+    ])]
+    #[Assert\NotBlank]
+    private Type $type;
+
+    #[Groups([
+        'read:Area',
+        'read:SU',
+        'write:SU',
+    ])]
+    private ?PreservationState $preservationState;
+
+    #[Groups([
+        'read:Area',
+        'read:SU',
+        'write:SU',
+    ])]
+    private ?float $topElevation;
+
+    #[Groups([
+        'read:Area',
+        'read:SU',
+        'write:SU',
+    ])]
+    private ?float $bottomElevation;
+
+    #[Groups([
+        'read:Area',
+        'read:SU',
+        'write:SU',
+    ])]
+    private ?string $compiler;
+
+    #[Groups([
+        'read:Area',
+        'read:SU',
+        'write:SU',
+    ])]
+    private ?string $areaSupervisor;
 
     public function getId(): int
     {
@@ -155,6 +205,78 @@ class SU
     public function setSummary(?string $summary): SU
     {
         $this->summary = $summary;
+
+        return $this;
+    }
+
+    public function getType(): Type
+    {
+        return $this->type;
+    }
+
+    public function setType(Type $type): SU
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getPreservationState(): ?PreservationState
+    {
+        return $this->preservationState;
+    }
+
+    public function setPreservationState(?PreservationState $preservationState): SU
+    {
+        $this->preservationState = $preservationState;
+
+        return $this;
+    }
+
+    public function getTopElevation(): ?float
+    {
+        return $this->topElevation;
+    }
+
+    public function setTopElevation(?float $topElevation): SU
+    {
+        $this->topElevation = $topElevation;
+
+        return $this;
+    }
+
+    public function getBottomElevation(): ?float
+    {
+        return $this->bottomElevation;
+    }
+
+    public function setBottomElevation(?float $bottomElevation): SU
+    {
+        $this->bottomElevation = $bottomElevation;
+
+        return $this;
+    }
+
+    public function getCompiler(): ?string
+    {
+        return $this->compiler;
+    }
+
+    public function setCompiler(?string $compiler): SU
+    {
+        $this->compiler = $compiler;
+
+        return $this;
+    }
+
+    public function getAreaSupervisor(): ?string
+    {
+        return $this->areaSupervisor;
+    }
+
+    public function setAreaSupervisor(?string $areaSupervisor): SU
+    {
+        $this->areaSupervisor = $areaSupervisor;
 
         return $this;
     }

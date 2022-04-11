@@ -16,9 +16,6 @@ class SUResourceTest extends AuthApiTestCase
         $this->assertResponseStatusCodeSame(401);
     }
 
-    /**
-     * @group wip
-     */
     public function testGetCollection(): void
     {
         $this->authenticate();
@@ -31,6 +28,10 @@ class SUResourceTest extends AuthApiTestCase
 
     public function testPostWithAdminUser(): void
     {
+        $this->markTestSkipped(
+            'To do'
+        );
+
         $this->adminPostCollectionRequest(
             '/api/stratigraphic_units',
             [
@@ -42,9 +43,6 @@ class SUResourceTest extends AuthApiTestCase
         $this->assertResponseStatusCodeSame(201);
     }
 
-    /**
-     * @group wip
-     */
     public function testPostValidateDuplicateNumberInSite(): void
     {
         $this->adminPostCollectionRequest(

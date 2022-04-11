@@ -15,11 +15,21 @@
             </options>
         </field>
         <field name="date" type="date_immutable"/>
-        <field name="description"  type="text" nullable="true"/>
+        <field name="description" type="text" nullable="true"/>
         <field name="interpretation"  type="text" nullable="true"/>
         <field name="summary"  type="text" nullable="true"/>
+        <field name="topElevation" column="top_elevation"  type="float" nullable="true"/>
+        <field name="bottomElevation" column="bottom_elevation"  type="float" nullable="true"/>
+        <field name="areaSupervisor" column="area_supervisor" type="string" nullable="true"/>
+        <field name="compiler"  type="string" nullable="true"/>
         <many-to-one field="area" target-entity="Area" inversed-by="stratigraphicUnits">
             <join-column name="area_id" referenced-column-name="id" />
+        </many-to-one>
+        <many-to-one field="type" target-entity="App\Entity\Vocabulary\SU\Type">
+            <join-column name="type_id" referenced-column-name="id" />
+        </many-to-one>
+        <many-to-one field="preservationState" target-entity="App\Entity\Vocabulary\SU\PreservationState">
+            <join-column name="preservation_state_id" referenced-column-name="id" />
         </many-to-one>
     </entity>
 </doctrine-mapping>

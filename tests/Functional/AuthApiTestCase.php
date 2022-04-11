@@ -4,6 +4,7 @@ namespace App\Tests\Functional;
 
 use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface;
+use Doctrine\ORM\EntityManagerInterface;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
@@ -31,9 +32,14 @@ class AuthApiTestCase extends ApiTestCase
         return $this->client;
     }
 
+    protected function getEntityManager(): EntityManagerInterface
+    {
+        return self::getContainer()->get('doctrine')->getManager();
+    }
+
     protected function getEntityRepository(string $class): ServiceEntityRepositoryInterface
     {
-        return self::getContainer()->get('doctrine')->getManager()->getRepository($class);
+        return $this->getEntityManager()->getRepository($class);
     }
 
     protected function authenticate(?string $username = self::USER_BASE, ?string $password = self::USER_BASE_PW, $throw = true): ResponseInterface
