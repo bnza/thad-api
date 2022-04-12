@@ -2,7 +2,12 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Entity\Vocabulary\SU\PreservationState;
 use App\Entity\Vocabulary\SU\Type;
 use App\Validator as AppAssert;
@@ -19,6 +24,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     itemOperations: [
         'get' => [
             'security' => 'is_granted("ROLE_USER")',
+
         ],
         'patch' => null,
         'delete' => null,
@@ -37,6 +43,52 @@ use Symfony\Component\Validator\Constraints as Assert;
     security: 'is_granted("ROLE_EDITOR")'
 )]
 #[AppAssert\UniqueSUNumberInSite]
+#[ApiFilter(
+    SearchFilter::class,
+    properties: [
+        'id' => 'exact',
+        'area.code' => 'exact',
+        'area.site.code' => 'exact',
+        'areaSupervisor' => 'ipartial',
+        'compiler' => 'ipartial',
+        'description' => 'ipartial',
+        'interpretation' => 'ipartial',
+        'preservationState.value' => 'exact',
+        'summary' => 'ipartial',
+        'type.value' => 'exact',
+    ]
+)]
+#[ApiFilter(
+    RangeFilter::class,
+    properties: [
+        'bottomElevation',
+        'topElevation',
+    ]
+)]
+#[ApiFilter(
+    DateFilter::class,
+    properties: [
+        'date',
+    ]
+)]
+#[ApiFilter(
+    OrderFilter::class,
+    properties: [
+        'id',
+        'area.code',
+        'area.site.code',
+        'areaSupervisor',
+        'bottomElevation',
+        'compiler',
+        'date',
+        'description',
+        'interpretation',
+        'preservationState.value',
+        'summary',
+        'topElevation',
+        'type.value',
+    ]
+)]
 class SU
 {
     #[Groups([
