@@ -8,6 +8,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use App\Controller\SUExportController;
 use App\Entity\Vocabulary\SU\PreservationState;
 use App\Entity\Vocabulary\SU\Type;
 use App\Validator as AppAssert;
@@ -18,6 +19,18 @@ use Symfony\Component\Validator\Constraints as Assert;
     collectionOperations: [
         'post' => null,
         'get' => [
+            'security' => 'is_granted("ROLE_USER")',
+        ],
+        'export' => [
+            'controller' => SUExportController::class,
+            'method' => 'GET',
+            'path' => '/stratigraphic_units/export',
+            'formats' => [
+                'csv' => ['text/csv'],
+            ],
+            'groups' => [
+                'export',
+            ],
             'security' => 'is_granted("ROLE_USER")',
         ],
     ],
@@ -98,6 +111,7 @@ class SU
     private int $id;
 
     #[Groups([
+        'export',
         'read:Area',
         'read:SU',
         'write:SU',
@@ -107,6 +121,7 @@ class SU
     private int $number;
 
     #[Groups([
+        'export',
         'read:SU',
         'write:SU',
     ])]
@@ -114,6 +129,7 @@ class SU
     private Area $area;
 
     #[Groups([
+        'export',
         'read:SU',
         'write:SU',
     ])]
@@ -121,6 +137,7 @@ class SU
     private \DateTimeImmutable $date;
 
     #[Groups([
+        'export',
         'read:Area',
         'read:SU',
         'write:SU',
@@ -128,6 +145,7 @@ class SU
     private ?string $description;
 
     #[Groups([
+        'export',
         'read:Area',
         'read:SU',
         'write:SU',
@@ -135,6 +153,7 @@ class SU
     private ?string $interpretation;
 
     #[Groups([
+        'export',
         'read:Area',
         'read:SU',
         'write:SU',
@@ -142,6 +161,7 @@ class SU
     private ?string $summary;
 
     #[Groups([
+        'export',
         'read:Area',
         'read:SU',
         'write:SU',
@@ -150,6 +170,7 @@ class SU
     private Type $type;
 
     #[Groups([
+        'export',
         'read:Area',
         'read:SU',
         'write:SU',
@@ -157,6 +178,7 @@ class SU
     private ?PreservationState $preservationState;
 
     #[Groups([
+        'export',
         'read:Area',
         'read:SU',
         'write:SU',
@@ -164,6 +186,7 @@ class SU
     private ?float $topElevation;
 
     #[Groups([
+        'export',
         'read:Area',
         'read:SU',
         'write:SU',
@@ -171,6 +194,7 @@ class SU
     private ?float $bottomElevation;
 
     #[Groups([
+        'export',
         'read:Area',
         'read:SU',
         'write:SU',
@@ -178,6 +202,7 @@ class SU
     private ?string $compiler;
 
     #[Groups([
+        'export',
         'read:Area',
         'read:SU',
         'write:SU',

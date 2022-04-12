@@ -30,3 +30,10 @@ services:
         arguments:
             $decorated: '@App\OpenApi\OpenApiFactory.inner'
         autoconfigure: false
+
+    App\Serializer\CsvFlatNormalizer:
+        decorates: 'api_platform.jsonld.normalizer.item'
+
+    'app.serializer.normalizer.item.json':
+        class: 'App\Serializer\CsvFlatNormalizer'
+        decorates: 'api_platform.serializer.normalizer.item'

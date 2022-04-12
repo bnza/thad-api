@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
+use App\Controller\AreaExportController;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -13,6 +14,18 @@ use Symfony\Component\Validator\Constraints as Assert;
     collectionOperations: [
         'post' => null,
         'get' => [
+            'security' => 'is_granted("ROLE_USER")',
+        ],
+        'export' => [
+            'controller' => AreaExportController::class,
+            'method' => 'GET',
+            'path' => '/areas/export',
+            'formats' => [
+                'csv' => ['text/csv'],
+            ],
+            'groups' => [
+                'export',
+            ],
             'security' => 'is_granted("ROLE_USER")',
         ],
     ],
@@ -48,6 +61,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Area
 {
     #[Groups([
+        'export',
         'read:Area',
         'read:Site',
         'read:SU',
@@ -55,6 +69,7 @@ class Area
     private int $id;
 
     #[Groups([
+        'export',
         'read:Area',
         'read:Site',
         'read:SU',
@@ -64,6 +79,7 @@ class Area
     private string $code;
 
     #[Groups([
+        'export',
         'read:Area',
         'read:Site',
         'read:SU',
@@ -73,6 +89,7 @@ class Area
     private string $name;
 
     #[Groups([
+        'export',
         'read:Area',
         'read:Site',
         'read:SU',
@@ -81,6 +98,7 @@ class Area
     private ?string $description;
 
     #[Groups([
+        'export',
         'read:Area',
         'read:SU',
         'write:Area',

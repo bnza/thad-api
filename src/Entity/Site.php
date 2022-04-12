@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
+use App\Controller\SiteExportController;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -11,8 +12,20 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
     collectionOperations: [
-        'post' => null,
+        'post',
         'get' => [
+            'security' => 'is_granted("ROLE_USER")',
+        ],
+        'export' => [
+            'controller' => SiteExportController::class,
+            'method' => 'GET',
+            'path' => '/sites/export',
+            'formats' => [
+                'csv' => ['text/csv'],
+            ],
+            'groups' => [
+                'export',
+            ],
             'security' => 'is_granted("ROLE_USER")',
         ],
     ],
@@ -20,8 +33,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         'get' => [
             'security' => 'is_granted("ROLE_USER")',
         ],
-        'patch' => null,
-        'delete' => null,
+        'patch',
+        'delete',
     ],
     denormalizationContext: [
         'groups' => [
@@ -55,6 +68,7 @@ class Site
     private int $id;
 
     #[Groups([
+        'export',
         'read:Area',
         'read:Site',
         'read:SU',
@@ -64,6 +78,7 @@ class Site
     private string $code;
 
     #[Groups([
+        'export',
         'read:Area',
         'read:Site',
         'read:SU',

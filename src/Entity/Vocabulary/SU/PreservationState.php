@@ -23,6 +23,7 @@ class PreservationState
     private int $id;
 
     #[Groups([
+        'export',
         'read:Area',
         'read:SU',
     ])]
