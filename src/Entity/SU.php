@@ -11,7 +11,8 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\SUExportController;
 use App\Entity\Vocabulary\SU\PreservationState;
 use App\Entity\Vocabulary\SU\Type;
-use App\Validator as AppAssert;
+use Doctrine\ORM\Event\LifecycleEventArgs;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -37,7 +38,6 @@ use Symfony\Component\Validator\Constraints as Assert;
     itemOperations: [
         'get' => [
             'security' => 'is_granted("ROLE_USER")',
-
         ],
         'patch' => null,
         'delete' => null,
@@ -55,11 +55,11 @@ use Symfony\Component\Validator\Constraints as Assert;
     ],
     security: 'is_granted("ROLE_EDITOR")'
 )]
-#[AppAssert\UniqueSUNumberInSite]
 #[ApiFilter(
     SearchFilter::class,
     properties: [
         'id' => 'exact',
+        'area.id' => 'exact',
         'area.code' => 'exact',
         'area.site.code' => 'exact',
         'areaSupervisor' => 'ipartial',
@@ -89,7 +89,8 @@ use Symfony\Component\Validator\Constraints as Assert;
     properties: [
         'id',
         'area.code',
-        'area.site.code',
+        'site.code',
+        'number',
         'areaSupervisor',
         'bottomElevation',
         'compiler',
@@ -101,6 +102,11 @@ use Symfony\Component\Validator\Constraints as Assert;
         'topElevation',
         'type.value',
     ]
+)]
+#[UniqueEntity(
+    fields: ['site', 'number'],
+    message: 'SU {{ value }} already exists in this site',
+    errorPath: 'number',
 )]
 class SU
 {
@@ -119,6 +125,13 @@ class SU
     #[Assert\NotBlank]
     #[Assert\Positive]
     private int $number;
+
+    #[Groups([
+        'export',
+        'read:SU',
+        'write:SU',
+    ])]
+    private Site $site;
 
     #[Groups([
         'export',
@@ -222,6 +235,18 @@ class SU
     public function setNumber(int $number): SU
     {
         $this->number = $number;
+
+        return $this;
+    }
+
+    public function getSite(): Site
+    {
+        return $this->site;
+    }
+
+    public function setSite(Site $site): SU
+    {
+        $this->site = $site;
 
         return $this;
     }
@@ -356,5 +381,13 @@ class SU
         $this->areaSupervisor = $areaSupervisor;
 
         return $this;
+    }
+
+    public function ensureSite(LifecycleEventArgs $event)
+    {
+        /** @var SU $entity */
+        $entity = $event->getEntity();
+
+        $entity->setSite($entity->getArea()->getSite());
     }
 }

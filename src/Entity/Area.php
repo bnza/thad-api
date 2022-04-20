@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\AreaExportController;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -47,6 +49,28 @@ use Symfony\Component\Validator\Constraints as Assert;
         ],
     ],
     security: 'is_granted("ROLE_ADMIN")'
+)]
+#[ApiFilter(
+    SearchFilter::class,
+    properties: [
+        'id' => 'exact',
+        'site.id' => 'exact',
+        'site.code' => 'exact',
+        'site.name' => 'ipartial',
+        'code' => 'exact',
+        'name' => 'ipartial',
+        'description' => 'ipartial',
+    ]
+)]
+#[ApiFilter(
+    OrderFilter::class,
+    properties: [
+        'id',
+        'site.code',
+        'code',
+        'name',
+        'description',
+    ]
 )]
 #[UniqueEntity(
     fields: ['site', 'code'],
@@ -100,13 +124,11 @@ class Area
     #[Groups([
         'export',
         'read:Area',
-        'read:SU',
         'write:Area',
     ])]
     #[Assert\NotNull]
     private Site $site;
 
-    #[ApiSubresource(maxDepth: 1)]
     private iterable $stratigraphicUnits;
 
     public function __construct()

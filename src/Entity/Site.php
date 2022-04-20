@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use App\Controller\SiteExportController;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -48,6 +49,15 @@ use Symfony\Component\Validator\Constraints as Assert;
     ],
     security: 'is_granted("ROLE_ADMIN")'
 )]
+#[ApiFilter(
+    OrderFilter::class,
+    properties: [
+        'id',
+        'code',
+        'name',
+        'description',
+    ]
+)]
 #[UniqueEntity(
     fields: ['code'],
     message: 'Duplicate site code.',
@@ -90,18 +100,18 @@ class Site
     #[Groups([
         'read:Area',
         'read:Site',
-        'read:SU',
         'write:Site',
     ])]
     private ?string $description;
 
-    #[ApiSubresource(maxDepth: 1)]
-    #[Groups(['read:Site'])]
     private iterable $areas;
+
+    private iterable $stratigraphicUnits;
 
     public function __construct()
     {
         $this->areas = new ArrayCollection();
+        $this->stratigraphicUnits = new ArrayCollection();
     }
 
     public function getId(): int
@@ -160,6 +170,18 @@ class Site
     public function setAreas(iterable|ArrayCollection $areas): Site
     {
         $this->areas = $areas;
+
+        return $this;
+    }
+
+    public function getStratigraphicUnits(): iterable|ArrayCollection
+    {
+        return $this->stratigraphicUnits;
+    }
+
+    public function setStratigraphicUnits(iterable|ArrayCollection $stratigraphicUnits): Site
+    {
+        $this->stratigraphicUnits = $stratigraphicUnits;
 
         return $this;
     }

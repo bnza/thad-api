@@ -13,5 +13,10 @@
         <field name="name" length="64" unique="true" />
         <field name="description"  type="text" nullable="true"/>
         <one-to-many field="areas" target-entity="Area" mapped-by="site" />
+        <one-to-many field="stratigraphicUnits" target-entity="SU" mapped-by="site" />
+        <unique-constraints>
+            <unique-constraint columns="name" />
+            <unique-constraint columns="code" />
+        </unique-constraints>
     </entity>
 </doctrine-mapping>

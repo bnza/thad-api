@@ -6,6 +6,13 @@ api_platform:
         paths: ['%kernel.project_dir%/src/Entity']
     resource_class_directories:
         - '%kernel.project_dir%/src/Entity'
+    defaults:
+        pagination_client_enabled: true
+        pagination_client_items_per_page: true
+    collection:
+        pagination:
+            items_per_page_parameter_name: itemsPerPage
+            enabled_parameter_name: pagination
     patch_formats:
         json: ['application/merge-patch+json']
         jsonapi:  ['application/vnd.api+json']

@@ -6,6 +6,9 @@
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <entity name="App\Entity\SU" table="su" repository-class="App\Repository\SURepository">
+        <unique-constraints>
+            <unique-constraint columns="site_id,number" />
+        </unique-constraints>
         <id name="id" type="integer">
             <generator/>
         </id>
@@ -22,6 +25,9 @@
         <field name="bottomElevation" column="bottom_elevation"  type="float" nullable="true"/>
         <field name="areaSupervisor" column="area_supervisor" type="string" nullable="true"/>
         <field name="compiler"  type="string" nullable="true"/>
+        <many-to-one field="site" target-entity="Site" inversed-by="stratigraphicUnits">
+            <join-column name="site_id" referenced-column-name="id" />
+        </many-to-one>
         <many-to-one field="area" target-entity="Area" inversed-by="stratigraphicUnits">
             <join-column name="area_id" referenced-column-name="id" />
         </many-to-one>
@@ -31,5 +37,8 @@
         <many-to-one field="preservationState" target-entity="App\Entity\Vocabulary\SU\PreservationState">
             <join-column name="preservation_state_id" referenced-column-name="id" />
         </many-to-one>
+        <lifecycle-callbacks>
+            <lifecycle-callback type="prePersist" method="ensureSite"/>
+        </lifecycle-callbacks>
     </entity>
 </doctrine-mapping>

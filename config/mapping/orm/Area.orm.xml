@@ -18,7 +18,7 @@
         <field name="description"  type="text" nullable="true"/>
         <one-to-many field="stratigraphicUnits" target-entity="SU" mapped-by="area" />
         <many-to-one field="site" target-entity="Site" inversed-by="areas">
-            <join-column name="site_id" referenced-column-name="id" />
+            <join-column name="site_id" />
         </many-to-one>
     </entity>
 </doctrine-mapping>
