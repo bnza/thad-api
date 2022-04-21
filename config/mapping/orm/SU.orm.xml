@@ -25,6 +25,8 @@
         <field name="bottomElevation" column="bottom_elevation"  type="float" nullable="true"/>
         <field name="areaSupervisor" column="area_supervisor" type="string" nullable="true"/>
         <field name="compiler"  type="string" nullable="true"/>
+        <one-to-many field="relations" target-entity="StratigraphicRelationship" mapped-by="sxSU" />
+        <one-to-many field="inverseRelations" target-entity="StratigraphicRelationship" mapped-by="dxSU" />
         <many-to-one field="site" target-entity="Site" inversed-by="stratigraphicUnits">
             <join-column name="site_id" referenced-column-name="id" />
         </many-to-one>

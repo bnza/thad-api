@@ -23,7 +23,7 @@ App\Entity\SU:
     area: '@area_TH_B'
     number: 3
     date: <createImmutableDate('2022-04-12')>
-    description: 'The 3rd stratigraphic unit description'
+    description: 'The 3rd stratigraphic unit description. A nice cut'
     summary: 'The 3rd stratigraphic unit summary'
     interpretation: 'The 3rd stratigraphic unit interpretation'
     type: '@voc__su__type_1'

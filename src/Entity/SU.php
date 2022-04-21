@@ -11,6 +11,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\SUExportController;
 use App\Entity\Vocabulary\SU\PreservationState;
 use App\Entity\Vocabulary\SU\Type;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -222,6 +223,16 @@ class SU
     ])]
     private ?string $areaSupervisor;
 
+    private iterable $relations;
+
+    private iterable $inverseRelations;
+
+    public function __construct()
+    {
+        $this->relations = new ArrayCollection();
+        $this->inverseRelations = new ArrayCollection();
+    }
+
     public function getId(): int
     {
         return $this->id;
@@ -379,6 +390,30 @@ class SU
     public function setAreaSupervisor(?string $areaSupervisor): SU
     {
         $this->areaSupervisor = $areaSupervisor;
+
+        return $this;
+    }
+
+    public function getRelations(): iterable|ArrayCollection
+    {
+        return $this->relations;
+    }
+
+    public function setRelations(iterable|ArrayCollection $relations): SU
+    {
+        $this->relations = $relations;
+
+        return $this;
+    }
+
+    public function getInverseRelations(): iterable|ArrayCollection
+    {
+        return $this->inverseRelations;
+    }
+
+    public function setInverseRelations(iterable|ArrayCollection $inverseRelations): SU
+    {
+        $this->inverseRelations = $inverseRelations;
 
         return $this;
     }
