@@ -3,13 +3,16 @@
 namespace App\Tests\Functional;
 
 use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
+use App\Entity\StratigraphicRelationship;
+use App\Entity\SU;
+use App\Entity\Vocabulary\SU\Relationship;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
-class AuthApiTestCase extends ApiTestCase
+abstract class AuthApiTestCase extends ApiTestCase
 {
     use RefreshDatabaseTrait;
 
@@ -22,6 +25,12 @@ class AuthApiTestCase extends ApiTestCase
 
     protected HttpClientInterface $client;
     private string $jwtToken = '';
+
+    private array $resourceIriMap = [
+        SU::class => 'stratigraphic_units',
+        Relationship::class => 'vocabulary/su/relationships',
+        StratigraphicRelationship::class => 'stratigraphic_relationships',
+    ];
 
     protected function getClient(): HttpClientInterface
     {
@@ -59,9 +68,6 @@ class AuthApiTestCase extends ApiTestCase
         return $response;
     }
 
-    /**
-     * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
-     */
     protected function request(string $method, string $url, array $options = []): ResponseInterface
     {
         return $this->getClient()->request($method, $url, $this->setAuthenticationHeader($options));
@@ -123,16 +129,34 @@ class AuthApiTestCase extends ApiTestCase
         return $content['id'];
     }
 
-    protected function adminPostCollectionRequest(string $url, array $json): ResponseInterface
+    protected function adminPostCollectionRequest(string $resourceClass, array $json): ResponseInterface
     {
         $this->authenticate(self::USER_ADMIN, self::USER_ADMIN_PW);
 
         return $this->request(
                     'POST',
-                    $url,
+                    $this->getResourceIri($resourceClass),
                     [
                         'json' => $json,
                     ]
                 );
+    }
+
+    protected function getResourceIri(string $resourceClass, mixed $id = null): string
+    {
+        $prefix = array_key_exists('API_PREFIX', $_ENV) ? $_ENV['API_PREFIX'] : '/api';
+        $iri = sprintf('%s/%s', $prefix, $this->resourceIriMap[$resourceClass]);
+        if (!is_null($id)) {
+            $iri .= "/$id";
+        }
+
+        return $iri;
+    }
+
+    protected function getResourceIriByCode(string $resourceClass, string $code): string
+    {
+        $id = $this->getEntityRepository($resourceClass)->findOneByCode($code)->getId();
+
+        return $this->getResourceIri($resourceClass, $id);
     }
 }

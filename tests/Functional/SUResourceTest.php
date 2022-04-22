@@ -3,10 +3,16 @@
 namespace App\Tests\Functional;
 
 use App\Entity\Area;
+use App\Entity\SU;
 use App\Repository\AreaRepository;
 
 class SUResourceTest extends AuthApiTestCase
 {
+    protected function getBaseResourceIri(): string
+    {
+        return 'stratigraphic_units';
+    }
+
     public function testUnauthenticatedGetCollection(): void
     {
         $response = $this->request(
@@ -33,7 +39,7 @@ class SUResourceTest extends AuthApiTestCase
         );
 
         $this->adminPostCollectionRequest(
-            '/api/stratigraphic_units',
+            SU::class,
             [
                 'area' => $this->getAreaResourceIdentifierByCodes('TH', 'A'),
                 'number' => 10,
@@ -46,7 +52,7 @@ class SUResourceTest extends AuthApiTestCase
     public function testPostValidateDuplicateNumberInSite(): void
     {
         $this->adminPostCollectionRequest(
-            '/api/stratigraphic_units',
+            SU::class,
             [
                 'area' => $this->getAreaResourceIdentifierByCodes('TH', 'A'),
                 'number' => 1,

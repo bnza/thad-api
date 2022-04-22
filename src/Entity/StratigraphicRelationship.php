@@ -5,7 +5,6 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Entity\Vocabulary\SU\Relationship;
 
-#[ApiResource()]
 class StratigraphicRelationship
 {
     private int $id;

@@ -16,6 +16,27 @@ class SURepository extends ServiceEntityRepository
         parent::__construct($registry, SU::class);
     }
 
+    public function findOneByCode(string $code): ?SU
+    {
+        $chunks = explode('.', $code);
+        if (sizeof($chunks) < 2) {
+            return null;
+        }
+        $siteCode = $chunks[0];
+        $suNumber = $chunks[sizeof($chunks) - 1];
+        if (!is_numeric($suNumber)) {
+            return null;
+        }
+        $site = $this->getEntityManager()->getRepository(Site::class)->findOneByCode($siteCode);
+        if (!$site) {
+            return null;
+        }
+        return $this->findOneBy([
+            'site' => $site,
+            'number' => $suNumber,
+        ]);
+    }
+
     public function numberExistsInSite(int $number, Area $area): bool
     {
         $qb = $this->createQueryBuilder('su');

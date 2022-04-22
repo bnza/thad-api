@@ -5,21 +5,22 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="App\Entity\StratigraphicRelationship" table="stratigraphic_relationships">
+    <entity name="App\Entity\View\ViewStratigraphicRelationship"
+            table="vw_stratigraphic_relationships"
+            repository-class="App\Repository\View\ViewStratigraphicRelationshipRepository"
+    >
         <id name="id" type="integer">
-            <generator/>
+            <generator strategy="SEQUENCE" />
+            <sequence-generator sequence-name="stratigraphic_relationships_id_seq" />
         </id>
-        <many-to-one field="sxSU" target-entity="SU">
+        <many-to-one field="sxSU" target-entity="App\Entity\SU" inversed-by="relations">
             <join-column name="sx_su_id" />
         </many-to-one>
-        <many-to-one field="dxSU" target-entity="SU">
+        <many-to-one field="dxSU" target-entity="App\Entity\SU" inversed-by="inverseRelations">
             <join-column name="dx_su_id" />
         </many-to-one>
         <one-to-one field="relationship" target-entity="App\Entity\Vocabulary\SU\Relationship">
             <join-column name="relationship_id" />
         </one-to-one>
-        <unique-constraints>
-            <unique-constraint columns="sx_su_id,dx_su_id" />
-        </unique-constraints>
     </entity>
 </doctrine-mapping>

@@ -8,6 +8,11 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 
 class UserResourceTest extends AuthApiTestCase
 {
+    protected function getBaseResourceIri(): string
+    {
+        return 'users';
+    }
+
     public function testInvalidCredentialsRequest(): void
     {
         $response = $this->authenticate('wrong@example.com', 'wrong', false);

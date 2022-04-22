@@ -10,6 +10,11 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 
 class AreaResourceTest extends AuthApiTestCase
 {
+    protected function getBaseResourceIri(): string
+    {
+        return 'areas';
+    }
+
     public function testUnauthenticatedGetCollection(): void
     {
         $response = $this->request(
@@ -162,4 +167,5 @@ class AreaResourceTest extends AuthApiTestCase
         );
         $this->assertResponseStatusCodeSame(403);
     }
+
 }

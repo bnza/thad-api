@@ -1,9 +1,9 @@
 App\Entity\StratigraphicRelationship:
   su_relation_1:
-    dxSU: '@su_TH_1'
+    sxSU: '@su_TH_1'
     relationship: '@voc__su__relationship_c'
-    sxSU: '@su_TH_2'
+    dxSU: '@su_TH_2'
   su_relation_2:
-    dxSU: '@su_TH_1'
+    sxSU: '@su_TH_1'
     relationship: '@voc__su__relationship_X'
-    sxSU: '@su_TH_3'
+    dxSU: '@su_TH_3'

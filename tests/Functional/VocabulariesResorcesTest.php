@@ -4,6 +4,11 @@ namespace App\Tests\Functional;
 
 class VocabulariesResorcesTest extends AuthApiTestCase
 {
+    protected function getBaseResourceIri(): string
+    {
+        return 'vocabulary';
+    }
+
     public function vocabulariesProvider(): array
     {
         return [
@@ -13,7 +18,6 @@ class VocabulariesResorcesTest extends AuthApiTestCase
     }
 
     /**
-     * @group wip
      * @dataProvider vocabulariesProvider
      */
     public function testGetVocabulariesCollection(string $url, int $count): void

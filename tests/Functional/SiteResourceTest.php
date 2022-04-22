@@ -8,6 +8,11 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 
 class SiteResourceTest extends AuthApiTestCase
 {
+    protected function getBaseResourceIri(): string
+    {
+        return 'sites';
+    }
+
     public function testUnauthenticatedGetCollection(): void
     {
         $response = $this->request(
