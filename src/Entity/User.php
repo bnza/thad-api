@@ -155,6 +155,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
 
+        if (in_array('ROLE_ADMIN', $roles)) {
+            $roles[] = 'ROLE_EDITOR';
+        }
+
         return array_unique($roles);
     }
 
