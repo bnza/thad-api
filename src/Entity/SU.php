@@ -114,6 +114,7 @@ class SU
     #[Groups([
         'read:Area',
         'read:SU',
+        'read:ViewStratigraphicRelationship',
     ])]
     private int $id;
 
@@ -121,6 +122,7 @@ class SU
         'export',
         'read:Area',
         'read:SU',
+        'read:ViewStratigraphicRelationship',
         'write:SU',
     ])]
     #[Assert\NotBlank]

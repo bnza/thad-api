@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use App\Entity\Vocabulary\SU\Relationship;
 
 class StratigraphicRelationship
