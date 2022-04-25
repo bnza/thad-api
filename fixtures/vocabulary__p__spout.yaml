@@ -1,0 +1,8 @@
+App\Entity\Vocabulary\Pottery\Spout:
+  voc__p__spout_1:
+    value: conical
+  voc__p__spout_2:
+    value: long
+  voc__p__spout_3:
+    value: short
+

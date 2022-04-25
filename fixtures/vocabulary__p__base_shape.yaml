@@ -1,0 +1,31 @@
+App\Entity\Vocabulary\Pottery\BaseShape:
+  voc__p__base_shape_1:
+    value: channel
+  voc__p__base_shape_2:
+    value: concave
+  voc__p__base_shape_3:
+    value: concave string-cut
+  voc__p__base_shape_4:
+    value: convex
+  voc__p__base_shape_5:
+    value: disc
+  voc__p__base_shape_6:
+    value: flat
+  voc__p__base_shape_7:
+    value: knob/button
+  voc__p__base_shape_8:
+    value: nipple
+  voc__p__base_shape_9:
+    value: pedestal
+  voc__p__base_shape_10:
+    value: pierced
+  voc__p__base_shape_11:
+    value: pointed
+  voc__p__base_shape_12:
+    value: ring
+  voc__p__base_shape_13:
+    value: rounded
+  voc__p__base_shape_14:
+    value: string-cut
+  voc__p__base_shape_15:
+    value: tripod

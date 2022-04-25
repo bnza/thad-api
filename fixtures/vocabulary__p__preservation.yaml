@@ -1,0 +1,38 @@
+App\Entity\Vocabulary\Pottery\preservation:
+  voc__p__preservation_1:
+    value: base
+  voc__p__preservation_2:
+    value: base+body
+  voc__p__preservation_3:
+    value: body
+  voc__p__preservation_4:
+    value: body+spout
+  voc__p__preservation_5:
+    value: complete
+  voc__p__preservation_6:
+    value: complete profile
+  voc__p__preservation_7:
+    value: handle/lug/suspender
+  voc__p__preservation_8:
+    value: neck
+  voc__p__preservation_9:
+    value: neck+body
+  voc__p__preservation_10:
+    value: neck+spout
+  voc__p__preservation_12:
+    value: rim
+  voc__p__preservation_13:
+    value: rim+body
+  voc__p__preservation_14:
+    value: rim+neck+body
+  voc__p__preservation_16:
+    value: rim+spout
+  voc__p__preservation_17:
+    value: rim+wall
+  voc__p__preservation_18:
+    value: spout
+  voc__p__preservation_19:
+    value: wall
+  voc__p__preservation_20:
+    value: wall+spout
+

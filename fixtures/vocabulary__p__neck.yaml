@@ -1,0 +1,10 @@
+App\Entity\Vocabulary\Pottery\Neck:
+  voc__p__neck_1:
+    value: concave
+  voc__p__neck_2:
+    value: conical
+  voc__p__neck_3:
+    value: flaring
+  voc__p__neck_4:
+    value: vertical
+

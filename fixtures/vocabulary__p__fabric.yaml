@@ -1,0 +1,9 @@
+App\Entity\Vocabulary\Pottery\Fabric:
+  voc__p__fabric_1:
+    value: mineral
+  voc__p__fabric_2:
+    value: mineral + vegetal inclusions
+  voc__p__fabric_3:
+    value: vegetal
+  voc__p__fabric_4:
+    value: vegetal + mineral inclusions

@@ -1,0 +1,8 @@
+App\Entity\Vocabulary\Pottery\RimDirection:
+  voc__p__rim_direction_1:
+    value: everted
+  voc__p__rim_direction_2:
+    value: inverted
+  voc__p__rim_direction_3:
+    value: vertical
+

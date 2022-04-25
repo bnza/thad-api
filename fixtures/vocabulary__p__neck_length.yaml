@@ -1,0 +1,6 @@
+App\Entity\Vocabulary\Pottery\NeckLength:
+  voc__p__neck_length_1:
+    value: long
+  voc__p__neck_length_2:
+    value: short
+

@@ -1,0 +1,13 @@
+App\Entity\Vocabulary\Pottery\Handle:
+  voc__p__handle_1:
+    value: crescent-shaped lug
+  voc__p__handle_2:
+    value: handle, circular section
+  voc__p__handle_3:
+    value: handle, ovoidal section
+  voc__p__handle_4:
+    value: horizontal lug
+  voc__p__handle_5:
+    value: knob
+  voc__p__handle_6:
+    value: suspender

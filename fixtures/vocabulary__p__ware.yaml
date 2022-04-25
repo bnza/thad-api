@@ -1,0 +1,9 @@
+App\Entity\Vocabulary\Pottery\Ware:
+  voc__p__ware_1:
+    value: coarse
+  voc__p__ware_2:
+    value: common
+  voc__p__ware_3:
+    value: cooking
+  voc__p__ware_4:
+    value: fine

@@ -1,0 +1,37 @@
+App\Entity\Vocabulary\Pottery\Body:
+  voc__p__body_1:
+    value: carinated wall
+  voc__p__body_2:
+    value: conical wall
+  voc__p__body_3:
+    value: convex/curved wall
+  voc__p__body_4:
+    value: flaring wall
+  voc__p__body_5:
+    value: inward wall
+  voc__p__body_6:
+    value: vertical wall
+  voc__p__body_7:
+    value: cylindrical body
+  voc__p__body_8:
+    value: cylindrical carinated body
+  voc__p__body_9:
+    value: globular body
+  voc__p__body_10:
+    value: globular carinated body
+  voc__p__body_11:
+    value: heart-shaped body
+  voc__p__body_12:
+    value: heart-shaped carinated body
+  voc__p__body_13:
+    value: ovoidal body
+  voc__p__body_14:
+    value: ovoidal carinated body
+  voc__p__body_15:
+    value: squat body
+  voc__p__body_16:
+    value: squat carinated body
+  voc__p__body_17:
+    value: concave
+  voc__p__body_18:
+    value: flat

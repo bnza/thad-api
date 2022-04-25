@@ -1,0 +1,10 @@
+App\Entity\Vocabulary\Pottery\SizeGroup:
+  voc__p__size_group_1:
+    value: '≤ 10 cm'
+  voc__p__size_group_2:
+    value: '≤ 20 cm'
+  voc__p__size_group_3:
+    value: '≤ 30 cm'
+  voc__p__size_group_4:
+    value: '> 30 cm'
+

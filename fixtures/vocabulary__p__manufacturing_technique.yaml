@@ -1,0 +1,17 @@
+App\Entity\Vocabulary\Pottery\ManufacturingTechnique:
+  voc__p__manufacturing_technique _1:
+    value: coil
+  voc__p__manufacturing_technique _2:
+    value: coil+wheel-made
+  voc__p__manufacturing_technique _3:
+    value: hand-made
+  voc__p__manufacturing_technique _4:
+    value: hand-made+wheel-made
+  voc__p__manufacturing_technique _5:
+    value: mould
+  voc__p__manufacturing_technique _6:
+    value: slow-wheel-made
+  voc__p__manufacturing_technique _7:
+    value: wheel-made
+  voc__p__manufacturing_technique _8:
+    value: undetermined

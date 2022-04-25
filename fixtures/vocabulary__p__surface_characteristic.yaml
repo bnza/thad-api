@@ -1,0 +1,9 @@
+App\Entity\Vocabulary\Pottery\SurfaceCharacteristic:
+  voc__p__surface_characteristic_1:
+    value: absent
+  voc__p__surface_characteristic_2:
+    value: self-slip
+  voc__p__surface_characteristic_3:
+    value: slip
+  voc__p__surface_characteristic_4:
+    value: undetermined

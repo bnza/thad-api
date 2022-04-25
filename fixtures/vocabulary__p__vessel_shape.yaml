@@ -1,0 +1,43 @@
+App\Entity\Vocabulary\Pottery\VesselShape:
+  voc__p__vessel_shape_1:
+    value: anthropomorphic vessel
+  voc__p__vessel_shape_2:
+    value: basin
+  voc__p__vessel_shape_3:
+    value: beaker
+  voc__p__vessel_shape_4:
+    value: bottle
+  voc__p__vessel_shape_5:
+    value: bowl
+  voc__p__vessel_shape_6:
+    value: cup
+  voc__p__vessel_shape_7:
+    value: deep bowl
+  voc__p__vessel_shape_8:
+    value: fenestrated stand
+  voc__p__vessel_shape_9:
+    value: fruit-stand
+  voc__p__vessel_shape_10:
+    value: jug
+  voc__p__vessel_shape_11:
+    value: lid/stopper
+  voc__p__vessel_shape_12:
+    value: miniaturistic vessel
+  voc__p__vessel_shape_13:
+    value: plate
+  voc__p__vessel_shape_14:
+    value: pot
+  voc__p__vessel_shape_15:
+    value: shallow bowl
+  voc__p__vessel_shape_16:
+    value: shouldered beaker
+  voc__p__vessel_shape_17:
+    value: stand
+  voc__p__vessel_shape_18:
+    value: stemmed dish
+  voc__p__vessel_shape_19:
+    value: strainer/sieve
+  voc__p__vessel_shape_20:
+    value: zoomorphic vessel
+  voc__p__vessel_shape_21:
+    value: undetermined

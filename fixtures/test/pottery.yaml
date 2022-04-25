@@ -1,0 +1,7 @@
+App\Entity\Pottery:
+  pottery_TH_1_1:
+    stratigraphicUnit: '@su_TH_1'
+    date: <createImmutableDate('2022-04-25')>
+    number: 1
+    compiler: 'Eren Yeager'
+    externalSurfaceColour: '@voc__p__colour_1'

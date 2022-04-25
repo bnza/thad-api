@@ -27,17 +27,18 @@
         <field name="compiler"  type="string" nullable="true"/>
         <one-to-many field="relations" target-entity="App\Entity\View\ViewStratigraphicRelationship" mapped-by="sxSU" />
         <one-to-many field="inverseRelations" target-entity="App\Entity\View\ViewStratigraphicRelationship" mapped-by="dxSU" />
+        <one-to-many field="potteries" target-entity="App\Entity\Pottery" mapped-by="stratigraphicUnit" />
         <many-to-one field="site" target-entity="Site" inversed-by="stratigraphicUnits">
-            <join-column name="site_id" referenced-column-name="id" />
+            <join-column name="site_id" nullable="false"/>
         </many-to-one>
         <many-to-one field="area" target-entity="Area" inversed-by="stratigraphicUnits">
-            <join-column name="area_id" referenced-column-name="id" />
+            <join-column name="area_id" nullable="false"/>
         </many-to-one>
         <many-to-one field="type" target-entity="App\Entity\Vocabulary\SU\Type">
-            <join-column name="type_id" referenced-column-name="id" />
+            <join-column name="type_id" />
         </many-to-one>
         <many-to-one field="preservationState" target-entity="App\Entity\Vocabulary\SU\PreservationState">
-            <join-column name="preservation_state_id" referenced-column-name="id" />
+            <join-column name="preservation_state_id" />
         </many-to-one>
         <lifecycle-callbacks>
             <lifecycle-callback type="prePersist" method="ensureSite"/>

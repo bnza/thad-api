@@ -1,0 +1,33 @@
+App\Entity\Vocabulary\Pottery\RimShape:
+  voc__p__rim_shape_1:
+    value: bead
+  voc__p__rim_shape_2:
+    value: beaked
+  voc__p__rim_shape_3:
+    value: bended/indented
+  voc__p__rim_shape_4:
+    value: bevelled
+  voc__p__rim_shape_5:
+    value: club-shaped
+  voc__p__rim_shape_6:
+    value: flaring
+  voc__p__rim_shape_7:
+    value: folded
+  voc__p__rim_shape_8:
+    value: ledge
+  voc__p__rim_shape_9:
+    value: lid-seated
+  voc__p__rim_shape_10:
+    value: pie-crust
+  voc__p__rim_shape_11:
+    value: lid/stopper
+  voc__p__rim_shape_12:
+    value: ribbon
+  voc__p__rim_shape_13:
+    value: simple
+  voc__p__rim_shape_14:
+    value: thickened inside
+  voc__p__rim_shape_15:
+    value: thickened outside
+  voc__p__rim_shape_16:
+    value: thickened outside and inside

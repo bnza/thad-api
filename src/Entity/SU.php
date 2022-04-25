@@ -229,10 +229,13 @@ class SU
 
     private iterable $inverseRelations;
 
+    private iterable $potteries;
+
     public function __construct()
     {
         $this->relations = new ArrayCollection();
         $this->inverseRelations = new ArrayCollection();
+        $this->potteries = new ArrayCollection();
     }
 
     public function getId(): int
@@ -416,6 +419,18 @@ class SU
     public function setInverseRelations(iterable|ArrayCollection $inverseRelations): SU
     {
         $this->inverseRelations = $inverseRelations;
+
+        return $this;
+    }
+
+    public function getPotteries(): iterable|ArrayCollection
+    {
+        return $this->potteries;
+    }
+
+    public function setPotteries(iterable|ArrayCollection $potteries): SU
+    {
+        $this->potteries = $potteries;
 
         return $this;
     }

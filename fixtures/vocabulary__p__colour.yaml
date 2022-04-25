@@ -1,0 +1,22 @@
+App\Entity\Vocabulary\Pottery\Colour:
+  voc__p__colour_1:
+    value: black
+  voc__p__colour_2:
+    value: brown
+  voc__p__colour_3:
+    value: buff
+  voc__p__colour_4:
+    value: green
+  voc__p__colour_5:
+    value: grey
+  voc__p__colour_6:
+    value: orange
+  voc__p__colour_7:
+    value: pink
+  voc__p__colour_8:
+    value: red
+  voc__p__colour_9:
+    value: white
+  voc__p__colour_10:
+    value: yellow
+

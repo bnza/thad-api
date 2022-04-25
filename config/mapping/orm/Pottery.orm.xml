@@ -1,0 +1,86 @@
+<?xml version="1.0" ?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Entity\Pottery" table="pottery" repository-class="App\Repository\PotteryRepository">
+        <unique-constraints>
+            <unique-constraint columns="su_id,number" />
+        </unique-constraints>
+        <id name="id" type="integer">
+            <generator/>
+        </id>
+        <field name="number" type="smallint"/>
+        <field name="thickness" type="float" nullable="true"/>
+        <field name="rimDiameter" type="float" nullable="true"/>
+        <field name="baseDiameter" type="float" nullable="true"/>
+        <field name="date" type="date_immutable"/>
+        <field name="compiler" nullable="true"/>
+        <field name="notes"  type="text" nullable="true"/>
+        <many-to-one field="stratigraphicUnit" target-entity="SU" inversed-by="potteries">
+            <join-column name="su_id" nullable="false"/>
+        </many-to-one>
+        <many-to-one field="externalSurfaceColour" target-entity="App\Entity\Vocabulary\Pottery\Colour">
+            <join-column name="ext_surface_color_id" />
+        </many-to-one>
+        <many-to-one field="internalSurfaceColour" target-entity="App\Entity\Vocabulary\Pottery\Colour">
+            <join-column name="int_surface_color_id" />
+        </many-to-one>
+        <many-to-one field="fractureColour" target-entity="App\Entity\Vocabulary\Pottery\Colour">
+            <join-column name="fracture_color_id" />
+        </many-to-one>
+        <many-to-one field="ware" target-entity="App\Entity\Vocabulary\Pottery\Ware">
+            <join-column name="ware_id" />
+        </many-to-one>
+        <many-to-one field="fabric" target-entity="App\Entity\Vocabulary\Pottery\Fabric">
+            <join-column name="fabric_id" />
+        </many-to-one>
+        <many-to-one field="surfaceCharacteristic" target-entity="App\Entity\Vocabulary\Pottery\SurfaceCharacteristic">
+            <join-column name="surface_characteristic_id" />
+        </many-to-one>
+        <many-to-one field="surfaceTreatment" target-entity="App\Entity\Vocabulary\Pottery\SurfaceTreatment">
+            <join-column name="surface_treatment_id" />
+        </many-to-one>
+        <many-to-one field="manufacturingTechnique" target-entity="App\Entity\Vocabulary\Pottery\ManufacturingTechnique">
+            <join-column name="manufacturing_technique_id" />
+        </many-to-one>
+        <many-to-one field="firing" target-entity="App\Entity\Vocabulary\Pottery\Firing">
+            <join-column name="firing_id" />
+        </many-to-one>
+        <many-to-one field="decoration" target-entity="App\Entity\Vocabulary\Pottery\Decoration">
+            <join-column name="decoration_id" />
+        </many-to-one>
+        <many-to-one field="vesselShape" target-entity="App\Entity\Vocabulary\Pottery\VesselShape">
+            <join-column name="vessel_shape_id" />
+        </many-to-one>
+        <many-to-one field="rimShape" target-entity="App\Entity\Vocabulary\Pottery\RimShape">
+            <join-column name="rim_shape_id" />
+        </many-to-one>
+        <many-to-one field="rimDirection" target-entity="App\Entity\Vocabulary\Pottery\RimDirection">
+            <join-column name="rim_direction_id" />
+        </many-to-one>
+        <many-to-one field="rimCharacterization" target-entity="App\Entity\Vocabulary\Pottery\RimCharacterization">
+            <join-column name="rim_characterization_id" />
+        </many-to-one>
+        <many-to-one field="neck" target-entity="App\Entity\Vocabulary\Pottery\Neck">
+            <join-column name="neck_id" />
+        </many-to-one>
+        <many-to-one field="neckLength" target-entity="App\Entity\Vocabulary\Pottery\NeckLength">
+            <join-column name="neck_length_id" />
+        </many-to-one>
+        <many-to-one field="body" target-entity="App\Entity\Vocabulary\Pottery\Body">
+            <join-column name="body_id" />
+        </many-to-one>
+        <many-to-one field="handle" target-entity="App\Entity\Vocabulary\Pottery\Handle">
+            <join-column name="handle_id" />
+        </many-to-one>
+        <many-to-one field="baseShape" target-entity="App\Entity\Vocabulary\Pottery\BaseShape">
+            <join-column name="base_shape_id" />
+        </many-to-one>
+        <many-to-one field="preservation" target-entity="App\Entity\Vocabulary\Pottery\Preservation">
+            <join-column name="preservation_id" />
+        </many-to-one>
+    </entity>
+</doctrine-mapping>

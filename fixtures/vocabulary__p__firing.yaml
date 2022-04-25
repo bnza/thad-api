@@ -1,0 +1,11 @@
+App\Entity\Vocabulary\Pottery\firing:
+  voc__p__firing_1:
+    value: high
+  voc__p__firing_2:
+    value: low
+  voc__p__firing_3:
+    value: medium
+  voc__p__firing_4:
+    value: overfired
+  voc__p__firing_5:
+    value: undetermined

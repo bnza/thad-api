@@ -1,0 +1,12 @@
+App\Entity\Vocabulary\Pottery\RimCharacterization:
+  voc__p__rim_characterization_1:
+    value: flattened
+  voc__p__rim_characterization_2:
+    value: rounded
+  voc__p__rim_characterization_3:
+    value: sharp
+  voc__p__rim_characterization_4:
+    value: squared
+  voc__p__rim_characterization_5:
+    value: thin-beaded
+
