@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use App\Entity\Vocabulary\Pottery\BaseShape;
 use App\Entity\Vocabulary\Pottery\Body;
 use App\Entity\Vocabulary\Pottery\Colour;
@@ -23,6 +25,7 @@ use App\Entity\Vocabulary\Pottery\SurfaceCharacteristic;
 use App\Entity\Vocabulary\Pottery\SurfaceTreatment;
 use App\Entity\Vocabulary\Pottery\VesselShape;
 use App\Entity\Vocabulary\Pottery\Ware;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ApiResource(
     collectionOperations: [
@@ -50,68 +53,199 @@ use App\Entity\Vocabulary\Pottery\Ware;
     ],
     security: 'is_granted("ROLE_EDITOR")'
 )]
+#[ApiFilter(
+    OrderFilter::class,
+    properties: [
+        'id',
+        'stratigraphicUnit.area.code',
+        'stratigraphicUnit.site.code',
+        'stratigraphicUnit.number',
+        'number',
+        'ware.value',
+        'fabric.value',
+        'externalSurfaceColour.value',
+        'internalSurfaceColour.value',
+        'surfaceCharacteristic.value',
+        'surfaceTreatment.value',
+        'fractureColour.value',
+        'manufacturingTechnique.value',
+        'firing.value',
+        'decoration.value',
+        'vesselShape.value',
+        'rimShape.value',
+        'baselShape.value',
+        'rimDirection.value',
+        'rimCharacterization.value',
+        'neck.value',
+        'neckLength.value',
+        'body.value',
+        'spout.value',
+        'handle.value',
+        'sizeGroup.value',
+        'preservation.value',
+        'thickness',
+        'rimDiameter',
+        'baseDiameter',
+        'compiler',
+        'date',
+        'note',
+    ]
+)]
 class Pottery
 {
+    #[Groups([
+        'read:Pottery',
+    ])]
     private int $id;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private SU $stratigraphicUnit;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private int $number;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private \DateTimeImmutable $date;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?float $thickness;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?float $rimDiameter;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?float $baseDiameter;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?string $compiler;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?string $notes;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?Colour $externalSurfaceColour;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?Colour $internalSurfaceColour;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?Colour $fractureColour;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?Ware $ware;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?Fabric $fabric;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?SurfaceCharacteristic $surfaceCharacteristic;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?SurfaceTreatment $surfaceTreatment;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?ManufacturingTechnique $manufacturingTechnique;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?Firing $firing;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?Decoration $decoration;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?VesselShape $vesselShape;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?RimShape $rimShape;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?RimDirection $rimDirection;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?RimCharacterization $rimCharacterization;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?Neck $neck;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?NeckLength $neckLength;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?Body $body;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?Spout $spout;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?Handle $handle;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?BaseShape $baseShape;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?SizeGroup $sizeGroup;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private ?Preservation $preservation;
 
     public function getId(): int

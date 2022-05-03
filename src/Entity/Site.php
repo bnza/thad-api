@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\SiteExportController;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -47,7 +48,7 @@ use Symfony\Component\Validator\Constraints as Assert;
             'read:Site',
         ],
     ],
-    security: 'is_granted("ROLE_ADMIN")'
+    security: 'is_granted("ROLE_ADMIN")',
 )]
 #[ApiFilter(
     OrderFilter::class,
@@ -56,6 +57,15 @@ use Symfony\Component\Validator\Constraints as Assert;
         'code',
         'name',
         'description',
+    ]
+)]
+#[ApiFilter(
+    SearchFilter::class,
+    properties: [
+        'id' => 'exact',
+        'code' => 'exact',
+        'name' => 'exact',
+        'description' => 'ipartial',
     ]
 )]
 #[UniqueEntity(
@@ -74,6 +84,7 @@ class Site
         'read:Area',
         'read:Site',
         'read:SU',
+        'read:Pottery',
     ])]
     private int $id;
 
@@ -83,6 +94,7 @@ class Site
         'read:Site',
         'read:SU',
         'write:Site',
+        'read:Pottery',
     ])]
     #[Assert\NotBlank]
     private string $code;
@@ -93,6 +105,7 @@ class Site
         'read:Site',
         'read:SU',
         'write:Site',
+        'read:Pottery',
     ])]
     #[Assert\NotBlank]
     private string $name;

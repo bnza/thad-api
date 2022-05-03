@@ -89,6 +89,7 @@ class Area
         'read:Area',
         'read:Site',
         'read:SU',
+        'read:Pottery',
     ])]
     private int $id;
 
@@ -98,6 +99,7 @@ class Area
         'read:Site',
         'read:SU',
         'write:Area',
+        'read:Pottery',
     ])]
     #[Assert\NotBlank]
     private string $code;
@@ -108,6 +110,7 @@ class Area
         'read:Site',
         'read:SU',
         'write:Area',
+        'read:Pottery',
     ])]
     #[Assert\NotBlank]
     private string $name;

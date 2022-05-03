@@ -29,6 +29,7 @@ class UserPostDeserialize implements EventSubscriberInterface
     public function hashPassword(RequestEvent $event): void
     {
         $request = $event->getRequest();
+
         $method = $event->getRequest()->getMethod();
 
         if (!$request->attributes->has('data')) {

@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
@@ -60,6 +61,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     SearchFilter::class,
     properties: [
         'id' => 'exact',
+        'site.id' => 'exact',
         'area.id' => 'exact',
         'area.code' => 'exact',
         'area.site.code' => 'exact',
@@ -83,6 +85,12 @@ use Symfony\Component\Validator\Constraints as Assert;
     DateFilter::class,
     properties: [
         'date',
+    ]
+)]
+#[ApiFilter(
+    ExistsFilter::class,
+    properties: [
+        'type',
     ]
 )]
 #[ApiFilter(
@@ -115,6 +123,7 @@ class SU
         'read:Area',
         'read:SU',
         'read:ViewStratigraphicRelationship',
+        'read:Pottery',
     ])]
     private int $id;
 
@@ -123,6 +132,7 @@ class SU
         'read:Area',
         'read:SU',
         'read:ViewStratigraphicRelationship',
+        'read:Pottery',
         'write:SU',
     ])]
     #[Assert\NotBlank]
@@ -133,6 +143,7 @@ class SU
         'export',
         'read:SU',
         'write:SU',
+        'read:Pottery',
     ])]
     private Site $site;
 
@@ -140,6 +151,7 @@ class SU
         'export',
         'read:SU',
         'write:SU',
+        'read:Pottery',
     ])]
     #[Assert\NotBlank]
     private Area $area;

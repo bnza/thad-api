@@ -44,6 +44,39 @@ App\Entity\SU:
     description: 'The 5th stratigraphic unit description'
     summary: 'The 5th stratigraphic unit summary'
     interpretation: 'The 5th stratigraphic unit interpretation'
+  su_TH_6:
+    area: '@area_TH_B'
+    number: 6
+    date: <createImmutableDate('2022-04-12')>
+    description: 'The 6th stratigraphic unit description'
+    summary: 'The 6th stratigraphic unit summary'
+    interpretation: 'The 4th stratigraphic unit interpretation'
+    bottomElevation: 231.28
+    topElevation: 231.35
+    compiler: Some One
+    areaSupervisor: John Supervisor
+  su_TH_7:
+    area: '@area_TH_A'
+    number: 7
+    date: <createImmutableDate('2022-04-12')>
+    description: 'The 7th stratigraphic unit description'
+    summary: 'The 7th stratigraphic unit summary'
+    interpretation: 'The 7th stratigraphic unit interpretation'
+    bottomElevation: 231.18
+    topElevation: 231.55
+    compiler: Some One
+    areaSupervisor: John Supervisor
+  su_TH_8:
+    area: '@area_TH_A'
+    number: 8
+    date: <createImmutableDate('2022-04-19')>
+    description: 'The 8th stratigraphic unit description'
+    summary: 'The 8th stratigraphic unit summary'
+    interpretation: 'The 8th stratigraphic unit interpretation'
+    bottomElevation: 231.09
+    topElevation: 231.98
+    compiler: Some One
+    areaSupervisor: John Supervisor
   su_WW_1:
     area: '@area_WW_A'
     number: 1
@@ -51,3 +84,17 @@ App\Entity\SU:
     description: 'The 1st stratigraphic unit description WW'
     summary: 'The 1st stratigraphic unit summary WW'
     interpretation: 'The 1st stratigraphic unit interpretation WW'
+  su_WW_2:
+    area: '@area_WW_A'
+    number: 2
+    date: <createImmutableDate('2022-05-03')>
+    description: 'The 2nd stratigraphic unit description WW'
+    summary: 'The 2nd stratigraphic unit summary WW'
+    interpretation: 'The 2nd stratigraphic unit interpretation WW'
+  su_WW_3:
+    area: '@area_WW_A'
+    number: 3
+    date: <createImmutableDate('2022-05-03')>
+    description: 'The 3rd stratigraphic unit description WW'
+    summary: 'The 3rd stratigraphic unit summary WW'
+    interpretation: 'The 3rd stratigraphic unit interpretation WW'

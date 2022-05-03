@@ -2,6 +2,7 @@
 
 namespace App\Entity\Vocabulary\Pottery;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ApiResource(
     collectionOperations: [
@@ -14,8 +15,14 @@ use ApiPlatform\Core\Annotation\ApiResource;
 )]
 class BaseShape
 {
+    #[Groups([
+        'read:Pottery',
+    ])]
     private string $id;
 
+    #[Groups([
+        'read:Pottery',
+    ])]
     private string $value;
 
     private ?string $description;

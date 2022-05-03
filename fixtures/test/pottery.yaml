@@ -3,5 +3,107 @@ App\Entity\Pottery:
     stratigraphicUnit: '@su_TH_1'
     date: <createImmutableDate('2022-04-25')>
     number: 1
-    compiler: 'Eren Yeager'
+    compiler: Someone Other
+    ware: '@voc__p__ware_3'
+    fabric: '@voc__p__fabric_1'
     externalSurfaceColour: '@voc__p__colour_1'
+    internalSurfaceColour: '@voc__p__colour_3'
+    fractureColour: '@voc__p__colour_2'
+    vesselShape: '@voc__p__vessel_shape_3'
+    baseShape: '@voc__p__base_shape_3'
+    rimShape: '@voc__p__rim_shape_3'
+    rimDirection: '@voc__p__rim_direction_1'
+    rimCharacterization: '@voc__p__rim_characterization_1'
+    neck: '@voc__p__neck_1'
+    neckLength: '@voc__p__neck_length_1'
+    body: '@voc__p__body_1'
+    spout: '@voc__p__spout_1'
+    handle: '@voc__p__handle_1'
+    sizeGroup: '@voc__p__size_group_1'
+    preservation: '@voc__p__preservation_1'
+    thickness: 1.24
+    rimDiameter: 12.45
+    baseDiameter: 5.76
+  pottery_TH_1_2:
+    stratigraphicUnit: '@su_TH_1'
+    date: <createImmutableDate('2022-04-26')>
+    number: 2
+    compiler: Someone Other
+    ware: '@voc__p__ware_1'
+    fabric: '@voc__p__fabric_3'
+    externalSurfaceColour: '@voc__p__colour_1'
+    internalSurfaceColour: '@voc__p__colour_3'
+    fractureColour: '@voc__p__colour_2'
+    rimDirection: '@voc__p__rim_direction_2'
+    rimCharacterization: '@voc__p__rim_characterization_2'
+    body: '@voc__p__body_2'
+    spout: '@voc__p__spout_2'
+    preservation: '@voc__p__preservation_3'
+    thickness: 1.45
+    rimDiameter: 7.23
+    baseDiameter: 4.16
+  pottery_TH_1_3:
+    stratigraphicUnit: '@su_TH_1'
+    date: <createImmutableDate('2022-04-27')>
+    number: 3
+    compiler: Some One
+    ware: '@voc__p__ware_2'
+    fabric: '@voc__p__fabric_3'
+    externalSurfaceColour: '@voc__p__colour_4'
+    internalSurfaceColour: '@voc__p__colour_5'
+    fractureColour: '@voc__p__colour_3'
+    manufacturingTechnique: '@voc__p__manufacturing_technique_1'
+    firing: '@voc__p__firing_3'
+    decoration: '@voc__p__decoration_2'
+    vesselShape: '@voc__p__vessel_shape_1'
+    baseShape: '@voc__p__base_shape_1'
+    rimShape: '@voc__p__rim_shape_1'
+    rimDirection: '@voc__p__rim_direction_3'
+    rimCharacterization: '@voc__p__rim_characterization_3'
+    neck: '@voc__p__neck_2'
+    neckLength: '@voc__p__neck_length_2'
+  pottery_TH_5_1:
+    stratigraphicUnit: '@su_TH_5'
+    date: <createImmutableDate('2022-04-28')>
+    number: 1
+    compiler: Some One
+    ware: '@voc__p__ware_2'
+    fabric: '@voc__p__fabric_3'
+    externalSurfaceColour: '@voc__p__colour_3'
+    internalSurfaceColour: '@voc__p__colour_5'
+    fractureColour: '@voc__p__colour_3'
+    surfaceCharacteristic: '@voc__p__surface_characteristic_2'
+    surfaceTreatment: '@voc__p__surface_treatment_1'
+    manufacturingTechnique: '@voc__p__manufacturing_technique_2'
+    firing: '@voc__p__firing_1'
+  pottery_TH_6_1:
+    stratigraphicUnit: '@su_TH_6'
+    date: <createImmutableDate('2022-04-27')>
+    number: 1
+    compiler: Some One
+    ware: '@voc__p__ware_3'
+    fabric: '@voc__p__fabric_4'
+    externalSurfaceColour: '@voc__p__colour_8'
+    internalSurfaceColour: '@voc__p__colour_1'
+    fractureColour: '@voc__p__colour_5'
+  pottery_WW_1_1:
+    stratigraphicUnit: '@su_WW_1'
+    date: <createImmutableDate('2022-04-27')>
+    number: 1
+    compiler: Some One
+    ware: '@voc__p__ware_2'
+    fabric: '@voc__p__fabric_1'
+    externalSurfaceColour: '@voc__p__colour_6'
+    internalSurfaceColour: '@voc__p__colour_2'
+    fractureColour: '@voc__p__colour_3'
+  pottery_WW_1_2:
+    stratigraphicUnit: '@su_WW_1'
+    date: <createImmutableDate('2022-04-28')>
+    number: 2
+    compiler: Some One Other
+    ware: '@voc__p__ware_1'
+    fabric: '@voc__p__fabric_2'
+    externalSurfaceColour: '@voc__p__colour_2'
+    internalSurfaceColour: '@voc__p__colour_3'
+    fractureColour: '@voc__p__colour_2'
+    preservation: '@voc__p__preservation_4'

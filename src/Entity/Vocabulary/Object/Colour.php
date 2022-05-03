@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Entity\Vocabulary\Pottery;
+namespace App\Entity\Vocabulary\Object;
 use ApiPlatform\Core\Annotation\ApiResource;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ApiResource(
     collectionOperations: [
@@ -11,18 +10,13 @@ use Symfony\Component\Serializer\Annotation\Groups;
     itemOperations: [
         'get' => null,
     ],
-    routePrefix: 'vocabulary/pottery',
+    shortName: 'ObjectColour',
+    routePrefix: 'vocabulary/object'
 )]
-class RimDirection
+class Colour
 {
-    #[Groups([
-        'read:Pottery',
-    ])]
     private string $id;
 
-    #[Groups([
-        'read:Pottery',
-    ])]
     private string $value;
 
     private ?string $description;

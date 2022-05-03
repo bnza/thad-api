@@ -7,3 +7,7 @@ App\Entity\StratigraphicRelationship:
     sxSU: '@su_TH_1'
     relationship: '@voc__su__relationship_X'
     dxSU: '@su_TH_3'
+  su_relation_3:
+    sxSU: '@su_WW_1'
+    relationship: '@voc__su__relationship_c'
+    dxSU: '@su_WW_2'

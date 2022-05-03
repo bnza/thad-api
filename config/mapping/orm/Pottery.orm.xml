@@ -76,6 +76,12 @@
         <many-to-one field="handle" target-entity="App\Entity\Vocabulary\Pottery\Handle">
             <join-column name="handle_id" />
         </many-to-one>
+        <many-to-one field="spout" target-entity="App\Entity\Vocabulary\Pottery\Spout">
+            <join-column name="spout_id" />
+        </many-to-one>
+        <many-to-one field="sizeGroup" target-entity="App\Entity\Vocabulary\Pottery\SizeGroup">
+            <join-column name="size_group_id" />
+        </many-to-one>
         <many-to-one field="baseShape" target-entity="App\Entity\Vocabulary\Pottery\BaseShape">
             <join-column name="base_shape_id" />
         </many-to-one>
