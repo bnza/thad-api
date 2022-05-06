@@ -160,6 +160,7 @@ class SU
         'export',
         'read:SU',
         'write:SU',
+        'read:Pottery',
     ])]
     #[Assert\NotNull]
     private \DateTimeImmutable $date;

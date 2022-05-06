@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Entity\Vocabulary\Pottery\BaseShape;
 use App\Entity\Vocabulary\Pottery\Body;
 use App\Entity\Vocabulary\Pottery\Colour;
@@ -25,6 +26,7 @@ use App\Entity\Vocabulary\Pottery\SurfaceCharacteristic;
 use App\Entity\Vocabulary\Pottery\SurfaceTreatment;
 use App\Entity\Vocabulary\Pottery\VesselShape;
 use App\Entity\Vocabulary\Pottery\Ware;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ApiResource(
@@ -52,6 +54,13 @@ use Symfony\Component\Serializer\Annotation\Groups;
         ],
     ],
     security: 'is_granted("ROLE_EDITOR")'
+)]
+#[ApiFilter(
+    SearchFilter::class,
+    properties: [
+        'id' => 'exact',
+        'stratigraphicUnit.id' => 'exact',
+    ]
 )]
 #[ApiFilter(
     OrderFilter::class,
@@ -91,6 +100,11 @@ use Symfony\Component\Serializer\Annotation\Groups;
         'note',
     ]
 )]
+#[UniqueEntity(
+    fields: ['stratigraphicUnit', 'number'],
+    message: 'pottery number {{ value }} already exists in this SU',
+    errorPath: 'number',
+)]
 class Pottery
 {
     #[Groups([
@@ -100,151 +114,181 @@ class Pottery
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private SU $stratigraphicUnit;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private int $number;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private \DateTimeImmutable $date;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?float $thickness;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?float $rimDiameter;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?float $baseDiameter;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?string $compiler;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?string $notes;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?Colour $externalSurfaceColour;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?Colour $internalSurfaceColour;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?Colour $fractureColour;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?Ware $ware;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?Fabric $fabric;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?SurfaceCharacteristic $surfaceCharacteristic;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?SurfaceTreatment $surfaceTreatment;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?ManufacturingTechnique $manufacturingTechnique;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?Firing $firing;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?Decoration $decoration;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?VesselShape $vesselShape;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?RimShape $rimShape;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?RimDirection $rimDirection;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?RimCharacterization $rimCharacterization;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?Neck $neck;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?NeckLength $neckLength;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?Body $body;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?Spout $spout;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?Handle $handle;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?BaseShape $baseShape;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?SizeGroup $sizeGroup;
 
     #[Groups([
         'read:Pottery',
+        'write:Pottery',
     ])]
     private ?Preservation $preservation;
 
