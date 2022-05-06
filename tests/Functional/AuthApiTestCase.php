@@ -6,6 +6,7 @@ use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
 use App\Entity\StratigraphicRelationship;
 use App\Entity\SU;
 use App\Entity\Vocabulary\SU\Relationship;
+use App\Entity\Vocabulary\SU\Type;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
@@ -30,6 +31,7 @@ abstract class AuthApiTestCase extends ApiTestCase
         SU::class => 'stratigraphic_units',
         Relationship::class => 'vocabulary/su/relationships',
         StratigraphicRelationship::class => 'stratigraphic_relationships',
+        Type::class => 'vocabulary/su/types',
     ];
 
     protected function getClient(): HttpClientInterface
@@ -151,6 +153,13 @@ abstract class AuthApiTestCase extends ApiTestCase
         }
 
         return $iri;
+    }
+
+    protected function getVocabularyIriByValue(string $resourceClass, string $value): string
+    {
+        $id = $this->getEntityManager()->getRepository($resourceClass)->findOneBy(['value' => $value])->getId();
+
+        return $this->getResourceIri($resourceClass, $id);
     }
 
     protected function getResourceIriByCode(string $resourceClass, string $code): string

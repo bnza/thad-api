@@ -4,6 +4,7 @@ namespace App\Tests\Functional;
 
 use App\Entity\Area;
 use App\Entity\SU;
+use App\Entity\Vocabulary\SU\Type;
 use App\Repository\AreaRepository;
 
 class SUResourceTest extends AuthApiTestCase
@@ -34,19 +35,93 @@ class SUResourceTest extends AuthApiTestCase
 
     public function testPostWithAdminUser(): void
     {
-        $this->markTestSkipped(
-            'To do'
-        );
-
         $this->adminPostCollectionRequest(
             SU::class,
             [
                 'area' => $this->getAreaResourceIdentifierByCodes('TH', 'A'),
                 'number' => 10,
                 'date' => (new \DateTimeImmutable())->format(\DateTimeInterface::ATOM),
+                'year' => 2022,
+                'type' => $this->getVocabularyIriByValue(Type::class, 'cut'),
             ]
         );
         $this->assertResponseStatusCodeSame(201);
+    }
+
+    public function invalidSuDataProvider(): array
+    {
+        return [
+/*            'blankArea' => [
+                null,
+                234,
+                (new \DateTimeImmutable())->format(\DateTimeInterface::ATOM),
+                2022,
+                $this->getVocabularyIriByValue(Type::class, 'filling'),
+            ],
+            'blankNumber' => [
+                $this->getAreaResourceIdentifierByCodes('TH', 'A'),
+                null,
+                (new \DateTimeImmutable())->format(\DateTimeInterface::ATOM),
+                2022,
+                $this->getVocabularyIriByValue(Type::class, 'filling'),
+            ],
+            'duplicateNumber' => [
+                $this->getAreaResourceIdentifierByCodes('TH', 'A'),
+                1,
+                (new \DateTimeImmutable())->format(\DateTimeInterface::ATOM),
+                2022,
+                $this->getVocabularyIriByValue(Type::class, 'filling'),
+            ],
+            'blankDate' => [
+                $this->getAreaResourceIdentifierByCodes('TH', 'A'),
+                234,
+                null,
+                2022,
+                $this->getVocabularyIriByValue(Type::class, 'filling'),
+            ],
+            'blankType' => [
+                $this->getAreaResourceIdentifierByCodes('TH', 'A'),
+                234,
+                (new \DateTimeImmutable())->format(\DateTimeInterface::ATOM),
+                2022,
+                null,
+            ],
+            'blankYear' => [
+                $this->getAreaResourceIdentifierByCodes('TH', 'A'),
+                234,
+                (new \DateTimeImmutable())->format(\DateTimeInterface::ATOM),
+                null,
+                $this->getVocabularyIriByValue(Type::class, 'filling'),
+            ],*/
+            'invalidSquare' => [
+                $this->getAreaResourceIdentifierByCodes('TH', 'A'),
+                234,
+                (new \DateTimeImmutable())->format(\DateTimeInterface::ATOM),
+                2022,
+                $this->getVocabularyIriByValue(Type::class, 'filling'),
+                'ZZS',
+            ],
+        ];
+    }
+
+    /**
+     * @group wip
+     * @dataProvider invalidSuDataProvider
+     */
+    public function testValidation($area, $number, $date, $year, $type, $square = null)
+    {
+        $this->adminPostCollectionRequest(
+            SU::class,
+            [
+                'area' => $area,
+                'number' => $number,
+                'date' => $date,
+                'year' => $year,
+                'type' => $type,
+                'square' => $square,
+            ]
+        );
+        $this->assertResponseStatusCodeSame(422);
     }
 
     public function testPostValidateDuplicateNumberInSite(): void
@@ -57,6 +132,7 @@ class SUResourceTest extends AuthApiTestCase
                 'area' => $this->getAreaResourceIdentifierByCodes('TH', 'A'),
                 'number' => 1,
                 'date' => (new \DateTimeImmutable())->format(\DateTimeInterface::ATOM),
+                'year' => 2022,
             ]
         );
         $this->assertResponseStatusCodeSame(422);

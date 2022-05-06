@@ -2,6 +2,7 @@ App\Entity\SU:
   su_TH_1:
     area: '@area_TH_A'
     number: 1
+    year: 2022
     date: <createImmutableDate('2022-04-10')>
     description: 'The first stratigraphic unit description'
     summary: 'The first stratigraphic unit summary'
@@ -13,6 +14,7 @@ App\Entity\SU:
   su_TH_2:
     area: '@area_TH_A'
     number: 2
+    year: 2022
     date: <createImmutableDate('2022-04-11')>
     description: 'The second stratigraphic unit description'
     summary: 'The second stratigraphic unit summary'
@@ -22,6 +24,7 @@ App\Entity\SU:
   su_TH_3:
     area: '@area_TH_B'
     number: 3
+    year: 2022
     date: <createImmutableDate('2022-04-12')>
     description: 'The 3rd stratigraphic unit description. A nice cut'
     summary: 'The 3rd stratigraphic unit summary'
@@ -31,6 +34,7 @@ App\Entity\SU:
   su_TH_4:
     area: '@area_TH_B'
     number: 4
+    year: 2022
     date: <createImmutableDate('2022-04-12')>
     description: 'The 4th stratigraphic unit description'
     summary: 'The 4th stratigraphic unit summary'
@@ -40,6 +44,7 @@ App\Entity\SU:
   su_TH_5:
     area: '@area_TH_A'
     number: 5
+    year: 2022
     date: <createImmutableDate('2022-04-12')>
     description: 'The 5th stratigraphic unit description'
     summary: 'The 5th stratigraphic unit summary'
@@ -47,6 +52,7 @@ App\Entity\SU:
   su_TH_6:
     area: '@area_TH_B'
     number: 6
+    year: 2022
     date: <createImmutableDate('2022-04-12')>
     description: 'The 6th stratigraphic unit description'
     summary: 'The 6th stratigraphic unit summary'
@@ -58,6 +64,7 @@ App\Entity\SU:
   su_TH_7:
     area: '@area_TH_A'
     number: 7
+    year: 2022
     date: <createImmutableDate('2022-04-12')>
     description: 'The 7th stratigraphic unit description'
     summary: 'The 7th stratigraphic unit summary'
@@ -69,6 +76,7 @@ App\Entity\SU:
   su_TH_8:
     area: '@area_TH_A'
     number: 8
+    year: 2022
     date: <createImmutableDate('2022-04-19')>
     description: 'The 8th stratigraphic unit description'
     summary: 'The 8th stratigraphic unit summary'
@@ -80,21 +88,36 @@ App\Entity\SU:
   su_WW_1:
     area: '@area_WW_A'
     number: 1
-    date: <createImmutableDate('2022-04-12')>
+    year: 2021
+    square: 'A1'
+    date: <createImmutableDate('2021-04-12')>
     description: 'The 1st stratigraphic unit description WW'
     summary: 'The 1st stratigraphic unit summary WW'
     interpretation: 'The 1st stratigraphic unit interpretation WW'
   su_WW_2:
     area: '@area_WW_A'
     number: 2
-    date: <createImmutableDate('2022-05-03')>
+    year: 2021
+    square: 'A1'
+    date: <createImmutableDate('2021-05-03')>
     description: 'The 2nd stratigraphic unit description WW'
     summary: 'The 2nd stratigraphic unit summary WW'
     interpretation: 'The 2nd stratigraphic unit interpretation WW'
   su_WW_3:
     area: '@area_WW_A'
     number: 3
-    date: <createImmutableDate('2022-05-03')>
+    square: 'A1'
+    year: 2021
+    date: <createImmutableDate('2021-05-03')>
+    description: 'The 3rd stratigraphic unit description WW'
+    summary: 'The 3rd stratigraphic unit summary WW'
+    interpretation: 'The 3rd stratigraphic unit interpretation WW'
+  su_WW_4:
+    area: '@area_WW_A'
+    number: 4
+    year: 2022
+    square: 'B1'
+    date: <createImmutableDate('2021-05-03')>
     description: 'The 3rd stratigraphic unit description WW'
     summary: 'The 3rd stratigraphic unit summary WW'
     interpretation: 'The 3rd stratigraphic unit interpretation WW'

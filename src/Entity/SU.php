@@ -99,6 +99,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         'id',
         'area.code',
         'site.code',
+        'square',
+        'year',
         'number',
         'areaSupervisor',
         'bottomElevation',
@@ -154,7 +156,32 @@ class SU
         'read:Pottery',
     ])]
     #[Assert\NotBlank]
+    #[Assert\Range(
+        notInRangeMessage: 'SU excavation year must be between {{ min }} and {{ max }}',
+        min: 2000,
+        max: 2099,
+    )]
+    private int $year;
+
+    #[Groups([
+        'export',
+        'read:SU',
+        'write:SU',
+        'read:Pottery',
+    ])]
+    #[Assert\NotBlank]
     private Area $area;
+
+    #[Groups([
+        'export',
+        'read:SU',
+        'write:SU',
+    ])]
+    #[Assert\Regex(
+        pattern: '/^[[:upper:]]+[[:digit:]]+$/',
+        message: 'Square identifier must be one or more capital letters followed by one or more digit (eg. B2, AZ12)',
+    )]
+    private ?string $square;
 
     #[Groups([
         'export',
@@ -280,9 +307,31 @@ class SU
         return $this;
     }
 
+    public function getYear(): int
+    {
+        return $this->year;
+    }
+
+    public function setYear(int $year): SU
+    {
+        $this->year = $year;
+        return $this;
+    }
+
     public function getArea(): Area
     {
         return $this->area;
+    }
+
+    public function getSquare(): ?string
+    {
+        return $this->square;
+    }
+
+    public function setSquare(?string $square): SU
+    {
+        $this->square = $square;
+        return $this;
     }
 
     public function setArea(Area $area): SU

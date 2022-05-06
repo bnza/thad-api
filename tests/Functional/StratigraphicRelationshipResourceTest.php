@@ -8,7 +8,6 @@ use App\Entity\Vocabulary\SU\Relationship;
 
 class StratigraphicRelationshipResourceTest extends AuthApiTestCase
 {
-
     public function testUnauthenticatedGetCollection(): void
     {
         $response = $this->request(
@@ -28,9 +27,6 @@ class StratigraphicRelationshipResourceTest extends AuthApiTestCase
         $this->assertResponseIsSuccessful();
     }
 
-    /**
-     * @group wip
-     */
     public function testResourceLifeCycleWithAdminUser(): void
     {
         $response = $this->adminPostCollectionRequest(
@@ -95,5 +91,4 @@ class StratigraphicRelationshipResourceTest extends AuthApiTestCase
         );
         $this->assertResponseStatusCodeSame(204);
     }
-
 }
