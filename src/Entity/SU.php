@@ -11,7 +11,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\SUExportController;
 use App\Entity\Vocabulary\Period;
-use App\Entity\Vocabulary\SU\PreservationState;
+use App\Entity\Vocabulary\PreservationState;
 use App\Entity\Vocabulary\SU\Type;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Event\LifecycleEventArgs;
@@ -127,6 +127,7 @@ class SU
 {
     #[Groups([
         'read:Area',
+        'read:Ecofact',
         'read:SU',
         'read:ViewStratigraphicRelationship',
         'read:Pottery',
@@ -136,6 +137,7 @@ class SU
     #[Groups([
         'export',
         'read:Area',
+        'read:Ecofact',
         'read:SU',
         'read:ViewStratigraphicRelationship',
         'read:Pottery',
@@ -149,6 +151,7 @@ class SU
         'export',
         'read:SU',
         'write:SU',
+        'read:Ecofact',
         'read:Pottery',
     ])]
     private Site $site;
@@ -157,6 +160,7 @@ class SU
         'export',
         'read:SU',
         'write:SU',
+        'read:Ecofact',
         'read:Pottery',
     ])]
     #[Assert\NotBlank]
@@ -171,6 +175,7 @@ class SU
         'export',
         'read:SU',
         'write:SU',
+        'read:Ecofact',
         'read:Pottery',
     ])]
     #[Assert\NotBlank]
@@ -282,11 +287,14 @@ class SU
 
     private iterable $potteries;
 
+    private iterable $ecofacts;
+
     public function __construct()
     {
         $this->relations = new ArrayCollection();
         $this->inverseRelations = new ArrayCollection();
         $this->potteries = new ArrayCollection();
+        $this->ecofacts = new ArrayCollection();
     }
 
     public function getId(): int
@@ -518,6 +526,18 @@ class SU
     public function setPotteries(iterable|ArrayCollection $potteries): SU
     {
         $this->potteries = $potteries;
+
+        return $this;
+    }
+
+    public function getEcofacts(): iterable|ArrayCollection
+    {
+        return $this->ecofacts;
+    }
+
+    public function setEcofacts(iterable|ArrayCollection $ecofacts): SU
+    {
+        $this->ecofacts = $ecofacts;
 
         return $this;
     }

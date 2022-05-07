@@ -82,6 +82,7 @@ class Site
 {
     #[Groups([
         'read:Area',
+        'read:Ecofact',
         'read:Site',
         'read:SU',
         'read:Pottery',
@@ -91,6 +92,7 @@ class Site
     #[Groups([
         'export',
         'read:Area',
+        'read:Ecofact',
         'read:Site',
         'read:SU',
         'write:Site',
@@ -102,6 +104,7 @@ class Site
     #[Groups([
         'export',
         'read:Area',
+        'read:Ecofact',
         'read:Site',
         'read:SU',
         'write:Site',

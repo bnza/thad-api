@@ -11,7 +11,7 @@ App\Entity\SU:
     topElevation: 231.09
     period: '@voc__period_LCA'
     type: '@voc__su__type_2'
-    preservationState: '@voc__su__preservation_state_3'
+    preservationState: '@voc__preservation_state_3'
   su_TH_2:
     area: '@area_TH_A'
     number: 2
@@ -22,7 +22,7 @@ App\Entity\SU:
     interpretation: 'The second stratigraphic unit interpretation'
     type: '@voc__su__type_1'
     period: '@voc__period_LCA'
-    preservationState: '@voc__su__preservation_state_3'
+    preservationState: '@voc__preservation_state_3'
   su_TH_3:
     area: '@area_TH_B'
     number: 3
@@ -32,7 +32,7 @@ App\Entity\SU:
     summary: 'The 3rd stratigraphic unit summary'
     interpretation: 'The 3rd stratigraphic unit interpretation'
     type: '@voc__su__type_1'
-    preservationState: '@voc__su__preservation_state_2'
+    preservationState: '@voc__preservation_state_2'
   su_TH_4:
     area: '@area_TH_B'
     number: 4

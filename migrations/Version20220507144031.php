@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220425185127 extends AbstractMigration
+final class Version20220507144031 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,7 +20,14 @@ final class Version20220425185127 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
+        $this->addSql('CREATE SEQUENCE area_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE SEQUENCE ecofact_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE pottery_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE SEQUENCE site_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE SEQUENCE stratigraphic_relationships_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE SEQUENCE su_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE SEQUENCE voc__e__type_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE SEQUENCE voc__o__colour_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE voc__p__base_shape_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE voc__p__body_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE voc__p__colour_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
@@ -41,8 +48,22 @@ final class Version20220425185127 extends AbstractMigration
         $this->addSql('CREATE SEQUENCE voc__p__surface_treatment_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE voc__p__vessel_shape_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE voc__p__ware_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE TABLE pottery (id INT NOT NULL, su_id INT NOT NULL, ext_surface_color_id SMALLINT DEFAULT NULL, int_surface_color_id SMALLINT DEFAULT NULL, fracture_color_id SMALLINT DEFAULT NULL, ware_id SMALLINT DEFAULT NULL, fabric_id SMALLINT DEFAULT NULL, surface_characteristic_id SMALLINT DEFAULT NULL, surface_treatment_id SMALLINT DEFAULT NULL, manufacturing_technique_id SMALLINT DEFAULT NULL, firing_id SMALLINT DEFAULT NULL, decoration_id SMALLINT DEFAULT NULL, vessel_shape_id SMALLINT DEFAULT NULL, rim_shape_id SMALLINT DEFAULT NULL, rim_direction_id SMALLINT DEFAULT NULL, rim_characterization_id SMALLINT DEFAULT NULL, neck_id SMALLINT DEFAULT NULL, neck_length_id SMALLINT DEFAULT NULL, body_id SMALLINT DEFAULT NULL, handle_id SMALLINT DEFAULT NULL, base_shape_id SMALLINT DEFAULT NULL, preservation_id SMALLINT DEFAULT NULL, number SMALLINT NOT NULL, thickness DOUBLE PRECISION DEFAULT NULL, rim_diameter DOUBLE PRECISION DEFAULT NULL, base_diameter DOUBLE PRECISION DEFAULT NULL, date DATE NOT NULL, compiler VARCHAR(255) DEFAULT NULL, notes TEXT DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE SEQUENCE voc__period_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE SEQUENCE voc__preservation_state_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE SEQUENCE voc__su__type_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE TABLE area (id INT NOT NULL, site_id INT DEFAULT NULL, code VARCHAR(3) NOT NULL, name VARCHAR(64) NOT NULL, description TEXT DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE INDEX IDX_D7943D68F6BD1646 ON area (site_id)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_D7943D68F6BD164677153098 ON area (site_id, code)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_D7943D68F6BD16465E237E06 ON area (site_id, name)');
+        $this->addSql('CREATE TABLE ecofact (id INT NOT NULL, su_id INT NOT NULL, type_id SMALLINT NOT NULL, preservation_state_id SMALLINT DEFAULT NULL, date DATE NOT NULL, number SMALLINT NOT NULL, height DOUBLE PRECISION DEFAULT NULL, width DOUBLE PRECISION DEFAULT NULL, length DOUBLE PRECISION DEFAULT NULL, thickness DOUBLE PRECISION DEFAULT NULL, min_diameter DOUBLE PRECISION DEFAULT NULL, max_diameter DOUBLE PRECISION DEFAULT NULL, weight DOUBLE PRECISION DEFAULT NULL, selected_for_analysis BOOLEAN NOT NULL, compiler VARCHAR(255) DEFAULT NULL, notes TEXT DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE INDEX IDX_9F00A5DDBDB1218E ON ecofact (su_id)');
+        $this->addSql('CREATE INDEX IDX_9F00A5DDC54C8C93 ON ecofact (type_id)');
+        $this->addSql('CREATE INDEX IDX_9F00A5DDFE71FA16 ON ecofact (preservation_state_id)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_9F00A5DDBDB1218E96901F54 ON ecofact (su_id, number)');
+        $this->addSql('COMMENT ON COLUMN ecofact.date IS \'(DC2Type:date_immutable)\'');
+        $this->addSql('CREATE TABLE pottery (id INT NOT NULL, su_id INT NOT NULL, period_id SMALLINT DEFAULT NULL, ext_surface_color_id SMALLINT DEFAULT NULL, int_surface_color_id SMALLINT DEFAULT NULL, fracture_color_id SMALLINT DEFAULT NULL, ware_id SMALLINT DEFAULT NULL, fabric_id SMALLINT DEFAULT NULL, surface_characteristic_id SMALLINT DEFAULT NULL, surface_treatment_id SMALLINT DEFAULT NULL, manufacturing_technique_id SMALLINT DEFAULT NULL, firing_id SMALLINT DEFAULT NULL, decoration_id SMALLINT DEFAULT NULL, vessel_shape_id SMALLINT DEFAULT NULL, rim_shape_id SMALLINT DEFAULT NULL, rim_direction_id SMALLINT DEFAULT NULL, rim_characterization_id SMALLINT DEFAULT NULL, neck_id SMALLINT DEFAULT NULL, neck_length_id SMALLINT DEFAULT NULL, body_id SMALLINT DEFAULT NULL, handle_id SMALLINT DEFAULT NULL, spout_id SMALLINT DEFAULT NULL, size_group_id SMALLINT DEFAULT NULL, base_shape_id SMALLINT DEFAULT NULL, preservation_id SMALLINT DEFAULT NULL, number SMALLINT NOT NULL, thickness DOUBLE PRECISION DEFAULT NULL, rim_diameter DOUBLE PRECISION DEFAULT NULL, base_diameter DOUBLE PRECISION DEFAULT NULL, date DATE NOT NULL, compiler VARCHAR(255) DEFAULT NULL, notes TEXT DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_1A651839BDB1218E ON pottery (su_id)');
+        $this->addSql('CREATE INDEX IDX_1A651839EC8B7ADE ON pottery (period_id)');
         $this->addSql('CREATE INDEX IDX_1A651839AD1FCB98 ON pottery (ext_surface_color_id)');
         $this->addSql('CREATE INDEX IDX_1A651839F0B7C66A ON pottery (int_surface_color_id)');
         $this->addSql('CREATE INDEX IDX_1A651839ABB639B3 ON pottery (fracture_color_id)');
@@ -61,10 +82,35 @@ final class Version20220425185127 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_1A65183966E3E996 ON pottery (neck_length_id)');
         $this->addSql('CREATE INDEX IDX_1A6518399B621D84 ON pottery (body_id)');
         $this->addSql('CREATE INDEX IDX_1A6518399C256C9C ON pottery (handle_id)');
+        $this->addSql('CREATE INDEX IDX_1A6518391E5860E8 ON pottery (spout_id)');
+        $this->addSql('CREATE INDEX IDX_1A651839A06F4D9B ON pottery (size_group_id)');
         $this->addSql('CREATE INDEX IDX_1A6518391ACDCF43 ON pottery (base_shape_id)');
         $this->addSql('CREATE INDEX IDX_1A651839B806376B ON pottery (preservation_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_1A651839BDB1218E96901F54 ON pottery (su_id, number)');
         $this->addSql('COMMENT ON COLUMN pottery.date IS \'(DC2Type:date_immutable)\'');
+        $this->addSql('CREATE TABLE site (id INT NOT NULL, code VARCHAR(3) NOT NULL, name VARCHAR(64) NOT NULL, description TEXT DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_694309E45E237E06 ON site (name)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_694309E477153098 ON site (code)');
+        $this->addSql('CREATE TABLE stratigraphic_relationships (id INT NOT NULL, sx_su_id INT DEFAULT NULL, dx_su_id INT DEFAULT NULL, relationship_id CHAR(1) DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE INDEX IDX_B9A4EF171E31BBE7 ON stratigraphic_relationships (sx_su_id)');
+        $this->addSql('CREATE INDEX IDX_B9A4EF17684F83D5 ON stratigraphic_relationships (dx_su_id)');
+        $this->addSql('CREATE INDEX IDX_B9A4EF172C41D668 ON stratigraphic_relationships (relationship_id)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_B9A4EF171E31BBE7684F83D5 ON stratigraphic_relationships (sx_su_id, dx_su_id)');
+        $this->addSql('CREATE TABLE su (id INT NOT NULL, site_id INT NOT NULL, area_id INT NOT NULL, period_id SMALLINT DEFAULT NULL, type_id SMALLINT NOT NULL, preservation_state_id SMALLINT DEFAULT NULL, number INT NOT NULL, year INT NOT NULL, date DATE NOT NULL, description TEXT DEFAULT NULL, interpretation TEXT DEFAULT NULL, summary TEXT DEFAULT NULL, square VARCHAR(255) DEFAULT NULL, top_elevation DOUBLE PRECISION DEFAULT NULL, bottom_elevation DOUBLE PRECISION DEFAULT NULL, area_supervisor VARCHAR(255) DEFAULT NULL, compiler VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE INDEX IDX_65A4BD79F6BD1646 ON su (site_id)');
+        $this->addSql('CREATE INDEX IDX_65A4BD79BD0F409C ON su (area_id)');
+        $this->addSql('CREATE INDEX IDX_65A4BD79EC8B7ADE ON su (period_id)');
+        $this->addSql('CREATE INDEX IDX_65A4BD79C54C8C93 ON su (type_id)');
+        $this->addSql('CREATE INDEX IDX_65A4BD79FE71FA16 ON su (preservation_state_id)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_65A4BD79F6BD164696901F54 ON su (site_id, number)');
+        $this->addSql('COMMENT ON COLUMN su.date IS \'(DC2Type:date_immutable)\'');
+        $this->addSql('CREATE TABLE "user" (uuid UUID NOT NULL, email VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, PRIMARY KEY(uuid))');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_8D93D649E7927C74 ON "user" (email)');
+        $this->addSql('COMMENT ON COLUMN "user".uuid IS \'(DC2Type:uuid)\'');
+        $this->addSql('CREATE TABLE voc__e__type (id SMALLINT NOT NULL, value VARCHAR(255) NOT NULL, description TEXT DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_5B3C59741D775834 ON voc__e__type (value)');
+        $this->addSql('CREATE TABLE voc__o__colour (id SMALLINT NOT NULL, value VARCHAR(255) NOT NULL, description TEXT DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_877B36AC1D775834 ON voc__o__colour (value)');
         $this->addSql('CREATE TABLE voc__p__base_shape (id SMALLINT NOT NULL, value VARCHAR(255) NOT NULL, description TEXT DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_32A3748D1D775834 ON voc__p__base_shape (value)');
         $this->addSql('CREATE TABLE voc__p__body (id SMALLINT NOT NULL, value VARCHAR(255) NOT NULL, description TEXT DEFAULT NULL, PRIMARY KEY(id))');
@@ -105,7 +151,23 @@ final class Version20220425185127 extends AbstractMigration
         $this->addSql('CREATE UNIQUE INDEX UNIQ_FE06866D1D775834 ON voc__p__vessel_shape (value)');
         $this->addSql('CREATE TABLE voc__p__ware (id SMALLINT NOT NULL, value VARCHAR(255) NOT NULL, description TEXT DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_5C6CD5B91D775834 ON voc__p__ware (value)');
+        $this->addSql('CREATE TABLE voc__period (id SMALLINT NOT NULL, parent_id SMALLINT DEFAULT NULL, code VARCHAR(255) NOT NULL, value VARCHAR(255) NOT NULL, description TEXT DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE INDEX IDX_15F30C99727ACA70 ON voc__period (parent_id)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_15F30C991D775834 ON voc__period (value)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_15F30C9977153098 ON voc__period (code)');
+        $this->addSql('CREATE TABLE voc__preservation_state (id SMALLINT NOT NULL, value VARCHAR(255) NOT NULL, description TEXT DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_4B54DB031D775834 ON voc__preservation_state (value)');
+        $this->addSql('CREATE TABLE voc__su__relationship (id CHAR(1) NOT NULL, inverted_by_id CHAR(1) DEFAULT NULL, value VARCHAR(255) NOT NULL, description TEXT DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_2DB01D41C4CDAD40 ON voc__su__relationship (inverted_by_id)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_2DB01D411D775834 ON voc__su__relationship (value)');
+        $this->addSql('CREATE TABLE voc__su__type (id SMALLINT NOT NULL, value VARCHAR(255) NOT NULL, description TEXT DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_15EFB60B1D775834 ON voc__su__type (value)');
+        $this->addSql('ALTER TABLE area ADD CONSTRAINT FK_D7943D68F6BD1646 FOREIGN KEY (site_id) REFERENCES site (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE ecofact ADD CONSTRAINT FK_9F00A5DDBDB1218E FOREIGN KEY (su_id) REFERENCES su (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE ecofact ADD CONSTRAINT FK_9F00A5DDC54C8C93 FOREIGN KEY (type_id) REFERENCES voc__e__type (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE ecofact ADD CONSTRAINT FK_9F00A5DDFE71FA16 FOREIGN KEY (preservation_state_id) REFERENCES voc__preservation_state (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE pottery ADD CONSTRAINT FK_1A651839BDB1218E FOREIGN KEY (su_id) REFERENCES su (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE pottery ADD CONSTRAINT FK_1A651839EC8B7ADE FOREIGN KEY (period_id) REFERENCES voc__period (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE pottery ADD CONSTRAINT FK_1A651839AD1FCB98 FOREIGN KEY (ext_surface_color_id) REFERENCES voc__p__colour (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE pottery ADD CONSTRAINT FK_1A651839F0B7C66A FOREIGN KEY (int_surface_color_id) REFERENCES voc__p__colour (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE pottery ADD CONSTRAINT FK_1A651839ABB639B3 FOREIGN KEY (fracture_color_id) REFERENCES voc__p__colour (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
@@ -124,16 +186,33 @@ final class Version20220425185127 extends AbstractMigration
         $this->addSql('ALTER TABLE pottery ADD CONSTRAINT FK_1A65183966E3E996 FOREIGN KEY (neck_length_id) REFERENCES voc__p__neck_length (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE pottery ADD CONSTRAINT FK_1A6518399B621D84 FOREIGN KEY (body_id) REFERENCES voc__p__body (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE pottery ADD CONSTRAINT FK_1A6518399C256C9C FOREIGN KEY (handle_id) REFERENCES voc__p__handle (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE pottery ADD CONSTRAINT FK_1A6518391E5860E8 FOREIGN KEY (spout_id) REFERENCES voc__p__spout (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE pottery ADD CONSTRAINT FK_1A651839A06F4D9B FOREIGN KEY (size_group_id) REFERENCES voc__p__size_group (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE pottery ADD CONSTRAINT FK_1A6518391ACDCF43 FOREIGN KEY (base_shape_id) REFERENCES voc__p__base_shape (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE pottery ADD CONSTRAINT FK_1A651839B806376B FOREIGN KEY (preservation_id) REFERENCES voc__p__preservation (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
-        $this->addSql('ALTER TABLE su ALTER site_id SET NOT NULL');
-        $this->addSql('ALTER TABLE su ALTER area_id SET NOT NULL');
+        $this->addSql('ALTER TABLE stratigraphic_relationships ADD CONSTRAINT FK_B9A4EF171E31BBE7 FOREIGN KEY (sx_su_id) REFERENCES su (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE stratigraphic_relationships ADD CONSTRAINT FK_B9A4EF17684F83D5 FOREIGN KEY (dx_su_id) REFERENCES su (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE stratigraphic_relationships ADD CONSTRAINT FK_B9A4EF172C41D668 FOREIGN KEY (relationship_id) REFERENCES voc__su__relationship (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE su ADD CONSTRAINT FK_65A4BD79F6BD1646 FOREIGN KEY (site_id) REFERENCES site (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE su ADD CONSTRAINT FK_65A4BD79BD0F409C FOREIGN KEY (area_id) REFERENCES area (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE su ADD CONSTRAINT FK_65A4BD79EC8B7ADE FOREIGN KEY (period_id) REFERENCES voc__period (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE su ADD CONSTRAINT FK_65A4BD79C54C8C93 FOREIGN KEY (type_id) REFERENCES voc__su__type (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE su ADD CONSTRAINT FK_65A4BD79FE71FA16 FOREIGN KEY (preservation_state_id) REFERENCES voc__preservation_state (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE voc__period ADD CONSTRAINT FK_15F30C99727ACA70 FOREIGN KEY (parent_id) REFERENCES voc__period (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE voc__su__relationship ADD CONSTRAINT FK_2DB01D41C4CDAD40 FOREIGN KEY (inverted_by_id) REFERENCES voc__su__relationship (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        // $this->addSql('CREATE SCHEMA public');
+        $this->addSql('ALTER TABLE su DROP CONSTRAINT FK_65A4BD79BD0F409C');
+        $this->addSql('ALTER TABLE area DROP CONSTRAINT FK_D7943D68F6BD1646');
+        $this->addSql('ALTER TABLE su DROP CONSTRAINT FK_65A4BD79F6BD1646');
+        $this->addSql('ALTER TABLE ecofact DROP CONSTRAINT FK_9F00A5DDBDB1218E');
+        $this->addSql('ALTER TABLE pottery DROP CONSTRAINT FK_1A651839BDB1218E');
+        $this->addSql('ALTER TABLE stratigraphic_relationships DROP CONSTRAINT FK_B9A4EF171E31BBE7');
+        $this->addSql('ALTER TABLE stratigraphic_relationships DROP CONSTRAINT FK_B9A4EF17684F83D5');
+        $this->addSql('ALTER TABLE ecofact DROP CONSTRAINT FK_9F00A5DDC54C8C93');
         $this->addSql('ALTER TABLE pottery DROP CONSTRAINT FK_1A6518391ACDCF43');
         $this->addSql('ALTER TABLE pottery DROP CONSTRAINT FK_1A6518399B621D84');
         $this->addSql('ALTER TABLE pottery DROP CONSTRAINT FK_1A651839AD1FCB98');
@@ -150,11 +229,28 @@ final class Version20220425185127 extends AbstractMigration
         $this->addSql('ALTER TABLE pottery DROP CONSTRAINT FK_1A651839DEBFB82A');
         $this->addSql('ALTER TABLE pottery DROP CONSTRAINT FK_1A651839414A8D6D');
         $this->addSql('ALTER TABLE pottery DROP CONSTRAINT FK_1A65183924CBC30C');
+        $this->addSql('ALTER TABLE pottery DROP CONSTRAINT FK_1A651839A06F4D9B');
+        $this->addSql('ALTER TABLE pottery DROP CONSTRAINT FK_1A6518391E5860E8');
         $this->addSql('ALTER TABLE pottery DROP CONSTRAINT FK_1A651839479088F4');
         $this->addSql('ALTER TABLE pottery DROP CONSTRAINT FK_1A651839EFB04BBB');
         $this->addSql('ALTER TABLE pottery DROP CONSTRAINT FK_1A651839DD564C42');
         $this->addSql('ALTER TABLE pottery DROP CONSTRAINT FK_1A65183961E14598');
+        $this->addSql('ALTER TABLE pottery DROP CONSTRAINT FK_1A651839EC8B7ADE');
+        $this->addSql('ALTER TABLE su DROP CONSTRAINT FK_65A4BD79EC8B7ADE');
+        $this->addSql('ALTER TABLE voc__period DROP CONSTRAINT FK_15F30C99727ACA70');
+        $this->addSql('ALTER TABLE ecofact DROP CONSTRAINT FK_9F00A5DDFE71FA16');
+        $this->addSql('ALTER TABLE su DROP CONSTRAINT FK_65A4BD79FE71FA16');
+        $this->addSql('ALTER TABLE stratigraphic_relationships DROP CONSTRAINT FK_B9A4EF172C41D668');
+        $this->addSql('ALTER TABLE voc__su__relationship DROP CONSTRAINT FK_2DB01D41C4CDAD40');
+        $this->addSql('ALTER TABLE su DROP CONSTRAINT FK_65A4BD79C54C8C93');
+        $this->addSql('DROP SEQUENCE area_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE ecofact_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE pottery_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE site_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE stratigraphic_relationships_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE su_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE voc__e__type_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE voc__o__colour_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE voc__p__base_shape_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE voc__p__body_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE voc__p__colour_id_seq CASCADE');
@@ -175,7 +271,18 @@ final class Version20220425185127 extends AbstractMigration
         $this->addSql('DROP SEQUENCE voc__p__surface_treatment_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE voc__p__vessel_shape_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE voc__p__ware_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE voc__period_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE voc__preservation_state_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE voc__su__type_id_seq CASCADE');
+        $this->addSql('DROP TABLE area');
+        $this->addSql('DROP TABLE ecofact');
         $this->addSql('DROP TABLE pottery');
+        $this->addSql('DROP TABLE site');
+        $this->addSql('DROP TABLE stratigraphic_relationships');
+        $this->addSql('DROP TABLE su');
+        $this->addSql('DROP TABLE "user"');
+        $this->addSql('DROP TABLE voc__e__type');
+        $this->addSql('DROP TABLE voc__o__colour');
         $this->addSql('DROP TABLE voc__p__base_shape');
         $this->addSql('DROP TABLE voc__p__body');
         $this->addSql('DROP TABLE voc__p__colour');
@@ -196,7 +303,9 @@ final class Version20220425185127 extends AbstractMigration
         $this->addSql('DROP TABLE voc__p__surface_treatment');
         $this->addSql('DROP TABLE voc__p__vessel_shape');
         $this->addSql('DROP TABLE voc__p__ware');
-        $this->addSql('ALTER TABLE su ALTER site_id DROP NOT NULL');
-        $this->addSql('ALTER TABLE su ALTER area_id DROP NOT NULL');
+        $this->addSql('DROP TABLE voc__period');
+        $this->addSql('DROP TABLE voc__preservation_state');
+        $this->addSql('DROP TABLE voc__su__relationship');
+        $this->addSql('DROP TABLE voc__su__type');
     }
 }

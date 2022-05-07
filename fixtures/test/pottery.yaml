@@ -20,7 +20,7 @@ App\Entity\Pottery:
     spout: '@voc__p__spout_1'
     handle: '@voc__p__handle_1'
     sizeGroup: '@voc__p__size_group_1'
-    preservation: '@voc__p__preservation_1'
+    preservation: '@voc__preservation_1'
     thickness: 1.24
     rimDiameter: 12.45
     baseDiameter: 5.76
@@ -39,7 +39,7 @@ App\Entity\Pottery:
     rimCharacterization: '@voc__p__rim_characterization_2'
     body: '@voc__p__body_2'
     spout: '@voc__p__spout_2'
-    preservation: '@voc__p__preservation_3'
+    preservation: '@voc__preservation_3'
     thickness: 1.45
     rimDiameter: 7.23
     baseDiameter: 4.16
@@ -108,4 +108,4 @@ App\Entity\Pottery:
     externalSurfaceColour: '@voc__p__colour_2'
     internalSurfaceColour: '@voc__p__colour_3'
     fractureColour: '@voc__p__colour_2'
-    preservation: '@voc__p__preservation_4'
+    preservation: '@voc__preservation_4'

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity\Vocabulary\SU;
+namespace App\Entity\Vocabulary;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -18,6 +18,7 @@ class PreservationState
 {
     #[Groups([
         'read:Area',
+        'read:Ecofact',
         'read:SU',
     ])]
     private int $id;
@@ -25,6 +26,7 @@ class PreservationState
     #[Groups([
         'export',
         'read:Area',
+        'read:Ecofact',
         'read:SU',
     ])]
     private string $value;

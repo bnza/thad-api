@@ -1,0 +1,16 @@
+App\Entity\Vocabulary\Ecofact\Type:
+  voc__e__type_1:
+    value: animal durable material
+  voc__e__type_2:
+    value: carapace
+  voc__e__type_3:
+    value: charcoal
+  voc__e__type_4:
+    value: human bone
+  voc__e__type_5:
+    value: seed
+  voc__e__type_6:
+    value: shell
+  voc__e__type_7:
+    value: vegetal remain
+

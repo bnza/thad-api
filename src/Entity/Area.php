@@ -87,6 +87,7 @@ class Area
     #[Groups([
         'export',
         'read:Area',
+        'read:Ecofact',
         'read:Site',
         'read:SU',
         'read:Pottery',
@@ -96,6 +97,7 @@ class Area
     #[Groups([
         'export',
         'read:Area',
+        'read:Ecofact',
         'read:Site',
         'read:SU',
         'write:Area',
@@ -107,6 +109,7 @@ class Area
     #[Groups([
         'export',
         'read:Area',
+        'read:Ecofact',
         'read:Site',
         'read:SU',
         'write:Area',

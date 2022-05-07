@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity\Vocabulary\SU;
+namespace App\Entity\Vocabulary\Ecofact;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -10,29 +10,26 @@ use Symfony\Component\Serializer\Annotation\Groups;
         'get' => null,
     ],
     itemOperations: [
-      'get' => null,
+        'get' => null,
     ],
-    shortName: 'SuType',
-    routePrefix: 'vocabulary/su',
+    shortName: 'EcofactType',
+    routePrefix: 'vocabulary/ecofact'
 )]
 class Type
 {
     #[Groups([
-        'read:Area',
-        'read:SU',
+        'read:Ecofact',
     ])]
-    private int $id;
+    private string $id;
 
     #[Groups([
-        'export',
-        'read:Area',
-        'read:SU',
+        'read:Ecofact',
     ])]
     private string $value;
 
     private ?string $description;
 
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }
