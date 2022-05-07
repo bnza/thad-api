@@ -22,6 +22,9 @@
         <many-to-one field="stratigraphicUnit" target-entity="SU" inversed-by="potteries">
             <join-column name="su_id" nullable="false"/>
         </many-to-one>
+        <many-to-one field="period" target-entity="App\Entity\Vocabulary\Period">
+            <join-column name="period_id" />
+        </many-to-one>
         <many-to-one field="externalSurfaceColour" target-entity="App\Entity\Vocabulary\Pottery\Colour">
             <join-column name="ext_surface_color_id" />
         </many-to-one>

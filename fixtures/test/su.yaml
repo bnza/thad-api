@@ -9,6 +9,7 @@ App\Entity\SU:
     interpretation: 'The first stratigraphic unit interpretation'
     bottomElevation: 230.89
     topElevation: 231.09
+    period: '@voc__period_LCA'
     type: '@voc__su__type_2'
     preservationState: '@voc__su__preservation_state_3'
   su_TH_2:
@@ -20,6 +21,7 @@ App\Entity\SU:
     summary: 'The second stratigraphic unit summary'
     interpretation: 'The second stratigraphic unit interpretation'
     type: '@voc__su__type_1'
+    period: '@voc__period_LCA'
     preservationState: '@voc__su__preservation_state_3'
   su_TH_3:
     area: '@area_TH_B'
@@ -36,6 +38,7 @@ App\Entity\SU:
     number: 4
     year: 2022
     date: <createImmutableDate('2022-04-12')>
+    type: '@voc__su__type_2'
     description: 'The 4th stratigraphic unit description'
     summary: 'The 4th stratigraphic unit summary'
     interpretation: 'The 4th stratigraphic unit interpretation'
@@ -46,6 +49,7 @@ App\Entity\SU:
     number: 5
     year: 2022
     date: <createImmutableDate('2022-04-12')>
+    type: '@voc__su__type_2'
     description: 'The 5th stratigraphic unit description'
     summary: 'The 5th stratigraphic unit summary'
     interpretation: 'The 5th stratigraphic unit interpretation'
@@ -54,6 +58,7 @@ App\Entity\SU:
     number: 6
     year: 2022
     date: <createImmutableDate('2022-04-12')>
+    type: '@voc__su__type_1'
     description: 'The 6th stratigraphic unit description'
     summary: 'The 6th stratigraphic unit summary'
     interpretation: 'The 4th stratigraphic unit interpretation'
@@ -66,6 +71,7 @@ App\Entity\SU:
     number: 7
     year: 2022
     date: <createImmutableDate('2022-04-12')>
+    type: '@voc__su__type_1'
     description: 'The 7th stratigraphic unit description'
     summary: 'The 7th stratigraphic unit summary'
     interpretation: 'The 7th stratigraphic unit interpretation'
@@ -81,6 +87,7 @@ App\Entity\SU:
     description: 'The 8th stratigraphic unit description'
     summary: 'The 8th stratigraphic unit summary'
     interpretation: 'The 8th stratigraphic unit interpretation'
+    type: '@voc__su__type_2'
     bottomElevation: 231.09
     topElevation: 231.98
     compiler: Some One
@@ -91,6 +98,8 @@ App\Entity\SU:
     year: 2021
     square: 'A1'
     date: <createImmutableDate('2021-04-12')>
+    type: '@voc__su__type_3'
+    period: '@voc__period_HEL'
     description: 'The 1st stratigraphic unit description WW'
     summary: 'The 1st stratigraphic unit summary WW'
     interpretation: 'The 1st stratigraphic unit interpretation WW'
@@ -99,6 +108,7 @@ App\Entity\SU:
     number: 2
     year: 2021
     square: 'A1'
+    type: '@voc__su__type_1'
     date: <createImmutableDate('2021-05-03')>
     description: 'The 2nd stratigraphic unit description WW'
     summary: 'The 2nd stratigraphic unit summary WW'
@@ -107,6 +117,7 @@ App\Entity\SU:
     area: '@area_WW_A'
     number: 3
     square: 'A1'
+    type: '@voc__su__type_2'
     year: 2021
     date: <createImmutableDate('2021-05-03')>
     description: 'The 3rd stratigraphic unit description WW'
@@ -117,6 +128,7 @@ App\Entity\SU:
     number: 4
     year: 2022
     square: 'B1'
+    type: '@voc__su__type_1'
     date: <createImmutableDate('2021-05-03')>
     description: 'The 3rd stratigraphic unit description WW'
     summary: 'The 3rd stratigraphic unit summary WW'

@@ -29,6 +29,7 @@ App\Entity\Pottery:
     date: <createImmutableDate('2022-04-26')>
     number: 2
     compiler: Someone Other
+    period: '@voc__period_LCA'
     ware: '@voc__p__ware_1'
     fabric: '@voc__p__fabric_3'
     externalSurfaceColour: '@voc__p__colour_1'
@@ -101,6 +102,7 @@ App\Entity\Pottery:
     date: <createImmutableDate('2022-04-28')>
     number: 2
     compiler: Some One Other
+    period: '@voc__period_HEL'
     ware: '@voc__p__ware_1'
     fabric: '@voc__p__fabric_2'
     externalSurfaceColour: '@voc__p__colour_2'

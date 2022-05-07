@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use App\Entity\Vocabulary\Period;
 use App\Entity\Vocabulary\Pottery\BaseShape;
 use App\Entity\Vocabulary\Pottery\Body;
 use App\Entity\Vocabulary\Pottery\Colour;
@@ -60,6 +61,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
     properties: [
         'id' => 'exact',
         'stratigraphicUnit.id' => 'exact',
+        'stratigraphicUnit.site.id' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -159,6 +161,12 @@ class Pottery
         'write:Pottery',
     ])]
     private ?string $notes;
+
+    #[Groups([
+        'read:Pottery',
+        'write:Pottery',
+    ])]
+    private ?Period $period;
 
     #[Groups([
         'read:Pottery',
@@ -360,6 +368,18 @@ class Pottery
     public function setNotes(?string $notes): Pottery
     {
         $this->notes = $notes;
+
+        return $this;
+    }
+
+    public function getPeriod(): ?Period
+    {
+        return $this->period;
+    }
+
+    public function setPeriod(?Period $period): Pottery
+    {
+        $this->period = $period;
 
         return $this;
     }

@@ -10,6 +10,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\SUExportController;
+use App\Entity\Vocabulary\Period;
 use App\Entity\Vocabulary\SU\PreservationState;
 use App\Entity\Vocabulary\SU\Type;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -71,6 +72,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         'interpretation' => 'ipartial',
         'preservationState.value' => 'exact',
         'summary' => 'ipartial',
+        'period.code' => 'exact',
+        'preservation.code' => 'exact',
         'type.value' => 'exact',
     ]
 )]
@@ -90,7 +93,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     ExistsFilter::class,
     properties: [
-        'type',
+        'preservation',
+        'period',
     ]
 )]
 #[ApiFilter(
@@ -182,6 +186,13 @@ class SU
         message: 'Square identifier must be one or more capital letters followed by one or more digit (eg. B2, AZ12)',
     )]
     private ?string $square;
+
+    #[Groups([
+        'export',
+        'read:SU',
+        'write:SU',
+    ])]
+    private ?Period $period;
 
     #[Groups([
         'export',
@@ -315,6 +326,7 @@ class SU
     public function setYear(int $year): SU
     {
         $this->year = $year;
+
         return $this;
     }
 
@@ -331,6 +343,7 @@ class SU
     public function setSquare(?string $square): SU
     {
         $this->square = $square;
+
         return $this;
     }
 
@@ -349,6 +362,18 @@ class SU
     public function setDate(\DateTimeImmutable $date): SU
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getPeriod(): ?Period
+    {
+        return $this->period;
+    }
+
+    public function setPeriod(?Period $period): SU
+    {
+        $this->period = $period;
 
         return $this;
     }
