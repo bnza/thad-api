@@ -1,0 +1,8 @@
+App\Entity\Vocabulary\Object\Preservation:
+  voc__o__preservation_1:
+    value: complete
+  voc__o__preservation_2:
+    value: complete profile
+  voc__o__preservation_3:
+    value: fragmentary
+

@@ -1,0 +1,83 @@
+App\Entity\Vocabulary\Object\Material:
+  voc__o__material_1:
+    value: agate
+  voc__o__material_2:
+    value: alabaster
+  voc__o__material_3:
+    value: animal durable material
+  voc__o__material_4:
+    value: basalt
+  voc__o__material_5:
+    value: bitumen
+  voc__o__material_6:
+    value: bone
+  voc__o__material_7:
+    value: bronze
+  voc__o__material_8:
+    value: calcite
+  voc__o__material_9:
+    value: carapace
+  voc__o__material_10:
+    value: carnelian
+  voc__o__material_11:
+    value: clay
+  voc__o__material_12:
+    value: copper
+  voc__o__material_13:
+    value: faience
+  voc__o__material_14:
+    value: glass
+  voc__o__material_15:
+    value: glass paste
+  voc__o__material_16:
+    value: gold
+  voc__o__material_17:
+    value: gypsum
+  voc__o__material_18:
+    value: hematite
+  voc__o__material_19:
+    value: horn
+  voc__o__material_20:
+    value: iron
+  voc__o__material_21:
+    value: ivory
+  voc__o__material_22:
+    value: lapislazuli
+  voc__o__material_23:
+    value: limestone
+  voc__o__material_24:
+    value: marble
+  voc__o__material_25:
+    value: metal
+  voc__o__material_26:
+    value: moonstone
+  voc__o__material_27:
+    value: nacre/mother-of-pearl
+  voc__o__material_28:
+    value: obsidian
+  voc__o__material_29:
+    value: plaster
+  voc__o__material_30:
+    value: pumice
+  voc__o__material_31:
+    value: sandstone
+  voc__o__material_32:
+    value: shell
+  voc__o__material_33:
+    value: silver
+  voc__o__material_34:
+    value: stone
+  voc__o__material_35:
+    value: flint
+  voc__o__material_36:
+    value: steatite
+  voc__o__material_37:
+    value: terracotta
+  voc__o__material_38:
+    value: textile
+  voc__o__material_39:
+    value: turquoise
+  voc__o__material_40:
+    value: wood
+  voc__o__material_41:
+    value: undetermined

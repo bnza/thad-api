@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity\Vocabulary\Pottery;
+namespace App\Entity\Vocabulary;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -17,11 +17,13 @@ class Decoration
 {
     #[Groups([
         'read:Pottery',
+        'read:SmallFind',
     ])]
     private string $id;
 
     #[Groups([
         'read:Pottery',
+        'read:SmallFind',
     ])]
     private string $value;
 

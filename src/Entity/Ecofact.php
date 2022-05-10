@@ -4,7 +4,9 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use App\Controller\ResourceExportController;
 use App\Entity\Vocabulary\Ecofact\Type;
 use App\Entity\Vocabulary\PreservationState;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -14,6 +16,18 @@ use Symfony\Component\Serializer\Annotation\Groups;
     collectionOperations: [
         'post' => null,
         'get' => [
+            'security' => 'is_granted("ROLE_USER")',
+        ],
+        'export' => [
+            'controller' => ResourceExportController::class,
+            'method' => 'GET',
+            'path' => '/ecofacts/export',
+            'formats' => [
+                'csv' => ['text/csv'],
+            ],
+            'groups' => [
+                'export',
+            ],
             'security' => 'is_granted("ROLE_USER")',
         ],
     ],
@@ -35,6 +49,30 @@ use Symfony\Component\Serializer\Annotation\Groups;
         ],
     ],
     security: 'is_granted("ROLE_EDITOR")'
+)]
+#[ApiFilter(
+    OrderFilter::class,
+    properties: [
+        'id',
+        'stratigraphicUnit.area.code',
+        'stratigraphicUnit.site.code',
+        'stratigraphicUnit.number',
+        'number',
+        'quantity',
+        'type.value',
+        'material.value',
+        'preservationState.value',
+        'selectedForAnalysis',
+        'length',
+        'width',
+        'height',
+        'thickness',
+        'minDiameter',
+        'maxDiameter',
+        'compiler',
+        'date',
+        'note',
+    ]
 )]
 #[ApiFilter(
     SearchFilter::class,

@@ -55,7 +55,7 @@ App\Entity\Pottery:
     fractureColour: '@voc__p__colour_3'
     manufacturingTechnique: '@voc__p__manufacturing_technique_1'
     firing: '@voc__p__firing_3'
-    decoration: '@voc__p__decoration_2'
+    decoration: '@voc__decoration_2'
     vesselShape: '@voc__p__vessel_shape_1'
     baseShape: '@voc__p__base_shape_1'
     rimShape: '@voc__p__rim_shape_1'

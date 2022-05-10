@@ -9,7 +9,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
-use App\Controller\SUExportController;
+use App\Controller\ResourceExportController;
 use App\Entity\Vocabulary\Period;
 use App\Entity\Vocabulary\PreservationState;
 use App\Entity\Vocabulary\SU\Type;
@@ -26,7 +26,7 @@ use Symfony\Component\Validator\Constraints as Assert;
             'security' => 'is_granted("ROLE_USER")',
         ],
         'export' => [
-            'controller' => SUExportController::class,
+            'controller' => ResourceExportController::class,
             'method' => 'GET',
             'path' => '/stratigraphic_units/export',
             'formats' => [
@@ -128,6 +128,7 @@ class SU
     #[Groups([
         'read:Area',
         'read:Ecofact',
+        'read:SmallFind',
         'read:SU',
         'read:ViewStratigraphicRelationship',
         'read:Pottery',
@@ -138,6 +139,7 @@ class SU
         'export',
         'read:Area',
         'read:Ecofact',
+        'read:SmallFind',
         'read:SU',
         'read:ViewStratigraphicRelationship',
         'read:Pottery',
@@ -152,6 +154,7 @@ class SU
         'read:SU',
         'write:SU',
         'read:Ecofact',
+        'read:SmallFind',
         'read:Pottery',
     ])]
     private Site $site;
@@ -161,6 +164,7 @@ class SU
         'read:SU',
         'write:SU',
         'read:Ecofact',
+        'read:SmallFind',
         'read:Pottery',
     ])]
     #[Assert\NotBlank]
@@ -176,6 +180,7 @@ class SU
         'read:SU',
         'write:SU',
         'read:Ecofact',
+        'read:SmallFind',
         'read:Pottery',
     ])]
     #[Assert\NotBlank]
@@ -289,12 +294,15 @@ class SU
 
     private iterable $ecofacts;
 
+    private iterable $smallFinds;
+
     public function __construct()
     {
         $this->relations = new ArrayCollection();
         $this->inverseRelations = new ArrayCollection();
         $this->potteries = new ArrayCollection();
         $this->ecofacts = new ArrayCollection();
+        $this->smallFinds = new ArrayCollection();
     }
 
     public function getId(): int
@@ -538,6 +546,18 @@ class SU
     public function setEcofacts(iterable|ArrayCollection $ecofacts): SU
     {
         $this->ecofacts = $ecofacts;
+
+        return $this;
+    }
+
+    public function getSmallFinds(): iterable|ArrayCollection
+    {
+        return $this->smallFinds;
+    }
+
+    public function setSmallFinds(iterable|ArrayCollection $smallFinds): SU
+    {
+        $this->smallFinds = $smallFinds;
 
         return $this;
     }

@@ -1,0 +1,201 @@
+App\Entity\Vocabulary\Object\Type:
+  voc__o__type_1:
+    value: adze-head
+  voc__o__type_2:
+    value: alabastron
+  voc__o__type_3:
+    value: andiron
+  voc__o__type_4:
+    value: anklet
+  voc__o__type_5:
+    value: anthropomorphic figurine
+  voc__o__type_6:
+    value: anthropomorphic vessel
+  voc__o__type_7:
+    value: architectural fitting
+  voc__o__type_8:
+    value: armlet
+  voc__o__type_9:
+    value: arrow-head
+  voc__o__type_10:
+    value: astragalus
+  voc__o__type_11:
+    value: auger
+  voc__o__type_12:
+    value: baked brick
+  voc__o__type_13:
+    value: bangle
+  voc__o__type_14:
+    value: basin
+  voc__o__type_15:
+    value: bead
+  voc__o__type_16:
+    value: beaker
+  voc__o__type_17:
+    value: bezel
+  voc__o__type_18:
+    value: blade
+  voc__o__type_19:
+    value: borer
+  voc__o__type_20:
+    value: bottle
+  voc__o__type_21:
+    value: bowl
+  voc__o__type_22:
+    value: bracelet
+  voc__o__type_23:
+    value: burnisher
+  voc__o__type_24:
+    value: chariot
+  voc__o__type_25:
+    value: chisel
+  voc__o__type_26:
+    value: coin
+  voc__o__type_27:
+    value: cote
+  voc__o__type_28:
+    value: counter
+  voc__o__type_29:
+    value: crucible
+  voc__o__type_30:
+    value: cuneiform tablet
+  voc__o__type_31:
+    value: cup
+  voc__o__type_32:
+    value: cylinder
+  voc__o__type_33:
+    value: cylinder seal
+  voc__o__type_34:
+    value: debitage
+  voc__o__type_35:
+    value: docket
+  voc__o__type_36:
+    value: door socket
+  voc__o__type_37:
+    value: earring
+  voc__o__type_38:
+    value: fibula
+  voc__o__type_39:
+    value: grinder
+  voc__o__type_40:
+    value: grinding stone
+  voc__o__type_41:
+    value: hair-ring
+  voc__o__type_42:
+    value: hoe
+  voc__o__type_43:
+    value: hook
+  voc__o__type_44:
+    value: house model
+  voc__o__type_45:
+    value: inlay
+  voc__o__type_46:
+    value: jug
+  voc__o__type_47:
+    value: lamina
+  voc__o__type_48:
+    value: lamp
+  voc__o__type_49:
+    value: lid
+  voc__o__type_50:
+    value: loom weight
+  voc__o__type_51:
+    value: mace head
+  voc__o__type_52:
+    value: miniaturistic vessel
+  voc__o__type_53:
+    value: mould
+  voc__o__type_54:
+    value: mudbrick
+  voc__o__type_55:
+    value: nail
+  voc__o__type_56:
+    value: necklace
+  voc__o__type_57:
+    value: needle
+  voc__o__type_58:
+    value: pendant
+  voc__o__type_59:
+    value: pestle
+  voc__o__type_60:
+    value: pin
+  voc__o__type_61:
+    value: ottoman pipe
+  voc__o__type_62:
+    value: pipe
+  voc__o__type_63:
+    value: pivot
+  voc__o__type_64:
+    value: pivot stone
+  voc__o__type_65:
+    value: plaque
+  voc__o__type_66:
+    value: plate
+  voc__o__type_67:
+    value: point
+  voc__o__type_68:
+    value: pot
+  voc__o__type_69:
+    value: ring
+  voc__o__type_70:
+    value: ring-scraper
+  voc__o__type_71:
+    value: rod
+  voc__o__type_72:
+    value: scraper
+  voc__o__type_73:
+    value: screw
+  voc__o__type_74:
+    value: sealing
+  voc__o__type_75:
+    value: sealing with impression
+  voc__o__type_76:
+    value: semi-column
+  voc__o__type_77:
+    value: sickle
+  voc__o__type_78:
+    value: sickle blade
+  voc__o__type_79:
+    value: sling-shot
+  voc__o__type_80:
+    value: small jar
+  voc__o__type_81:
+    value: spacer
+  voc__o__type_82:
+    value: spade
+  voc__o__type_83:
+    value: spatula
+  voc__o__type_84:
+    value: spear-head
+  voc__o__type_85:
+    value: spindle whorl
+  voc__o__type_86:
+    value: splint
+  voc__o__type_87:
+    value: spool/bobbin
+  voc__o__type_88:
+    value: stamp seal
+  voc__o__type_89:
+    value: stand
+  voc__o__type_90:
+    value: statue
+  voc__o__type_91:
+    value: strainer
+  voc__o__type_92:
+    value: straw
+  voc__o__type_93:
+    value: token
+  voc__o__type_94:
+    value: tray
+  voc__o__type_95:
+    value: tripod
+  voc__o__type_96:
+    value: undetermined
+  voc__o__type_97:
+    value: wall cone
+  voc__o__type_98:
+    value: weight
+  voc__o__type_99:
+    value: wheel
+  voc__o__type_100:
+    value: zoomorphic figurine

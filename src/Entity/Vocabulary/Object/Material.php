@@ -11,10 +11,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
     itemOperations: [
         'get' => null,
     ],
-    shortName: 'ObjectColour',
-    routePrefix: 'vocabulary/object'
+    shortName: 'Material',
+    routePrefix: 'vocabulary/object',
 )]
-class Colour
+class Material
 {
     #[Groups([
         'read:SmallFind',

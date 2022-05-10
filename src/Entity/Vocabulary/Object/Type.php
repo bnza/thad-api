@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Entity\Vocabulary\Object;
+
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -11,10 +12,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
     itemOperations: [
         'get' => null,
     ],
-    shortName: 'ObjectColour',
+    shortName: 'ObjectType',
     routePrefix: 'vocabulary/object'
 )]
-class Colour
+class Type
 {
     #[Groups([
         'read:SmallFind',

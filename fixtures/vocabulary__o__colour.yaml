@@ -1,0 +1,31 @@
+App\Entity\Vocabulary\Object\Colour:
+  voc__o__colour_1:
+    value: black
+  voc__o__colour_2:
+    value: blue
+  voc__o__colour_3:
+    value: light blue
+  voc__o__colour_4:
+    value: brown
+  voc__o__colour_5:
+    value: light brown
+  voc__o__colour_6:
+    value: buff
+  voc__o__colour_7:
+    value: green
+  voc__o__colour_8:
+    value: grey
+  voc__o__colour_9:
+    value: orange
+  voc__o__colour_10:
+    value: others
+  voc__o__colour_11:
+    value: pink
+  voc__o__colour_12:
+    value: red
+  voc__o__colour_13:
+    value: turquoise
+  voc__o__colour_14:
+    value: white
+  voc__o__colour_15:
+    value: yellow

@@ -1,0 +1,55 @@
+App\Entity\SmallFind:
+  small_find_TH_1_1:
+    stratigraphicUnit: '@su_TH_1'
+    date: <createImmutableDate('2022-05-10')>
+    number: 1
+    compiler: Someone Other
+    type: '@voc__o__type_10'
+    preservation: '@voc__o__preservation_1'
+    preservationState: '@voc__preservation_state_1'
+    decoration: '@voc__decoration_3'
+    material: '@voc__o__material_5'
+    externalSurfaceColour: '@voc__o__colour_2'
+    internalSurfaceColour: '@voc__o__colour_4'
+    fractureColour: '@voc__o__colour_3'
+    period: '@voc__period_HEL'
+    height: 2.41
+    thickness: 1.23
+    length: 12.54
+    weight: 123.56
+    width: 2.45
+    minWidth: 2.38
+    maxWidth: 2.78
+    baseDiameter: 13.18
+    minDiameter: 12.45
+    maxDiameter: 14.56
+    summary: The summary of the first small find
+    description: Accurate description of the first small find
+    notes: Some interesting notes about the small find
+  small_find_TH_1_2:
+    stratigraphicUnit: '@su_TH_1'
+    date: <createImmutableDate('2022-05-10')>
+    number: 2
+    compiler: Someone Other
+    type: '@voc__o__type_11'
+    preservation: '@voc__o__preservation_2'
+    preservationState: '@voc__preservation_state_2'
+    decoration: '@voc__decoration_5'
+    material: '@voc__o__material_11'
+    externalSurfaceColour: '@voc__o__colour_1'
+    internalSurfaceColour: '@voc__o__colour_5'
+    fractureColour: '@voc__o__colour_6'
+    period: '@voc__period_HAS'
+    height: 2.44
+    thickness: 12.23
+    length: 2.54
+    weight: 45.56
+    width: 2.99
+    minWidth: 2.78
+    maxWidth: 3.15
+    baseDiameter: 13.18
+    minDiameter: 12.99
+    maxDiameter: 14.78
+    summary: The summary of the second small find
+    description: Accurate description of the second small find
+    notes: Some interesting notes about the second small find

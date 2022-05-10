@@ -6,11 +6,12 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use App\Controller\ResourceExportController;
 use App\Entity\Vocabulary\Period;
 use App\Entity\Vocabulary\Pottery\BaseShape;
 use App\Entity\Vocabulary\Pottery\Body;
 use App\Entity\Vocabulary\Pottery\Colour;
-use App\Entity\Vocabulary\Pottery\Decoration;
+use App\Entity\Vocabulary\Decoration;
 use App\Entity\Vocabulary\Pottery\Fabric;
 use App\Entity\Vocabulary\Pottery\Firing;
 use App\Entity\Vocabulary\Pottery\Handle;
@@ -34,6 +35,18 @@ use Symfony\Component\Serializer\Annotation\Groups;
     collectionOperations: [
         'post' => null,
         'get' => [
+            'security' => 'is_granted("ROLE_USER")',
+        ],
+        'export' => [
+            'controller' => ResourceExportController::class,
+            'method' => 'GET',
+            'path' => '/potteries/export',
+            'formats' => [
+                'csv' => ['text/csv'],
+            ],
+            'groups' => [
+                'export',
+            ],
             'security' => 'is_granted("ROLE_USER")',
         ],
     ],

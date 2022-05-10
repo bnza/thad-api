@@ -6,7 +6,7 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
-use App\Controller\AreaExportController;
+use App\Controller\ResourceExportController;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -19,7 +19,7 @@ use Symfony\Component\Validator\Constraints as Assert;
             'security' => 'is_granted("ROLE_USER")',
         ],
         'export' => [
-            'controller' => AreaExportController::class,
+            'controller' => ResourceExportController::class,
             'method' => 'GET',
             'path' => '/areas/export',
             'formats' => [
@@ -88,6 +88,7 @@ class Area
         'export',
         'read:Area',
         'read:Ecofact',
+        'read:SmallFind',
         'read:Site',
         'read:SU',
         'read:Pottery',
@@ -98,6 +99,7 @@ class Area
         'export',
         'read:Area',
         'read:Ecofact',
+        'read:SmallFind',
         'read:Site',
         'read:SU',
         'write:Area',
@@ -110,6 +112,7 @@ class Area
         'export',
         'read:Area',
         'read:Ecofact',
+        'read:SmallFind',
         'read:Site',
         'read:SU',
         'write:Area',

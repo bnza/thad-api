@@ -52,7 +52,7 @@
         <many-to-one field="firing" target-entity="App\Entity\Vocabulary\Pottery\Firing">
             <join-column name="firing_id" />
         </many-to-one>
-        <many-to-one field="decoration" target-entity="App\Entity\Vocabulary\Pottery\Decoration">
+        <many-to-one field="decoration" target-entity="App\Entity\Vocabulary\Decoration">
             <join-column name="decoration_id" />
         </many-to-one>
         <many-to-one field="vesselShape" target-entity="App\Entity\Vocabulary\Pottery\VesselShape">

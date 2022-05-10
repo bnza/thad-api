@@ -19,6 +19,7 @@ class PreservationState
     #[Groups([
         'read:Area',
         'read:Ecofact',
+        'read:SmallFind',
         'read:SU',
     ])]
     private int $id;
@@ -27,6 +28,7 @@ class PreservationState
         'export',
         'read:Area',
         'read:Ecofact',
+        'read:SmallFind',
         'read:SU',
     ])]
     private string $value;
