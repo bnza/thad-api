@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220510104415 extends AbstractMigration
+final class Version20220517155858 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -21,6 +21,7 @@ final class Version20220510104415 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE SEQUENCE area_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE SEQUENCE cumulative_pottery_sheet_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE ecofact_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE pottery_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE site_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
@@ -59,6 +60,10 @@ final class Version20220510104415 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_D7943D68F6BD1646 ON area (site_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_D7943D68F6BD164677153098 ON area (site_id, code)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_D7943D68F6BD16465E237E06 ON area (site_id, name)');
+        $this->addSql('CREATE TABLE cumulative_pottery_sheet (id INT NOT NULL, su_id INT NOT NULL, date DATE NOT NULL, number SMALLINT NOT NULL, compiler VARCHAR(255) DEFAULT NULL, notes TEXT DEFAULT NULL, common_ware_non_diagnostic_count SMALLINT DEFAULT 0 NOT NULL, common_ware_diagnostic_count SMALLINT DEFAULT 0 NOT NULL, fire_ware_non_diagnostic_count SMALLINT DEFAULT 0 NOT NULL, fire_ware_diagnostic_count SMALLINT DEFAULT 0 NOT NULL, coarse_ware_non_diagnostic_count SMALLINT DEFAULT 0 NOT NULL, coarse_ware_diagnostic_count SMALLINT DEFAULT 0 NOT NULL, kitchen_ware_non_diagnostic_count SMALLINT DEFAULT 0 NOT NULL, kitchen_ware_diagnostic_count SMALLINT DEFAULT 0 NOT NULL, subperiod_epn_count SMALLINT DEFAULT 0 NOT NULL, subperiod_has_count SMALLINT DEFAULT 0 NOT NULL, subperiod_sam_count SMALLINT DEFAULT 0 NOT NULL, subperiod_hal_count SMALLINT DEFAULT 0 NOT NULL, subperiod_nub_count SMALLINT DEFAULT 0 NOT NULL, subperiod_lca_count SMALLINT DEFAULT 0 NOT NULL, subperiod_lca1_count SMALLINT DEFAULT 0 NOT NULL, subperiod_lca2_count SMALLINT DEFAULT 0 NOT NULL, subperiod_lca3_count SMALLINT DEFAULT 0 NOT NULL, subperiod_lca4_count SMALLINT DEFAULT 0 NOT NULL, subperiod_lca5_count SMALLINT DEFAULT 0 NOT NULL, subperiod_sur_count SMALLINT DEFAULT 0 NOT NULL, subperiod_emt_count SMALLINT DEFAULT 0 NOT NULL, subperiod_emt1_count SMALLINT DEFAULT 0 NOT NULL, subperiod_emt2_count SMALLINT DEFAULT 0 NOT NULL, subperiod_emt3_count SMALLINT DEFAULT 0 NOT NULL, subperiod_emt4_count SMALLINT DEFAULT 0 NOT NULL, subperiod_emt5_count SMALLINT DEFAULT 0 NOT NULL, subperiod_mba_count SMALLINT DEFAULT 0 NOT NULL, subperiod_mba1_count SMALLINT DEFAULT 0 NOT NULL, subperiod_mba2_count SMALLINT DEFAULT 0 NOT NULL, subperiod_lba_count SMALLINT DEFAULT 0 NOT NULL, subperiod_lba1_count SMALLINT DEFAULT 0 NOT NULL, subperiod_lba2_count SMALLINT DEFAULT 0 NOT NULL, subperiod_ira_count SMALLINT DEFAULT 0 NOT NULL, subperiod_ira1_count SMALLINT DEFAULT 0 NOT NULL, subperiod_ira2_count SMALLINT DEFAULT 0 NOT NULL, subperiod_hel_count SMALLINT DEFAULT 0 NOT NULL, subperiod_par_count SMALLINT DEFAULT 0 NOT NULL, subperiod_byz_count SMALLINT DEFAULT 0 NOT NULL, subperiod_sas_count SMALLINT DEFAULT 0 NOT NULL, subperiod_isl_count SMALLINT DEFAULT 0 NOT NULL, subperiod_isl1_count SMALLINT DEFAULT 0 NOT NULL, subperiod_isl2_count SMALLINT DEFAULT 0 NOT NULL, subperiod_isl3_count SMALLINT DEFAULT 0 NOT NULL, subperiod_undetermined_count SMALLINT DEFAULT 0 NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE INDEX IDX_DB90ABFCBDB1218E ON cumulative_pottery_sheet (su_id)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_DB90ABFCBDB1218E96901F54 ON cumulative_pottery_sheet (su_id, number)');
+        $this->addSql('COMMENT ON COLUMN cumulative_pottery_sheet.date IS \'(DC2Type:date_immutable)\'');
         $this->addSql('CREATE TABLE ecofact (id INT NOT NULL, su_id INT NOT NULL, type_id SMALLINT NOT NULL, preservation_state_id SMALLINT DEFAULT NULL, date DATE NOT NULL, number SMALLINT NOT NULL, height DOUBLE PRECISION DEFAULT NULL, width DOUBLE PRECISION DEFAULT NULL, length DOUBLE PRECISION DEFAULT NULL, thickness DOUBLE PRECISION DEFAULT NULL, min_diameter DOUBLE PRECISION DEFAULT NULL, max_diameter DOUBLE PRECISION DEFAULT NULL, weight DOUBLE PRECISION DEFAULT NULL, selected_for_analysis BOOLEAN NOT NULL, compiler VARCHAR(255) DEFAULT NULL, notes TEXT DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_9F00A5DDBDB1218E ON ecofact (su_id)');
         $this->addSql('CREATE INDEX IDX_9F00A5DDC54C8C93 ON ecofact (type_id)');
@@ -185,6 +190,7 @@ final class Version20220510104415 extends AbstractMigration
         $this->addSql('CREATE TABLE voc__su__type (id SMALLINT NOT NULL, value VARCHAR(255) NOT NULL, description TEXT DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_15EFB60B1D775834 ON voc__su__type (value)');
         $this->addSql('ALTER TABLE area ADD CONSTRAINT FK_D7943D68F6BD1646 FOREIGN KEY (site_id) REFERENCES site (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE cumulative_pottery_sheet ADD CONSTRAINT FK_DB90ABFCBDB1218E FOREIGN KEY (su_id) REFERENCES su (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE ecofact ADD CONSTRAINT FK_9F00A5DDBDB1218E FOREIGN KEY (su_id) REFERENCES su (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE ecofact ADD CONSTRAINT FK_9F00A5DDC54C8C93 FOREIGN KEY (type_id) REFERENCES voc__e__type (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE ecofact ADD CONSTRAINT FK_9F00A5DDFE71FA16 FOREIGN KEY (preservation_state_id) REFERENCES voc__preservation_state (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
@@ -239,6 +245,7 @@ final class Version20220510104415 extends AbstractMigration
         $this->addSql('ALTER TABLE su DROP CONSTRAINT FK_65A4BD79BD0F409C');
         $this->addSql('ALTER TABLE area DROP CONSTRAINT FK_D7943D68F6BD1646');
         $this->addSql('ALTER TABLE su DROP CONSTRAINT FK_65A4BD79F6BD1646');
+        $this->addSql('ALTER TABLE cumulative_pottery_sheet DROP CONSTRAINT FK_DB90ABFCBDB1218E');
         $this->addSql('ALTER TABLE ecofact DROP CONSTRAINT FK_9F00A5DDBDB1218E');
         $this->addSql('ALTER TABLE pottery DROP CONSTRAINT FK_1A651839BDB1218E');
         $this->addSql('ALTER TABLE small_find DROP CONSTRAINT FK_2E109A89BDB1218E');
@@ -284,6 +291,7 @@ final class Version20220510104415 extends AbstractMigration
         $this->addSql('ALTER TABLE voc__su__relationship DROP CONSTRAINT FK_2DB01D41C4CDAD40');
         $this->addSql('ALTER TABLE su DROP CONSTRAINT FK_65A4BD79C54C8C93');
         $this->addSql('DROP SEQUENCE area_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE cumulative_pottery_sheet_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE ecofact_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE pottery_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE site_id_seq CASCADE');
@@ -319,6 +327,7 @@ final class Version20220510104415 extends AbstractMigration
         $this->addSql('DROP SEQUENCE voc__preservation_state_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE voc__su__type_id_seq CASCADE');
         $this->addSql('DROP TABLE area');
+        $this->addSql('DROP TABLE cumulative_pottery_sheet');
         $this->addSql('DROP TABLE ecofact');
         $this->addSql('DROP TABLE pottery');
         $this->addSql('DROP TABLE site');

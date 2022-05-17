@@ -87,6 +87,7 @@ class Site
         'read:Site',
         'read:SU',
         'read:Pottery',
+        'read:ViewCumulativePotterySheet',
     ])]
     private int $id;
 
@@ -99,6 +100,7 @@ class Site
         'read:SU',
         'write:Site',
         'read:Pottery',
+        'read:ViewCumulativePotterySheet',
     ])]
     #[Assert\NotBlank]
     private string $code;

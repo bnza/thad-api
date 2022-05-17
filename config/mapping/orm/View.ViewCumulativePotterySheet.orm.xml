@@ -1,0 +1,265 @@
+<?xml version="1.0" ?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity
+            name="App\Entity\View\ViewCumulativePotterySheet"
+            table="vw_cumulative_pottery_sheet"
+            repository-class="App\Repository\View\ViewCumulativePotterySheetRepository"
+    >
+        <unique-constraints>
+            <unique-constraint columns="su_id,number" />
+        </unique-constraints>
+        <id name="id" type="integer">
+            <generator strategy="SEQUENCE" />
+            <sequence-generator sequence-name="cumulative_pottery_sheet_id_seq" />
+        </id>
+        <field name="date" type="date_immutable"/>
+        <field name="number" type="smallint"/>
+        <field name="compiler" nullable="true"/>
+        <field name="notes"  type="text" nullable="true"/>
+        <field name="commonWareNonDiagnosticCount" type="smallint">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="commonWareDiagnosticCount" type="smallint">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="fireWareNonDiagnosticCount" type="smallint">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="fireWareDiagnosticCount" type="smallint">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="coarseWareNonDiagnosticCount" type="smallint">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="coarseWareDiagnosticCount" type="smallint">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="kitchenWareNonDiagnosticCount" type="smallint">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="kitchenWareDiagnosticCount" type="smallint">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="cumulativeWareCount" type="smallint" column="cumulative_ware_count" />
+        <field name="subperiodEPNCount" type="smallint" column="subperiod_epn_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodHASCount" type="smallint" column="subperiod_has_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodSAMCount" type="smallint" column="subperiod_sam_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodHALCount" type="smallint" column="subperiod_hal_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodNUBCount" type="smallint" column="subperiod_nub_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodLCACount" type="smallint" column="subperiod_lca_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodLCA1Count" type="smallint" column="subperiod_lca1_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodLCA2Count" type="smallint" column="subperiod_lca2_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodLCA3Count" type="smallint" column="subperiod_lca3_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodLCA4Count" type="smallint" column="subperiod_lca4_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodLCA5Count" type="smallint" column="subperiod_lca5_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodSURCount" type="smallint" column="subperiod_sur_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodEMTCount" type="smallint" column="subperiod_emt_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodEMT1Count" type="smallint" column="subperiod_emt1_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodEMT2Count" type="smallint" column="subperiod_emt2_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodEMT3Count" type="smallint" column="subperiod_emt3_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodEMT4Count" type="smallint" column="subperiod_emt4_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodEMT5Count" type="smallint" column="subperiod_emt5_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodMBACount" type="smallint" column="subperiod_mba_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodMBA1Count" type="smallint" column="subperiod_mba1_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodMBA2Count" type="smallint" column="subperiod_mba2_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodLBACount" type="smallint" column="subperiod_lba_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodLBA1Count" type="smallint" column="subperiod_lba1_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodLBA2Count" type="smallint" column="subperiod_lba2_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodIRACount" type="smallint" column="subperiod_ira_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodIRA1Count" type="smallint" column="subperiod_ira1_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodIRA2Count" type="smallint" column="subperiod_ira2_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodHELCount" type="smallint" column="subperiod_hel_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodPARCount" type="smallint" column="subperiod_par_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodBYZCount" type="smallint" column="subperiod_byz_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodSASCount" type="smallint" column="subperiod_sas_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodISLCount" type="smallint" column="subperiod_isl_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodISL1Count" type="smallint" column="subperiod_isl1_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodISL2Count" type="smallint" column="subperiod_isl2_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodISL3Count" type="smallint" column="subperiod_isl3_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="subperiodUndeterminedCount" type="smallint" column="subperiod_undetermined_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="periodEPNCount" type="smallint" column="period_epn_count" />
+        <field name="periodHASCount" type="smallint" column="period_has_count" />
+        <field name="periodSAMCount" type="smallint" column="period_sam_count" />
+        <field name="periodHALCount" type="smallint" column="period_hal_count" />
+        <field name="periodNUBCount" type="smallint" column="period_nub_count" />
+        <field name="periodLCACount" type="smallint" column="period_lca_count" />
+        <field name="periodSURCount" type="smallint" column="period_sur_count" />
+        <field name="periodEMTCount" type="smallint" column="period_emt_count" />
+        <field name="periodMBACount" type="smallint" column="period_mba_count" />
+        <field name="periodLBACount" type="smallint" column="period_lba_count" />
+        <field name="periodIRACount" type="smallint" column="period_ira_count" />
+        <field name="periodHELCount" type="smallint" column="period_hel_count" />
+        <field name="periodPARCount" type="smallint" column="period_par_count" />
+        <field name="periodBYZCount" type="smallint" column="period_byz_count" />
+        <field name="periodSASCount" type="smallint" column="period_sas_count" />
+        <field name="periodISLCount" type="smallint" column="period_isl_count" />
+        <many-to-one field="stratigraphicUnit" target-entity="App\Entity\SU" inversed-by="cumulativePotterySheets">
+            <join-column name="su_id" nullable="false"/>
+        </many-to-one>
+    </entity>
+</doctrine-mapping>

@@ -92,6 +92,7 @@ class Area
         'read:Site',
         'read:SU',
         'read:Pottery',
+        'read:ViewCumulativePotterySheet',
     ])]
     private int $id;
 
@@ -104,6 +105,7 @@ class Area
         'read:SU',
         'write:Area',
         'read:Pottery',
+        'read:ViewCumulativePotterySheet',
     ])]
     #[Assert\NotBlank]
     private string $code;

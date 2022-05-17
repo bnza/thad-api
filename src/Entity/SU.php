@@ -131,6 +131,7 @@ class SU
         'read:SmallFind',
         'read:SU',
         'read:ViewStratigraphicRelationship',
+        'read:ViewCumulativePotterySheet',
         'read:Pottery',
     ])]
     private int $id;
@@ -142,6 +143,7 @@ class SU
         'read:SmallFind',
         'read:SU',
         'read:ViewStratigraphicRelationship',
+        'read:ViewCumulativePotterySheet',
         'read:Pottery',
         'write:SU',
     ])]
@@ -156,6 +158,7 @@ class SU
         'read:Ecofact',
         'read:SmallFind',
         'read:Pottery',
+        'read:ViewCumulativePotterySheet',
     ])]
     private Site $site;
 
@@ -166,6 +169,7 @@ class SU
         'read:Ecofact',
         'read:SmallFind',
         'read:Pottery',
+        'read:ViewCumulativePotterySheet',
     ])]
     #[Assert\NotBlank]
     #[Assert\Range(
@@ -182,6 +186,7 @@ class SU
         'read:Ecofact',
         'read:SmallFind',
         'read:Pottery',
+        'read:ViewCumulativePotterySheet',
     ])]
     #[Assert\NotBlank]
     private Area $area;
@@ -296,6 +301,8 @@ class SU
 
     private iterable $smallFinds;
 
+    private iterable $cumulativePotterySheets;
+
     public function __construct()
     {
         $this->relations = new ArrayCollection();
@@ -303,6 +310,7 @@ class SU
         $this->potteries = new ArrayCollection();
         $this->ecofacts = new ArrayCollection();
         $this->smallFinds = new ArrayCollection();
+        $this->cumulativePotterySheets = new ArrayCollection();
     }
 
     public function getId(): int

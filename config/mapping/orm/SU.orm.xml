@@ -32,6 +32,7 @@
         <one-to-many field="potteries" target-entity="App\Entity\Pottery" mapped-by="stratigraphicUnit" />
         <one-to-many field="ecofacts" target-entity="App\Entity\Ecofact" mapped-by="stratigraphicUnit" />
         <one-to-many field="smallFinds" target-entity="App\Entity\SmallFind" mapped-by="stratigraphicUnit" />
+        <one-to-many field="cumulativePotterySheets" target-entity="App\Entity\CumulativePotterySheet" mapped-by="stratigraphicUnit" />
         <many-to-one field="site" target-entity="Site" inversed-by="stratigraphicUnits">
             <join-column name="site_id" nullable="false"/>
         </many-to-one>

@@ -1,0 +1,28 @@
+App\Entity\CumulativePotterySheet:
+  cps_TH_1_1:
+    stratigraphicUnit: '@su_TH_1'
+    date: <createImmutableDate('2022-05-07')>
+    number: 1
+    compiler: Someone Other
+    commonWareDiagnosticCount: 3
+    kitchenWareDiagnosticCount: 1
+    kitchenWareNonDiagnosticCount: 23
+    subperiodIRA1Count: 4
+    subperiodUndeterminedCount: 23
+    notes: Some interesting notes about the the cumulative pottery sheet
+  cps_TH_1_2:
+    stratigraphicUnit: '@su_TH_2'
+    date: <createImmutableDate('2022-05-10')>
+    number: 1
+    compiler: Some One
+    commonWareDiagnosticCount: 3
+    coarseWareDiagnosticCount: 3
+    kitchenWareDiagnosticCount: 1
+    kitchenWareNonDiagnosticCount: 15
+    subperiodIRA1Count: 4
+    subperiodIRA2Count: 5
+    subperiodBYZCount: 8
+    subperiodHELCount: 1
+    subperiodUndeterminedCount: 9
+    notes: Some interesting notes about the the cumulative pottery sheet of that US
+
