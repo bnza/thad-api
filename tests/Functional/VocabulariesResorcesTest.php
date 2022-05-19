@@ -13,7 +13,7 @@ class VocabulariesResorcesTest extends AuthApiTestCase
     {
         return [
             ['/vocabulary/su/preservation_states', 4],
-            ['/vocabulary/su/types', 8],
+            ['/vocabulary/su/su_types', 8],
         ];
     }
 

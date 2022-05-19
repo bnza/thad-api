@@ -22,7 +22,6 @@
         <field name="description" type="text" nullable="true"/>
         <field name="interpretation"  type="text" nullable="true"/>
         <field name="summary"  type="text" nullable="true"/>
-        <field name="square" nullable="true"/>
         <field name="topElevation" column="top_elevation"  type="float" nullable="true"/>
         <field name="bottomElevation" column="bottom_elevation"  type="float" nullable="true"/>
         <field name="areaSupervisor" column="area_supervisor" nullable="true"/>

@@ -96,7 +96,6 @@ App\Entity\SU:
     area: '@area_WW_A'
     number: 1
     year: 2021
-    square: 'A1'
     date: <createImmutableDate('2021-04-12')>
     type: '@voc__su__type_3'
     period: '@voc__period_HEL'
@@ -107,7 +106,6 @@ App\Entity\SU:
     area: '@area_WW_A'
     number: 2
     year: 2021
-    square: 'A1'
     type: '@voc__su__type_1'
     date: <createImmutableDate('2021-05-03')>
     description: 'The 2nd stratigraphic unit description WW'
@@ -116,7 +114,6 @@ App\Entity\SU:
   su_WW_3:
     area: '@area_WW_A'
     number: 3
-    square: 'A1'
     type: '@voc__su__type_2'
     year: 2021
     date: <createImmutableDate('2021-05-03')>
@@ -127,7 +124,6 @@ App\Entity\SU:
     area: '@area_WW_A'
     number: 4
     year: 2022
-    square: 'B1'
     type: '@voc__su__type_1'
     date: <createImmutableDate('2021-05-03')>
     description: 'The 3rd stratigraphic unit description WW'

@@ -19,45 +19,27 @@ final class Version20220519093049 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-        $this->addSql('DROP ROLE IF EXISTS gis_base;');
-        $this->addSql('CREATE ROLE gis_base NOSUPERUSER;');
         $this->addSql('GRANT USAGE ON SCHEMA geom TO gis_base;');
         $this->addSql('GRANT SELECT, REFERENCES ON TABLE public.site, public.su, geom.site, geom.su TO gis_base;');
-        $this->addSql('DROP ROLE IF EXISTS gis_editor;');
-        $this->addSql('CREATE ROLE gis_editor NOSUPERUSER IN ROLE gis_base;');
         $this->addSql('GRANT ALL ON TABLE geom.su TO gis_editor;');
         $this->addSql('GRANT USAGE ON SEQUENCE geom.su_id_seq TO gis_editor;');
-        $this->addSql('DROP ROLE IF EXISTS gis_admin;');
-        $this->addSql('CREATE ROLE gis_admin NOSUPERUSER IN ROLE gis_editor;');
         $this->addSql('GRANT ALL ON TABLE geom.site TO gis_admin;');
         $this->addSql('GRANT USAGE ON SEQUENCE geom.site_id_seq TO gis_admin;');
-        $this->addSql('DROP ROLE IF EXISTS gis_admin_user;');
-        $this->addSql('DROP ROLE IF EXISTS gis_editor_user;');
-        $this->addSql('DROP ROLE IF EXISTS gis_base_user;');
-        $this->addSql(sprintf('CREATE USER gis_admin_user NOSUPERUSER IN ROLE gis_admin ENCRYPTED PASSWORD \'%s\'', $_ENV['USER_GIS_ADMIN_PW']));
-        $this->addSql(sprintf('CREATE USER gis_editor_user NOSUPERUSER IN ROLE gis_editor ENCRYPTED PASSWORD \'%s\'', $_ENV['USER_GIS_EDITOR_PW']));
-        $this->addSql(sprintf('CREATE USER gis_base_user NOSUPERUSER IN ROLE gis_base ENCRYPTED PASSWORD \'%s\'', $_ENV['USER_GIS_BASE_PW']));
-        $this->createInsertRules();
+        $this->createInsertFunctions();
     }
 
     public function down(Schema $schema): void
     {
-        $this->addSql('DROP ROLE IF EXISTS gis_admin_user;');
-        $this->addSql('DROP ROLE IF EXISTS gis_editor_user;');
-        $this->addSql('DROP ROLE IF EXISTS gis_base_user;');
         $this->addSql('REVOKE ALL ON TABLE geom.site FROM gis_admin;');
         $this->addSql('REVOKE ALL ON SEQUENCE geom.site_id_seq FROM gis_admin;');
-        $this->addSql('DROP ROLE gis_admin;');
         $this->addSql('REVOKE ALL ON TABLE geom.su FROM gis_editor;');
         $this->addSql('REVOKE ALL ON SEQUENCE geom.su_id_seq FROM gis_editor;');
-        $this->addSql('DROP ROLE gis_editor;');
         $this->addSql('REVOKE ALL ON TABLE public.site, public.su, geom.site, geom.su FROM gis_base');
         $this->addSql('REVOKE ALL ON SCHEMA geom FROM gis_base');
-        $this->addSql('DROP ROLE gis_base;');
         $this->dropInsertRules();
     }
 
-    private function createInsertRules()
+    private function createInsertFunctions()
     {
         $this->addSql(<<<EOL
 CREATE FUNCTION geom.tf__nextval_id__site()

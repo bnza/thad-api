@@ -31,7 +31,7 @@ abstract class AuthApiTestCase extends ApiTestCase
         SU::class => 'stratigraphic_units',
         Relationship::class => 'vocabulary/su/relationships',
         StratigraphicRelationship::class => 'stratigraphic_relationships',
-        Type::class => 'vocabulary/su/types',
+        Type::class => 'vocabulary/su/su_types',
     ];
 
     protected function getClient(): HttpClientInterface
