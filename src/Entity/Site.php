@@ -7,6 +7,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
+use App\Entity\Geom\GeomSite;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -129,6 +130,8 @@ class Site
 
     private iterable $stratigraphicUnits;
 
+    private GeomSite $geom;
+
     public function __construct()
     {
         $this->areas = new ArrayCollection();
@@ -204,6 +207,17 @@ class Site
     {
         $this->stratigraphicUnits = $stratigraphicUnits;
 
+        return $this;
+    }
+
+    public function getGeom(): GeomSite
+    {
+        return $this->geom;
+    }
+
+    public function setGeom(GeomSite $geom): Site
+    {
+        $this->geom = $geom;
         return $this;
     }
 }

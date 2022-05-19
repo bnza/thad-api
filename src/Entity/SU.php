@@ -10,6 +10,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
+use App\Entity\Geom\GeomSU;
 use App\Entity\Vocabulary\Period;
 use App\Entity\Vocabulary\PreservationState;
 use App\Entity\Vocabulary\SU\Type;
@@ -190,6 +191,8 @@ class SU
     ])]
     #[Assert\NotBlank]
     private Area $area;
+
+    private GeomSU $geom;
 
     #[Groups([
         'export',
@@ -566,6 +569,30 @@ class SU
     public function setSmallFinds(iterable|ArrayCollection $smallFinds): SU
     {
         $this->smallFinds = $smallFinds;
+
+        return $this;
+    }
+
+    public function getGeom(): GeomSU
+    {
+        return $this->geom;
+    }
+
+    public function setGeom(GeomSU $geom): SU
+    {
+        $this->geom = $geom;
+
+        return $this;
+    }
+
+    public function getCumulativePotterySheets(): iterable|ArrayCollection
+    {
+        return $this->cumulativePotterySheets;
+    }
+
+    public function setCumulativePotterySheets(iterable|ArrayCollection $cumulativePotterySheets): SU
+    {
+        $this->cumulativePotterySheets = $cumulativePotterySheets;
 
         return $this;
     }

@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Entity\Geom\GeomSite" table="site" schema="geom">
+        <id name="id" type="integer">
+            <generator/>
+        </id>
+        <one-to-one field="site" target-entity="App\Entity\Site" inversed-by="geom">
+            <join-column name="site_id" />
+        </one-to-one>
+        <field name="geom"  type="geometry">
+            <options>
+                <option name="geometry_type">MULTIPOLYGON</option>
+                <option name="srid">4326</option>
+            </options>
+        </field>
+        <unique-constraints>
+            <unique-constraint columns="site_id" />
+        </unique-constraints>
+    </entity>
+</doctrine-mapping>
