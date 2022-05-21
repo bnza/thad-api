@@ -31,9 +31,18 @@ services:
             $decorated: '@App\OpenApi\OpenApiFactory.inner'
         autoconfigure: false
 
+    App\Service\MediaObjectFileHashNamer:
+        public: true
+        arguments:
+            $slugger: '@Symfony\Component\String\Slugger\SluggerInterface'
+
     App\Serializer\CsvFlatNormalizer:
         decorates: 'api_platform.jsonld.normalizer.item'
 
     'app.serializer.normalizer.item.json':
         class: 'App\Serializer\CsvFlatNormalizer'
         decorates: 'api_platform.serializer.normalizer.item'
+
+    'app.media_object_file_hash_namer':
+        alias: 'App\Service\MediaObjectFileHashNamer'
+        public: true

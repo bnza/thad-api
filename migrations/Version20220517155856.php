@@ -12,6 +12,8 @@ use Doctrine\Migrations\AbstractMigration;
  */
 final class Version20220517155856 extends AbstractMigration
 {
+    private bool $skip;
+
     public function getDescription(): string
     {
         return 'Create PostGIS users';
@@ -19,20 +21,19 @@ final class Version20220517155856 extends AbstractMigration
 
     public function preUp(Schema $schema): void
     {
-        $this->skipIf(
-            (bool) $this->connection->executeQuery('SELECT 1 FROM pg_roles WHERE rolname=\'gis_base\'')->fetchOne(),
-            'GIS users already set'
-        );
+        $this->skip = (bool) $this->connection->executeQuery('SELECT 1 FROM pg_roles WHERE rolname=\'gis_base\'')->fetchOne();
     }
 
     public function up(Schema $schema): void
     {
-        $this->addSql('CREATE ROLE gis_base NOSUPERUSER;');
-        $this->addSql('CREATE ROLE gis_editor NOSUPERUSER IN ROLE gis_base;');
-        $this->addSql('CREATE ROLE gis_admin NOSUPERUSER IN ROLE gis_editor;');
-        $this->addSql(sprintf('CREATE USER gis_admin_user NOSUPERUSER IN ROLE gis_admin ENCRYPTED PASSWORD \'%s\'', $_ENV['USER_GIS_ADMIN_PW']));
-        $this->addSql(sprintf('CREATE USER gis_editor_user NOSUPERUSER IN ROLE gis_editor ENCRYPTED PASSWORD \'%s\'', $_ENV['USER_GIS_EDITOR_PW']));
-        $this->addSql(sprintf('CREATE USER gis_base_user NOSUPERUSER IN ROLE gis_base ENCRYPTED PASSWORD \'%s\'', $_ENV['USER_GIS_BASE_PW']));
+        if (!$this->skip) {
+            $this->addSql('CREATE ROLE gis_base NOSUPERUSER;');
+            $this->addSql('CREATE ROLE gis_editor NOSUPERUSER IN ROLE gis_base;');
+            $this->addSql('CREATE ROLE gis_admin NOSUPERUSER IN ROLE gis_editor;');
+            $this->addSql(sprintf('CREATE USER gis_admin_user NOSUPERUSER IN ROLE gis_admin ENCRYPTED PASSWORD \'%s\'', $_ENV['USER_GIS_ADMIN_PW']));
+            $this->addSql(sprintf('CREATE USER gis_editor_user NOSUPERUSER IN ROLE gis_editor ENCRYPTED PASSWORD \'%s\'', $_ENV['USER_GIS_EDITOR_PW']));
+            $this->addSql(sprintf('CREATE USER gis_base_user NOSUPERUSER IN ROLE gis_base ENCRYPTED PASSWORD \'%s\'', $_ENV['USER_GIS_BASE_PW']));
+        }
     }
 
     public function down(Schema $schema): void

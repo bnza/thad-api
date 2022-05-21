@@ -1,0 +1,3 @@
+<vich_uploader class="App\Entity\MediaObject">
+    <field mapping="media_object" name="file" filename_property="filePath" mime_type="mimeType" size="size" dimensions="dimensions"/>
+</vich_uploader>
