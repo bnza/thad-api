@@ -31,18 +31,33 @@ services:
             $decorated: '@App\OpenApi\OpenApiFactory.inner'
         autoconfigure: false
 
+    App\Service\FixturesMediaReset:
+        public: true
+        arguments:
+            $sourcePath: '%kernel.project_dir%/fixtures/media'
+            $destPath: '%env(WWW_STATIC_DIR)%'
+
+    App\Command\FixturesMediaResetCommand:
+        arguments:
+            $loader: '@App\Service\FixturesMediaReset'
+
+
+    App\Serializer\CsvFlatNormalizer:
+        decorates: 'api_platform.jsonld.normalizer.item'
+
     App\Service\MediaObjectFileHashNamer:
         public: true
         arguments:
             $slugger: '@Symfony\Component\String\Slugger\SluggerInterface'
 
-    App\Serializer\CsvFlatNormalizer:
-        decorates: 'api_platform.jsonld.normalizer.item'
-
-    'app.serializer.normalizer.item.json':
+    app.serializer.normalizer.item.json:
         class: 'App\Serializer\CsvFlatNormalizer'
         decorates: 'api_platform.serializer.normalizer.item'
 
-    'app.media_object_file_hash_namer':
+    app.media_object_file_hash_namer:
         alias: 'App\Service\MediaObjectFileHashNamer'
+        public: true
+
+    app.fixtures_media_reset:
+        alias: 'App\Service\FixturesMediaReset'
         public: true

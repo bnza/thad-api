@@ -1,0 +1,21 @@
+App\Entity\MediaObject:
+    media_object_1:
+        filePath: 6a8d2220b995089f3edba347cddc3c9ce9272b9837154077f6f17a74bd143cef_kitten-640x514.jpg
+        mimeType: image/jpeg
+        size: 63052
+        dimensions: [640, 512]
+        sha256: 6a8d2220b995089f3edba347cddc3c9ce9272b9837154077f6f17a74bd143cef
+        uploadDate: <createImmutableDateTime('2022-05-22 09:32:26')>
+    media_object_2:
+        filePath: a45eff8ca75af2516042e56d770a9cc730c4a89aef95e9cf32fda3b9ee04bf84_kitten.pdf
+        mimeType: application/pdf
+        size: 629419
+        sha256: a45eff8ca75af2516042e56d770a9cc730c4a89aef95e9cf32fda3b9ee04bf84
+        uploadDate: <createImmutableDateTime('2022-05-22 09:32:27')>
+    media_object_3:
+        filePath: 6f465e7ddf64af891c617527c13b349b2673fa96ae917cf60e3fde761e441dad_kitten
+        mimeType: image/jpeg
+        size: 87287
+        dimensions: [640, 400]
+        sha256: 6f465e7ddf64af891c617527c13b349b2673fa96ae917cf60e3fde761e441dad
+        uploadDate: <createImmutableDateTime('2022-05-22 09:32:28')>
