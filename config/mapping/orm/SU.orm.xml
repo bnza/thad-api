@@ -48,6 +48,7 @@
         <many-to-one field="preservationState" target-entity="App\Entity\Vocabulary\PreservationState">
             <join-column name="preservation_state_id" />
         </many-to-one>
+        <one-to-many field="mediaObjects" target-entity="App\Entity\M2M\MediaObjectSU" mapped-by="stratigraphicUnit" />
         <lifecycle-callbacks>
             <lifecycle-callback type="prePersist" method="ensureSite"/>
         </lifecycle-callbacks>

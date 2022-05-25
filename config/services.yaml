@@ -35,7 +35,8 @@ services:
         public: true
         arguments:
             $sourcePath: '%kernel.project_dir%/fixtures/media'
-            $destPath: '%env(WWW_STATIC_DIR)%'
+            # $destPath: '%env(WWW_STATIC_DIR)%'
+            $destPath: '/srv/static'
 
     App\Command\FixturesMediaResetCommand:
         arguments:

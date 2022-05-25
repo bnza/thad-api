@@ -1,0 +1,13 @@
+App\Entity\M2M\MediaObjectSU:
+    media_object__su_1:
+        mediaObject: '@media_object_1'
+        stratigraphicUnit: '@su_TH_1'
+    media_object__su_2:
+        mediaObject: '@media_object_2'
+        stratigraphicUnit: '@su_TH_1'
+    media_object__su_3:
+        mediaObject: '@media_object_3'
+        stratigraphicUnit: '@su_TH_1'
+    media_object__su_4:
+        mediaObject: '@media_object_3'
+        stratigraphicUnit: '@su_TH_2'

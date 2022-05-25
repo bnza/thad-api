@@ -133,6 +133,7 @@ class SU
         'read:ViewStratigraphicRelationship',
         'read:ViewCumulativePotterySheet',
         'read:Pottery',
+        'read:MediaSU',
     ])]
     private int $id;
 
@@ -294,6 +295,8 @@ class SU
 
     private iterable $cumulativePotterySheets;
 
+    private iterable $mediaObjects;
+
     public function __construct()
     {
         $this->relations = new ArrayCollection();
@@ -302,6 +305,7 @@ class SU
         $this->ecofacts = new ArrayCollection();
         $this->smallFinds = new ArrayCollection();
         $this->cumulativePotterySheets = new ArrayCollection();
+        $this->mediaObjects = new ArrayCollection();
     }
 
     public function getId(): int
@@ -571,6 +575,16 @@ class SU
         $this->cumulativePotterySheets = $cumulativePotterySheets;
 
         return $this;
+    }
+
+    public function getMediaObjects(): ArrayCollection
+    {
+        return $this->mediaObjects;
+    }
+
+    public function setMediaObjects(ArrayCollection $mediaObjects): void
+    {
+        $this->mediaObjects = $mediaObjects;
     }
 
     public function ensureSite(LifecycleEventArgs $event)
