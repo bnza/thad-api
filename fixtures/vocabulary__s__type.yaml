@@ -1,0 +1,35 @@
+App\Entity\Vocabulary\Sample\Type:
+  voc__s__type_1:
+    value: animal durable material
+  voc__s__type_2:
+    value: charcoal
+  voc__s__type_3:
+    value: clay
+  voc__s__type_4:
+    value: fibre
+  voc__s__type_5:
+    value: human bone
+  voc__s__type_6:
+    value: metal
+  voc__s__type_7:
+    value: phytoliths
+  voc__s__type_8:
+    value: pigment
+  voc__s__type_9:
+    value: plaster
+  voc__s__type_10:
+    value: pottery
+  voc__s__type_11:
+    value: seeds
+  voc__s__type_12:
+    value: slag
+  voc__s__type_13:
+    value: soil
+  voc__s__type_14:
+    value: soil for flotation
+  voc__s__type_15:
+    value: stone
+  voc__s__type_16:
+    value: textile
+  voc__s__type_17:
+    value: wood

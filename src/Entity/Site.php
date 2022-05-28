@@ -84,6 +84,7 @@ class Site
     #[Groups([
         'read:Area',
         'read:Ecofact',
+        'read:Sample',
         'read:SmallFind',
         'read:Site',
         'read:SU',
@@ -96,6 +97,7 @@ class Site
         'export',
         'read:Area',
         'read:Ecofact',
+        'read:Sample',
         'read:SmallFind',
         'read:Site',
         'read:SU',

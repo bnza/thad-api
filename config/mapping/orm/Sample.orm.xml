@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Entity\Sample" table="sample">
+        <unique-constraints>
+            <unique-constraint columns="su_id,number" />
+        </unique-constraints>
+        <id name="id" type="integer">
+            <generator/>
+        </id>
+        <field name="date" type="date_immutable"/>
+        <field name="number" type="smallint"/>
+        <field name="height" type="float" nullable="true"/>
+        <field name="width" type="float" nullable="true"/>
+        <field name="length" type="float" nullable="true"/>
+        <field name="thickness" type="float" nullable="true"/>
+        <field name="minDiameter" type="float" nullable="true"/>
+        <field name="maxDiameter" type="float" nullable="true"/>
+        <field name="weight" type="float" nullable="true"/>
+        <field name="selectedForAnalysis" type="boolean"/>
+        <field name="compiler" nullable="true"/>
+        <field name="notes"  type="text" nullable="true"/>
+        <field name="exhaustive" type="boolean" nullable="true"/>
+        <field name="contaminationRisk" type="boolean" />
+        <many-to-one field="stratigraphicUnit" target-entity="SU" inversed-by="ecofacts">
+            <join-column name="su_id" nullable="false"/>
+        </many-to-one>
+        <many-to-one field="type" target-entity="App\Entity\Vocabulary\Sample\Type">
+            <join-column name="type_id" nullable="false"/>
+        </many-to-one>
+        <many-to-one field="preservationState" target-entity="App\Entity\Vocabulary\PreservationState">
+            <join-column name="preservation_state_id" />
+        </many-to-one>
+    </entity>
+</doctrine-mapping>

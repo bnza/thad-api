@@ -1,0 +1,62 @@
+App\Entity\Sample:
+  sample_TH_1_1:
+    stratigraphicUnit: '@su_TH_1'
+    date: <createImmutableDate('2022-05-26')>
+    number: 1
+    compiler: Someone Other
+    type: '@voc__s__type_1'
+    preservationState: '@voc__preservation_state_1'
+    height: 2.456
+    thickness: 1.24
+    length: 12.54
+    weight: 123.56
+    width: 22.45
+    minDiameter: 12.45
+    maxDiameter: 14.56
+    quantity: 4
+    notes: Some interesting notes about the sample
+  sample_TH_1_2:
+    stratigraphicUnit: '@su_TH_1'
+    date: <createImmutableDate('2022-05-26')>
+    number: 2
+    compiler: Someone Other
+    type: '@voc__s__type_3'
+    preservationState: '@voc__preservation_state_1'
+    exhaustive: false
+    contaminationRisk: true
+    height: 3.456
+    thickness: 2.24
+    length: 2.54
+    weight: 153.56
+    minDiameter: 12.23
+    maxDiameter: 15.78
+    selectedForAnalysis: true
+    quantity: 3
+  sample_TH_6_1:
+    stratigraphicUnit: '@su_TH_6'
+    date: <createImmutableDate('2022-05-25')>
+    number: 1
+    compiler: Some One
+    type: '@voc__s__type_2'
+    preservationState: '@voc__preservation_state_3'
+    exhaustive: true
+    height: 6.456
+    thickness: 0.45
+    length: 1.18
+    weight: 1203.45
+    minDiameter: 1.23
+    maxDiameter: 5.78
+  sample_WW_1_1:
+    stratigraphicUnit: '@su_WW_1'
+    date: <createImmutableDate('2022-05-20')>
+    number: 1
+    compiler: Some One Other
+    type: '@voc__s__type_4'
+    preservationState: '@voc__preservation_state_3'
+    exhaustive: null
+    height: 4.456
+    thickness: 3.14
+    length: 1.19
+    weight: 203.47
+    minDiameter: 1.56
+    maxDiameter: 2.79
