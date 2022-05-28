@@ -7,9 +7,6 @@ namespace DoctrineMigrations;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
-/**
- * Auto-generated Migration: Please modify to your needs!
- */
 final class Version20220517155857 extends AbstractMigration
 {
     public function getDescription(): string
@@ -20,7 +17,9 @@ final class Version20220517155857 extends AbstractMigration
     public function up(Schema $schema): void
     {
         $this->addSql('CREATE EXTENSION IF NOT EXISTS plpgsql;');
-        $this->addSql('CREATE EXTENSION postgis;');
+        $this->addSql('DROP EXTENSION IF EXISTS postgis_topology;');
+        $this->addSql('DROP EXTENSION IF EXISTS postgis_tiger_geocoder;');
+        $this->addSql('CREATE EXTENSION IF NOT EXISTS postgis;');
     }
 
     public function down(Schema $schema): void
