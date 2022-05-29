@@ -16,3 +16,8 @@ kernel:
 login:
     path: /api/login
     methods: ['POST']
+
+change_password:
+    path: /api/me/change-password
+    controller: App\Controller\ChangePasswordController
+    methods: ['POST']

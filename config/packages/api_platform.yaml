@@ -23,3 +23,6 @@ api_platform:
                 name: Authorization
                 type: header
     enable_swagger_ui: true
+
+when@prod:
+    enable_swagger_ui: false

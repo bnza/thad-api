@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\ChangePasswordController;
 use App\Controller\MeController;
 use App\Validator as AppAssert;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -56,12 +57,11 @@ use Symfony\Component\Validator\Constraints as Assert;
         'delete' => null,
     ],
     attributes: [
-        'validation_groups' => ['Default', 'post:User:Validation'],
+        'validation_groups' => ['post:User:Validation'],
     ],
     denormalizationContext: [
         'groups' => [
             'write:User',
-            'change_password:User',
         ],
     ],
     normalizationContext: [
@@ -116,7 +116,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         message: 'Your password must contains at lest one not alphanumeric character',
         groups: ['post:User:Validation']
     )]
-    #[Groups(['write:User', 'change_password:User'])]
+//    #[Groups(['write:User', 'change_password:User'])]
     private string $password;
 
     public function getId(): ?Uuid

@@ -22,6 +22,7 @@ class OpenApiFactory implements OpenApiFactoryInterface
 //        $this->setSecuritySchemes();
         $this->setSchemas();
         $this->setLoginPath();
+        $this->setChangePasswordPath();
 
         return $this->openApi;
     }
@@ -58,6 +59,24 @@ class OpenApiFactory implements OpenApiFactoryInterface
                     'example' => 'user@example.com',
                 ],
                 'password' => [
+                    'type' => 'string',
+                    'example' => 'somePassword',
+                ],
+            ],
+        ]);
+
+        $schemas['ChangePasswordData'] = new \ArrayObject([
+            'type' => 'object',
+            'properties' => [
+                'oldPassword' => [
+                    'type' => 'string',
+                    'example' => 'somePassword',
+                ],
+                'newPassword' => [
+                    'type' => 'string',
+                    'example' => 'somePassword',
+                ],
+                'repeatPassword' => [
                     'type' => 'string',
                     'example' => 'somePassword',
                 ],
@@ -118,5 +137,41 @@ class OpenApiFactory implements OpenApiFactoryInterface
             )
         );
         $this->openApi->getPaths()->addPath('/api/login', $loginPathItem);
+    }
+
+    private function setChangePasswordPath()
+    {
+        $pathItem = new PathItem(
+            post: new Operation(
+                operationId: 'changePasswordId',
+                responses: [
+                    '204' => [
+                        'description' => 'Successfully updated current user password.',
+                    ],
+                    '401' => [
+                        'content' => [
+                            'application/json' => [
+                                'schema' => [
+                                    '$ref' => '#/components/schemas/SecurityError',
+                                ],
+                            ],
+                        ],
+                        'description' => 'Security issue.',
+                    ],
+                ],
+                description: 'Change the current user password',
+                requestBody: new RequestBody(
+                    description: 'Change password data',
+                    content: new \ArrayObject([
+                        'application/json' => [
+                            'schema' => [
+                                '$ref' => '#/components/schemas/ChangePasswordData',
+                            ],
+                        ],
+                    ])
+                ),
+            )
+        );
+        $this->openApi->getPaths()->addPath('/api/me/change-password', $pathItem);
     }
 }
