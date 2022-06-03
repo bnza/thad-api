@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Controller\ChangePasswordController;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use App\Controller\MeController;
 use App\Validator as AppAssert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -50,11 +52,35 @@ use Symfony\Component\Validator\Constraints as Assert;
             'path' => '/users/me',
             'security' => 'is_granted("ROLE_USER")',
         ],
+        'get',
     ],
     itemOperations: [
-        'get' => null,
-        'patch' => null,
-        'delete' => null,
+        'get',
+        'patch' => [
+            'security' => "is_granted('USER_UPDATE', object)",
+            'openapi_context' => [
+                'requestBody' => [
+                    'content' => [
+                        'application/json' => [
+                            'schema' => [
+                                'anyOf' => [
+                                    ['$ref' => '#/components/schemas/ChangePasswordData'],
+                                    ['$ref' => '#/components/schemas/UpdateUser'],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'denormalizationContext' => [
+                'groups' => [
+                    'update:User',
+                ],
+            ],
+        ],
+        'delete' => [
+            'security' => "is_granted('USER_DELETE', object)",
+        ],
     ],
     attributes: [
         'validation_groups' => ['post:User:Validation'],
@@ -71,6 +97,19 @@ use Symfony\Component\Validator\Constraints as Assert;
     ],
     security: 'is_granted("ROLE_ADMIN")'
 )]
+#[ApiFilter(
+    OrderFilter::class,
+    properties: [
+        'email',
+        'roles',
+    ]
+)]
+#[UniqueEntity(
+    fields: ['email'],
+    message: 'Duplicate username.',
+    errorPath: 'email',
+    groups: ['post:User:Validation']
+)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[Groups(['read:User'])]
@@ -82,6 +121,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups(['read:User', 'write:User'])]
     private string $email;
 
+    #[Assert\NotBlank(
+        groups: ['post:User:Validation']
+    )]
     #[Assert\All([
         new Assert\NotBlank(),
         new Assert\Type(type: 'string'),
@@ -89,8 +131,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         ],
         groups: ['post:User:Validation']
     )]
-    #[Groups(['read:User', 'write:User'])]
-    private array $roles = [];
+    #[Groups(['read:User', 'write:User', 'update:User'])]
+    private array $roles = ['ROLE_USER'];
 
     #[Assert\NotBlank(
         groups: ['post:User:Validation']
@@ -116,7 +158,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         message: 'Your password must contains at lest one not alphanumeric character',
         groups: ['post:User:Validation']
     )]
-//    #[Groups(['write:User', 'change_password:User'])]
+   #[Groups(['write:User', 'update:User'])]
     private string $password;
 
     public function getId(): ?Uuid
@@ -164,6 +206,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setRoles(array $roles): self
     {
+        asort($roles);
         $this->roles = $roles;
 
         return $this;

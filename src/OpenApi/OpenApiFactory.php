@@ -19,23 +19,11 @@ class OpenApiFactory implements OpenApiFactoryInterface
     public function __invoke(array $context = []): OpenApi
     {
         $this->openApi = $this->decorated->__invoke($context);
-//        $this->setSecuritySchemes();
         $this->setSchemas();
         $this->setLoginPath();
-        $this->setChangePasswordPath();
 
         return $this->openApi;
     }
-
-//    private function setSecuritySchemes(): void
-//    {
-//        $securitySchemes = $this->openApi->getComponents()->getSecuritySchemes();
-//        $securitySchemes['bearerAuth'] = new \ArrayObject([
-//                'type' => 'http',
-//                'scheme' => 'bearer',
-//                'bearerFormat' => 'JWT',
-//            ]);
-//    }
 
     private function setSchemas(): void
     {
@@ -72,13 +60,31 @@ class OpenApiFactory implements OpenApiFactoryInterface
                     'type' => 'string',
                     'example' => 'somePassword',
                 ],
-                'newPassword' => [
+                'password' => [
                     'type' => 'string',
                     'example' => 'somePassword',
                 ],
-                'repeatPassword' => [
+            ],
+        ]);
+
+        $schemas['Roles'] = new \ArrayObject([
+            'type' => 'array',
+            'items' => [
+                'type' => 'string',
+                'enum' => ['ROLE_USER', 'ROLE_EDITOR', 'ROLE_ADMIN'],
+            ],
+        ]);
+
+        $schemas['UpdateUser'] = new \ArrayObject([
+            'type' => 'object',
+            'properties' => [
+                'password' => [
                     'type' => 'string',
                     'example' => 'somePassword',
+                ],
+                'roles' => [
+                    '$ref' => '#/components/schemas/Roles',
+                    'example' => ['ROLE_USER'],
                 ],
             ],
         ]);
@@ -137,41 +143,5 @@ class OpenApiFactory implements OpenApiFactoryInterface
             )
         );
         $this->openApi->getPaths()->addPath('/api/login', $loginPathItem);
-    }
-
-    private function setChangePasswordPath()
-    {
-        $pathItem = new PathItem(
-            post: new Operation(
-                operationId: 'changePasswordId',
-                responses: [
-                    '204' => [
-                        'description' => 'Successfully updated current user password.',
-                    ],
-                    '401' => [
-                        'content' => [
-                            'application/json' => [
-                                'schema' => [
-                                    '$ref' => '#/components/schemas/SecurityError',
-                                ],
-                            ],
-                        ],
-                        'description' => 'Security issue.',
-                    ],
-                ],
-                description: 'Change the current user password',
-                requestBody: new RequestBody(
-                    description: 'Change password data',
-                    content: new \ArrayObject([
-                        'application/json' => [
-                            'schema' => [
-                                '$ref' => '#/components/schemas/ChangePasswordData',
-                            ],
-                        ],
-                    ])
-                ),
-            )
-        );
-        $this->openApi->getPaths()->addPath('/api/me/change-password', $pathItem);
     }
 }

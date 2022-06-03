@@ -10,8 +10,8 @@
             <generator strategy="CUSTOM"/>
             <custom-id-generator class="Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator"/>
         </id>
-        <field name="email" type="string" length="180" nullable="false" unique="true" />
-        <field name="roles"  type="json" nullable="false"/>
-        <field name="password"  type="string" nullable="false"/>
+        <field name="email" length="180" unique="true" />
+        <field name="roles" type="simple_array"/>
+        <field name="password"/>
     </entity>
 </doctrine-mapping>
