@@ -11,14 +11,13 @@
             repository-class="App\Repository\View\ViewCumulativePotterySheetRepository"
     >
         <unique-constraints>
-            <unique-constraint columns="su_id,number" />
+            <unique-constraint columns="su_id" />
         </unique-constraints>
         <id name="id" type="integer">
             <generator strategy="SEQUENCE" />
             <sequence-generator sequence-name="cumulative_pottery_sheet_id_seq" />
         </id>
         <field name="date" type="date_immutable"/>
-        <field name="number" type="smallint"/>
         <field name="compiler" nullable="true"/>
         <field name="notes"  type="text" nullable="true"/>
         <field name="commonWareNonDiagnosticCount" type="smallint">
@@ -258,8 +257,8 @@
         <field name="periodBYZCount" type="smallint" column="period_byz_count" />
         <field name="periodSASCount" type="smallint" column="period_sas_count" />
         <field name="periodISLCount" type="smallint" column="period_isl_count" />
-        <many-to-one field="stratigraphicUnit" target-entity="App\Entity\SU" inversed-by="cumulativePotterySheets">
+        <one-to-one field="stratigraphicUnit" target-entity="App\Entity\SU" inversed-by="cumulativePotterySheet">
             <join-column name="su_id" nullable="false"/>
-        </many-to-one>
+        </one-to-one>
     </entity>
 </doctrine-mapping>

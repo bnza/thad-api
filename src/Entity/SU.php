@@ -11,6 +11,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
 use App\Entity\Geom\GeomSU;
+use App\Entity\View\ViewCumulativePotterySheet;
 use App\Entity\Vocabulary\Period;
 use App\Entity\Vocabulary\PreservationState;
 use App\Entity\Vocabulary\SU\Type;
@@ -290,6 +291,11 @@ class SU
     ])]
     private ?string $areaSupervisor;
 
+    #[Groups([
+        'read:SU',
+    ])]
+    public ?ViewCumulativePotterySheet $cumulativePotterySheet;
+
     private iterable $relations;
 
     private iterable $inverseRelations;
@@ -304,8 +310,6 @@ class SU
 
     private iterable $smallFinds;
 
-    private iterable $cumulativePotterySheets;
-
     private iterable $mediaObjects;
 
     public function __construct()
@@ -317,7 +321,6 @@ class SU
         $this->potteries = new ArrayCollection();
         $this->ecofacts = new ArrayCollection();
         $this->smallFinds = new ArrayCollection();
-        $this->cumulativePotterySheets = new ArrayCollection();
         $this->mediaObjects = new ArrayCollection();
     }
 

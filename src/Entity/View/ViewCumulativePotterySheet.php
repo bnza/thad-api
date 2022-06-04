@@ -46,6 +46,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 class ViewCumulativePotterySheet
 {
     #[Groups([
+        'read:SU',
         'read:ViewCumulativePotterySheet',
     ])]
     private int $id;

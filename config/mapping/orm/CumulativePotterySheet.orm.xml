@@ -7,13 +7,12 @@
 
     <entity name="App\Entity\CumulativePotterySheet" table="cumulative_pottery_sheet" repository-class="App\Repository\CumulativePotterySheetRepository">
         <unique-constraints>
-            <unique-constraint columns="su_id,number" />
+            <unique-constraint columns="su_id" />
         </unique-constraints>
         <id name="id" type="integer">
             <generator/>
         </id>
         <field name="date" type="date_immutable"/>
-        <field name="number" type="smallint"/>
         <field name="compiler" nullable="true"/>
         <field name="notes"  type="text" nullable="true"/>
         <field name="commonWareNonDiagnosticCount" type="smallint">
@@ -236,8 +235,8 @@
                 <option name="default">0</option>
             </options>
         </field>
-        <many-to-one field="stratigraphicUnit" target-entity="SU" inversed-by="cumulativePotterySheets">
+        <one-to-one field="stratigraphicUnit" target-entity="SU" inversed-by="cumulativePotterySheet">
             <join-column name="su_id" nullable="false"/>
-        </many-to-one>
+        </one-to-one>
     </entity>
 </doctrine-mapping>
