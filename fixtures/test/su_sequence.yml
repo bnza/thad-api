@@ -1,0 +1,13 @@
+App\Entity\StratigraphicSequence:
+  su_sequence_1:
+    sxSU: '@su_TH_1'
+    relationship: '@voc__su__sequence_before'
+    dxSU: '@su_TH_2'
+  su_sequence_2:
+    sxSU: '@su_TH_1'
+    relationship: '@voc__su__sequence_after'
+    dxSU: '@su_TH_3'
+  su_sequence_3:
+    sxSU: '@su_WW_1'
+    relationship: '@voc__su__sequence_before'
+    dxSU: '@su_WW_2'

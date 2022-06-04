@@ -1,0 +1,13 @@
+App\Entity\Vocabulary\SU\Sequence:
+  voc__su__sequence_before:
+    id: -1
+    value: 'earlier than'
+    invertedBy: '@voc__su__sequence_after'
+  voc__su__sequence_same:
+    id: 0
+    value: 'contemporary with'
+    invertedBy: '@voc__su__sequence_same'
+  voc__su__sequence_after:
+    id: 1
+    value: 'later than'
+    invertedBy: '@voc__su__sequence_before'

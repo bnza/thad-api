@@ -131,6 +131,7 @@ class SU
         'read:Sample',
         'read:SmallFind',
         'read:SU',
+        'read:ViewStratigraphicSequence',
         'read:ViewStratigraphicRelationship',
         'read:ViewCumulativePotterySheet',
         'read:Pottery',
@@ -145,6 +146,7 @@ class SU
         'read:Sample',
         'read:SmallFind',
         'read:SU',
+        'read:ViewStratigraphicSequence',
         'read:ViewStratigraphicRelationship',
         'read:ViewCumulativePotterySheet',
         'read:Pottery',
@@ -292,6 +294,10 @@ class SU
 
     private iterable $inverseRelations;
 
+    private iterable $sequences;
+
+    private iterable $inverseSequences;
+
     private iterable $potteries;
 
     private iterable $ecofacts;
@@ -306,6 +312,8 @@ class SU
     {
         $this->relations = new ArrayCollection();
         $this->inverseRelations = new ArrayCollection();
+        $this->sequences = new ArrayCollection();
+        $this->inverseSequences = new ArrayCollection();
         $this->potteries = new ArrayCollection();
         $this->ecofacts = new ArrayCollection();
         $this->smallFinds = new ArrayCollection();
@@ -590,6 +598,30 @@ class SU
     public function setMediaObjects(ArrayCollection $mediaObjects): void
     {
         $this->mediaObjects = $mediaObjects;
+    }
+
+    public function getSequences(): iterable|ArrayCollection
+    {
+        return $this->sequences;
+    }
+
+    public function setSequences(iterable|ArrayCollection $sequences): SU
+    {
+        $this->sequences = $sequences;
+
+        return $this;
+    }
+
+    public function getInverseSequences(): iterable|ArrayCollection
+    {
+        return $this->inverseSequences;
+    }
+
+    public function setInverseSequences(iterable|ArrayCollection $inverseSequences): SU
+    {
+        $this->inverseSequences = $inverseSequences;
+
+        return $this;
     }
 
     public function ensureSite(LifecycleEventArgs $event)
