@@ -32,6 +32,7 @@ final class Version20220517155858 extends AbstractMigration
         $this->addSql('CREATE SEQUENCE site_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE small_find_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE stratigraphic_relationships_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE SEQUENCE stratigraphic_sequence_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE su_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE geom.su_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE voc__decoration_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
@@ -139,6 +140,11 @@ final class Version20220517155858 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_B9A4EF17684F83D5 ON stratigraphic_relationships (dx_su_id)');
         $this->addSql('CREATE INDEX IDX_B9A4EF172C41D668 ON stratigraphic_relationships (relationship_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_B9A4EF171E31BBE7684F83D5 ON stratigraphic_relationships (sx_su_id, dx_su_id)');
+        $this->addSql('CREATE TABLE stratigraphic_sequence (id INT NOT NULL, sx_su_id INT DEFAULT NULL, dx_su_id INT DEFAULT NULL, relationship_id SMALLINT DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE INDEX IDX_4DAEB91F1E31BBE7 ON stratigraphic_sequence (sx_su_id)');
+        $this->addSql('CREATE INDEX IDX_4DAEB91F684F83D5 ON stratigraphic_sequence (dx_su_id)');
+        $this->addSql('CREATE INDEX IDX_4DAEB91F2C41D668 ON stratigraphic_sequence (relationship_id)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_4DAEB91F1E31BBE7684F83D5 ON stratigraphic_sequence (sx_su_id, dx_su_id)');
         $this->addSql('CREATE TABLE su (id INT NOT NULL, site_id INT NOT NULL, area_id INT NOT NULL, period_id SMALLINT DEFAULT NULL, type_id SMALLINT NOT NULL, preservation_state_id SMALLINT DEFAULT NULL, number INT NOT NULL, year INT NOT NULL, date DATE NOT NULL, description TEXT DEFAULT NULL, interpretation TEXT DEFAULT NULL, summary TEXT DEFAULT NULL, top_elevation DOUBLE PRECISION DEFAULT NULL, bottom_elevation DOUBLE PRECISION DEFAULT NULL, area_supervisor VARCHAR(255) DEFAULT NULL, compiler VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_65A4BD79F6BD1646 ON su (site_id)');
         $this->addSql('CREATE INDEX IDX_65A4BD79BD0F409C ON su (area_id)');
@@ -214,6 +220,9 @@ final class Version20220517155858 extends AbstractMigration
         $this->addSql('CREATE TABLE voc__su__relationship (id CHAR(1) NOT NULL, inverted_by_id CHAR(1) DEFAULT NULL, value VARCHAR(255) NOT NULL, description TEXT DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_2DB01D41C4CDAD40 ON voc__su__relationship (inverted_by_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_2DB01D411D775834 ON voc__su__relationship (value)');
+        $this->addSql('CREATE TABLE voc__su__sequence (id SMALLINT NOT NULL, inverted_by_id SMALLINT DEFAULT NULL, value VARCHAR(255) NOT NULL, description TEXT DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_BF13265BC4CDAD40 ON voc__su__sequence (inverted_by_id)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_BF13265B1D775834 ON voc__su__sequence (value)');
         $this->addSql('CREATE TABLE voc__su__type (id SMALLINT NOT NULL, value VARCHAR(255) NOT NULL, description TEXT DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_15EFB60B1D775834 ON voc__su__type (value)');
         $this->addSql('ALTER TABLE area ADD CONSTRAINT FK_D7943D68F6BD1646 FOREIGN KEY (site_id) REFERENCES site (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
@@ -263,6 +272,9 @@ final class Version20220517155858 extends AbstractMigration
         $this->addSql('ALTER TABLE stratigraphic_relationships ADD CONSTRAINT FK_B9A4EF171E31BBE7 FOREIGN KEY (sx_su_id) REFERENCES su (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE stratigraphic_relationships ADD CONSTRAINT FK_B9A4EF17684F83D5 FOREIGN KEY (dx_su_id) REFERENCES su (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE stratigraphic_relationships ADD CONSTRAINT FK_B9A4EF172C41D668 FOREIGN KEY (relationship_id) REFERENCES voc__su__relationship (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE stratigraphic_sequence ADD CONSTRAINT FK_4DAEB91F1E31BBE7 FOREIGN KEY (sx_su_id) REFERENCES su (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE stratigraphic_sequence ADD CONSTRAINT FK_4DAEB91F684F83D5 FOREIGN KEY (dx_su_id) REFERENCES su (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE stratigraphic_sequence ADD CONSTRAINT FK_4DAEB91F2C41D668 FOREIGN KEY (relationship_id) REFERENCES voc__su__sequence (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE su ADD CONSTRAINT FK_65A4BD79F6BD1646 FOREIGN KEY (site_id) REFERENCES site (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE su ADD CONSTRAINT FK_65A4BD79BD0F409C FOREIGN KEY (area_id) REFERENCES area (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE su ADD CONSTRAINT FK_65A4BD79EC8B7ADE FOREIGN KEY (period_id) REFERENCES voc__period (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
@@ -271,6 +283,7 @@ final class Version20220517155858 extends AbstractMigration
         $this->addSql('ALTER TABLE geom.su ADD CONSTRAINT FK_4FC438D2BDB1218E FOREIGN KEY (su_id) REFERENCES su (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE voc__period ADD CONSTRAINT FK_15F30C99727ACA70 FOREIGN KEY (parent_id) REFERENCES voc__period (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE voc__su__relationship ADD CONSTRAINT FK_2DB01D41C4CDAD40 FOREIGN KEY (inverted_by_id) REFERENCES voc__su__relationship (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE voc__su__sequence ADD CONSTRAINT FK_BF13265BC4CDAD40 FOREIGN KEY (inverted_by_id) REFERENCES voc__su__sequence (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
     }
 
     public function down(Schema $schema): void
@@ -289,6 +302,8 @@ final class Version20220517155858 extends AbstractMigration
         $this->addSql('ALTER TABLE small_find DROP CONSTRAINT FK_2E109A89BDB1218E');
         $this->addSql('ALTER TABLE stratigraphic_relationships DROP CONSTRAINT FK_B9A4EF171E31BBE7');
         $this->addSql('ALTER TABLE stratigraphic_relationships DROP CONSTRAINT FK_B9A4EF17684F83D5');
+        $this->addSql('ALTER TABLE stratigraphic_sequence DROP CONSTRAINT FK_4DAEB91F1E31BBE7');
+        $this->addSql('ALTER TABLE stratigraphic_sequence DROP CONSTRAINT FK_4DAEB91F684F83D5');
         $this->addSql('ALTER TABLE geom.su DROP CONSTRAINT FK_4FC438D2BDB1218E');
         $this->addSql('ALTER TABLE pottery DROP CONSTRAINT FK_1A6518393446DFC4');
         $this->addSql('ALTER TABLE small_find DROP CONSTRAINT FK_2E109A893446DFC4');
@@ -330,6 +345,8 @@ final class Version20220517155858 extends AbstractMigration
         $this->addSql('ALTER TABLE sample DROP CONSTRAINT FK_F10B76C3C54C8C93');
         $this->addSql('ALTER TABLE stratigraphic_relationships DROP CONSTRAINT FK_B9A4EF172C41D668');
         $this->addSql('ALTER TABLE voc__su__relationship DROP CONSTRAINT FK_2DB01D41C4CDAD40');
+        $this->addSql('ALTER TABLE stratigraphic_sequence DROP CONSTRAINT FK_4DAEB91F2C41D668');
+        $this->addSql('ALTER TABLE voc__su__sequence DROP CONSTRAINT FK_BF13265BC4CDAD40');
         $this->addSql('ALTER TABLE su DROP CONSTRAINT FK_65A4BD79C54C8C93');
         $this->addSql('DROP SEQUENCE area_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE cumulative_pottery_sheet_id_seq CASCADE');
@@ -342,6 +359,7 @@ final class Version20220517155858 extends AbstractMigration
         $this->addSql('DROP SEQUENCE site_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE small_find_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE stratigraphic_relationships_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE stratigraphic_sequence_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE su_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE geom.su_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE voc__decoration_id_seq CASCADE');
@@ -384,6 +402,7 @@ final class Version20220517155858 extends AbstractMigration
         $this->addSql('DROP TABLE site');
         $this->addSql('DROP TABLE small_find');
         $this->addSql('DROP TABLE stratigraphic_relationships');
+        $this->addSql('DROP TABLE stratigraphic_sequence');
         $this->addSql('DROP TABLE su');
         $this->addSql('DROP TABLE geom.su');
         $this->addSql('DROP TABLE "user"');
@@ -416,6 +435,7 @@ final class Version20220517155858 extends AbstractMigration
         $this->addSql('DROP TABLE voc__preservation_state');
         $this->addSql('DROP TABLE voc__s__type');
         $this->addSql('DROP TABLE voc__su__relationship');
+        $this->addSql('DROP TABLE voc__su__sequence');
         $this->addSql('DROP TABLE voc__su__type');
     }
 }
