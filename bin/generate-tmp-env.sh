@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 ROOT_DIR=$(pwd $(cd -P "$(dirname "$0")")) || exit
 

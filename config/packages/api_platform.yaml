@@ -26,4 +26,5 @@ api_platform:
     enable_entrypoint: true
 
 when@prod:
-    enable_swagger_ui: false
+    api_platform:
+        enable_swagger_ui: false
