@@ -1,0 +1,17 @@
+App\Entity\Vocabulary\Grave\Type:
+  voc__g__type_1:
+    value: cist
+  voc__g__type_2:
+    value: chamber
+  voc__g__type_3:
+    value: jar
+  voc__g__type_4:
+    value: oven
+  voc__g__type_5:
+    value: simple pit
+  voc__g__type_6:
+    value: sarchophagus
+  voc__g__type_7:
+    value: tumulus
+  voc__g__type_8:
+    value: urn

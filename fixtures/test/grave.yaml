@@ -1,0 +1,26 @@
+App\Entity\Grave:
+  grave_TH_1:
+    number: 1
+    year: 2022
+    date: <createImmutableDate('2021-05-06')>
+    preservationState: '@voc__preservation_state_3'
+    period: '@voc__period_LCA'
+    area: '@area_TH_A'
+    type: '@voc__g__type_5'
+    ritual: '@voc__g__ritual_1'
+    cutStratigraphicUnit: '@su_TH_10'
+    fillStratigraphicUnit: '@su_TH_11'
+    skeletonStratigraphicUnit: '@su_TH_12'
+    earlierThan: '@su_TH_6'
+    laterThan: '@su_TH_7'
+    alignment: 'N-S'
+    description: 'The first TH grave detailed description'
+    summary: 'The first TH grave summary'
+    interpretation: 'The first TH grave interpretation'
+    compiler: Some One Other
+    areaSupervisor: John Supervisor
+
+
+
+
+

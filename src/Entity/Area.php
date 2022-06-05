@@ -86,6 +86,7 @@ class Area
 {
     #[Groups([
         'export',
+        'read:Grave',
         'read:Area',
         'read:Ecofact',
         'read:Sample',
@@ -100,6 +101,7 @@ class Area
     #[Groups([
         'export',
         'read:Area',
+        'read:Grave',
         'read:Ecofact',
         'read:Sample',
         'read:SmallFind',
@@ -144,9 +146,12 @@ class Area
 
     private iterable $stratigraphicUnits;
 
+    public iterable $graves;
+
     public function __construct()
     {
         $this->stratigraphicUnits = new ArrayCollection();
+        $this->graves = new ArrayCollection();
     }
 
     public function getId(): int
@@ -207,7 +212,7 @@ class Area
         return $this->stratigraphicUnits;
     }
 
-    public function setStratigraphicUnits(iterable|ArrayCollection $stratigraphicUnits): SU
+    public function setStratigraphicUnits(iterable|ArrayCollection $stratigraphicUnits): Area
     {
         $this->stratigraphicUnits = $stratigraphicUnits;
 

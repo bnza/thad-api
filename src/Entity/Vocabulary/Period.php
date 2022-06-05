@@ -21,6 +21,7 @@ class Period
         'read:Area',
         'read:Pottery',
         'read:SU',
+        'read:Grave',
     ])]
     private int $id;
 
@@ -35,6 +36,7 @@ class Period
         'read:Area',
         'read:Pottery',
         'read:SU',
+        'read:Grave',
     ])]
     private string $code;
 

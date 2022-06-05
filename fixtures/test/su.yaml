@@ -92,6 +92,68 @@ App\Entity\SU:
     topElevation: 231.98
     compiler: Some One
     areaSupervisor: John Supervisor
+  su_TH_10:
+    area: '@area_TH_A'
+    number: 10
+    year: 2022
+    date: <createImmutableDate('2022-06-05')>
+    description: 'The first grave 1 SU'
+    summary: 'The first grave 1 SU summary'
+    interpretation: 'The first grave 1 SU interpretation: cut'
+    bottomElevation: 250.1
+    topElevation: 250.6
+    period: '@voc__period_LCA'
+    type: '@voc__su__type_2'
+    preservationState: '@voc__preservation_state_3'
+    grave: '@grave_TH_1'
+    compiler: Some One
+    areaSupervisor: John Supervisor
+  su_TH_11:
+    area: '@area_TH_A'
+    number: 11
+    year: 2022
+    date: <createImmutableDate('2022-06-05')>
+    description: 'The first grave 2 SU'
+    summary: 'The first grave 2 SU summary'
+    interpretation: 'The first grave 2 SU interpretation: filling'
+    bottomElevation: 250.1
+    topElevation: 250.6
+    period: '@voc__period_LCA'
+    type: '@voc__su__type_3'
+    preservationState: '@voc__preservation_state_3'
+    grave: '@grave_TH_1'
+    compiler: Some One
+    areaSupervisor: John Supervisor
+  su_TH_12:
+    area: '@area_TH_A'
+    number: 12
+    year: 2022
+    date: <createImmutableDate('2022-06-05')>
+    description: 'The first grave 3 SU'
+    summary: 'The first grave 3 SU summary'
+    interpretation: 'The first grave 2 SU interpretation: skeleton'
+    bottomElevation: 250.1
+    topElevation: 250.3
+    period: '@voc__period_LCA'
+    type: '@voc__su__type_6'
+    preservationState: '@voc__preservation_state_2'
+    grave: '@grave_TH_1'
+    compiler: Some One
+  su_TH_13:
+    area: '@area_TH_A'
+    number: 13
+    year: 2022
+    date: <createImmutableDate('2022-06-05')>
+    description: 'The first grave 4 SU'
+    summary: 'The first grave 4 SU summary'
+    interpretation: 'The first grave 4 SU interpretation: grave goods'
+    bottomElevation: 250.12
+    topElevation: 250.41
+    period: '@voc__period_LCA'
+    type: '@voc__su__type_5'
+    preservationState: '@voc__preservation_state_4'
+    grave: '@grave_TH_1'
+    compiler: Some One
   su_WW_1:
     area: '@area_WW_A'
     number: 1

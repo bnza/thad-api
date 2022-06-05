@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity\Vocabulary;
+namespace App\Entity\Vocabulary\Grave;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -12,34 +12,24 @@ use Symfony\Component\Serializer\Annotation\Groups;
     itemOperations: [
         'get' => null,
     ],
-    routePrefix: 'vocabulary/su',
+    shortName: 'GraveType',
+    routePrefix: 'vocabulary/grave'
 )]
-class PreservationState
+class Type
 {
     #[Groups([
-        'read:Area',
-        'read:Ecofact',
-        'read:Sample',
-        'read:SmallFind',
-        'read:SU',
         'read:Grave',
     ])]
-    private int $id;
+    private string $id;
 
     #[Groups([
-        'export',
-        'read:Area',
-        'read:Ecofact',
-        'read:Sample',
-        'read:SmallFind',
-        'read:SU',
         'read:Grave',
     ])]
     private string $value;
 
     private ?string $description;
 
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }

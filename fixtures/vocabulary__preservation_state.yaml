@@ -1,4 +1,10 @@
 App\Entity\Vocabulary\PreservationState:
-  voc__preservation_state_{1..4}:
-    value:  <getVocabularyProperty('vocSuPreservationState', 'value', <current()>, true)>
-    description:  <getVocabularyProperty('vocSuPreservationState', 'description', <current()>)>
+  voc__preservation_state_1:
+    value: poor
+  voc__preservation_state_2:
+    value: fair
+  voc__preservation_state_3:
+    value: good
+  voc__preservation_state_4:
+    value: excellent
+

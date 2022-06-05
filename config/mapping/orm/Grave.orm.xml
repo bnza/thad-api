@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Entity\Grave" table="grave">
+        <id name="id" type="integer">
+            <generator/>
+        </id>
+        <field name="number" type="smallint"/>
+        <field name="year" type="integer"/>
+        <field name="date" type="date_immutable"/>
+        <field name="description" type="text" nullable="true"/>
+        <field name="interpretation"  type="text" nullable="true"/>
+        <field name="alignment" type="text" nullable="true"/>
+        <field name="isSecondaryDeposition"  type="boolean" >
+            <options>
+                <option name="default">false</option>
+            </options>
+        </field>
+        <field name="summary" type="text" nullable="true"/>
+        <field name="areaSupervisor" column="area_supervisor" nullable="true"/>
+        <field name="compiler" nullable="true"/>
+        <many-to-one field="site" target-entity="Site" inversed-by="graves">
+            <join-column name="site_id" nullable="false"/>
+        </many-to-one>
+        <many-to-one field="area" target-entity="Area" inversed-by="graves">
+            <join-column name="area_id" nullable="false"/>
+        </many-to-one>
+        <one-to-many field="stratigraphicUnits" target-entity="SU" mapped-by="grave" />
+        <one-to-one field="cutStratigraphicUnit" target-entity="SU" />
+        <one-to-one field="fillStratigraphicUnit" target-entity="SU" />
+        <one-to-one field="skeletonStratigraphicUnit" target-entity="SU" />
+        <one-to-one field="earlierThan" target-entity="SU" />
+        <one-to-one field="laterThan" target-entity="SU" />
+        <many-to-one field="period" target-entity="App\Entity\Vocabulary\Period">
+            <join-column name="period_id" />
+        </many-to-one>
+        <many-to-one field="ritual" target-entity="App\Entity\Vocabulary\Grave\Ritual">
+            <join-column name="ritual_id" />
+        </many-to-one>
+        <many-to-one field="type" target-entity="App\Entity\Vocabulary\Grave\Type">
+            <join-column name="type_id" nullable="false"/>
+        </many-to-one>
+        <many-to-one field="preservationState" target-entity="App\Entity\Vocabulary\PreservationState">
+            <join-column name="preservation_state_id" />
+        </many-to-one>
+        <unique-constraints>
+            <unique-constraint columns="site_id,number" />
+        </unique-constraints>
+    </entity>
+</doctrine-mapping>

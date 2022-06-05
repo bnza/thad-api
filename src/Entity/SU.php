@@ -77,6 +77,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'period.code' => 'exact',
         'preservation.code' => 'exact',
         'type.value' => 'exact',
+        'grave.id' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -137,6 +138,7 @@ class SU
         'read:ViewCumulativePotterySheet',
         'read:Pottery',
         'read:MediaSU',
+        'read:Grave',
     ])]
     private int $id;
 
@@ -152,6 +154,7 @@ class SU
         'read:ViewCumulativePotterySheet',
         'read:Pottery',
         'write:SU',
+        'read:Grave',
     ])]
     #[Assert\NotBlank]
     #[Assert\Positive]
@@ -166,6 +169,7 @@ class SU
         'read:SmallFind',
         'read:Pottery',
         'read:ViewCumulativePotterySheet',
+        'read:Grave',
     ])]
     private Site $site;
 
@@ -178,6 +182,7 @@ class SU
         'read:SmallFind',
         'read:Pottery',
         'read:ViewCumulativePotterySheet',
+        'read:Grave',
     ])]
     #[Assert\NotBlank]
     #[Assert\Range(
@@ -295,6 +300,12 @@ class SU
         'read:SU',
     ])]
     public ?ViewCumulativePotterySheet $cumulativePotterySheet;
+
+    #[Groups([
+        'read:SU',
+        'write:SU',
+    ])]
+    public ?Grave $grave;
 
     private iterable $relations;
 

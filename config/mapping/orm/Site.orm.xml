@@ -14,6 +14,7 @@
         <field name="description"  type="text" nullable="true"/>
         <one-to-many field="areas" target-entity="Area" mapped-by="site" />
         <one-to-many field="stratigraphicUnits" target-entity="SU" mapped-by="site" />
+        <one-to-many field="graves" target-entity="Grave" mapped-by="site" />
         <one-to-one field="geom" target-entity="App\Entity\Geom\GeomSite" mapped-by="site" />
         <unique-constraints>
             <unique-constraint columns="name" />

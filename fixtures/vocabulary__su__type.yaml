@@ -1,4 +1,17 @@
 App\Entity\Vocabulary\SU\Type:
-  voc__su__type_{1..8}:
-    value:  <getVocabularyProperty('vocSuType', 'value', <current()>, true)>
-    description:  <getVocabularyProperty('vocSuType', 'description', <current()>)>
+  voc__su__type_1:
+    value: accumulation
+  voc__su__type_2:
+    value: cut
+  voc__su__type_3:
+    value: filling
+  voc__su__type_4:
+    value: floor
+  voc__su__type_5:
+    value: installation
+  voc__su__type_6:
+    value: skeleton
+  voc__su__type_7:
+    value: trodden floor
+  voc__su__type_8:
+    value: wall

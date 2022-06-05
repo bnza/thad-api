@@ -1,0 +1,5 @@
+App\Entity\Vocabulary\Grave\Ritual:
+  voc__g__ritual_1:
+    value: inhumation
+  voc__g__ritual_2:
+    value: incineration

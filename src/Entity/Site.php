@@ -89,6 +89,7 @@ class Site
         'read:Site',
         'read:SU',
         'read:Pottery',
+        'read:Grave',
         'read:ViewCumulativePotterySheet',
     ])]
     private int $id;
@@ -103,6 +104,7 @@ class Site
         'read:SU',
         'write:Site',
         'read:Pottery',
+        'read:Grave',
         'read:ViewCumulativePotterySheet',
     ])]
     #[Assert\NotBlank]
@@ -132,12 +134,15 @@ class Site
 
     private iterable $stratigraphicUnits;
 
+    public iterable $graves;
+
     private GeomSite $geom;
 
     public function __construct()
     {
         $this->areas = new ArrayCollection();
         $this->stratigraphicUnits = new ArrayCollection();
+        $this->graves = new ArrayCollection();
     }
 
     public function getId(): int
@@ -220,6 +225,7 @@ class Site
     public function setGeom(GeomSite $geom): Site
     {
         $this->geom = $geom;
+
         return $this;
     }
 }
