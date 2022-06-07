@@ -28,7 +28,7 @@ Create the test DB ```bin/console doctrine:database:create --env=test```
 
 Migrate ```bin/console doctrine:migration:migrate --env=test```
 
-## Docker install
+## Docker-compose deploy
 
 JWT keypair **MUST** be provided before build.
 
@@ -70,7 +70,13 @@ to ```.env``` file
 
 Build the PHP image ```bin/docker-build.sh```
 
-Start the containers ```APP_ENV='prod' bin/docker-up.sh```
+PHP's container **MUST** be started before nginx one so composer will install required bundles
+
+Start the containers ```APP_ENV='prod' bin/docker-up.sh php -d```
+
+Wait for ```public/bundles``` directory creation ```docker-compose exec ls public/bundles```
+ 
+Then start nginx container ```APP_ENV='prod' bin/docker-up.sh nginx -d```
 
 
 
