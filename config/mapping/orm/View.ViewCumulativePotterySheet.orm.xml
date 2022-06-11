@@ -61,6 +61,7 @@
             </options>
         </field>
         <field name="cumulativeWareCount" type="smallint" column="cumulative_ware_count" />
+        <field name="diagnosticWareCount" type="smallint" column="diagnostic_ware_count" />
         <field name="subperiodEPNCount" type="smallint" column="subperiod_epn_count">
             <options>
                 <option name="default">0</option>
@@ -126,6 +127,11 @@
                 <option name="default">0</option>
             </options>
         </field>
+        <field name="subperiodEMT0Count" type="smallint" column="subperiod_emt0_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
         <field name="subperiodEMT1Count" type="smallint" column="subperiod_emt1_count">
             <options>
                 <option name="default">0</option>
@@ -166,22 +172,12 @@
                 <option name="default">0</option>
             </options>
         </field>
-        <field name="subperiodLBACount" type="smallint" column="subperiod_lba_count">
-            <options>
-                <option name="default">0</option>
-            </options>
-        </field>
         <field name="subperiodLBA1Count" type="smallint" column="subperiod_lba1_count">
             <options>
                 <option name="default">0</option>
             </options>
         </field>
         <field name="subperiodLBA2Count" type="smallint" column="subperiod_lba2_count">
-            <options>
-                <option name="default">0</option>
-            </options>
-        </field>
-        <field name="subperiodIRACount" type="smallint" column="subperiod_ira_count">
             <options>
                 <option name="default">0</option>
             </options>
@@ -247,7 +243,6 @@
         <field name="periodHALCount" type="smallint" column="period_hal_count" />
         <field name="periodNUBCount" type="smallint" column="period_nub_count" />
         <field name="periodLCACount" type="smallint" column="period_lca_count" />
-        <field name="periodSURCount" type="smallint" column="period_sur_count" />
         <field name="periodEMTCount" type="smallint" column="period_emt_count" />
         <field name="periodMBACount" type="smallint" column="period_mba_count" />
         <field name="periodLBACount" type="smallint" column="period_lba_count" />

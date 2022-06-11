@@ -66,7 +66,7 @@ App\Entity\SmallFind:
     externalSurfaceColour: '@voc__o__colour_4'
     internalSurfaceColour: '@voc__o__colour_7'
     fractureColour: '@voc__o__colour_7'
-    period: '@voc__period_ISL3'
+    subperiod: '@voc__period_ISL3'
     height: 1.44
     thickness: 11.23
     length: 1.54

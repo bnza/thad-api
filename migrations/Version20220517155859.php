@@ -101,6 +101,7 @@ CREATE OR REPLACE VIEW public.vw_cumulative_pottery_sheet
     cumulative_pottery_sheet.subperiod_lca5_count,
     cumulative_pottery_sheet.subperiod_sur_count,
     cumulative_pottery_sheet.subperiod_emt_count,
+    cumulative_pottery_sheet.subperiod_emt0_count,
     cumulative_pottery_sheet.subperiod_emt1_count,
     cumulative_pottery_sheet.subperiod_emt2_count,
     cumulative_pottery_sheet.subperiod_emt3_count,
@@ -109,10 +110,8 @@ CREATE OR REPLACE VIEW public.vw_cumulative_pottery_sheet
     cumulative_pottery_sheet.subperiod_mba_count,
     cumulative_pottery_sheet.subperiod_mba1_count,
     cumulative_pottery_sheet.subperiod_mba2_count,
-    cumulative_pottery_sheet.subperiod_lba_count,
     cumulative_pottery_sheet.subperiod_lba1_count,
     cumulative_pottery_sheet.subperiod_lba2_count,
-    cumulative_pottery_sheet.subperiod_ira_count,
     cumulative_pottery_sheet.subperiod_ira1_count,
     cumulative_pottery_sheet.subperiod_ira2_count,
     cumulative_pottery_sheet.subperiod_hel_count,
@@ -124,17 +123,52 @@ CREATE OR REPLACE VIEW public.vw_cumulative_pottery_sheet
     cumulative_pottery_sheet.subperiod_isl2_count,
     cumulative_pottery_sheet.subperiod_isl3_count,
     cumulative_pottery_sheet.subperiod_undetermined_count,
+    ( SELECT cumulative_pottery_sheet.subperiod_epn_count 
+        + cumulative_pottery_sheet.subperiod_has_count
+        + cumulative_pottery_sheet.subperiod_sam_count
+        + cumulative_pottery_sheet.subperiod_hal_count
+        + cumulative_pottery_sheet.subperiod_nub_count
+        + cumulative_pottery_sheet.subperiod_lca_count
+        + cumulative_pottery_sheet.subperiod_lca1_count
+        + cumulative_pottery_sheet.subperiod_lca2_count
+        + cumulative_pottery_sheet.subperiod_lca3_count
+        + cumulative_pottery_sheet.subperiod_lca4_count
+        + cumulative_pottery_sheet.subperiod_lca5_count
+        + cumulative_pottery_sheet.subperiod_sur_count
+        + cumulative_pottery_sheet.subperiod_emt_count
+        + cumulative_pottery_sheet.subperiod_emt0_count
+        + cumulative_pottery_sheet.subperiod_emt1_count
+        + cumulative_pottery_sheet.subperiod_emt2_count
+        + cumulative_pottery_sheet.subperiod_emt3_count
+        + cumulative_pottery_sheet.subperiod_emt4_count
+        + cumulative_pottery_sheet.subperiod_emt5_count
+        + cumulative_pottery_sheet.subperiod_mba_count
+        + cumulative_pottery_sheet.subperiod_mba1_count
+        + cumulative_pottery_sheet.subperiod_mba2_count
+        + cumulative_pottery_sheet.subperiod_lba1_count
+        + cumulative_pottery_sheet.subperiod_lba2_count
+        + cumulative_pottery_sheet.subperiod_ira1_count
+        + cumulative_pottery_sheet.subperiod_ira2_count
+        + cumulative_pottery_sheet.subperiod_hel_count
+        + cumulative_pottery_sheet.subperiod_par_count
+        + cumulative_pottery_sheet.subperiod_byz_count
+        + cumulative_pottery_sheet.subperiod_sas_count
+        + cumulative_pottery_sheet.subperiod_isl_count
+        + cumulative_pottery_sheet.subperiod_isl1_count
+        + cumulative_pottery_sheet.subperiod_isl2_count
+        + cumulative_pottery_sheet.subperiod_isl3_count
+        + cumulative_pottery_sheet.subperiod_undetermined_count
+    ) AS diagnostic_ware_count,
     cumulative_pottery_sheet.subperiod_epn_count AS period_epn_count,
     cumulative_pottery_sheet.subperiod_has_count AS period_has_count,
     cumulative_pottery_sheet.subperiod_sam_count AS period_sam_count,
     cumulative_pottery_sheet.subperiod_hal_count AS period_hal_count,
     cumulative_pottery_sheet.subperiod_nub_count AS period_nub_count,
-    ( SELECT cumulative_pottery_sheet.subperiod_lca_count + cumulative_pottery_sheet.subperiod_lca1_count + cumulative_pottery_sheet.subperiod_lca2_count + cumulative_pottery_sheet.subperiod_lca3_count + cumulative_pottery_sheet.subperiod_lca4_count + cumulative_pottery_sheet.subperiod_lca5_count) AS period_lca_count,
-    cumulative_pottery_sheet.subperiod_sur_count AS period_sur_count,
-    ( SELECT cumulative_pottery_sheet.subperiod_emt_count + cumulative_pottery_sheet.subperiod_emt1_count + cumulative_pottery_sheet.subperiod_emt2_count + cumulative_pottery_sheet.subperiod_emt3_count + cumulative_pottery_sheet.subperiod_emt4_count + cumulative_pottery_sheet.subperiod_emt5_count) AS period_emt_count,
+    ( SELECT cumulative_pottery_sheet.subperiod_lca_count + cumulative_pottery_sheet.subperiod_lca1_count + cumulative_pottery_sheet.subperiod_lca2_count + cumulative_pottery_sheet.subperiod_lca3_count + cumulative_pottery_sheet.subperiod_lca4_count + cumulative_pottery_sheet.subperiod_lca5_count + cumulative_pottery_sheet.subperiod_sur_count) AS period_lca_count,
+    ( SELECT cumulative_pottery_sheet.subperiod_emt_count + cumulative_pottery_sheet.subperiod_emt0_count + cumulative_pottery_sheet.subperiod_emt1_count + cumulative_pottery_sheet.subperiod_emt2_count + cumulative_pottery_sheet.subperiod_emt3_count + cumulative_pottery_sheet.subperiod_emt4_count + cumulative_pottery_sheet.subperiod_emt5_count) AS period_emt_count,
     ( SELECT cumulative_pottery_sheet.subperiod_mba_count + cumulative_pottery_sheet.subperiod_mba1_count + cumulative_pottery_sheet.subperiod_mba2_count) AS period_mba_count,
-    ( SELECT cumulative_pottery_sheet.subperiod_lba_count + cumulative_pottery_sheet.subperiod_lba1_count + cumulative_pottery_sheet.subperiod_lba2_count) AS period_lba_count,
-    ( SELECT cumulative_pottery_sheet.subperiod_ira_count + cumulative_pottery_sheet.subperiod_ira1_count + cumulative_pottery_sheet.subperiod_ira2_count) AS period_ira_count,
+    ( SELECT cumulative_pottery_sheet.subperiod_lba1_count + cumulative_pottery_sheet.subperiod_lba2_count) AS period_lba_count,
+    ( SELECT cumulative_pottery_sheet.subperiod_ira1_count + cumulative_pottery_sheet.subperiod_ira2_count) AS period_ira_count,
     cumulative_pottery_sheet.subperiod_hel_count AS period_hel_count,
     cumulative_pottery_sheet.subperiod_par_count AS period_par_count,
     cumulative_pottery_sheet.subperiod_byz_count AS period_byz_count,
@@ -173,6 +207,7 @@ INSERT INTO cumulative_pottery_sheet
 	subperiod_lca5_count,
 	subperiod_sur_count,
 	subperiod_emt_count,
+	subperiod_emt0_count,
 	subperiod_emt1_count,
 	subperiod_emt2_count,
 	subperiod_emt3_count,
@@ -181,10 +216,8 @@ INSERT INTO cumulative_pottery_sheet
 	subperiod_mba_count,
 	subperiod_mba1_count,
 	subperiod_mba2_count,
-	subperiod_lba_count,
 	subperiod_lba1_count,
 	subperiod_lba2_count,
-	subperiod_ira_count,
 	subperiod_ira1_count,
 	subperiod_ira2_count,
 	subperiod_hel_count,
@@ -225,6 +258,7 @@ VALUES
 	NEW.subperiod_lca5_count,
 	NEW.subperiod_sur_count,
 	NEW.subperiod_emt_count,
+	NEW.subperiod_emt0_count,
 	NEW.subperiod_emt1_count,
 	NEW.subperiod_emt2_count,
 	NEW.subperiod_emt3_count,
@@ -233,10 +267,8 @@ VALUES
 	NEW.subperiod_mba_count,
 	NEW.subperiod_mba1_count,
 	NEW.subperiod_mba2_count,
-	NEW.subperiod_lba_count,
 	NEW.subperiod_lba1_count,
 	NEW.subperiod_lba2_count,
-	NEW.subperiod_ira_count,
 	NEW.subperiod_ira1_count,
 	NEW.subperiod_ira2_count,
 	NEW.subperiod_hel_count,
@@ -279,7 +311,8 @@ UPDATE public.cumulative_pottery_sheet
 	subperiod_lca4_count=NEW.subperiod_lca4_count, 
 	subperiod_lca5_count=NEW.subperiod_lca5_count, 
 	subperiod_sur_count=NEW.subperiod_sur_count, 
-	subperiod_emt_count=NEW.subperiod_emt_count, 
+	subperiod_emt_count=NEW.subperiod_emt_count,
+	subperiod_emt0_count=NEW.subperiod_emt0_count,
 	subperiod_emt1_count=NEW.subperiod_emt1_count, 
 	subperiod_emt2_count=NEW.subperiod_emt2_count, 
 	subperiod_emt3_count=NEW.subperiod_emt3_count, 
@@ -288,10 +321,8 @@ UPDATE public.cumulative_pottery_sheet
 	subperiod_mba_count=NEW.subperiod_mba_count, 
 	subperiod_mba1_count=NEW.subperiod_mba1_count, 
 	subperiod_mba2_count=NEW.subperiod_mba2_count, 
-	subperiod_lba_count=NEW.subperiod_lba_count, 
 	subperiod_lba1_count=NEW.subperiod_lba1_count, 
 	subperiod_lba2_count=NEW.subperiod_lba2_count, 
-	subperiod_ira_count=NEW.subperiod_ira_count,
 	subperiod_ira1_count=NEW.subperiod_ira1_count, 
 	subperiod_ira2_count=NEW.subperiod_ira2_count, 
 	subperiod_hel_count=NEW.subperiod_hel_count, 

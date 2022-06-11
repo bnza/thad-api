@@ -14,6 +14,7 @@ use App\Entity\Vocabulary\Object\Preservation;
 use App\Entity\Vocabulary\Object\Type;
 use App\Entity\Vocabulary\Period;
 use App\Entity\Vocabulary\PreservationState;
+use App\Entity\Vocabulary\Subperiod;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -54,6 +55,36 @@ use Symfony\Component\Serializer\Annotation\Groups;
         ],
     ],
     security: 'is_granted("ROLE_EDITOR")'
+)]
+#[ApiFilter(
+    OrderFilter::class,
+    properties: [
+        'id',
+        'stratigraphicUnit.area.code',
+        'stratigraphicUnit.site.code',
+        'stratigraphicUnit.number',
+        'number',
+        'period.code',
+        'subperiod.code',
+        'type.value',
+        'material.value',
+        'preservation.value',
+        'preservationState.value',
+        'length',
+        'width',
+        'minWidth',
+        'maxWidth',
+        'height',
+        'thickness',
+        'baseDiameter',
+        'minDiameter',
+        'maxDiameter',
+        'compiler',
+        'date',
+        'summary',
+        'description',
+        'note',
+    ]
 )]
 #[ApiFilter(
     OrderFilter::class,
@@ -143,7 +174,13 @@ class SmallFind
         'read:SmallFind',
         'write:SmallFind',
     ])]
-    private ?Period $period;
+    private ?Period $period = null;
+
+    #[Groups([
+        'read:SmallFind',
+        'write:SmallFind',
+    ])]
+    private ?Subperiod $subperiod;
 
     #[Groups([
         'read:SmallFind',
@@ -484,6 +521,20 @@ class SmallFind
     public function setPeriod(?Period $period): SmallFind
     {
         $this->period = $period;
+        return $this;
+    }
+
+    public function getSubperiod(): ?Subperiod
+    {
+        return $this->subperiod;
+    }
+
+    public function setSubperiod(?Subperiod $subperiod): SmallFind
+    {
+        if ($subperiod && !$this->period) {
+            $this->period = $subperiod->period;
+        }
+        $this->subperiod = $subperiod;
         return $this;
     }
 

@@ -120,6 +120,11 @@
                 <option name="default">0</option>
             </options>
         </field>
+        <field name="subperiodEMT0Count" type="smallint" column="subperiod_emt0_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
         <field name="subperiodEMT1Count" type="smallint" column="subperiod_emt1_count">
             <options>
                 <option name="default">0</option>
@@ -160,22 +165,12 @@
                 <option name="default">0</option>
             </options>
         </field>
-        <field name="subperiodLBACount" type="smallint" column="subperiod_lba_count">
-            <options>
-                <option name="default">0</option>
-            </options>
-        </field>
         <field name="subperiodLBA1Count" type="smallint" column="subperiod_lba1_count">
             <options>
                 <option name="default">0</option>
             </options>
         </field>
         <field name="subperiodLBA2Count" type="smallint" column="subperiod_lba2_count">
-            <options>
-                <option name="default">0</option>
-            </options>
-        </field>
-        <field name="subperiodIRACount" type="smallint" column="subperiod_ira_count">
             <options>
                 <option name="default">0</option>
             </options>

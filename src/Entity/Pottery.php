@@ -7,11 +7,11 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
+use App\Entity\Vocabulary\Decoration;
 use App\Entity\Vocabulary\Period;
 use App\Entity\Vocabulary\Pottery\BaseShape;
 use App\Entity\Vocabulary\Pottery\Body;
 use App\Entity\Vocabulary\Pottery\Colour;
-use App\Entity\Vocabulary\Decoration;
 use App\Entity\Vocabulary\Pottery\Fabric;
 use App\Entity\Vocabulary\Pottery\Firing;
 use App\Entity\Vocabulary\Pottery\Handle;
@@ -28,6 +28,7 @@ use App\Entity\Vocabulary\Pottery\SurfaceCharacteristic;
 use App\Entity\Vocabulary\Pottery\SurfaceTreatment;
 use App\Entity\Vocabulary\Pottery\VesselShape;
 use App\Entity\Vocabulary\Pottery\Ware;
+use App\Entity\Vocabulary\Subperiod;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -85,6 +86,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
         'stratigraphicUnit.site.code',
         'stratigraphicUnit.number',
         'number',
+        'period.code',
+        'subperiod.code',
         'ware.value',
         'fabric.value',
         'externalSurfaceColour.value',
@@ -117,7 +120,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 )]
 #[UniqueEntity(
     fields: ['stratigraphicUnit', 'number'],
-    message: 'pottery number {{ value }} already exists in this SU',
+    message: 'Pottery number {{ value }} already exists in this SU',
     errorPath: 'number',
 )]
 class Pottery
@@ -179,7 +182,13 @@ class Pottery
         'read:Pottery',
         'write:Pottery',
     ])]
-    private ?Period $period;
+    private ?Period $period = null;
+
+    #[Groups([
+        'read:Pottery',
+        'write:Pottery',
+    ])]
+    private ?Subperiod $subperiod;
 
     #[Groups([
         'read:Pottery',
@@ -393,6 +402,21 @@ class Pottery
     public function setPeriod(?Period $period): Pottery
     {
         $this->period = $period;
+
+        return $this;
+    }
+
+    public function getSubperiod(): ?Subperiod
+    {
+        return $this->subperiod;
+    }
+
+    public function setSubperiod(?Subperiod $subperiod): Pottery
+    {
+        if ($subperiod && !$this->period) {
+            $this->period = $subperiod->period;
+        }
+        $this->subperiod = $subperiod;
 
         return $this;
     }

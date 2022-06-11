@@ -37,6 +37,12 @@
         <many-to-one field="type" target-entity="App\Entity\Vocabulary\Object\Type">
             <join-column name="type_id" nullable="false"/>
         </many-to-one>
+        <many-to-one field="period" target-entity="App\Entity\Vocabulary\Period">
+            <join-column name="period_id"/>
+        </many-to-one>
+        <many-to-one field="subperiod" target-entity="App\Entity\Vocabulary\Subperiod">
+            <join-column name="subperiod_id" />
+        </many-to-one>
         <many-to-one field="preservation" target-entity="App\Entity\Vocabulary\Object\Preservation">
             <join-column name="preservation_id" nullable="false"/>
         </many-to-one>

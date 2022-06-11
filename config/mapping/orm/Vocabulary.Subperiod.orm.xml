@@ -5,7 +5,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="App\Entity\Vocabulary\Period" table="voc__period">
+    <entity name="App\Entity\Vocabulary\Subperiod" table="voc__subperiod">
         <unique-constraints>
             <unique-constraint columns="value" />
             <unique-constraint columns="code" />
@@ -16,6 +16,8 @@
         <field name="code"/>
         <field name="value"/>
         <field name="description" type="text" nullable="true"/>
-        <one-to-many field="subPeriods" target-entity="App\Entity\Vocabulary\Subperiod" mapped-by="period" />
+        <many-to-one field="period" target-entity="App\Entity\Vocabulary\Period" inversed-by="subPeriods">
+            <join-column name="period_id" nullable="false"/>
+        </many-to-one>
     </entity>
 </doctrine-mapping>

@@ -3,7 +3,6 @@
 namespace App\Entity\Vocabulary;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ApiResource(
@@ -15,7 +14,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
     ],
     routePrefix: 'vocabulary',
 )]
-class Period
+class Subperiod
 {
     #[Groups([
         'read:Area',
@@ -25,6 +24,14 @@ class Period
         'read:Grave',
     ])]
     private int $id;
+
+    #[Groups([
+        'read:Area',
+        'read:Pottery',
+        'read:SmallFind',
+        'read:SU',
+    ])]
+    public ?Period $period;
 
     #[Groups([
         'read:Area',
@@ -43,18 +50,11 @@ class Period
     ])]
     public string $value;
 
-    public iterable $subPeriods;
-
     #[Groups([
         'read:Area',
         'read:SU',
     ])]
     public ?string $description;
-
-    public function __construct()
-    {
-        $this->subPeriods = new ArrayCollection();
-    }
 
     public function getId(): int
     {
