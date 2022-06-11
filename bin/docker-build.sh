@@ -6,7 +6,7 @@ ENV_FILE=$("${ROOT_DIR}"/generate-tmp-env.sh)
 
 . "${ENV_FILE}"
 
-echo "${APP_ENV}"
+echo ENV="${APP_ENV}"
 
 if [ "${APP_ENV}" = "prod" ]; then ENV_OVERRIDE="prod"; else ENV_OVERRIDE="override"; fi
 

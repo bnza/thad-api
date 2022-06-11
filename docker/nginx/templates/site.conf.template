@@ -8,6 +8,10 @@ server {
 
     client_max_body_size 6M;
 
+    location /app/ {
+        alias /srv/client/;
+    }
+
     location /media/ {
         alias /srv/static/;
     }

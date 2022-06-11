@@ -27,7 +27,8 @@ services:
       - ${NGINX_SSL_PORT-4443}:443
     volumes:
       - .:/srv/api
-      - ${WWW_STATIC_DIR}:/srv/static
+      - ${WWW_STATIC_DIR}:/srv/static:ro
+      - ${WWW_CLIENT_DIR}:/srv/client:ro
       - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./docker/nginx/templates/:/etc/nginx/templates
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d
@@ -43,7 +44,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_DB: ${POSTGRES_DB:-thad}
     ports:
-      - ${POSTGRES_PORT}:5432
+      - ${POSTGRES_PORT:-5432}:5432
     restart: unless-stopped
     volumes:
       - ${POSTGRES_DATA_DIR}:/var/lib/postgresql/data:rw
