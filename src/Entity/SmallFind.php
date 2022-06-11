@@ -15,6 +15,7 @@ use App\Entity\Vocabulary\Object\Type;
 use App\Entity\Vocabulary\Period;
 use App\Entity\Vocabulary\PreservationState;
 use App\Entity\Vocabulary\Subperiod;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -295,6 +296,13 @@ class SmallFind
         'write:SmallFind',
     ])]
     private ?string $compiler;
+
+    public iterable $mediaObjects;
+
+    public function __construct()
+    {
+        $this->mediaObjects = new ArrayCollection();
+    }
 
     public function getId(): int
     {

@@ -20,5 +20,6 @@
         <field name="uploadDate" type="datetime_immutable"/>
         <one-to-many field="stratigraphicUnits" target-entity="App\Entity\M2M\MediaObjectSU" mapped-by="mediaObject" />
         <one-to-many field="potteries" target-entity="App\Entity\M2M\MediaObjectPottery" mapped-by="mediaObject" />
+        <one-to-many field="smallFinds" target-entity="App\Entity\M2M\MediaObjectSmallFind" mapped-by="mediaObject" />
     </entity>
 </doctrine-mapping>
