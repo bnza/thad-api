@@ -29,6 +29,7 @@ use App\Entity\Vocabulary\Pottery\SurfaceTreatment;
 use App\Entity\Vocabulary\Pottery\VesselShape;
 use App\Entity\Vocabulary\Pottery\Ware;
 use App\Entity\Vocabulary\Subperiod;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -321,6 +322,13 @@ class Pottery
         'write:Pottery',
     ])]
     private ?Preservation $preservation;
+
+    public iterable $mediaObjects;
+
+    public function __construct()
+    {
+        $this->mediaObjects = new ArrayCollection();
+    }
 
     public function getId(): int
     {
