@@ -24,6 +24,7 @@
         <field name="selectedForAnalysis" type="boolean"/>
         <field name="compiler" nullable="true"/>
         <field name="notes"  type="text" nullable="true"/>
+        <one-to-many field="mediaObjects" target-entity="App\Entity\M2M\MediaObjectEcofact" mapped-by="ecofact" />
         <many-to-one field="stratigraphicUnit" target-entity="SU" inversed-by="ecofacts">
             <join-column name="su_id" nullable="false"/>
         </many-to-one>

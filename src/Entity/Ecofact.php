@@ -9,6 +9,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
 use App\Entity\Vocabulary\Ecofact\Type;
 use App\Entity\Vocabulary\PreservationState;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -189,6 +190,13 @@ class Ecofact
         'write:Ecofact',
     ])]
     private bool $selectedForAnalysis = false;
+
+    public iterable $mediaObjects;
+
+    public function __construct()
+    {
+        $this->mediaObjects = new ArrayCollection();
+    }
 
     public function getId(): int
     {
