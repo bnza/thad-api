@@ -65,6 +65,7 @@ class MediaObject
 
     #[ApiProperty(iri: 'http://schema.org/contentUrl')]
     #[Groups([
+        'read:MediaSample',
         'read:MediaEcofact',
         'read:MediaSmallFind',
         'read:MediaPottery',
@@ -81,6 +82,7 @@ class MediaObject
     public string $sha256;
 
     #[Groups([
+        'read:MediaSample',
         'read:MediaEcofact',
         'read:MediaSmallFind',
         'read:MediaPottery',
@@ -98,6 +100,7 @@ class MediaObject
     public iterable $potteries;
     public iterable $smallFinds;
     public iterable $ecofacts;
+    public iterable $samples;
 
     #[Groups(['media_object:read'])]
     public \DateTimeImmutable $uploadDate;
@@ -108,6 +111,7 @@ class MediaObject
         $this->potteries = new ArrayCollection();
         $this->smallFinds = new ArrayCollection();
         $this->ecofacts = new ArrayCollection();
+        $this->samples = new ArrayCollection();
     }
 
     public function getId(): ?int

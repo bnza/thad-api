@@ -9,6 +9,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
 use App\Entity\Vocabulary\PreservationState;
 use App\Entity\Vocabulary\Sample\Type;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -203,6 +204,13 @@ class Sample
         'write:Sample',
     ])]
     public bool $contaminationRisk = false;
+
+    public iterable $mediaObjects;
+
+    public function __construct()
+    {
+        $this->mediaObjects = new ArrayCollection();
+    }
 
     public function getId(): int
     {
