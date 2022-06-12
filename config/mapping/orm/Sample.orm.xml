@@ -26,6 +26,7 @@
         <field name="notes"  type="text" nullable="true"/>
         <field name="exhaustive" type="boolean" nullable="true"/>
         <field name="contaminationRisk" type="boolean" />
+        <one-to-many field="mediaObjects" target-entity="App\Entity\M2M\MediaObjectSample" mapped-by="sample" />
         <many-to-one field="stratigraphicUnit" target-entity="SU" inversed-by="ecofacts">
             <join-column name="su_id" nullable="false"/>
         </many-to-one>
