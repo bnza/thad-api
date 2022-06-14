@@ -40,6 +40,7 @@ class Period
         'read:Pottery',
         'read:SmallFind',
         'read:SU',
+        'read:Grave',
     ])]
     public string $value;
 

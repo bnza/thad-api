@@ -118,6 +118,7 @@ class Site
         'read:Site',
         'read:SU',
         'write:Site',
+        'read:Grave',
         'read:Pottery',
     ])]
     #[Assert\NotBlank]

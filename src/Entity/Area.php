@@ -119,6 +119,7 @@ class Area
         'read:Area',
         'read:Ecofact',
         'read:SmallFind',
+        'read:Grave',
         'read:Site',
         'read:SU',
         'write:Area',
@@ -140,6 +141,7 @@ class Area
         'export',
         'read:Area',
         'write:Area',
+        'read:Grave',
     ])]
     #[Assert\NotNull]
     private Site $site;

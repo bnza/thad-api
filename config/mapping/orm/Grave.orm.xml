@@ -23,6 +23,9 @@
         <field name="summary" type="text" nullable="true"/>
         <field name="areaSupervisor" column="area_supervisor" nullable="true"/>
         <field name="compiler" nullable="true"/>
+        <field name="building"  type="smallint" nullable="true"/>
+        <field name="room" length="3" nullable="true"/>
+        <field name="phase"  type="smallint" nullable="true"/>
         <many-to-one field="site" target-entity="Site" inversed-by="graves">
             <join-column name="site_id" nullable="false"/>
         </many-to-one>

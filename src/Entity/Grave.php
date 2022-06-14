@@ -205,6 +205,24 @@ class Grave
     #[Assert\NotNull]
     public \DateTimeImmutable $date;
 
+    #[Groups([
+        'write:Grave',
+        'read:Grave',
+    ])]
+    public ?int $building;
+
+    #[Groups([
+        'write:Grave',
+        'read:Grave',
+    ])]
+    private ?string $room;
+
+    #[Groups([
+        'write:Grave',
+        'read:Grave',
+    ])]
+    public ?int $phase;
+
     public function __construct()
     {
         $this->stratigraphicUnits = new ArrayCollection();
@@ -230,6 +248,17 @@ class Grave
         $this->area = $area;
         $this->site = $area->getSite();
 
+        return $this;
+    }
+
+    public function getRoom(): ?string
+    {
+        return $this->room;
+    }
+
+    public function setRoom(?string $room): Grave
+    {
+        $this->room = $room ? strtolower($room) : $room;
         return $this;
     }
 }

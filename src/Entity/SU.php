@@ -307,6 +307,24 @@ class SU
     ])]
     public ?Grave $grave;
 
+    #[Groups([
+        'read:SU',
+        'write:SU',
+    ])]
+    public ?int $building;
+
+    #[Groups([
+        'read:SU',
+        'write:SU',
+    ])]
+    private ?string $room;
+
+    #[Groups([
+        'read:SU',
+        'write:SU',
+    ])]
+    public ?int $phase;
+
     private iterable $relations;
 
     private iterable $inverseRelations;
@@ -635,6 +653,17 @@ class SU
     {
         $this->inverseSequences = $inverseSequences;
 
+        return $this;
+    }
+
+    public function getRoom(): ?string
+    {
+        return $this->room;
+    }
+
+    public function setRoom(?string $room): SU
+    {
+        $this->room = $room ? strtolower($room) : $room;
         return $this;
     }
 
