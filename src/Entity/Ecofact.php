@@ -26,8 +26,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
             'formats' => [
                 'csv' => ['text/csv'],
             ],
-            'groups' => [
-                'export',
+            'normalization_context' => [
+                'groups' => [
+                    'export:Ecofact',
+                ],
             ],
             'security' => 'is_granted("ROLE_USER")',
         ],
@@ -96,12 +98,14 @@ class Ecofact
     private int $id;
 
     #[Groups([
+        'export:Ecofact',
         'read:Ecofact',
         'write:Ecofact',
     ])]
     private SU $stratigraphicUnit;
 
     #[Groups([
+        'export:Ecofact',
         'read:Ecofact',
         'write:Ecofact',
     ])]
@@ -114,18 +118,21 @@ class Ecofact
     private ?PreservationState $preservationState;
 
     #[Groups([
+        'export:Ecofact',
         'read:Ecofact',
         'write:Ecofact',
     ])]
     private int $number;
 
     #[Groups([
+        'export:Ecofact',
         'read:Ecofact',
         'write:Ecofact',
     ])]
     private \DateTimeImmutable $date;
 
     #[Groups([
+        'export:Ecofact',
         'read:Ecofact',
         'write:Ecofact',
     ])]
@@ -138,54 +145,63 @@ class Ecofact
     private ?string $notes;
 
     #[Groups([
+        'export:Ecofact',
         'read:Ecofact',
         'write:Ecofact',
     ])]
     private ?float $height;
 
     #[Groups([
+        'export:Ecofact',
         'read:Ecofact',
         'write:Ecofact',
     ])]
     private ?float $width;
 
     #[Groups([
+        'export:Ecofact',
         'read:Ecofact',
         'write:Ecofact',
     ])]
     private ?float $length;
 
     #[Groups([
+        'export:Ecofact',
         'read:Ecofact',
         'write:Ecofact',
     ])]
     private ?float $thickness;
 
     #[Groups([
+        'export:Ecofact',
         'read:Ecofact',
         'write:Ecofact',
     ])]
     private ?float $minDiameter;
 
     #[Groups([
+        'export:Ecofact',
         'read:Ecofact',
         'write:Ecofact',
     ])]
     private ?float $maxDiameter;
 
     #[Groups([
+        'export:Ecofact',
         'read:Ecofact',
         'write:Ecofact',
     ])]
     private ?float $weight;
 
     #[Groups([
+        'export:Ecofact',
         'read:Ecofact',
         'write:Ecofact',
     ])]
     private ?string $compiler;
 
     #[Groups([
+        'export:Ecofact',
         'read:Ecofact',
         'write:Ecofact',
     ])]
@@ -196,6 +212,22 @@ class Ecofact
     public function __construct()
     {
         $this->mediaObjects = new ArrayCollection();
+    }
+
+    #[Groups([
+        'export:Ecofact',
+    ])]
+    public function getAppId(): ?string
+    {
+        if (!$this->stratigraphicUnit
+            || !$this->number) {
+            return null;
+        }
+
+        return sprintf(
+            '%s.E.%d',
+            $this->stratigraphicUnit->getBaseId(), $this->number
+        );
     }
 
     public function getId(): int

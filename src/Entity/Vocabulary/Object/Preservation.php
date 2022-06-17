@@ -22,6 +22,7 @@ class Preservation
     private string $id;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
     ])]
     private string $value;

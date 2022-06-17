@@ -32,8 +32,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
             'formats' => [
                 'csv' => ['text/csv'],
             ],
-            'groups' => [
-                'export',
+            'normalization_context' => [
+                'groups' => [
+                    'export:SmallFind',
+                ],
             ],
             'security' => 'is_granted("ROLE_USER")',
         ],
@@ -136,162 +138,189 @@ class SmallFind
     private int $id;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private SU $stratigraphicUnit;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private Type $type;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private Material $material;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private ?Colour $externalSurfaceColour;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private ?Colour $internalSurfaceColour;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private ?Colour $fractureColour;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private ?Period $period = null;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private ?Subperiod $subperiod;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private Preservation $preservation;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private ?PreservationState $preservationState;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private ?Decoration $decoration;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private int $number;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private \DateTimeImmutable $date;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private ?string $description;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private ?string $notes;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private ?string $summary;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private ?float $height;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private ?float $width;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private ?float $minWidth;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private ?float $maxWidth;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private ?float $length;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private ?float $thickness;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private ?float $minDiameter;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private ?float $maxDiameter;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private ?float $baseDiameter;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
     private ?float $weight;
 
     #[Groups([
+        'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
@@ -302,6 +331,22 @@ class SmallFind
     public function __construct()
     {
         $this->mediaObjects = new ArrayCollection();
+    }
+
+    #[Groups([
+        'export:SmallFind',
+    ])]
+    public function getAppId(): ?string
+    {
+        if (!$this->stratigraphicUnit
+            || !$this->number) {
+            return null;
+        }
+
+        return sprintf(
+            '%s.O.%d',
+            $this->stratigraphicUnit->getBaseId(), $this->number
+        );
     }
 
     public function getId(): int

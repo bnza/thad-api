@@ -23,6 +23,7 @@ class Type
     private string $id;
 
     #[Groups([
+        'export:Sample',
         'read:Sample',
     ])]
     private string $value;

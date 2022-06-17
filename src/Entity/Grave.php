@@ -228,6 +228,20 @@ class Grave
         $this->stratigraphicUnits = new ArrayCollection();
     }
 
+    #[Groups([
+        'export:SU',
+        'read:SU',
+    ])]
+    public function getAppId(): ?string
+    {
+        if (!$this->site
+            || !$this->year
+            || !$this->number) {
+            return null;
+        }
+        return sprintf("%s.%d.G.%'.05d", $this->site->getCode(), substr($this->year, 2), $this->number);
+    }
+
     public function getId(): int
     {
         return $this->id;

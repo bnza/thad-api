@@ -23,6 +23,7 @@ class Type
     private string $id;
 
     #[Groups([
+        'export:Ecofact',
         'read:Ecofact',
     ])]
     private string $value;

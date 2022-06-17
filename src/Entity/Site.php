@@ -26,8 +26,10 @@ use Symfony\Component\Validator\Constraints as Assert;
             'formats' => [
                 'csv' => ['text/csv'],
             ],
-            'groups' => [
-                'export',
+            'normalizationContext' => [
+                'groups' => [
+                    'export:Site',
+                ],
             ],
             'security' => 'is_granted("ROLE_USER")',
         ],
@@ -95,7 +97,12 @@ class Site
     private int $id;
 
     #[Groups([
-        'export',
+        'export:ViewCumulativePotterySheet',
+        'export:SmallFind',
+        'export:Ecofact',
+        'export:Sample',
+        'export:Pottery',
+        'export:SU',
         'read:Area',
         'read:Ecofact',
         'read:Sample',
@@ -111,7 +118,12 @@ class Site
     private string $code;
 
     #[Groups([
-        'export',
+        'export:ViewCumulativePotterySheet',
+        'export:SmallFind',
+        'export:Ecofact',
+        'export:Sample',
+        'export:Pottery',
+        'export:SU',
         'read:Area',
         'read:Ecofact',
         'read:SmallFind',

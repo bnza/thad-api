@@ -24,7 +24,7 @@ class Type
     private int $id;
 
     #[Groups([
-        'export',
+        'export:SU',
         'read:Area',
         'read:SU',
     ])]

@@ -22,6 +22,8 @@ class Decoration
     private string $id;
 
     #[Groups([
+        'export:SmallFind',
+        'export:Pottery',
         'read:Pottery',
         'read:SmallFind',
     ])]

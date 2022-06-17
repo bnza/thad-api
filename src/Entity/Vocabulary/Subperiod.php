@@ -43,6 +43,8 @@ class Subperiod
     public string $code;
 
     #[Groups([
+        'export:SmallFind',
+        'export:Pottery',
         'read:Area',
         'read:Pottery',
         'read:SmallFind',

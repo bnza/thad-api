@@ -46,8 +46,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
             'formats' => [
                 'csv' => ['text/csv'],
             ],
-            'groups' => [
-                'export',
+            'normalization_context' => [
+                'groups' => [
+                    'export:Pottery',
+                ],
             ],
             'security' => 'is_granted("ROLE_USER")',
         ],
@@ -134,190 +136,222 @@ class Pottery
     #[Groups([
         'read:Pottery',
         'write:Pottery',
+        'export:Pottery',
     ])]
     private SU $stratigraphicUnit;
 
     #[Groups([
         'read:Pottery',
         'write:Pottery',
+        'export:Pottery',
     ])]
     private int $number;
 
     #[Groups([
         'read:Pottery',
         'write:Pottery',
+        'export:Pottery',
     ])]
     private \DateTimeImmutable $date;
 
     #[Groups([
         'read:Pottery',
         'write:Pottery',
+        'export:Pottery',
     ])]
     private ?float $thickness;
 
     #[Groups([
         'read:Pottery',
         'write:Pottery',
+        'export:Pottery',
     ])]
     private ?float $rimDiameter;
 
     #[Groups([
         'read:Pottery',
         'write:Pottery',
+        'export:Pottery',
     ])]
     private ?float $baseDiameter;
 
     #[Groups([
         'read:Pottery',
         'write:Pottery',
+        'export:Pottery',
     ])]
     private ?string $compiler;
 
     #[Groups([
         'read:Pottery',
         'write:Pottery',
+        'export:Pottery',
     ])]
     private ?string $notes;
 
     #[Groups([
         'read:Pottery',
         'write:Pottery',
+        'export:Pottery',
     ])]
     private ?Period $period = null;
 
     #[Groups([
         'read:Pottery',
         'write:Pottery',
+        'export:Pottery',
     ])]
     private ?Subperiod $subperiod;
 
     #[Groups([
         'read:Pottery',
         'write:Pottery',
+        'export:Pottery',
     ])]
     private ?Colour $externalSurfaceColour;
 
     #[Groups([
         'read:Pottery',
         'write:Pottery',
+        'export:Pottery',
     ])]
     private ?Colour $internalSurfaceColour;
 
     #[Groups([
         'read:Pottery',
         'write:Pottery',
+        'export:Pottery',
     ])]
     private ?Colour $fractureColour;
 
     #[Groups([
+        'export:Pottery',
         'read:Pottery',
         'write:Pottery',
     ])]
     private ?Ware $ware;
 
     #[Groups([
+        'export:Pottery',
         'read:Pottery',
         'write:Pottery',
     ])]
     private ?Fabric $fabric;
 
     #[Groups([
+        'export:Pottery',
         'read:Pottery',
         'write:Pottery',
     ])]
     private ?SurfaceCharacteristic $surfaceCharacteristic;
 
     #[Groups([
+        'export:Pottery',
         'read:Pottery',
         'write:Pottery',
     ])]
     private ?SurfaceTreatment $surfaceTreatment;
 
     #[Groups([
+        'export:Pottery',
         'read:Pottery',
         'write:Pottery',
     ])]
     private ?ManufacturingTechnique $manufacturingTechnique;
 
     #[Groups([
+        'export:Pottery',
         'read:Pottery',
         'write:Pottery',
     ])]
     private ?Firing $firing;
 
     #[Groups([
+        'export:Pottery',
         'read:Pottery',
         'write:Pottery',
     ])]
     private ?Decoration $decoration;
 
     #[Groups([
+        'export:Pottery',
         'read:Pottery',
         'write:Pottery',
     ])]
     private ?VesselShape $vesselShape;
 
     #[Groups([
+        'export:Pottery',
         'read:Pottery',
         'write:Pottery',
     ])]
     private ?RimShape $rimShape;
 
     #[Groups([
+        'export:Pottery',
         'read:Pottery',
         'write:Pottery',
     ])]
     private ?RimDirection $rimDirection;
 
     #[Groups([
+        'export:Pottery',
         'read:Pottery',
         'write:Pottery',
     ])]
     private ?RimCharacterization $rimCharacterization;
 
     #[Groups([
+        'export:Pottery',
         'read:Pottery',
         'write:Pottery',
     ])]
     private ?Neck $neck;
 
     #[Groups([
+        'export:Pottery',
         'read:Pottery',
         'write:Pottery',
     ])]
     private ?NeckLength $neckLength;
 
     #[Groups([
+        'export:Pottery',
         'read:Pottery',
         'write:Pottery',
     ])]
     private ?Body $body;
 
     #[Groups([
+        'export:Pottery',
         'read:Pottery',
         'write:Pottery',
     ])]
     private ?Spout $spout;
 
     #[Groups([
+        'export:Pottery',
         'read:Pottery',
         'write:Pottery',
     ])]
     private ?Handle $handle;
 
     #[Groups([
+        'export:Pottery',
         'read:Pottery',
         'write:Pottery',
     ])]
     private ?BaseShape $baseShape;
 
     #[Groups([
+        'export:Pottery',
         'read:Pottery',
         'write:Pottery',
     ])]
     private ?SizeGroup $sizeGroup;
 
     #[Groups([
+        'export:Pottery',
         'read:Pottery',
         'write:Pottery',
     ])]
@@ -328,6 +362,22 @@ class Pottery
     public function __construct()
     {
         $this->mediaObjects = new ArrayCollection();
+    }
+
+    #[Groups([
+        'export:Pottery',
+    ])]
+    public function getAppId(): ?string
+    {
+        if (!$this->stratigraphicUnit
+            || !$this->number) {
+            return null;
+        }
+
+        return sprintf(
+            '%s.P.%d',
+            $this->stratigraphicUnit->getBaseId(), $this->number
+        );
     }
 
     public function getId(): int

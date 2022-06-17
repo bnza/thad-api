@@ -34,8 +34,10 @@ use Symfony\Component\Validator\Constraints as Assert;
             'formats' => [
                 'csv' => ['text/csv'],
             ],
-            'groups' => [
-                'export',
+            'normalization_context' => [
+                'groups' => [
+                    'export:SU',
+                ],
             ],
             'security' => 'is_granted("ROLE_USER")',
         ],
@@ -78,6 +80,9 @@ use Symfony\Component\Validator\Constraints as Assert;
         'preservation.code' => 'exact',
         'type.value' => 'exact',
         'grave.id' => 'exact',
+        'building' => 'exact',
+        'room' => 'exact',
+        'phase' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -118,6 +123,12 @@ use Symfony\Component\Validator\Constraints as Assert;
         'summary',
         'topElevation',
         'type.value',
+        'period.value',
+        'subperiod.value',
+        'grave.number',
+        'building',
+        'room',
+        'phase',
     ]
 )]
 #[UniqueEntity(
@@ -143,7 +154,7 @@ class SU
     private int $id;
 
     #[Groups([
-        'export',
+        'export:SU',
         'read:Area',
         'read:Ecofact',
         'read:Sample',
@@ -161,7 +172,12 @@ class SU
     private int $number;
 
     #[Groups([
-        'export',
+        'export:ViewCumulativePotterySheet',
+        'export:SmallFind',
+        'export:Ecofact',
+        'export:Sample',
+        'export:Pottery',
+        'export:SU',
         'read:SU',
         'write:SU',
         'read:Ecofact',
@@ -174,7 +190,7 @@ class SU
     private Site $site;
 
     #[Groups([
-        'export',
+        'export:SU',
         'read:SU',
         'write:SU',
         'read:Ecofact',
@@ -193,7 +209,12 @@ class SU
     private int $year;
 
     #[Groups([
-        'export',
+        'export:ViewCumulativePotterySheet',
+        'export:SmallFind',
+        'export:Ecofact',
+        'export:Sample',
+        'export:Pottery',
+        'export:SU',
         'read:SU',
         'write:SU',
         'read:Ecofact',
@@ -208,14 +229,14 @@ class SU
     private GeomSU $geom;
 
     #[Groups([
-        'export',
+        'export:SU',
         'read:SU',
         'write:SU',
     ])]
     private ?Period $period;
 
     #[Groups([
-        'export',
+        'export:SU',
         'read:SU',
         'write:SU',
         'read:Pottery',
@@ -224,7 +245,7 @@ class SU
     private \DateTimeImmutable $date;
 
     #[Groups([
-        'export',
+        'export:SU',
         'read:Area',
         'read:SU',
         'write:SU',
@@ -232,7 +253,7 @@ class SU
     private ?string $description;
 
     #[Groups([
-        'export',
+        'export:SU',
         'read:Area',
         'read:SU',
         'write:SU',
@@ -240,7 +261,7 @@ class SU
     private ?string $interpretation;
 
     #[Groups([
-        'export',
+        'export:SU',
         'read:Area',
         'read:SU',
         'write:SU',
@@ -248,7 +269,7 @@ class SU
     private ?string $summary;
 
     #[Groups([
-        'export',
+        'export:SU',
         'read:Area',
         'read:SU',
         'write:SU',
@@ -257,7 +278,7 @@ class SU
     private Type $type;
 
     #[Groups([
-        'export',
+        'export:SU',
         'read:Area',
         'read:SU',
         'write:SU',
@@ -265,7 +286,7 @@ class SU
     private ?PreservationState $preservationState;
 
     #[Groups([
-        'export',
+        'export:SU',
         'read:Area',
         'read:SU',
         'write:SU',
@@ -273,7 +294,7 @@ class SU
     private ?float $topElevation;
 
     #[Groups([
-        'export',
+        'export:SU',
         'read:Area',
         'read:SU',
         'write:SU',
@@ -281,7 +302,7 @@ class SU
     private ?float $bottomElevation;
 
     #[Groups([
-        'export',
+        'export:SU',
         'read:Area',
         'read:SU',
         'write:SU',
@@ -289,7 +310,7 @@ class SU
     private ?string $compiler;
 
     #[Groups([
-        'export',
+        'export:SU',
         'read:Area',
         'read:SU',
         'write:SU',
@@ -302,24 +323,28 @@ class SU
     public ?ViewCumulativePotterySheet $cumulativePotterySheet;
 
     #[Groups([
+        'export:SU',
         'read:SU',
         'write:SU',
     ])]
     public ?Grave $grave;
 
     #[Groups([
+        'export:SU',
         'read:SU',
         'write:SU',
     ])]
     public ?int $building;
 
     #[Groups([
+        'export:SU',
         'read:SU',
         'write:SU',
     ])]
     private ?string $room;
 
     #[Groups([
+        'export:SU',
         'read:SU',
         'write:SU',
     ])]
@@ -351,6 +376,39 @@ class SU
         $this->ecofacts = new ArrayCollection();
         $this->smallFinds = new ArrayCollection();
         $this->mediaObjects = new ArrayCollection();
+    }
+
+    #[Groups([
+        'export:SU',
+        'export:Pottery',
+        'export:Sample',
+        'export:Ecofact',
+        'export:SmallFind',
+        'export:ViewCumulativePotterySheet',
+        'read:Sample',
+        'read:Pottery',
+        'read:Ecofact',
+        'read:SmallFind',
+        'read:ViewCumulativePotterySheet',
+    ])]
+    public function getAppId(): ?string
+    {
+        if (!$this->site
+        || !$this->year
+        || !$this->number) {
+            return null;
+        }
+        return sprintf("%s.%d.SU.%'.05d", $this->site->getCode(), substr($this->year, 2), $this->number);
+    }
+
+    public function getBaseId(): ?string
+    {
+        if (!$this->site
+            || !$this->year
+            || !$this->number) {
+            return null;
+        }
+        return sprintf("%s.%d.%'.05d", $this->site->getCode(), substr($this->year, 2), $this->number);
     }
 
     public function getId(): int

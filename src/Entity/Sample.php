@@ -22,12 +22,14 @@ use Symfony\Component\Serializer\Annotation\Groups;
         'export' => [
             'controller' => ResourceExportController::class,
             'method' => 'GET',
-            'path' => '/sample/export',
+            'path' => '/samples/export',
             'formats' => [
                 'csv' => ['text/csv'],
             ],
-            'groups' => [
-                'export',
+            'normalization_context' => [
+                'groups' => [
+                    'export:Sample',
+                ],
             ],
             'security' => 'is_granted("ROLE_USER")',
         ],
@@ -98,108 +100,126 @@ class Sample
     private int $id;
 
     #[Groups([
+        'export:Sample',
         'read:Sample',
         'write:Sample',
     ])]
     private SU $stratigraphicUnit;
 
     #[Groups([
+        'export:Sample',
         'read:Sample',
         'write:Sample',
     ])]
     private Type $type;
 
     #[Groups([
+        'export:Sample',
         'read:Sample',
         'write:Sample',
     ])]
     private ?PreservationState $preservationState;
 
     #[Groups([
+        'export:Sample',
         'read:Sample',
         'write:Sample',
     ])]
     private int $number;
 
     #[Groups([
+        'export:Sample',
         'read:Sample',
         'write:Sample',
     ])]
     private \DateTimeImmutable $date;
 
     #[Groups([
+        'export:Sample',
         'read:Sample',
         'write:Sample',
     ])]
     private int $quantity = 1;
 
     #[Groups([
+        'export:Sample',
         'read:Sample',
         'write:Sample',
     ])]
     private ?string $notes;
 
     #[Groups([
+        'export:Sample',
         'read:Sample',
         'write:Sample',
     ])]
     private ?float $height;
 
     #[Groups([
+        'export:Sample',
         'read:Sample',
         'write:Sample',
     ])]
     private ?float $width;
 
     #[Groups([
+        'export:Sample',
         'read:Sample',
         'write:Sample',
     ])]
     private ?float $length;
 
     #[Groups([
+        'export:Sample',
         'read:Sample',
         'write:Sample',
     ])]
     private ?float $thickness;
 
     #[Groups([
+        'export:Sample',
         'read:Sample',
         'write:Sample',
     ])]
     private ?float $minDiameter;
 
     #[Groups([
+        'export:Sample',
         'read:Sample',
         'write:Sample',
     ])]
     private ?float $maxDiameter;
 
     #[Groups([
+        'export:Sample',
         'read:Sample',
         'write:Sample',
     ])]
     private ?float $weight;
 
     #[Groups([
+        'export:Sample',
         'read:Sample',
         'write:Sample',
     ])]
     private ?string $compiler;
 
     #[Groups([
+        'export:Sample',
         'read:Sample',
         'write:Sample',
     ])]
     private bool $selectedForAnalysis = false;
 
     #[Groups([
+        'export:Sample',
         'read:Sample',
         'write:Sample',
     ])]
     public ?bool $exhaustive = null;
 
     #[Groups([
+        'export:Sample',
         'read:Sample',
         'write:Sample',
     ])]
@@ -210,6 +230,22 @@ class Sample
     public function __construct()
     {
         $this->mediaObjects = new ArrayCollection();
+    }
+
+    #[Groups([
+        'export:Sample',
+    ])]
+    public function getAppId(): ?string
+    {
+        if (!$this->stratigraphicUnit
+            || !$this->number) {
+            return null;
+        }
+
+        return sprintf(
+            '%s.S.%d',
+            $this->stratigraphicUnit->getBaseId(), $this->number
+        );
     }
 
     public function getId(): int

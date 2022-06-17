@@ -21,6 +21,7 @@ class SizeGroup
     private string $id;
 
     #[Groups([
+        'export:Pottery',
         'read:Pottery',
     ])]
     private string $value;

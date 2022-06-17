@@ -85,7 +85,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Area
 {
     #[Groups([
-        'export',
         'read:Grave',
         'read:Area',
         'read:Ecofact',
@@ -99,7 +98,12 @@ class Area
     private int $id;
 
     #[Groups([
-        'export',
+        'export:ViewCumulativePotterySheet',
+        'export:SmallFind',
+        'export:Ecofact',
+        'export:Sample',
+        'export:Pottery',
+        'export:SU',
         'read:Area',
         'read:Grave',
         'read:Ecofact',
@@ -115,7 +119,6 @@ class Area
     private string $code;
 
     #[Groups([
-        'export',
         'read:Area',
         'read:Ecofact',
         'read:SmallFind',
@@ -129,7 +132,6 @@ class Area
     private string $name;
 
     #[Groups([
-        'export',
         'read:Area',
         'read:Site',
         'read:SU',
@@ -138,7 +140,6 @@ class Area
     private ?string $description;
 
     #[Groups([
-        'export',
         'read:Area',
         'write:Area',
         'read:Grave',
