@@ -1,5 +1,5 @@
 api_platform:
-    title: 'Tell Hatarah Database API'
+    title: 'LoNAP excavation database API'
     version: '0.1'
     show_webby: false
     mapping:
