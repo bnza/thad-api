@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Entity\MediaObject;
@@ -13,14 +14,15 @@ final class CreateMediaObjectAction extends AbstractController
     public function __invoke(Request $request): MediaObject
     {
         $uploadedFile = $request->files->get('file');
-        if (!$uploadedFile) {
-            throw new BadRequestHttpException('"file" is required');
+        if (!$uploadedFile || false === $uploadedFile->getSize()) {
+            throw new BadRequestHttpException('Upload failed: please check uploaded file size. Max 10M allowed');
         }
 
         $mediaObject = new MediaObject();
         $mediaObject->file = $uploadedFile;
         $mediaObject->sha256 = hash_file('sha256', $uploadedFile);
         $mediaObject->uploadDate = new \DateTimeImmutable();
+
         return $mediaObject;
     }
 }

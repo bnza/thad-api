@@ -6,7 +6,7 @@ server {
     root /srv/api/public;
     index index.php index.html index.htm;
 
-    client_max_body_size 6M;
+    client_max_body_size 10M;
 
     location /app/ {
         alias /srv/client/;
