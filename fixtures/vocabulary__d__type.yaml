@@ -1,0 +1,9 @@
+App\Entity\Vocabulary\Document\Type:
+  voc__d__type_1:
+    value: matrix
+  voc__d__type_2:
+    value: plan
+  voc__d__type_3:
+    value: section
+  voc__d__type_4:
+    value: sketch

@@ -65,6 +65,8 @@ class MediaObject
 
     #[ApiProperty(iri: 'http://schema.org/contentUrl')]
     #[Groups([
+        'read:Document',
+        'read:MediaGrave',
         'read:MediaSample',
         'read:MediaEcofact',
         'read:MediaSmallFind',
@@ -82,6 +84,8 @@ class MediaObject
     public string $sha256;
 
     #[Groups([
+        'read:Document',
+        'read:MediaGrave',
         'read:MediaSample',
         'read:MediaEcofact',
         'read:MediaSmallFind',
@@ -96,11 +100,14 @@ class MediaObject
 
     private ?int $height = null;
 
-    private iterable $stratigraphicUnits;
+    public ?Document $document;
+
+    public iterable $stratigraphicUnits;
     public iterable $potteries;
     public iterable $smallFinds;
     public iterable $ecofacts;
     public iterable $samples;
+    public iterable $graves;
 
     #[Groups(['media_object:read'])]
     public \DateTimeImmutable $uploadDate;
@@ -112,6 +119,7 @@ class MediaObject
         $this->smallFinds = new ArrayCollection();
         $this->ecofacts = new ArrayCollection();
         $this->samples = new ArrayCollection();
+        $this->graves = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -119,6 +127,15 @@ class MediaObject
         return $this->id;
     }
 
+    #[Groups([
+        'read:Document',
+        'read:MediaGrave',
+        'read:MediaSample',
+        'read:MediaEcofact',
+        'read:MediaSmallFind',
+        'read:MediaPottery',
+        'read:MediaSU',
+    ])]
     public function getDimensions(): ?array
     {
         return $this->width ? [$this->width, $this->height] : null;
@@ -128,18 +145,6 @@ class MediaObject
     {
         $this->width = $dimensions[0];
         $this->height = $dimensions[1];
-
-        return $this;
-    }
-
-    public function getStratigraphicUnits(): ArrayCollection
-    {
-        return $this->stratigraphicUnits;
-    }
-
-    public function setStratigraphicUnits(ArrayCollection $stratigraphicUnits): MediaObject
-    {
-        $this->stratigraphicUnits = $stratigraphicUnits;
 
         return $this;
     }

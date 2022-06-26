@@ -85,6 +85,7 @@ class Site
 {
     #[Groups([
         'read:Area',
+        'read:Document',
         'read:Ecofact',
         'read:Sample',
         'read:SmallFind',
@@ -98,6 +99,7 @@ class Site
 
     #[Groups([
         'export:ViewCumulativePotterySheet',
+        'read:Document',
         'export:SmallFind',
         'export:Ecofact',
         'export:Sample',
@@ -125,6 +127,7 @@ class Site
         'export:Pottery',
         'export:SU',
         'read:Area',
+        'read:Document',
         'read:Ecofact',
         'read:SmallFind',
         'read:Site',

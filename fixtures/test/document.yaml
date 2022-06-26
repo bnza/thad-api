@@ -1,0 +1,41 @@
+App\Entity\Document:
+  document_TH_1:
+    mediaObject: '@media_object_1'
+    area: '@area_TH_A'
+    number: 1
+    year: 2022
+    type: '@voc__d__type_2'
+    creator: 'The Creator'
+    areaSupervisor: 'Some Supervisor'
+    date: <createImmutableDate('2022-06-25')>
+    description: 'The first document description'
+    interpretation: 'The first document long interpretation'
+    summary: 'A short summary of the first document'
+  document_TH_2:
+    mediaObject: '@media_object_3'
+    area: '@area_TH_A'
+    number: 2
+    year: 2022
+    type: '@voc__d__type_1'
+    buildings: [1,5]
+    rooms: ['a','x']
+    creator: 'The Creator'
+    areaSupervisor: 'Some Supervisor'
+    date: <createImmutableDate('2022-06-25')>
+    description: 'The second document description'
+    interpretation: 'The second document long interpretation'
+    summary: 'A short summary of the second document'
+  document_TH_3:
+    mediaObject: '@media_object_2'
+    area: '@area_TH_A'
+    number: 3
+    year: 2022
+    type: '@voc__d__type_4'
+    buildings: [ 2,4 ]
+    rooms: [ 'b','c','w' ]
+    creator: 'Another Creator'
+    areaSupervisor: 'The Supervisor'
+    date: <createImmutableDate('2022-06-25')>
+    description: 'The third document description'
+    interpretation: 'The third document long interpretation'
+    summary: 'A short summary of the third document'

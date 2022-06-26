@@ -223,9 +223,12 @@ class Grave
     ])]
     public ?int $phase;
 
+    public iterable $mediaObjects;
+
     public function __construct()
     {
         $this->stratigraphicUnits = new ArrayCollection();
+        $this->mediaObjects = new ArrayCollection();
     }
 
     #[Groups([

@@ -38,6 +38,7 @@
         <one-to-one field="skeletonStratigraphicUnit" target-entity="SU" />
         <one-to-one field="earlierThan" target-entity="SU" />
         <one-to-one field="laterThan" target-entity="SU" />
+        <one-to-many field="mediaObjects" target-entity="App\Entity\M2M\MediaObjectGrave" mapped-by="grave" />
         <many-to-one field="period" target-entity="App\Entity\Vocabulary\Period">
             <join-column name="period_id" />
         </many-to-one>

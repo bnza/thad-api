@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Entity\Document" table="document">
+        <id name="id" type="integer" />
+        <one-to-one field="mediaObject" target-entity="App\Entity\MediaObject" inversed-by="document">
+            <join-column name="media_object_id" />
+        </one-to-one>
+        <field name="number" type="smallint"/>
+        <field name="year" type="integer"/>
+        <field name="date" type="date_immutable"/>
+        <field name="description" type="text" />
+        <field name="interpretation"  type="text" />
+        <field name="summary" type="text" nullable="true"/>
+        <field name="areaSupervisor" column="area_supervisor" nullable="true"/>
+        <field name="creator" />
+        <field name="buildings" type="simple_array" nullable="true"/>
+        <field name="rooms" type="simple_array" nullable="true" />
+        <many-to-one field="site" target-entity="Site" inversed-by="graves">
+            <join-column name="site_id" nullable="false"/>
+        </many-to-one>
+        <many-to-one field="area" target-entity="Area" inversed-by="graves">
+            <join-column name="area_id" nullable="false"/>
+        </many-to-one>
+        <many-to-one field="type" target-entity="App\Entity\Vocabulary\Document\Type">
+            <join-column name="type_id" nullable="false"/>
+        </many-to-one>
+        <unique-constraints>
+            <unique-constraint columns="site_id,number" />
+            <unique-constraint columns="media_object_id" />
+        </unique-constraints>
+        <lifecycle-callbacks>
+            <lifecycle-callback type="prePersist" method="ensureId"/>
+        </lifecycle-callbacks>
+    </entity>
+</doctrine-mapping>
