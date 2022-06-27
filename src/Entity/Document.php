@@ -158,11 +158,20 @@ class Document
         'write:Document',
         'read:Document',
     ])]
+    #[Assert\All([
+        new Assert\NotBlank(),
+        new Assert\Positive(),
+    ])]
     public array $buildings = [];
 
     #[Groups([
         'write:Document',
         'read:Document',
+    ])]
+    #[Assert\All([
+        new Assert\NotBlank(),
+        new Assert\Length(max: 3),
+        new Assert\Regex('/^[a-z]*$/'),
     ])]
     public array $rooms = [];
 
@@ -212,6 +221,7 @@ class Document
     public function setMediaObject(MediaObject $mediaObject): Document
     {
         $this->mediaObject = $mediaObject;
+
         return $this;
     }
 
