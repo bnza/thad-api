@@ -13,7 +13,9 @@
             <generator/>
         </id>
         <field name="date" type="date_immutable"/>
+        <field name="collectionDate" type="date_immutable" nullable="true"/>
         <field name="number" type="smallint"/>
+        <field name="quantity" type="smallint"/>
         <field name="height" type="float" nullable="true"/>
         <field name="width" type="float" nullable="true"/>
         <field name="length" type="float" nullable="true"/>

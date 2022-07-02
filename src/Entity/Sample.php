@@ -139,6 +139,13 @@ class Sample
         'read:Sample',
         'write:Sample',
     ])]
+    public ?\DateTimeImmutable $collectionDate;
+
+    #[Groups([
+        'export:Sample',
+        'read:Sample',
+        'write:Sample',
+    ])]
     private int $quantity = 1;
 
     #[Groups([
