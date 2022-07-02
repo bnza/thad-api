@@ -65,6 +65,12 @@ class Document
     #[Groups([
         'read:Document',
         'read:SU',
+        'read:MediaGrave',
+        'read:MediaSample',
+        'read:MediaEcofact',
+        'read:MediaSmallFind',
+        'read:MediaPottery',
+        'read:MediaSU',
     ])]
     private int $id;
 
@@ -178,6 +184,12 @@ class Document
     #[Groups([
         'export:Document',
         'read:Document',
+        'read:MediaGrave',
+        'read:MediaSample',
+        'read:MediaEcofact',
+        'read:MediaSmallFind',
+        'read:MediaPottery',
+        'read:MediaSU',
     ])]
     public function getAppId(): ?string
     {

@@ -156,6 +156,7 @@ class SU
     #[Groups([
         'export:SU',
         'read:Area',
+        'read:MediaSU',
         'read:Ecofact',
         'read:Sample',
         'read:SmallFind',

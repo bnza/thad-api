@@ -114,7 +114,6 @@ class Site
         'write:Site',
         'read:Pottery',
         'read:Grave',
-        'read:ViewCumulativePotterySheet',
     ])]
     #[Assert\NotBlank]
     private string $code;

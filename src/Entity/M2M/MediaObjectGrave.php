@@ -45,7 +45,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 )]
 #[UniqueEntity(
     fields: ['grave', 'mediaObject'],
-    message: 'Duplicate media for this grave',
+    message: 'Duplicate (media - grave) pair',
     errorPath: 'media_object_id',
 )]
 class MediaObjectGrave

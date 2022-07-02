@@ -46,7 +46,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 )]
 #[UniqueEntity(
     fields: ['stratigraphicUnit', 'mediaObject'],
-    message: 'Duplicate media for this SU',
+    message: 'Duplicate (media - SU) pair',
     errorPath: 'media_object_id',
 )]
 class MediaObjectSU

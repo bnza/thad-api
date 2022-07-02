@@ -61,12 +61,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Grave
 {
     #[Groups([
+        'read:MediaGrave',
         'read:Grave',
         'read:SU',
     ])]
     private int $id;
 
     #[Groups([
+        'read:MediaGrave',
         'write:Grave',
         'read:Grave',
         'read:SU',

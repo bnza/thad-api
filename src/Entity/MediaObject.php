@@ -100,6 +100,14 @@ class MediaObject
 
     private ?int $height = null;
 
+    #[Groups([
+        'read:MediaGrave',
+        'read:MediaSample',
+        'read:MediaEcofact',
+        'read:MediaSmallFind',
+        'read:MediaPottery',
+        'read:MediaSU',
+    ])]
     public ?Document $document;
 
     public iterable $stratigraphicUnits;
