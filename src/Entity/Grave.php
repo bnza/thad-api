@@ -265,7 +265,7 @@ class Grave
     public function setArea(Area $area): Grave
     {
         $this->area = $area;
-        $this->site = $area->getSite();
+        $this->site = $area->site;
 
         return $this;
     }

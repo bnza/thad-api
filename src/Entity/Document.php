@@ -118,7 +118,7 @@ class Document
         'read:Document',
     ])]
     #[Assert\NotNull]
-    private MediaObject $mediaObject;
+    public MediaObject $mediaObject;
 
     #[Groups([
         'write:Document',
@@ -220,19 +220,7 @@ class Document
     public function setArea(Area $area): Document
     {
         $this->area = $area;
-        $this->site = $area->getSite();
-
-        return $this;
-    }
-
-    public function getMediaObject(): MediaObject
-    {
-        return $this->mediaObject;
-    }
-
-    public function setMediaObject(MediaObject $mediaObject): Document
-    {
-        $this->mediaObject = $mediaObject;
+        $this->site = $area->site;
 
         return $this;
     }

@@ -118,7 +118,7 @@ class Area
         'read:ViewCumulativePotterySheet',
     ])]
     #[Assert\NotBlank]
-    private string $code;
+    public string $code;
 
     #[Groups([
         'read:Area',
@@ -132,7 +132,7 @@ class Area
         'read:Pottery',
     ])]
     #[Assert\NotBlank]
-    private string $name;
+    public string $name;
 
     #[Groups([
         'read:Area',
@@ -140,7 +140,7 @@ class Area
         'read:SU',
         'write:Area',
     ])]
-    private ?string $description;
+    public ?string $description;
 
     #[Groups([
         'read:Area',
@@ -148,7 +148,7 @@ class Area
         'read:Grave',
     ])]
     #[Assert\NotNull]
-    private Site $site;
+    public Site $site;
 
     private iterable $stratigraphicUnits;
 
@@ -163,54 +163,6 @@ class Area
     public function getId(): int
     {
         return $this->id;
-    }
-
-    public function getCode(): string
-    {
-        return $this->code;
-    }
-
-    public function setCode(string $code): Area
-    {
-        $this->code = $code;
-
-        return $this;
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): Area
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description): Area
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    public function getSite(): Site
-    {
-        return $this->site;
-    }
-
-    public function setSite(Site $site): Area
-    {
-        $this->site = $site;
-
-        return $this;
     }
 
     public function getStratigraphicUnits(): iterable|ArrayCollection
