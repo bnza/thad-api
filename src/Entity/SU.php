@@ -170,7 +170,7 @@ class SU
     ])]
     #[Assert\NotBlank]
     #[Assert\Positive]
-    private int $number;
+    public int $number;
 
     #[Groups([
         'export:ViewCumulativePotterySheet',
@@ -188,7 +188,7 @@ class SU
         'read:ViewCumulativePotterySheet',
         'read:Grave',
     ])]
-    private Site $site;
+    public Site $site;
 
     #[Groups([
         'export:SU',
@@ -207,7 +207,7 @@ class SU
         min: 2000,
         max: 2099,
     )]
-    private int $year;
+    public int $year;
 
     #[Groups([
         'export:ViewCumulativePotterySheet',
@@ -225,7 +225,7 @@ class SU
         'read:ViewCumulativePotterySheet',
     ])]
     #[Assert\NotBlank]
-    private Area $area;
+    public Area $area;
 
     private GeomSU $geom;
 
@@ -234,7 +234,7 @@ class SU
         'read:SU',
         'write:SU',
     ])]
-    private ?Period $period;
+    public ?Period $period;
 
     #[Groups([
         'export:SU',
@@ -243,7 +243,7 @@ class SU
         'read:Pottery',
     ])]
     #[Assert\NotNull]
-    private \DateTimeImmutable $date;
+    public \DateTimeImmutable $date;
 
     #[Groups([
         'export:SU',
@@ -251,7 +251,7 @@ class SU
         'read:SU',
         'write:SU',
     ])]
-    private ?string $description;
+    public ?string $description;
 
     #[Groups([
         'export:SU',
@@ -259,7 +259,7 @@ class SU
         'read:SU',
         'write:SU',
     ])]
-    private ?string $interpretation;
+    public ?string $interpretation;
 
     #[Groups([
         'export:SU',
@@ -267,7 +267,7 @@ class SU
         'read:SU',
         'write:SU',
     ])]
-    private ?string $summary;
+    public ?string $summary;
 
     #[Groups([
         'export:SU',
@@ -276,7 +276,7 @@ class SU
         'write:SU',
     ])]
     #[Assert\NotBlank]
-    private Type $type;
+    public Type $type;
 
     #[Groups([
         'export:SU',
@@ -284,7 +284,7 @@ class SU
         'read:SU',
         'write:SU',
     ])]
-    private ?PreservationState $preservationState;
+    public ?PreservationState $preservationState;
 
     #[Groups([
         'export:SU',
@@ -292,7 +292,7 @@ class SU
         'read:SU',
         'write:SU',
     ])]
-    private ?float $topElevation;
+    public ?float $topElevation;
 
     #[Groups([
         'export:SU',
@@ -300,7 +300,7 @@ class SU
         'read:SU',
         'write:SU',
     ])]
-    private ?float $bottomElevation;
+    public ?float $bottomElevation;
 
     #[Groups([
         'export:SU',
@@ -308,7 +308,7 @@ class SU
         'read:SU',
         'write:SU',
     ])]
-    private ?string $compiler;
+    public ?string $compiler;
 
     #[Groups([
         'export:SU',
@@ -316,7 +316,7 @@ class SU
         'read:SU',
         'write:SU',
     ])]
-    private ?string $areaSupervisor;
+    public ?string $areaSupervisor;
 
     #[Groups([
         'read:SU',
@@ -342,7 +342,14 @@ class SU
         'read:SU',
         'write:SU',
     ])]
-    private ?string $room;
+    public ?int $buildingPhase;
+
+    #[Groups([
+        'export:SU',
+        'read:SU',
+        'write:SU',
+    ])]
+    public ?string $room;
 
     #[Groups([
         'export:SU',
@@ -350,6 +357,13 @@ class SU
         'write:SU',
     ])]
     public ?int $phase;
+
+    #[Groups([
+        'export:SU',
+        'read:SU',
+        'write:SU',
+    ])]
+    public ?int $subPhase;
 
     private iterable $relations;
 
@@ -417,186 +431,6 @@ class SU
         return $this->id;
     }
 
-    public function getNumber(): int
-    {
-        return $this->number;
-    }
-
-    public function setNumber(int $number): SU
-    {
-        $this->number = $number;
-
-        return $this;
-    }
-
-    public function getSite(): Site
-    {
-        return $this->site;
-    }
-
-    public function setSite(Site $site): SU
-    {
-        $this->site = $site;
-
-        return $this;
-    }
-
-    public function getYear(): int
-    {
-        return $this->year;
-    }
-
-    public function setYear(int $year): SU
-    {
-        $this->year = $year;
-
-        return $this;
-    }
-
-    public function getArea(): Area
-    {
-        return $this->area;
-    }
-
-    public function setArea(Area $area): SU
-    {
-        $this->area = $area;
-
-        return $this;
-    }
-
-    public function getDate(): \DateTimeImmutable
-    {
-        return $this->date;
-    }
-
-    public function setDate(\DateTimeImmutable $date): SU
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    public function getPeriod(): ?Period
-    {
-        return $this->period;
-    }
-
-    public function setPeriod(?Period $period): SU
-    {
-        $this->period = $period;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description): SU
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    public function getInterpretation(): ?string
-    {
-        return $this->interpretation;
-    }
-
-    public function setInterpretation(?string $interpretation): SU
-    {
-        $this->interpretation = $interpretation;
-
-        return $this;
-    }
-
-    public function getSummary(): ?string
-    {
-        return $this->summary;
-    }
-
-    public function setSummary(?string $summary): SU
-    {
-        $this->summary = $summary;
-
-        return $this;
-    }
-
-    public function getType(): Type
-    {
-        return $this->type;
-    }
-
-    public function setType(Type $type): SU
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    public function getPreservationState(): ?PreservationState
-    {
-        return $this->preservationState;
-    }
-
-    public function setPreservationState(?PreservationState $preservationState): SU
-    {
-        $this->preservationState = $preservationState;
-
-        return $this;
-    }
-
-    public function getTopElevation(): ?float
-    {
-        return $this->topElevation;
-    }
-
-    public function setTopElevation(?float $topElevation): SU
-    {
-        $this->topElevation = $topElevation;
-
-        return $this;
-    }
-
-    public function getBottomElevation(): ?float
-    {
-        return $this->bottomElevation;
-    }
-
-    public function setBottomElevation(?float $bottomElevation): SU
-    {
-        $this->bottomElevation = $bottomElevation;
-
-        return $this;
-    }
-
-    public function getCompiler(): ?string
-    {
-        return $this->compiler;
-    }
-
-    public function setCompiler(?string $compiler): SU
-    {
-        $this->compiler = $compiler;
-
-        return $this;
-    }
-
-    public function getAreaSupervisor(): ?string
-    {
-        return $this->areaSupervisor;
-    }
-
-    public function setAreaSupervisor(?string $areaSupervisor): SU
-    {
-        $this->areaSupervisor = $areaSupervisor;
-
-        return $this;
-    }
-
     public function getRelations(): iterable|ArrayCollection
     {
         return $this->relations;
@@ -657,30 +491,6 @@ class SU
         return $this;
     }
 
-    public function getGeom(): GeomSU
-    {
-        return $this->geom;
-    }
-
-    public function setGeom(GeomSU $geom): SU
-    {
-        $this->geom = $geom;
-
-        return $this;
-    }
-
-    public function getCumulativePotterySheets(): iterable|ArrayCollection
-    {
-        return $this->cumulativePotterySheets;
-    }
-
-    public function setCumulativePotterySheets(iterable|ArrayCollection $cumulativePotterySheets): SU
-    {
-        $this->cumulativePotterySheets = $cumulativePotterySheets;
-
-        return $this;
-    }
-
     public function getMediaObjects(): ArrayCollection
     {
         return $this->mediaObjects;
@@ -715,22 +525,11 @@ class SU
         return $this;
     }
 
-    public function getRoom(): ?string
-    {
-        return $this->room;
-    }
-
-    public function setRoom(?string $room): SU
-    {
-        $this->room = $room ? strtolower($room) : $room;
-        return $this;
-    }
-
     public function ensureSite(LifecycleEventArgs $event)
     {
         /** @var SU $entity */
         $entity = $event->getEntity();
 
-        $entity->setSite($entity->getArea()->getSite());
+        $entity->site = $entity->area->site;
     }
 }

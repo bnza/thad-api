@@ -23,8 +23,10 @@
         <field name="interpretation"  type="text" nullable="true"/>
         <field name="summary"  type="text" nullable="true"/>
         <field name="building"  type="smallint" nullable="true"/>
+        <field name="buildingPhase"  type="smallint" nullable="true"/>
         <field name="room" length="3" nullable="true"/>
         <field name="phase"  type="smallint" nullable="true"/>
+        <field name="subPhase"  type="smallint" nullable="true"/>
         <field name="topElevation" column="top_elevation"  type="float" nullable="true"/>
         <field name="bottomElevation" column="bottom_elevation"  type="float" nullable="true"/>
         <field name="areaSupervisor" column="area_supervisor" nullable="true"/>
