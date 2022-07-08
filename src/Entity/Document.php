@@ -176,8 +176,8 @@ class Document
     ])]
     #[Assert\All([
         new Assert\NotBlank(),
-        new Assert\Length(max: 3),
-        new Assert\Regex('/^[a-z]*$/'),
+        new Assert\Length(max: 2),
+        new Assert\Regex('/^[A-Z]*$/'),
     ])]
     public array $rooms = [];
 

@@ -13,10 +13,10 @@ App\Entity\SU:
     type: '@voc__su__type_2'
     preservationState: '@voc__preservation_state_3'
     building: 1
-    buildingPhase: 5
-    room: c
+    buildingPhase: e
+    room: C
     phase: 4
-    subPhase: 2
+    subPhase: a
   su_TH_2:
     area: '@area_TH_A'
     number: 2
@@ -29,10 +29,10 @@ App\Entity\SU:
     period: '@voc__period_LCA'
     preservationState: '@voc__preservation_state_3'
     building: 1
-    buildingPhase: 4
-    room: c
+    buildingPhase: a
+    room: C
     phase: 4
-    subPhase: 1
+    subPhase: b
   su_TH_3:
     area: '@area_TH_B'
     number: 3
@@ -44,10 +44,10 @@ App\Entity\SU:
     type: '@voc__su__type_1'
     preservationState: '@voc__preservation_state_2'
     building: 2
-    buildingPhase: 4
-    room: c
+    buildingPhase: c
+    room: C
     phase: 1
-    subPhase: 2
+    subPhase: d
   su_TH_4:
     area: '@area_TH_B'
     number: 4

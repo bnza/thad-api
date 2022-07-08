@@ -15,7 +15,7 @@
         <field name="description" type="text" nullable="true"/>
         <field name="interpretation"  type="text" nullable="true"/>
         <field name="alignment" type="text" nullable="true"/>
-        <field name="isSecondaryDeposition"  type="boolean" >
+        <field name="isSecondaryDeposition" type="boolean" >
             <options>
                 <option name="default">false</option>
             </options>
@@ -24,10 +24,18 @@
         <field name="areaSupervisor" column="area_supervisor" nullable="true"/>
         <field name="compiler" nullable="true"/>
         <field name="building"  type="smallint" nullable="true"/>
-        <field name="buildingPhase"  type="smallint" nullable="true"/>
-        <field name="room" length="3" nullable="true"/>
+        <field name="buildingPhase" nullable="true" length="1">
+            <options>
+                <option name="fixed">true</option>
+            </options>
+        </field>
+        <field name="room" length="2" nullable="true"/>
         <field name="phase"  type="smallint" nullable="true"/>
-        <field name="subPhase"  type="smallint" nullable="true"/>
+        <field name="subPhase" nullable="true" length="1">
+            <options>
+                <option name="fixed">true</option>
+            </options>
+        </field>
         <many-to-one field="site" target-entity="Site" inversed-by="graves">
             <join-column name="site_id" nullable="false"/>
         </many-to-one>

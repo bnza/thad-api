@@ -335,6 +335,7 @@ class SU
         'read:SU',
         'write:SU',
     ])]
+    #[Assert\Positive]
     public ?int $building;
 
     #[Groups([
@@ -342,13 +343,23 @@ class SU
         'read:SU',
         'write:SU',
     ])]
-    public ?int $buildingPhase;
+    #[Assert\Length(
+        min: 1,
+        max: 1
+    )]
+    #[Assert\Length(
+        min: 1,
+        max: 1
+    )]
+    #[Assert\Regex('/^[a-z]*$/')]
+    public ?string $buildingPhase;
 
     #[Groups([
         'export:SU',
         'read:SU',
         'write:SU',
     ])]
+    #[Assert\Regex('/^[A-Z]*$/')]
     public ?string $room;
 
     #[Groups([
@@ -363,7 +374,16 @@ class SU
         'read:SU',
         'write:SU',
     ])]
-    public ?int $subPhase;
+    #[Assert\Length(
+        min: 1,
+        max: 1
+    )]
+    #[Assert\Length(
+        min: 1,
+        max: 1
+    )]
+    #[Assert\Regex('/^[a-z]*$/')]
+    public ?string $subPhase;
 
     private iterable $relations;
 

@@ -211,31 +211,44 @@ class Grave
         'write:Grave',
         'read:Grave',
     ])]
+    #[Assert\Positive]
     public ?int $building;
 
     #[Groups([
         'write:Grave',
         'read:Grave',
     ])]
-    public ?int $buildingPhase;
+    #[Assert\Length(
+        min: 1,
+        max: 1
+    )]
+    #[Assert\Regex('/^[a-z]*$/')]
+    public ?string $buildingPhase;
 
     #[Groups([
         'write:Grave',
         'read:Grave',
     ])]
-    private ?string $room;
+    #[Assert\Regex('/^[A-Z]*$/')]
+    public ?string $room;
 
     #[Groups([
         'write:Grave',
         'read:Grave',
     ])]
+    #[Assert\Positive]
     public ?int $phase;
 
     #[Groups([
         'write:Grave',
         'read:Grave',
     ])]
-    public ?int $subPhase;
+    #[Assert\Length(
+        min: 1,
+        max: 1
+    )]
+    #[Assert\Regex('/^[a-z]*$/')]
+    public ?string $subPhase;
 
     public iterable $mediaObjects;
 
@@ -279,17 +292,6 @@ class Grave
         $this->area = $area;
         $this->site = $area->site;
 
-        return $this;
-    }
-
-    public function getRoom(): ?string
-    {
-        return $this->room;
-    }
-
-    public function setRoom(?string $room): Grave
-    {
-        $this->room = $room ? strtolower($room) : $room;
         return $this;
     }
 }

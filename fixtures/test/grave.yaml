@@ -13,6 +13,11 @@ App\Entity\Grave:
     skeletonStratigraphicUnit: '@su_TH_12'
     earlierThan: '@su_TH_6'
     laterThan: '@su_TH_7'
+    building: 2
+    buildingPhase: e
+    room: A
+    phase: 1
+    subPhase: a
     alignment: 'N-S'
     description: 'The first TH grave detailed description'
     summary: 'The first TH grave summary'
