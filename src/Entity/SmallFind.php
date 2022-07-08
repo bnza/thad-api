@@ -15,9 +15,11 @@ use App\Entity\Vocabulary\Object\Type;
 use App\Entity\Vocabulary\Period;
 use App\Entity\Vocabulary\PreservationState;
 use App\Entity\Vocabulary\Subperiod;
+use App\Validator\CoordinateIsATriple;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
     collectionOperations: [
@@ -130,6 +132,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
     message: 'SmallFind number {{ value }} already exists in this SU',
     errorPath: 'number',
 )]
+#[CoordinateIsATriple]
 class SmallFind
 {
     #[Groups([
@@ -227,6 +230,37 @@ class SmallFind
         'write:SmallFind',
     ])]
     private \DateTimeImmutable $date;
+
+    #[Groups([
+        'export:SmallFind',
+        'read:SmallFind',
+        'write:SmallFind',
+    ])]
+    #[Assert\Range(
+        notInRangeMessage: 'Latitude must be between {{ min }} and {{ max }} degree',
+        min: -90,
+        max: 90,
+    )]
+    public ?float $coordN;
+
+    #[Groups([
+        'export:SmallFind',
+        'read:SmallFind',
+        'write:SmallFind',
+    ])]
+    #[Assert\Range(
+        notInRangeMessage: 'Longitude must be between {{ min }} and {{ max }} degree',
+        min: -180,
+        max: 180,
+    )]
+    public ?float $coordE;
+
+    #[Groups([
+        'export:SmallFind',
+        'read:SmallFind',
+        'write:SmallFind',
+    ])]
+    public ?float $coordZ;
 
     #[Groups([
         'export:SmallFind',

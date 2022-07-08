@@ -24,6 +24,9 @@
         <field name="maxDiameter" type="float" nullable="true"/>
         <field name="baseDiameter" type="float" nullable="true"/>
         <field name="weight" type="float" nullable="true"/>
+        <field name="coordN" type="float" nullable="true"/>
+        <field name="coordE" type="float" nullable="true"/>
+        <field name="coordZ" type="float" nullable="true"/>
         <field name="compiler" nullable="true"/>
         <field name="description"  type="text" nullable="true"/>
         <field name="summary"  type="text" nullable="true"/>
