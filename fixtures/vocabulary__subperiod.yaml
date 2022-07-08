@@ -1,88 +1,89 @@
 App\Entity\Vocabulary\Subperiod:
-  voc__period_LCA1:
+  voc__subperiod_LCA1:
     period: '@voc__period_LCA'
     code: LCA1
     value: Late Chalcolithic 1
-  voc__period_LCA2:
+  voc__subperiod_LCA2:
     period: '@voc__period_LCA'
     code: LCA2
     value: Late Chalcolithic 2
-  voc__period_LCA3:
+  voc__subperiod_LCA3:
     period: '@voc__period_LCA'
     code: LCA3
     value: Late Chalcolithic 3
-  voc__period_LCA4:
+  voc__subperiod_LCA4:
     period: '@voc__period_LCA'
     code: LCA4
     value: Late Chalcolithic 4
-  voc__period_LCA5:
+  voc__subperiod_LCA5:
     period: '@voc__period_LCA'
     code: LCA5
     value: Late Chalcolithic 5
-  voc__period_EMT0:
+  voc__subperiod_EMT0:
     period: '@voc__period_EMT'
     code: EMT0
     value: Early Middle Tigris 0
-  voc__period_EMT1:
+  voc__subperiod_EMT1:
     period: '@voc__period_EMT'
     code: EMT1
     value: Early Middle Tigris 1
-  voc__period_EMT2:
+  voc__subperiod_EMT2:
     period: '@voc__period_EMT'
     code: EMT2
     value: Early Middle Tigris 2
-  voc__period_EMT3:
+  voc__subperiod_EMT3:
     period: '@voc__period_EMT'
     code: EMT3
     value: Early Middle Tigris 3
-  voc__period_EMT4:
+  voc__subperiod_EMT4:
     period: '@voc__period_EMT'
     code: EMT4
     value: Early Middle Tigris 4
-  voc__period_EMT5:
+  voc__subperiod_EMT5:
     period: '@voc__period_EMT'
     code: EMT5
     value: Early Middle Tigris 5
-  voc__period_SUR:
+  voc__subperiod_SUR:
     period: '@voc__period_LCA'
     code: SUR
     value: Southern Uruk
-  voc__period_MBA1:
+  voc__subperiod_MBA1:
     period: '@voc__period_MBA'
     code: MBA1
     value: Middle Bronze Age 1
-  voc__period_MBA2:
+  voc__subperiod_MBA2:
     period: '@voc__period_MBA'
     code: MBA2
     value: Middle Bronze Age 2
-  voc__period_LBA1:
+  voc__subperiod_LBA1:
     period: '@voc__period_LBA'
     code: LBA1
     value: Late Bronze Age 1/Mittani
-  voc__period_LBA2:
+  voc__subperiod_LBA2:
     period: '@voc__period_LBA'
     code: LBA2
     value: Late Bronze Age 2/Middle Assyrian
-  voc__period_IRA:
+  voc__subperiod_IRA:
+    period: '@voc__period_IRA'
     code: IRA
     value: Iron Age
-  voc__period_IRA12:
+  voc__subperiod_IRA12:
     period: '@voc__period_IRA'
     code: IRA12
     value: Iron Age 1-2/Neo-Assyrian
-  voc__period_IRA3:
+  voc__subperiod_IRA3:
     period: '@voc__period_IRA'
     code: IRA3
     value: Iron Age 3/Achaemenid
-  voc__period_ISL1:
+  voc__subperiod_ISL1:
     period: '@voc__period_ISL'
     code: ISL1
     value: Early Islamic
-  voc__period_ISL2:
+  voc__subperiod_ISL2:
     period: '@voc__period_ISL'
     code: ISL2
     value: Middle Islamic
-  voc__period_ISL3:
+  voc__subperiod_ISL3:
     period: '@voc__period_ISL'
     code: ISL3
     value: Late Islamic

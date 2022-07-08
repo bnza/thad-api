@@ -19,7 +19,46 @@ App\Entity\Grave:
     interpretation: 'The first TH grave interpretation'
     compiler: Some One Other
     areaSupervisor: John Supervisor
-
+  grave_TH_2:
+    number: 2
+    year: 2022
+    date: <createImmutableDate('2021-07-08')>
+    preservationState: '@voc__preservation_state_1'
+    period: '@voc__period_IRA'
+    area: '@area_TH_A'
+    type: '@voc__g__type_4'
+    ritual: '@voc__g__ritual_1'
+    cutStratigraphicUnit: '@su_TH_11'
+    fillStratigraphicUnit: '@su_TH_12'
+    skeletonStratigraphicUnit: '@su_TH_13'
+    earlierThan: '@su_TH_8'
+    laterThan: '@su_TH_9'
+    alignment: 'W-E'
+    description: 'The second TH grave detailed description'
+    summary: 'The second TH grave summary'
+    interpretation: 'The second TH grave interpretation'
+    compiler: Some One Other
+    areaSupervisor: John Supervisor
+  grave_WW_1:
+    number: 1
+    year: 2022
+    date: <createImmutableDate('2021-07-08')>
+    preservationState: '@voc__preservation_state_1'
+    period: '@voc__period_IRA'
+    area: '@area_WW_A'
+    type: '@voc__g__type_3'
+    ritual: '@voc__g__ritual_2'
+    cutStratigraphicUnit: '@su_WW_1'
+    fillStratigraphicUnit: '@su_WW_2'
+    skeletonStratigraphicUnit: '@su_WW_3'
+    earlierThan: '@su_WW_4'
+    laterThan: '@su_WW_3'
+    alignment: 'W-E'
+    description: 'The first WW grave detailed description'
+    summary: 'The first WW  grave summary'
+    interpretation: 'The first WW  grave interpretation'
+    compiler: Some One Other
+    areaSupervisor: John Supervisor
 
 
 

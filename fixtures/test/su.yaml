@@ -107,6 +107,19 @@ App\Entity\SU:
     topElevation: 231.98
     compiler: Some One
     areaSupervisor: John Supervisor
+  su_TH_9:
+    area: '@area_TH_A'
+    number: 9
+    year: 2022
+    date: <createImmutableDate('2022-04-19')>
+    description: 'The 9th stratigraphic unit description'
+    summary: 'The 9th stratigraphic unit summary'
+    interpretation: 'The 9th stratigraphic unit interpretation'
+    type: '@voc__su__type_1'
+    bottomElevation: 231.79
+    topElevation: 231.99
+    compiler: Some One Other
+    areaSupervisor: John Supervisor
   su_TH_10:
     area: '@area_TH_A'
     number: 10
@@ -169,6 +182,68 @@ App\Entity\SU:
     preservationState: '@voc__preservation_state_4'
     grave: '@grave_TH_1'
     compiler: Some One
+  su_TH_14:
+    area: '@area_TH_B'
+    number: 14
+    year: 2022
+    date: <createImmutableDate('2022-07-08')>
+    description: 'The second grave 1 SU'
+    summary: 'The second grave 1 SU summary'
+    interpretation: 'The second grave 1 SU interpretation: cut'
+    bottomElevation: 251.1
+    topElevation: 251.6
+    period: '@voc__period_IRA'
+    type: '@voc__su__type_1'
+    preservationState: '@voc__preservation_state_1'
+    grave: '@grave_TH_2'
+    compiler: Some One
+    areaSupervisor: John Supervisor
+  su_TH_15:
+    area: '@area_TH_B'
+    number: 15
+    year: 2022
+    date: <createImmutableDate('2022-07-08')>
+    description: 'The second grave 2 SU'
+    summary: 'The second grave 2 SU summary'
+    interpretation: 'The second grave 2 SU interpretation: filling'
+    bottomElevation: 252.1
+    topElevation: 252.6
+    period: '@voc__period_IRA'
+    type: '@voc__su__type_2'
+    preservationState: '@voc__preservation_state_2'
+    grave: '@grave_TH_2'
+    compiler: Some One Other
+    areaSupervisor: John Supervisors
+  su_TH_16:
+    area: '@area_TH_B'
+    number: 16
+    year: 2022
+    date: <createImmutableDate('2022-07-08')>
+    description: 'The second grave 3 SU'
+    summary: 'The second grave 3 SU summary'
+    interpretation: 'The second grave 2 SU interpretation: skeleton'
+    bottomElevation: 250.4
+    topElevation: 250.7
+    period: '@voc__period_IRA'
+    type: '@voc__su__type_2'
+    preservationState: '@voc__preservation_state_1'
+    grave: '@grave_TH_2'
+    compiler: Some One
+  su_TH_17:
+    area: '@area_TH_A'
+    number: 17
+    year: 2022
+    date: <createImmutableDate('2022-07-08')>
+    description: 'The second grave 4 SU'
+    summary: 'The first second 4 SU summary'
+    interpretation: 'The second grave 4 SU interpretation: grave goods'
+    bottomElevation: 250.14
+    topElevation: 250.88
+    period: '@voc__period_IRA'
+    type: '@voc__su__type_5'
+    preservationState: '@voc__preservation_state_4'
+    grave: '@grave_TH_1'
+    compiler: Some One
   su_WW_1:
     area: '@area_WW_A'
     number: 1
@@ -206,3 +281,12 @@ App\Entity\SU:
     description: 'The 3rd stratigraphic unit description WW'
     summary: 'The 3rd stratigraphic unit summary WW'
     interpretation: 'The 3rd stratigraphic unit interpretation WW'
+  su_WW_5:
+    area: '@area_WW_A'
+    number: 5
+    year: 2022
+    type: '@voc__su__type_1'
+    date: <createImmutableDate('2021-05-03')>
+    description: 'The 4th stratigraphic unit description WW'
+    summary: 'The 4th stratigraphic unit summary WW'
+    interpretation: 'The 4th stratigraphic unit interpretation WW'

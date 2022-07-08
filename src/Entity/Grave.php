@@ -217,6 +217,12 @@ class Grave
         'write:Grave',
         'read:Grave',
     ])]
+    public ?int $buildingPhase;
+
+    #[Groups([
+        'write:Grave',
+        'read:Grave',
+    ])]
     private ?string $room;
 
     #[Groups([
@@ -224,6 +230,12 @@ class Grave
         'read:Grave',
     ])]
     public ?int $phase;
+
+    #[Groups([
+        'write:Grave',
+        'read:Grave',
+    ])]
+    public ?int $subPhase;
 
     public iterable $mediaObjects;
 

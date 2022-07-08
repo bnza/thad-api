@@ -29,7 +29,7 @@ App\Entity\Pottery:
     date: <createImmutableDate('2022-04-26')>
     number: 2
     compiler: Someone Other
-    subperiod: '@voc__period_LCA1'
+    subperiod: '@voc__subperiod_LCA1'
     ware: '@voc__p__ware_1'
     fabric: '@voc__p__fabric_3'
     externalSurfaceColour: '@voc__p__colour_1'
