@@ -130,6 +130,7 @@ class Area
         'read:SU',
         'write:Area',
         'read:Pottery',
+        'read:ViewCumulativePotterySheet',
     ])]
     #[Assert\NotBlank]
     public string $name;

@@ -126,6 +126,7 @@ class Site
         'export:Sample',
         'export:Pottery',
         'export:SU',
+        'read:ViewCumulativePotterySheet',
         'read:Area',
         'read:Document',
         'read:Ecofact',
