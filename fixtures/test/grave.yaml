@@ -13,6 +13,8 @@ App\Entity\Grave:
     skeletonStratigraphicUnit: '@su_TH_12'
     earlierThan: '@su_TH_6'
     laterThan: '@su_TH_7'
+    bottomElevation: 232.89
+    topElevation: 233.09
     building: 2
     buildingSubPhase: e
     room: A

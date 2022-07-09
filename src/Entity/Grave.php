@@ -168,6 +168,18 @@ class Grave
         'write:Grave',
         'read:Grave',
     ])]
+    public ?float $topElevation;
+
+    #[Groups([
+        'write:Grave',
+        'read:Grave',
+    ])]
+    public ?float $bottomElevation;
+
+    #[Groups([
+        'write:Grave',
+        'read:Grave',
+    ])]
     public ?string $alignment;
 
     #[Groups([
