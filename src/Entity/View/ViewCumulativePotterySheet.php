@@ -459,7 +459,7 @@ class ViewCumulativePotterySheet
         'export:ViewCumulativePotterySheet',
         'read:ViewCumulativePotterySheet',
     ])]
-    public int $periodEMTCount = 0;
+    public int $periodEBACount = 0;
 
     #[Groups([
         'export:ViewCumulativePotterySheet',
