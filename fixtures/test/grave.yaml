@@ -14,7 +14,7 @@ App\Entity\Grave:
     earlierThan: '@su_TH_6'
     laterThan: '@su_TH_7'
     building: 2
-    buildingPhase: e
+    buildingSubPhase: e
     room: A
     phase: 1
     subPhase: a

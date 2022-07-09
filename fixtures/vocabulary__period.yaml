@@ -44,3 +44,6 @@ App\Entity\Vocabulary\Period:
   voc__period_ISL:
     code: ISL
     value: Islamic
+  voc__period_MOD:
+    code: MOD
+    value: Modern

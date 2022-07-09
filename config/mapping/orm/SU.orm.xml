@@ -23,7 +23,7 @@
         <field name="interpretation"  type="text" nullable="true"/>
         <field name="summary"  type="text" nullable="true"/>
         <field name="building"  type="smallint" nullable="true"/>
-        <field name="buildingPhase" nullable="true" length="1">
+        <field name="buildingSubPhase" nullable="true" length="1">
             <options>
                 <option name="fixed">true</option>
             </options>

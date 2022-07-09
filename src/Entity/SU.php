@@ -352,7 +352,7 @@ class SU
         max: 1
     )]
     #[Assert\Regex('/^[a-z]*$/')]
-    public ?string $buildingPhase;
+    public ?string $buildingSubPhase;
 
     #[Groups([
         'export:SU',
