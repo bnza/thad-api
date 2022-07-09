@@ -40,7 +40,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
     SearchFilter::class,
     properties: [
         'id' => 'exact',
-        'pottery.id' => 'exact',
+        'smallFind.id' => 'exact',
         'mediaObject.id' => 'exact',
     ]
 )]
