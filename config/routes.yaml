@@ -21,3 +21,6 @@ change_password:
     path: /api/me/change-password
     controller: App\Controller\ChangePasswordController
     methods: ['POST']
+
+api_refresh_token:
+    path: /api/token/refresh
