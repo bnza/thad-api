@@ -22,7 +22,7 @@
         </field>
         <field name="summary" type="text" nullable="true"/>
         <field name="areaSupervisor" column="area_supervisor" nullable="true"/>
-        <field name="compiler" nullable="true"/>
+        <field name="compiler"/>
         <field name="building"  type="smallint" nullable="true"/>
         <field name="buildingSubPhase" nullable="true" length="1">
             <options>

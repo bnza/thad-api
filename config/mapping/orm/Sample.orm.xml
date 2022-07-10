@@ -24,7 +24,7 @@
         <field name="maxDiameter" type="float" nullable="true"/>
         <field name="weight" type="float" nullable="true"/>
         <field name="selectedForAnalysis" type="boolean"/>
-        <field name="compiler" nullable="true"/>
+        <field name="compiler"/>
         <field name="notes"  type="text" nullable="true"/>
         <field name="exhaustive" type="boolean" nullable="true"/>
         <field name="contaminationRisk" type="boolean" />

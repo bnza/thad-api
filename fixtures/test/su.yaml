@@ -17,6 +17,7 @@ App\Entity\SU:
     room: C
     phase: 4
     subPhase: a
+    compiler: Some One
   su_TH_2:
     area: '@area_TH_A'
     number: 2
@@ -33,6 +34,7 @@ App\Entity\SU:
     room: C
     phase: 4
     subPhase: b
+    compiler: Some One
   su_TH_3:
     area: '@area_TH_B'
     number: 3
@@ -48,6 +50,7 @@ App\Entity\SU:
     room: C
     phase: 1
     subPhase: d
+    compiler: Some One
   su_TH_4:
     area: '@area_TH_B'
     number: 4
@@ -59,6 +62,7 @@ App\Entity\SU:
     interpretation: 'The 4th stratigraphic unit interpretation'
     bottomElevation: 230.58
     topElevation: 231.12
+    compiler: Some One
   su_TH_5:
     area: '@area_TH_A'
     number: 5
@@ -68,6 +72,7 @@ App\Entity\SU:
     description: 'The 5th stratigraphic unit description'
     summary: 'The 5th stratigraphic unit summary'
     interpretation: 'The 5th stratigraphic unit interpretation'
+    compiler: Some One
   su_TH_6:
     area: '@area_TH_B'
     number: 6
@@ -254,6 +259,7 @@ App\Entity\SU:
     description: 'The 1st stratigraphic unit description WW'
     summary: 'The 1st stratigraphic unit summary WW'
     interpretation: 'The 1st stratigraphic unit interpretation WW'
+    compiler: Some One
   su_WW_2:
     area: '@area_WW_A'
     number: 2
@@ -263,6 +269,7 @@ App\Entity\SU:
     description: 'The 2nd stratigraphic unit description WW'
     summary: 'The 2nd stratigraphic unit summary WW'
     interpretation: 'The 2nd stratigraphic unit interpretation WW'
+    compiler: Some One
   su_WW_3:
     area: '@area_WW_A'
     number: 3
@@ -272,6 +279,7 @@ App\Entity\SU:
     description: 'The 3rd stratigraphic unit description WW'
     summary: 'The 3rd stratigraphic unit summary WW'
     interpretation: 'The 3rd stratigraphic unit interpretation WW'
+    compiler: Some One
   su_WW_4:
     area: '@area_WW_A'
     number: 4
@@ -281,6 +289,7 @@ App\Entity\SU:
     description: 'The 3rd stratigraphic unit description WW'
     summary: 'The 3rd stratigraphic unit summary WW'
     interpretation: 'The 3rd stratigraphic unit interpretation WW'
+    compiler: Some One
   su_WW_5:
     area: '@area_WW_A'
     number: 5
@@ -290,3 +299,4 @@ App\Entity\SU:
     description: 'The 4th stratigraphic unit description WW'
     summary: 'The 4th stratigraphic unit summary WW'
     interpretation: 'The 4th stratigraphic unit interpretation WW'
+    compiler: Some One

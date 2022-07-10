@@ -9,6 +9,7 @@ use App\Controller\ResourceExportController;
 use App\Entity\SU;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
     collectionOperations: [
@@ -77,14 +78,8 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\NotBlank]
     private SU $stratigraphicUnit;
-
-    #[Groups([
-        'export:ViewCumulativePotterySheet',
-        'read:ViewCumulativePotterySheet',
-        'write:ViewCumulativePotterySheet',
-    ])]
-    private int $number;
 
     #[Groups([
         'export:ViewCumulativePotterySheet',
@@ -98,7 +93,8 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
-    private ?string $compiler;
+    #[Assert\NotBlank]
+    private string $compiler;
 
     #[Groups([
         'export:ViewCumulativePotterySheet',
@@ -112,6 +108,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $commonWareNonDiagnosticCount = 0;
 
     #[Groups([
@@ -119,6 +116,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $commonWareDiagnosticCount = 0;
 
     #[Groups([
@@ -126,6 +124,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $fireWareNonDiagnosticCount = 0;
 
     #[Groups([
@@ -133,6 +132,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $fireWareDiagnosticCount = 0;
 
     #[Groups([
@@ -140,6 +140,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $coarseWareNonDiagnosticCount = 0;
 
     #[Groups([
@@ -147,6 +148,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $coarseWareDiagnosticCount = 0;
 
     #[Groups([
@@ -154,6 +156,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $kitchenWareNonDiagnosticCount = 0;
 
     #[Groups([
@@ -161,18 +164,21 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $kitchenWareDiagnosticCount = 0;
 
     #[Groups([
         'export:ViewCumulativePotterySheet',
         'read:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $cumulativeWareCount = 0;
 
     #[Groups([
         'export:ViewCumulativePotterySheet',
         'read:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $diagnosticWareCount = 0;
 
     #[Groups([
@@ -180,6 +186,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodEPNCount = 0;
 
     #[Groups([
@@ -187,6 +194,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodHASCount = 0;
 
     #[Groups([
@@ -194,6 +202,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodSAMCount = 0;
 
     #[Groups([
@@ -201,6 +210,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodHALCount = 0;
 
     #[Groups([
@@ -208,6 +218,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodNUBCount = 0;
 
     #[Groups([
@@ -215,12 +226,14 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodLCACount = 0;
 
     #[Groups([
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodLCA1Count = 0;
 
     #[Groups([
@@ -228,6 +241,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodLCA2Count = 0;
 
     #[Groups([
@@ -235,6 +249,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodLCA3Count = 0;
 
     #[Groups([
@@ -242,6 +257,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodLCA4Count = 0;
 
     #[Groups([
@@ -249,6 +265,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodLCA5Count = 0;
 
     #[Groups([
@@ -256,6 +273,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodSURCount = 0;
 
     #[Groups([
@@ -263,6 +281,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodEMTCount = 0;
 
     #[Groups([
@@ -270,6 +289,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodEMT0Count = 0;
 
     #[Groups([
@@ -277,6 +297,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodEMT1Count = 0;
 
     #[Groups([
@@ -284,6 +305,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodEMT2Count = 0;
 
     #[Groups([
@@ -291,6 +313,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodEMT3Count = 0;
 
     #[Groups([
@@ -298,6 +321,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodEMT4Count = 0;
 
     #[Groups([
@@ -305,6 +329,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodEMT5Count = 0;
 
     #[Groups([
@@ -312,6 +337,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodMBACount = 0;
 
     #[Groups([
@@ -319,6 +345,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodMBA1Count = 0;
 
     #[Groups([
@@ -326,6 +353,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodMBA2Count = 0;
 
     #[Groups([
@@ -333,6 +361,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodLBA1Count = 0;
 
     #[Groups([
@@ -340,6 +369,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodLBA2Count = 0;
 
     #[Groups([
@@ -347,6 +377,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodIRA1Count = 0;
 
     #[Groups([
@@ -354,6 +385,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodIRA2Count = 0;
 
     #[Groups([
@@ -361,6 +393,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodHELCount = 0;
 
     #[Groups([
@@ -368,6 +401,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodPARCount = 0;
 
     #[Groups([
@@ -375,6 +409,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodBYZCount = 0;
 
     #[Groups([
@@ -382,6 +417,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodSASCount = 0;
 
     #[Groups([
@@ -389,6 +425,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodISLCount = 0;
 
     #[Groups([
@@ -396,6 +433,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodISL1Count = 0;
 
     #[Groups([
@@ -403,6 +441,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodISL2Count = 0;
 
     #[Groups([
@@ -410,6 +449,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodISL3Count = 0;
 
     #[Groups([
@@ -417,6 +457,7 @@ class ViewCumulativePotterySheet
         'read:ViewCumulativePotterySheet',
         'write:ViewCumulativePotterySheet',
     ])]
+    #[Assert\PositiveOrZero]
     public int $subperiodUndeterminedCount = 0;
 
     #[Groups([
@@ -565,12 +606,12 @@ class ViewCumulativePotterySheet
         return $this;
     }
 
-    public function getCompiler(): ?string
+    public function getCompiler(): string
     {
         return $this->compiler;
     }
 
-    public function setCompiler(?string $compiler): self
+    public function setCompiler(string $compiler): self
     {
         $this->compiler = $compiler;
 

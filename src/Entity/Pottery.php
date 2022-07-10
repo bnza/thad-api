@@ -32,6 +32,7 @@ use App\Entity\Vocabulary\Subperiod;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
     collectionOperations: [
@@ -138,6 +139,7 @@ class Pottery
         'write:Pottery',
         'export:Pottery',
     ])]
+    #[Assert\NotNull]
     private SU $stratigraphicUnit;
 
     #[Groups([
@@ -145,6 +147,7 @@ class Pottery
         'write:Pottery',
         'export:Pottery',
     ])]
+    #[Assert\NotNull]
     private int $number;
 
     #[Groups([
@@ -152,6 +155,7 @@ class Pottery
         'write:Pottery',
         'export:Pottery',
     ])]
+    #[Assert\NotNull]
     private \DateTimeImmutable $date;
 
     #[Groups([
@@ -180,7 +184,8 @@ class Pottery
         'write:Pottery',
         'export:Pottery',
     ])]
-    private ?string $compiler;
+    #[Assert\NotBlank]
+    private string $compiler;
 
     #[Groups([
         'read:Pottery',
@@ -428,12 +433,12 @@ class Pottery
         return $this;
     }
 
-    public function getCompiler(): ?string
+    public function getCompiler(): string
     {
         return $this->compiler;
     }
 
-    public function setCompiler(?string $compiler): Pottery
+    public function setCompiler(string $compiler): Pottery
     {
         $this->compiler = $compiler;
 

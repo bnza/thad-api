@@ -12,6 +12,7 @@ use App\Entity\Vocabulary\Sample\Type;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
     collectionOperations: [
@@ -104,6 +105,7 @@ class Sample
         'read:Sample',
         'write:Sample',
     ])]
+    #[Assert\NotBlank]
     private SU $stratigraphicUnit;
 
     #[Groups([
@@ -111,6 +113,7 @@ class Sample
         'read:Sample',
         'write:Sample',
     ])]
+    #[Assert\NotBlank]
     private Type $type;
 
     #[Groups([
@@ -125,6 +128,7 @@ class Sample
         'read:Sample',
         'write:Sample',
     ])]
+    #[Assert\NotBlank]
     private int $number;
 
     #[Groups([
@@ -209,7 +213,8 @@ class Sample
         'read:Sample',
         'write:Sample',
     ])]
-    private ?string $compiler;
+    #[Assert\NotBlank]
+    private string $compiler;
 
     #[Groups([
         'export:Sample',

@@ -210,7 +210,8 @@ class Grave
         'write:Grave',
         'read:Grave',
     ])]
-    public ?string $compiler;
+    #[Assert\NotBlank]
+    public string $compiler;
 
     #[Groups([
         'write:Grave',

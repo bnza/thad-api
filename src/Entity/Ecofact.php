@@ -12,6 +12,7 @@ use App\Entity\Vocabulary\PreservationState;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
     collectionOperations: [
@@ -102,6 +103,7 @@ class Ecofact
         'read:Ecofact',
         'write:Ecofact',
     ])]
+    #[Assert\NotBlank]
     private SU $stratigraphicUnit;
 
     #[Groups([
@@ -109,6 +111,7 @@ class Ecofact
         'read:Ecofact',
         'write:Ecofact',
     ])]
+    #[Assert\NotBlank]
     private Type $type;
 
     #[Groups([
@@ -122,6 +125,7 @@ class Ecofact
         'read:Ecofact',
         'write:Ecofact',
     ])]
+    #[Assert\NotBlank]
     private int $number;
 
     #[Groups([
@@ -198,7 +202,8 @@ class Ecofact
         'read:Ecofact',
         'write:Ecofact',
     ])]
-    private ?string $compiler;
+    #[Assert\NotBlank]
+    private string $compiler;
 
     #[Groups([
         'export:Ecofact',

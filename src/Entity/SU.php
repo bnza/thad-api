@@ -308,7 +308,8 @@ class SU
         'read:SU',
         'write:SU',
     ])]
-    public ?string $compiler;
+    #[Assert\NotBlank]
+    public string $compiler;
 
     #[Groups([
         'export:SU',

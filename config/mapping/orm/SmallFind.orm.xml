@@ -27,7 +27,7 @@
         <field name="coordN" type="float" nullable="true"/>
         <field name="coordE" type="float" nullable="true"/>
         <field name="coordZ" type="float" nullable="true"/>
-        <field name="compiler" nullable="true"/>
+        <field name="compiler"/>
         <field name="description"  type="text" nullable="true"/>
         <field name="summary"  type="text" nullable="true"/>
         <field name="notes"  type="text" nullable="true"/>

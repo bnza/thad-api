@@ -145,6 +145,7 @@ class SmallFind
         'read:SmallFind',
         'write:SmallFind',
     ])]
+    #[Assert\NotNull]
     private SU $stratigraphicUnit;
 
     #[Groups([
@@ -152,6 +153,7 @@ class SmallFind
         'read:SmallFind',
         'write:SmallFind',
     ])]
+    #[Assert\NotNull]
     private Type $type;
 
     #[Groups([
@@ -222,6 +224,7 @@ class SmallFind
         'read:SmallFind',
         'write:SmallFind',
     ])]
+    #[Assert\NotNull]
     private int $number;
 
     #[Groups([
@@ -241,7 +244,7 @@ class SmallFind
         min: -90,
         max: 90,
     )]
-    public ?float $coordN;
+    public ?float $coordN = null;
 
     #[Groups([
         'export:SmallFind',
@@ -253,14 +256,14 @@ class SmallFind
         min: -180,
         max: 180,
     )]
-    public ?float $coordE;
+    public ?float $coordE = null;
 
     #[Groups([
         'export:SmallFind',
         'read:SmallFind',
         'write:SmallFind',
     ])]
-    public ?float $coordZ;
+    public ?float $coordZ = null;
 
     #[Groups([
         'export:SmallFind',
@@ -358,7 +361,8 @@ class SmallFind
         'read:SmallFind',
         'write:SmallFind',
     ])]
-    private ?string $compiler;
+    #[Assert\NotBlank]
+    private string $compiler;
 
     public iterable $mediaObjects;
 
@@ -544,12 +548,12 @@ class SmallFind
         return $this;
     }
 
-    public function getCompiler(): ?string
+    public function getCompiler(): string
     {
         return $this->compiler;
     }
 
-    public function setCompiler(?string $compiler): SmallFind
+    public function setCompiler(string $compiler): SmallFind
     {
         $this->compiler = $compiler;
 

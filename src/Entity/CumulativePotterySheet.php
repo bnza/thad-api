@@ -8,11 +8,9 @@ class CumulativePotterySheet
 
     private SU $stratigraphicUnit;
 
-    private int $number;
-
     private \DateTimeImmutable $date;
 
-    private ?string $compiler;
+    private string $compiler;
 
     public int $commonWareNonDiagnosticCount = 0;
 

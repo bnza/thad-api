@@ -13,7 +13,7 @@
             <generator/>
         </id>
         <field name="date" type="date_immutable"/>
-        <field name="compiler" nullable="true"/>
+        <field name="compiler"/>
         <field name="notes"  type="text" nullable="true"/>
         <field name="commonWareNonDiagnosticCount" type="smallint">
             <options>
