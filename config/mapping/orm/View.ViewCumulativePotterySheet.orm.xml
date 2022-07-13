@@ -30,12 +30,12 @@
                 <option name="default">0</option>
             </options>
         </field>
-        <field name="fireWareNonDiagnosticCount" type="smallint">
+        <field name="fineWareNonDiagnosticCount" type="smallint">
             <options>
                 <option name="default">0</option>
             </options>
         </field>
-        <field name="fireWareDiagnosticCount" type="smallint">
+        <field name="fineWareDiagnosticCount" type="smallint">
             <options>
                 <option name="default">0</option>
             </options>

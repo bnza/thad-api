@@ -125,7 +125,7 @@ class ViewCumulativePotterySheet
         'write:ViewCumulativePotterySheet',
     ])]
     #[Assert\PositiveOrZero]
-    public int $fireWareNonDiagnosticCount = 0;
+    public int $fineWareNonDiagnosticCount = 0;
 
     #[Groups([
         'export:ViewCumulativePotterySheet',
@@ -133,7 +133,7 @@ class ViewCumulativePotterySheet
         'write:ViewCumulativePotterySheet',
     ])]
     #[Assert\PositiveOrZero]
-    public int $fireWareDiagnosticCount = 0;
+    public int $fineWareDiagnosticCount = 0;
 
     #[Groups([
         'export:ViewCumulativePotterySheet',

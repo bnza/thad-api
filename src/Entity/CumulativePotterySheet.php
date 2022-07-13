@@ -16,9 +16,9 @@ class CumulativePotterySheet
 
     public int $commonWareDiagnosticCount = 0;
 
-    public int $fireWareNonDiagnosticCount = 0;
+    public int $fineWareNonDiagnosticCount = 0;
 
-    public int $fireWareDiagnosticCount = 0;
+    public int $fineWareDiagnosticCount = 0;
 
     public int $coarseWareNonDiagnosticCount = 0;
 

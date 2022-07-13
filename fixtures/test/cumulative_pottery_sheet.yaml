@@ -23,4 +23,18 @@ App\Entity\CumulativePotterySheet:
     subperiodHELCount: 1
     subperiodUndeterminedCount: 9
     notes: Some interesting notes about the the cumulative pottery sheet of that US
+  cps_WW_1_2:
+    stratigraphicUnit: '@su_WW_1'
+    date: <createImmutableDate('2022-07-13')>
+    compiler: Some One
+    commonWareDiagnosticCount: 5
+    coarseWareDiagnosticCount: 8
+    fineWareDiagnosticCount: 3
+    fineWareNonDiagnosticCount: 17
+    subperiodIRA1Count: 4
+    subperiodIRA2Count: 5
+    subperiodSASCount: 8
+    subperiodHELCount: 1
+    subperiodUndeterminedCount: 9
+    notes: Some interesting notes about the the cumulative pottery sheet of WW US
 
