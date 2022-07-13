@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Entity\Vocabulary\Document\Type;
 use Doctrine\ORM\Event\LifecycleEventArgs;
@@ -53,6 +54,25 @@ use Symfony\Component\Validator\Constraints as Assert;
         'buildings' => 'partial',
         'summary' => 'ipartial',
         'type.value' => 'exact',
+        'creator' => 'ipartial',
+    ]
+)]
+#[ApiFilter(
+    OrderFilter::class,
+    properties: [
+        'id',
+        'stratigraphicUnit.area.code',
+        'stratigraphicUnit.site.code',
+        'year',
+        'number',
+        'type.value',
+        'compiler',
+        'areaSupervisor',
+        'creator',
+        'date',
+        'description',
+        'interpretation',
+        'summary',
     ]
 )]
 #[UniqueEntity(
