@@ -20,14 +20,12 @@ App\Entity\Vocabulary\Pottery\RimShape:
   voc__p__rim_shape_10:
     value: pie-crust
   voc__p__rim_shape_11:
-    value: lid/stopper
-  voc__p__rim_shape_12:
     value: ribbon
-  voc__p__rim_shape_13:
+  voc__p__rim_shape_12:
     value: simple
-  voc__p__rim_shape_14:
+  voc__p__rim_shape_13:
     value: thickened inside
-  voc__p__rim_shape_15:
+  voc__p__rim_shape_14:
     value: thickened outside
-  voc__p__rim_shape_16:
+  voc__p__rim_shape_15:
     value: thickened outside and inside

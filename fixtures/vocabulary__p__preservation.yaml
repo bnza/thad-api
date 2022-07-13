@@ -18,6 +18,8 @@ App\Entity\Vocabulary\Pottery\preservation:
   voc__preservation_9:
     value: neck+body
   voc__preservation_10:
+    value: neck+neck
+  voc__preservation_11:
     value: neck+spout
   voc__preservation_12:
     value: rim
@@ -25,14 +27,14 @@ App\Entity\Vocabulary\Pottery\preservation:
     value: rim+body
   voc__preservation_14:
     value: rim+neck+body
-  voc__preservation_16:
+  voc__preservation_15:
     value: rim+spout
-  voc__preservation_17:
+  voc__preservation_16:
     value: rim+wall
-  voc__preservation_18:
+  voc__preservation_17:
     value: spout
-  voc__preservation_19:
+  voc__preservation_18:
     value: wall
-  voc__preservation_20:
+  voc__preservation_19:
     value: wall+spout
 

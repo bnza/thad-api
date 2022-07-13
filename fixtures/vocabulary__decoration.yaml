@@ -7,6 +7,8 @@ App\Entity\Vocabulary\Decoration:
     value: comb-impressed
   voc__decoration_4:
     value: comb-incised
+  voc__decoration_11:
+    value: embroided
   voc__decoration_5:
     value: excised
   voc__decoration_6:

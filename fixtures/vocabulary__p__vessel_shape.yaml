@@ -18,26 +18,30 @@ App\Entity\Vocabulary\Pottery\VesselShape:
   voc__p__vessel_shape_9:
     value: fruit-stand
   voc__p__vessel_shape_10:
-    value: jug
+    value: krater
   voc__p__vessel_shape_11:
-    value: lid/stopper
+    value: jar
   voc__p__vessel_shape_12:
-    value: miniaturistic vessel
+    value: jug
   voc__p__vessel_shape_13:
-    value: plate
+    value: lid/stopper
   voc__p__vessel_shape_14:
-    value: pot
+    value: miniaturistic vessel
   voc__p__vessel_shape_15:
-    value: shallow bowl
+    value: plate
   voc__p__vessel_shape_16:
-    value: shouldered beaker
+    value: pot
   voc__p__vessel_shape_17:
-    value: stand
+    value: shallow bowl
   voc__p__vessel_shape_18:
-    value: stemmed dish
+    value: shouldered beaker
   voc__p__vessel_shape_19:
-    value: strainer/sieve
+    value: stand
   voc__p__vessel_shape_20:
-    value: zoomorphic vessel
+    value: stemmed dish
   voc__p__vessel_shape_21:
+    value: strainer/sieve
+  voc__p__vessel_shape_22:
+    value: zoomorphic vessel
+  voc__p__vessel_shape_23:
     value: undetermined

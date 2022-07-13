@@ -65,6 +65,8 @@ App\Entity\Vocabulary\Object\Type:
     value: cylinder
   voc__o__type_33:
     value: cylinder seal
+  voc__o__type_101:
+    value: dagger
   voc__o__type_34:
     value: debitage
   voc__o__type_35:
@@ -183,6 +185,8 @@ App\Entity\Vocabulary\Object\Type:
     value: strainer
   voc__o__type_92:
     value: straw
+  voc__o__type_102:
+    value: sword
   voc__o__type_93:
     value: token
   voc__o__type_94:

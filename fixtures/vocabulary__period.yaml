@@ -38,6 +38,9 @@ App\Entity\Vocabulary\Period:
   voc__period_PAR:
     code: PAR
     value: Parthian
+  voc__period_BYZ:
+    code: BYZ
+    value: Byzantine
   voc__period_SAS:
     code: SAS
     value: Sasanian
@@ -47,3 +50,6 @@ App\Entity\Vocabulary\Period:
   voc__period_MOD:
     code: MOD
     value: Modern
+  voc__period_UND:
+    code: UND
+    value: undetermined

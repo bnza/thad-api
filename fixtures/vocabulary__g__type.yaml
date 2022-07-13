@@ -11,6 +11,8 @@ App\Entity\Vocabulary\Grave\Type:
     value: simple pit
   voc__g__type_6:
     value: sarchophagus
+  voc__g__type_9:
+    value: shaft
   voc__g__type_7:
     value: tumulus
   voc__g__type_8:
