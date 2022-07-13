@@ -225,7 +225,7 @@ class SU
         'read:ViewCumulativePotterySheet',
     ])]
     #[Assert\NotBlank]
-    public Area $area;
+    private Area $area;
 
     private GeomSU $geom;
 
@@ -452,6 +452,18 @@ class SU
         return $this->id;
     }
 
+    public function getArea(): Area
+    {
+        return $this->area;
+    }
+
+    public function setArea(Area $area): SU
+    {
+        $this->site =$area->site;
+        $this->area = $area;
+        return $this;
+    }
+
     public function getRelations(): iterable|ArrayCollection
     {
         return $this->relations;
@@ -548,9 +560,11 @@ class SU
 
     public function ensureSite(LifecycleEventArgs $event)
     {
-        /** @var SU $entity */
-        $entity = $event->getEntity();
+        if (isset($this->site)) {
+            /** @var SU $entity */
+            $entity = $event->getEntity();
 
-        $entity->site = $entity->area->site;
+            $entity->site = $entity->area->site;
+        }
     }
 }
