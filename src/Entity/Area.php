@@ -99,6 +99,7 @@ class Area
     private int $id;
 
     #[Groups([
+        'export:Grave',
         'export:Document',
         'export:ViewCumulativePotterySheet',
         'export:SmallFind',

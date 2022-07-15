@@ -415,6 +415,7 @@ class SU
     }
 
     #[Groups([
+        'export:Grave',
         'export:SU',
         'export:Pottery',
         'export:Sample',

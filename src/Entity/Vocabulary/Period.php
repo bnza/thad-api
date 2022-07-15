@@ -36,6 +36,7 @@ class Period
     public string $code;
 
     #[Groups([
+        'export:Grave',
         'export:SU',
         'export:Pottery',
         'export:SmallFind',

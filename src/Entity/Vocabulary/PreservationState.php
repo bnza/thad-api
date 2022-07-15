@@ -27,6 +27,7 @@ class PreservationState
     private int $id;
 
     #[Groups([
+        'export:Grave',
         'export:SmallFind',
         'export:Ecofact',
         'export:Sample',

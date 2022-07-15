@@ -23,6 +23,7 @@ class Type
     private string $id;
 
     #[Groups([
+        'export:Grave',
         'read:Grave',
     ])]
     private string $value;

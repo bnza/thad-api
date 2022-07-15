@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use App\Controller\ResourceExportController;
 use App\Entity\Vocabulary\Grave\Ritual;
 use App\Entity\Vocabulary\Grave\Type;
 use App\Entity\Vocabulary\Period;
@@ -17,6 +18,20 @@ use Symfony\Component\Validator\Constraints as Assert;
     collectionOperations: [
         'post',
         'get' => [
+            'security' => 'is_granted("ROLE_USER")',
+        ],
+        'export' => [
+            'controller' => ResourceExportController::class,
+            'method' => 'GET',
+            'path' => '/graves/export',
+            'formats' => [
+                'csv' => ['text/csv'],
+            ],
+            'normalization_context' => [
+                'groups' => [
+                    'export:Grave',
+                ],
+            ],
             'security' => 'is_granted("ROLE_USER")',
         ],
     ],
@@ -68,6 +83,7 @@ class Grave
     private int $id;
 
     #[Groups([
+        'export:Grave',
         'read:MediaGrave',
         'write:Grave',
         'read:Grave',
@@ -77,6 +93,7 @@ class Grave
     public int $number;
 
     #[Groups([
+        'export:Grave',
         'write:Grave',
         'read:Grave',
     ])]
@@ -92,11 +109,13 @@ class Grave
     public iterable $stratigraphicUnits;
 
     #[Groups([
+        'export:Grave',
         'read:Grave',
     ])]
     private Site $site;
 
     #[Groups([
+        'export:Grave',
         'write:Grave',
         'read:Grave',
     ])]
@@ -104,30 +123,35 @@ class Grave
     private Area $area;
 
     #[Groups([
+        'export:Grave',
         'read:Grave',
         'write:Grave',
     ])]
     public ?Period $period;
 
     #[Groups([
+        'export:Grave',
         'read:Grave',
         'write:Grave',
     ])]
     public ?PreservationState $preservationState;
 
     #[Groups([
+        'export:Grave',
         'read:Grave',
         'write:Grave',
     ])]
     public ?Ritual $ritual;
 
     #[Groups([
+        'export:Grave',
         'write:Grave',
         'read:Grave',
     ])]
     public bool $isSecondaryDeposition = false;
 
     #[Groups([
+        'export:Grave',
         'write:Grave',
         'read:Grave',
     ])]
@@ -135,78 +159,70 @@ class Grave
     public Type $type;
 
     #[Groups([
-        'write:Grave',
-        'read:Grave',
-    ])]
-    public ?SU $cutStratigraphicUnit;
-
-    #[Groups([
-        'write:Grave',
-        'read:Grave',
-    ])]
-    public ?SU $fillStratigraphicUnit;
-
-    #[Groups([
-        'write:Grave',
-        'read:Grave',
-    ])]
-    public ?SU $skeletonStratigraphicUnit;
-
-    #[Groups([
+        'export:Grave',
         'write:Grave',
         'read:Grave',
     ])]
     public ?SU $earlierThan;
 
     #[Groups([
+        'export:Grave',
         'write:Grave',
         'read:Grave',
     ])]
     public ?SU $laterThan;
 
     #[Groups([
+        'export:Grave',
         'write:Grave',
         'read:Grave',
     ])]
     public ?float $topElevation;
 
     #[Groups([
+        'export:Grave',
         'write:Grave',
         'read:Grave',
     ])]
     public ?float $bottomElevation;
 
     #[Groups([
+        'export:Grave',
         'write:Grave',
         'read:Grave',
     ])]
     public ?string $alignment;
 
     #[Groups([
+        'export:Grave',
         'write:Grave',
         'read:Grave',
     ])]
     public ?string $description;
 
     #[Groups([
+        'export:Grave',
         'write:Grave',
         'read:Grave',
     ])]
     public ?string $interpretation;
 
     #[Groups([
+        'export:Grave',
         'write:Grave',
         'read:Grave',
     ])]
     public ?string $summary;
 
     #[Groups([
+        'export:Grave',
         'write:Grave',
         'read:Grave',
     ])]
     public ?string $areaSupervisor;
 
     #[Groups([
+        'export:Grave',
         'write:Grave',
         'read:Grave',
     ])]
@@ -214,6 +230,7 @@ class Grave
     public string $compiler;
 
     #[Groups([
+        'export:Grave',
         'write:Grave',
         'read:Grave',
     ])]
@@ -221,6 +238,7 @@ class Grave
     public \DateTimeImmutable $date;
 
     #[Groups([
+        'export:Grave',
         'write:Grave',
         'read:Grave',
     ])]
@@ -228,6 +246,7 @@ class Grave
     public ?int $building;
 
     #[Groups([
+        'export:Grave',
         'write:Grave',
         'read:Grave',
     ])]
@@ -239,6 +258,7 @@ class Grave
     public ?string $buildingSubPhase;
 
     #[Groups([
+        'export:Grave',
         'write:Grave',
         'read:Grave',
     ])]
@@ -246,6 +266,7 @@ class Grave
     public ?string $room;
 
     #[Groups([
+        'export:Grave',
         'write:Grave',
         'read:Grave',
     ])]
@@ -253,6 +274,7 @@ class Grave
     public ?int $phase;
 
     #[Groups([
+        'export:Grave',
         'write:Grave',
         'read:Grave',
     ])]
@@ -272,6 +294,7 @@ class Grave
     }
 
     #[Groups([
+        'export:Grave',
         'export:SU',
         'read:SU',
     ])]

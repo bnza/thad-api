@@ -45,9 +45,6 @@
             <join-column name="area_id" nullable="false"/>
         </many-to-one>
         <one-to-many field="stratigraphicUnits" target-entity="SU" mapped-by="grave" />
-        <one-to-one field="cutStratigraphicUnit" target-entity="SU" />
-        <one-to-one field="fillStratigraphicUnit" target-entity="SU" />
-        <one-to-one field="skeletonStratigraphicUnit" target-entity="SU" />
         <one-to-one field="earlierThan" target-entity="SU" />
         <one-to-one field="laterThan" target-entity="SU" />
         <one-to-many field="mediaObjects" target-entity="App\Entity\M2M\MediaObjectGrave" mapped-by="grave" />
