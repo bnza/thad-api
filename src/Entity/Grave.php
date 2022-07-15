@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
+use App\Entity\Vocabulary\Grave\Deposition;
 use App\Entity\Vocabulary\Grave\Ritual;
 use App\Entity\Vocabulary\Grave\Type;
 use App\Entity\Vocabulary\Period;
@@ -147,14 +148,14 @@ class Grave
         'read:Grave',
         'write:Grave',
     ])]
-    public ?Ritual $ritual;
+    public ?Deposition $deposition;
 
     #[Groups([
         'export:Grave',
-        'write:Grave',
         'read:Grave',
+        'write:Grave',
     ])]
-    public bool $isSecondaryDeposition = false;
+    public ?Ritual $ritual;
 
     #[Groups([
         'export:Grave',

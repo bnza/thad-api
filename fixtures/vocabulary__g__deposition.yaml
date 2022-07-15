@@ -1,0 +1,5 @@
+App\Entity\Vocabulary\Grave\Deposition:
+  voc__g__deposition_1:
+    value: primary
+  voc__g__deposition_2:
+    value: secondary

@@ -8,6 +8,7 @@ App\Entity\Grave:
     area: '@area_TH_A'
     type: '@voc__g__type_5'
     ritual: '@voc__g__ritual_1'
+    deposition: '@voc__g__deposition_1'
     earlierThan: '@su_TH_6'
     laterThan: '@su_TH_7'
     bottomElevation: 232.89
@@ -32,6 +33,7 @@ App\Entity\Grave:
     area: '@area_TH_A'
     type: '@voc__g__type_4'
     ritual: '@voc__g__ritual_1'
+    deposition: '@voc__g__deposition_2'
     earlierThan: '@su_TH_8'
     laterThan: '@su_TH_9'
     alignment: 'W-E'

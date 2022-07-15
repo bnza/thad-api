@@ -15,11 +15,6 @@
         <field name="description" type="text" nullable="true"/>
         <field name="interpretation"  type="text" nullable="true"/>
         <field name="alignment" type="text" nullable="true"/>
-        <field name="isSecondaryDeposition" type="boolean" >
-            <options>
-                <option name="default">false</option>
-            </options>
-        </field>
         <field name="summary" type="text" nullable="true"/>
         <field name="areaSupervisor" column="area_supervisor" nullable="true"/>
         <field name="compiler"/>
@@ -53,6 +48,9 @@
         </many-to-one>
         <many-to-one field="ritual" target-entity="App\Entity\Vocabulary\Grave\Ritual">
             <join-column name="ritual_id" />
+        </many-to-one>
+        <many-to-one field="deposition" target-entity="App\Entity\Vocabulary\Grave\Deposition">
+            <join-column name="deposition_id" />
         </many-to-one>
         <many-to-one field="type" target-entity="App\Entity\Vocabulary\Grave\Type">
             <join-column name="type_id" nullable="false"/>
