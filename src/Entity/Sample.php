@@ -8,6 +8,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
 use App\Entity\Vocabulary\PreservationState;
+use App\Entity\Vocabulary\Sample\Strategy;
 use App\Entity\Vocabulary\Sample\Type;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -128,6 +129,13 @@ class Sample
         'read:Sample',
         'write:Sample',
     ])]
+    public ?Strategy $strategy;
+
+    #[Groups([
+        'export:Sample',
+        'read:Sample',
+        'write:Sample',
+    ])]
     #[Assert\NotBlank]
     private int $number;
 
@@ -222,13 +230,6 @@ class Sample
         'write:Sample',
     ])]
     private bool $selectedForAnalysis = false;
-
-    #[Groups([
-        'export:Sample',
-        'read:Sample',
-        'write:Sample',
-    ])]
-    public ?bool $exhaustive = null;
 
     #[Groups([
         'export:Sample',

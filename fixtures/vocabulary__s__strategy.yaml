@@ -1,0 +1,5 @@
+App\Entity\Vocabulary\Sample\Strategy:
+  voc__s__strategy_1:
+    value: exhaustive
+  voc__s__strategy_2:
+    value: hand-picked
