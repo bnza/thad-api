@@ -99,6 +99,7 @@ class Area
     private int $id;
 
     #[Groups([
+        'export:Document',
         'export:ViewCumulativePotterySheet',
         'export:SmallFind',
         'export:Ecofact',

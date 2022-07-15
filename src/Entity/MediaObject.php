@@ -84,6 +84,7 @@ class MediaObject
     public string $sha256;
 
     #[Groups([
+        'export:Document',
         'read:Document',
         'read:MediaGrave',
         'read:MediaSample',

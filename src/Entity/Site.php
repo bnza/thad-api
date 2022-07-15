@@ -100,6 +100,7 @@ class Site
     #[Groups([
         'export:ViewCumulativePotterySheet',
         'read:Document',
+        'export:Document',
         'export:SmallFind',
         'export:Ecofact',
         'export:Sample',
@@ -122,6 +123,7 @@ class Site
     #[Groups([
         'export:ViewCumulativePotterySheet',
         'export:SmallFind',
+        'export:Document',
         'export:Ecofact',
         'export:Sample',
         'export:Pottery',

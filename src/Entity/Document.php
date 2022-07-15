@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use App\Controller\ResourceExportController;
 use App\Entity\Vocabulary\Document\Type;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -16,6 +17,20 @@ use Symfony\Component\Validator\Constraints as Assert;
     collectionOperations: [
         'post',
         'get' => [
+            'security' => 'is_granted("ROLE_USER")',
+        ],
+        'export' => [
+            'controller' => ResourceExportController::class,
+            'method' => 'GET',
+            'path' => '/documents/export',
+            'formats' => [
+                'csv' => ['text/csv'],
+            ],
+            'normalization_context' => [
+                'groups' => [
+                    'export:Document',
+                ],
+            ],
             'security' => 'is_granted("ROLE_USER")',
         ],
     ],
@@ -95,6 +110,7 @@ class Document
     private int $id;
 
     #[Groups([
+        'export:Document',
         'write:Document',
         'read:Document',
         'read:SU',
@@ -103,6 +119,7 @@ class Document
     public int $number;
 
     #[Groups([
+        'export:Document',
         'write:Document',
         'read:Document',
     ])]
@@ -115,11 +132,13 @@ class Document
     public int $year;
 
     #[Groups([
+        'export:Document',
         'read:Document',
     ])]
     private Site $site;
 
     #[Groups([
+        'export:Document',
         'write:Document',
         'read:Document',
     ])]
@@ -127,6 +146,7 @@ class Document
     private Area $area;
 
     #[Groups([
+        'export:Document',
         'write:Document',
         'read:Document',
     ])]
@@ -134,6 +154,7 @@ class Document
     public Type $type;
 
     #[Groups([
+        'export:Document',
         'write:Document',
         'read:Document',
     ])]
@@ -141,6 +162,7 @@ class Document
     public MediaObject $mediaObject;
 
     #[Groups([
+        'export:Document',
         'write:Document',
         'read:Document',
     ])]
@@ -148,6 +170,7 @@ class Document
     public string $description;
 
     #[Groups([
+        'export:Document',
         'write:Document',
         'read:Document',
     ])]
@@ -155,18 +178,21 @@ class Document
     public string $interpretation;
 
     #[Groups([
+        'export:Document',
         'write:Document',
         'read:Document',
     ])]
     public ?string $summary;
 
     #[Groups([
+        'export:Document',
         'write:Document',
         'read:Document',
     ])]
     public ?string $areaSupervisor;
 
     #[Groups([
+        'export:Document',
         'write:Document',
         'read:Document',
     ])]
@@ -174,6 +200,7 @@ class Document
     public string $creator;
 
     #[Groups([
+        'export:Document',
         'write:Document',
         'read:Document',
     ])]
