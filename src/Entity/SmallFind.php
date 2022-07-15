@@ -240,9 +240,9 @@ class SmallFind
         'write:SmallFind',
     ])]
     #[Assert\Range(
-        notInRangeMessage: 'Latitude must be between {{ min }} and {{ max }} degree',
-        min: -90,
-        max: 90,
+        notInRangeMessage: 'Projected latitude must be between {{ min }} and {{ max }} degree',
+        min: 0.00,
+        max: 9329005.18,
     )]
     public ?float $coordN = null;
 
@@ -252,9 +252,9 @@ class SmallFind
         'write:SmallFind',
     ])]
     #[Assert\Range(
-        notInRangeMessage: 'Longitude must be between {{ min }} and {{ max }} degree',
-        min: -180,
-        max: 180,
+        notInRangeMessage: 'Projected longitude must be between {{ min }} and {{ max }} degree',
+        min: 166021.44,
+        max: 833978.56,
     )]
     public ?float $coordE = null;
 

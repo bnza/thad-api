@@ -40,6 +40,9 @@ App\Entity\SmallFind:
     internalSurfaceColour: '@voc__o__colour_5'
     fractureColour: '@voc__o__colour_6'
     period: '@voc__period_HAS'
+    coordN: 4028367.58
+    coordE: 450249.31
+    coordZ: 234.61
     height: 2.44
     thickness: 12.23
     length: 2.54
@@ -67,6 +70,9 @@ App\Entity\SmallFind:
     internalSurfaceColour: '@voc__o__colour_7'
     fractureColour: '@voc__o__colour_7'
     subperiod: '@voc__subperiod_ISL3'
+    coordN: 4028355.89
+    coordE: 450219.77
+    coordZ: 231.10
     height: 1.44
     thickness: 11.23
     length: 1.54
