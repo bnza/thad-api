@@ -11,6 +11,7 @@ use App\Entity\Vocabulary\Grave\Type;
 use App\Entity\Vocabulary\Period;
 use App\Entity\Vocabulary\PreservationState;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -73,6 +74,11 @@ use Symfony\Component\Validator\Constraints as Assert;
         'type.value' => 'exact',
     ]
 )]
+#[UniqueEntity(
+    fields: ['site', 'number'],
+    message: 'Grave {{ value }} already exists in this site',
+    errorPath: 'number',
+)]
 class Grave
 {
     #[Groups([
@@ -99,7 +105,7 @@ class Grave
     ])]
     #[Assert\NotBlank]
     #[Assert\Range(
-        notInRangeMessage: 'SU excavation year must be between {{ min }} and {{ max }}',
+        notInRangeMessage: 'Grave excavation year must be between {{ min }} and {{ max }}',
         min: 2000,
         max: 2099,
     )]
