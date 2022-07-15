@@ -88,7 +88,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 )]
 #[UniqueEntity(
     fields: ['stratigraphicUnit', 'number'],
-    message: 'ecofact number {{ value }} already exists in this SU',
+    message: 'Ecofact number {{ value }} already exists in this SU',
     errorPath: 'number',
 )]
 class Ecofact
