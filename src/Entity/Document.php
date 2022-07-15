@@ -95,6 +95,11 @@ use Symfony\Component\Validator\Constraints as Assert;
     message: 'Duplicate media',
     errorPath: 'mediaObject',
 )]
+#[UniqueEntity(
+    fields: ['site', 'number'],
+    message: 'Document {{ value }} already exists in this site',
+    errorPath: 'number',
+)]
 class Document
 {
     #[Groups([

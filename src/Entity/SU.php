@@ -460,7 +460,7 @@ class SU
 
     public function setArea(Area $area): SU
     {
-        $this->site =$area->site;
+        $this->site = $area->site;
         $this->area = $area;
         return $this;
     }
