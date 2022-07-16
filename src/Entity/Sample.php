@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
 use App\Entity\Vocabulary\PreservationState;
@@ -74,9 +75,10 @@ use Symfony\Component\Validator\Constraints as Assert;
         'thickness',
         'minDiameter',
         'maxDiameter',
+        'weight',
         'compiler',
         'date',
-        'note',
+        'notes',
         'exhaustive',
         'contaminationRisk',
     ]
@@ -87,6 +89,30 @@ use Symfony\Component\Validator\Constraints as Assert;
         'id' => 'exact',
         'stratigraphicUnit.id' => 'exact',
         'stratigraphicUnit.site.id' => 'exact',
+        'stratigraphicUnit.area.code' => 'exact',
+        'stratigraphicUnit.site.code' => 'exact',
+        'number' => 'exact',
+        'quantity' => 'exact',
+        'type.id' => 'exact',
+        'material.id' => 'exact',
+        'preservationState.id' => 'exact',
+        'compiler' => 'ipartial',
+        'description' => 'ipartial',
+        'notes' => 'ipartial',
+    ]
+)]
+#[ApiFilter(
+    RangeFilter::class,
+    properties: [
+        'number',
+        'quantity',
+        'length',
+        'width',
+        'height',
+        'thickness',
+        'minDiameter',
+        'maxDiameter',
+        'weight',
     ]
 )]
 #[UniqueEntity(

@@ -69,20 +69,23 @@ use Symfony\Component\Validator\Constraints as Assert;
         'site.id' => 'exact',
         'area.id' => 'exact',
         'area.code' => 'exact',
-        'area.site.code' => 'exact',
+        'site.code' => 'exact',
+        'number' => 'exact',
+        'year' => 'exact',
         'areaSupervisor' => 'ipartial',
         'compiler' => 'ipartial',
         'description' => 'ipartial',
         'interpretation' => 'ipartial',
-        'preservationState.value' => 'exact',
         'summary' => 'ipartial',
-        'period.code' => 'exact',
-        'preservation.code' => 'exact',
-        'type.value' => 'exact',
+        'period.id' => 'exact',
+        'preservationState.id' => 'exact',
+        'type.id' => 'exact',
         'grave.id' => 'exact',
         'building' => 'exact',
+        'buildingSubPhase' => 'exact',
         'room' => 'exact',
         'phase' => 'exact',
+        'subPhase' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -90,6 +93,8 @@ use Symfony\Component\Validator\Constraints as Assert;
     properties: [
         'bottomElevation',
         'topElevation',
+        'number',
+        'year',
     ]
 )]
 #[ApiFilter(
@@ -101,7 +106,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     ExistsFilter::class,
     properties: [
-        'preservation',
+        'preservationState',
         'period',
     ]
 )]
@@ -123,7 +128,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'summary',
         'topElevation',
         'type.value',
-        'period.value',
+        'period.code',
         'subperiod.value',
         'grave.number',
         'building',

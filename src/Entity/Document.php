@@ -68,7 +68,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'rooms' => 'partial',
         'buildings' => 'partial',
         'summary' => 'ipartial',
-        'type.value' => 'exact',
+        'type.id' => 'exact',
         'creator' => 'ipartial',
     ]
 )]

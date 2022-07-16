@@ -4,7 +4,9 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
 use App\Entity\Vocabulary\Decoration;
@@ -80,6 +82,33 @@ use Symfony\Component\Validator\Constraints as Assert;
         'id' => 'exact',
         'stratigraphicUnit.id' => 'exact',
         'stratigraphicUnit.site.id' => 'exact',
+        'stratigraphicUnit.area.code' => 'exact',
+        'stratigraphicUnit.site.code' => 'exact',
+        'number' => 'exact',
+        'period.id' => 'exact',
+        'subperiod.id' => 'exact',
+        'ware.id' => 'exact',
+        'fabric.id' => 'exact',
+        'externalSurfaceColour.id' => 'exact',
+        'internalSurfaceColour.id' => 'exact',
+        'surfaceCharacteristic.id' => 'exact',
+        'surfaceTreatment.id' => 'exact',
+        'fractureColour.id' => 'exact',
+        'manufacturingTechnique.id' => 'exact',
+        'firing.id' => 'exact',
+        'decoration.id' => 'exact',
+        'vesselShape.id' => 'exact',
+        'rimShape.id' => 'exact',
+        'baseShape.id' => 'exact',
+        'rimDirection.id' => 'exact',
+        'rimCharacterization.id' => 'exact',
+        'neck.id' => 'exact',
+        'neckLength.id' => 'exact',
+        'body.id' => 'exact',
+        'spout.id' => 'exact',
+        'handle.id' => 'exact',
+        'sizeGroup.id' => 'exact',
+        'preservation.id' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -104,7 +133,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'decoration.value',
         'vesselShape.value',
         'rimShape.value',
-        'baselShape.value',
+        'baseShape.value',
         'rimDirection.value',
         'rimCharacterization.value',
         'neck.value',
@@ -120,6 +149,44 @@ use Symfony\Component\Validator\Constraints as Assert;
         'compiler',
         'date',
         'note',
+    ]
+)]
+#[ApiFilter(
+    ExistsFilter::class,
+    properties: [
+        'period',
+        'subperiod',
+        'externalSurfaceColour',
+        'internalSurfaceColour',
+        'fractureColour',
+        'surfaceCharacteristic',
+        'ware',
+        'fabric',
+        'surfaceTreatment',
+        'manufacturingTechnique',
+        'firing',
+        'decoration',
+        'vesselShape',
+        'rimShape',
+        'baseShape',
+        'rimDirection',
+        'rimCharacterization',
+        'neck',
+        'neckLength',
+        'body',
+        'spout',
+        'handle',
+        'sizeGroup',
+        'preservation',
+    ]
+)]
+#[ApiFilter(
+    RangeFilter::class,
+    properties: [
+        'number',
+        'thickness',
+        'rimDiameter',
+        'baseDiameter',
     ]
 )]
 #[UniqueEntity(

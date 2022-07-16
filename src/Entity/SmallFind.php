@@ -4,7 +4,10 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
 use App\Entity\Vocabulary\Decoration;
@@ -69,12 +72,13 @@ use Symfony\Component\Validator\Constraints as Assert;
         'stratigraphicUnit.site.code',
         'stratigraphicUnit.number',
         'number',
-        'period.code',
-        'subperiod.code',
         'type.value',
         'material.value',
         'preservation.value',
         'preservationState.value',
+        'externalSurfaceColour',
+        'internalSurfaceColour',
+        'fractureColour',
         'length',
         'width',
         'minWidth',
@@ -84,39 +88,12 @@ use Symfony\Component\Validator\Constraints as Assert;
         'baseDiameter',
         'minDiameter',
         'maxDiameter',
+        'weight',
         'compiler',
         'date',
         'summary',
         'description',
-        'note',
-    ]
-)]
-#[ApiFilter(
-    OrderFilter::class,
-    properties: [
-        'id',
-        'stratigraphicUnit.area.code',
-        'stratigraphicUnit.site.code',
-        'stratigraphicUnit.number',
-        'number',
-        'type.value',
-        'material.value',
-        'preservation.value',
-        'preservationState.value',
-        'length',
-        'width',
-        'minWidth',
-        'maxWidth',
-        'height',
-        'thickness',
-        'baseDiameter',
-        'minDiameter',
-        'maxDiameter',
-        'compiler',
-        'date',
-        'summary',
-        'description',
-        'note',
+        'notes',
     ]
 )]
 #[ApiFilter(
@@ -125,6 +102,57 @@ use Symfony\Component\Validator\Constraints as Assert;
         'id' => 'exact',
         'stratigraphicUnit.id' => 'exact',
         'stratigraphicUnit.site.id' => 'exact',
+        'stratigraphicUnit.area.code' => 'exact',
+        'stratigraphicUnit.site.code' => 'exact',
+        'stratigraphicUnit.year' => 'exact',
+        'number' => 'exact',
+        'type.id' => 'exact',
+        'material.id' => 'exact',
+        'preservation.id' => 'exact',
+        'preservationState.id' => 'exact',
+        'period.id' => 'exact',
+        'subperiod.id' => 'exact',
+        'externalSurfaceColour.id' => 'exact',
+        'internalSurfaceColour.id' => 'exact',
+        'fractureColour.id' => 'exact',
+        'compiler' => 'ipartial',
+        'description' => 'ipartial',
+        'summary' => 'ipartial',
+        'notes' => 'ipartial',
+    ]
+)]
+#[ApiFilter(
+    RangeFilter::class,
+    properties: [
+        'number',
+        'length',
+        'width',
+        'minWidth',
+        'maxWidth',
+        'height',
+        'thickness',
+        'weight',
+        'baseDiameter',
+        'minDiameter',
+        'maxDiameter',
+    ]
+)]
+#[ApiFilter(
+    ExistsFilter::class,
+    properties: [
+        'preservation',
+        'preservationState',
+        'period',
+        'subperiod',
+        'externalSurfaceColour',
+        'internalSurfaceColour',
+        'fractureColour',
+    ]
+)]
+#[ApiFilter(
+    DateFilter::class,
+    properties: [
+        'date',
     ]
 )]
 #[UniqueEntity(

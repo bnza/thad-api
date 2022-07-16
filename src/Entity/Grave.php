@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
 use App\Entity\Vocabulary\Grave\Deposition;
@@ -68,11 +70,44 @@ use Symfony\Component\Validator\Constraints as Assert;
         'compiler' => 'ipartial',
         'description' => 'ipartial',
         'interpretation' => 'ipartial',
-        'preservationState.value' => 'exact',
         'summary' => 'ipartial',
-        'period.code' => 'exact',
-        'preservation.code' => 'exact',
-        'type.value' => 'exact',
+        'preservationState.id' => 'exact',
+        'period.id' => 'exact',
+        'preservation.id' => 'exact',
+        'type.id' => 'exact',
+    ]
+)]
+#[ApiFilter(
+    OrderFilter::class,
+    properties: [
+        'id',
+        'area.code',
+        'site.code',
+        'stratigraphicUnit.number',
+        'number',
+        'building',
+        'buildingSubPhase',
+        'room',
+        'phase',
+        'subPhase',
+        'compiler',
+        'description',
+        'interpretation',
+        'summary',
+        'type.value',
+        'period.code',
+        'deposition.value',
+        'ritual.value',
+        'date',
+    ]
+)]
+#[ApiFilter(
+    ExistsFilter::class,
+    properties: [
+        'preservationState',
+        'period',
+        'deposition',
+        'ritual',
     ]
 )]
 #[UniqueEntity(
