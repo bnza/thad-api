@@ -1,4 +1,28 @@
 App\Entity\Vocabulary\Subperiod:
+  voc__subperiod_EPN:
+    period: '@voc__period_EPN'
+    code: EPN
+    value: Early Pottery Neolithic
+  voc__subperiod_HAS:
+    period: '@voc__period_HAS'
+    code: HAS
+    value: Hassuna
+  voc__subperiod_SAM:
+    period: '@voc__period_SAM'
+    code: SAM
+    value: Samarra
+  voc__subperiod_HAL:
+    period: '@voc__period_HAL'
+    code: HAL
+    value: Halaf
+  voc__subperiod_NUB:
+    period: '@voc__period_NUB'
+    code: NUB
+    value: Northern Ubaid
+  voc__subperiod_LCA:
+    period: '@voc__period_LCA'
+    code: LCA
+    value: Late Chalcolithic (generic)
   voc__subperiod_LCA1:
     period: '@voc__period_LCA'
     code: LCA1
@@ -19,6 +43,10 @@ App\Entity\Vocabulary\Subperiod:
     period: '@voc__period_LCA'
     code: LCA5
     value: Late Chalcolithic 5
+  voc__subperiod_EMT:
+    period: '@voc__period_EMT'
+    code: EMT
+    value: Early Middle Tigris (generic)
   voc__subperiod_EMT0:
     period: '@voc__period_EMT'
     code: EMT0
@@ -47,6 +75,10 @@ App\Entity\Vocabulary\Subperiod:
     period: '@voc__period_LCA'
     code: SUR
     value: Southern Uruk
+  voc__subperiod_MBA:
+    period: '@voc__period_MBA'
+    code: MBA
+    value: Middle Bronze Age
   voc__subperiod_MBA1:
     period: '@voc__period_MBA'
     code: MBA1
@@ -75,6 +107,22 @@ App\Entity\Vocabulary\Subperiod:
     period: '@voc__period_IRA'
     code: IRA3
     value: Iron Age 3/Achaemenid
+  voc__subperiod_HEL:
+    period: '@voc__period_HEL'
+    code: HEL
+    value: Hellenistic
+  voc__subperiod_PAR:
+    period: '@voc__period_PAR'
+    code: PAR
+    value: Parthian
+  voc__subperiod_BYZ:
+    period: '@voc__period_BYZ'
+    code: BYZ
+    value: Byzantine
+  voc__subperiod_SAS:
+    period: '@voc__period_SAS'
+    code: SAS
+    value: Sasanian
   voc__subperiod_ISL1:
     period: '@voc__period_ISL'
     code: ISL1
