@@ -23,8 +23,8 @@ App\Entity\Vocabulary\Pottery\preservation:
     value: rim
   voc__preservation_13:
     value: rim+body
-    voc__preservation_10:
-      value: rim+neck
+  voc__preservation_10:
+    value: rim+neck
   voc__preservation_14:
     value: rim+neck+body
   voc__preservation_15:
