@@ -86,6 +86,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'room' => 'exact',
         'phase' => 'exact',
         'subPhase' => 'exact',
+        'date' => 'exact',
     ]
 )]
 #[ApiFilter(

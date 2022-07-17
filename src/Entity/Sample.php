@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
@@ -103,6 +104,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         'compiler' => 'ipartial',
         'description' => 'ipartial',
         'notes' => 'ipartial',
+        'date' => 'exact',
+        'collectionDate' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -124,6 +127,14 @@ use Symfony\Component\Validator\Constraints as Assert;
     properties: [
         'preservationState',
         'strategy',
+        'collectionDate',
+    ]
+)]
+#[ApiFilter(
+    DateFilter::class,
+    properties: [
+        'date',
+        'collectionDate',
     ]
 )]
 #[UniqueEntity(

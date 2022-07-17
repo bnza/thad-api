@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
@@ -109,6 +110,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'handle.id' => 'exact',
         'sizeGroup.id' => 'exact',
         'preservation.id' => 'exact',
+        'date' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -187,6 +189,12 @@ use Symfony\Component\Validator\Constraints as Assert;
         'thickness',
         'rimDiameter',
         'baseDiameter',
+    ]
+)]
+#[ApiFilter(
+    DateFilter::class,
+    properties: [
+        'date',
     ]
 )]
 #[UniqueEntity(

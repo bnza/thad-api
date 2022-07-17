@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
@@ -70,6 +71,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'summary' => 'ipartial',
         'type.id' => 'exact',
         'creator' => 'ipartial',
+        'date' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -88,6 +90,13 @@ use Symfony\Component\Validator\Constraints as Assert;
         'description',
         'interpretation',
         'summary',
+        'date',
+    ]
+)]
+#[ApiFilter(
+    DateFilter::class,
+    properties: [
+        'date',
     ]
 )]
 #[UniqueEntity(

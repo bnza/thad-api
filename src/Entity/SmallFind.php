@@ -119,6 +119,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'description' => 'ipartial',
         'summary' => 'ipartial',
         'notes' => 'ipartial',
+        'date' => 'exact',
     ]
 )]
 #[ApiFilter(

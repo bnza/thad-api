@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
@@ -75,6 +76,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'period.id' => 'exact',
         'preservation.id' => 'exact',
         'type.id' => 'exact',
+        'date' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -108,6 +110,12 @@ use Symfony\Component\Validator\Constraints as Assert;
         'period',
         'deposition',
         'ritual',
+    ]
+)]
+#[ApiFilter(
+    DateFilter::class,
+    properties: [
+        'date',
     ]
 )]
 #[UniqueEntity(

@@ -4,6 +4,7 @@ namespace App\Entity\View;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
@@ -60,6 +61,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'id' => 'exact',
         'stratigraphicUnit.id' => 'exact',
         'stratigraphicUnit.site.id' => 'exact',
+        'date' => 'exact',
         'commonWareNonDiagnosticCount' => 'exact',
         'commonWareDiagnosticCount' => 'exact',
         'fineWareNonDiagnosticCount' => 'exact',
@@ -252,6 +254,12 @@ use Symfony\Component\Validator\Constraints as Assert;
         'periodBYZCount',
         'periodSASCount',
         'periodISLCount',
+    ]
+)]
+#[ApiFilter(
+    DateFilter::class,
+    properties: [
+        'date',
     ]
 )]
 #[UniqueEntity(
