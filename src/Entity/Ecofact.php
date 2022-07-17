@@ -100,6 +100,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'notes' => 'ipartial',
         'date' => 'exact',
         'collectionDate' => 'exact',
+        'selectedForAnalysis' => 'exact',
     ]
 )]
 #[ApiFilter(
