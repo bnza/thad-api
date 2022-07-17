@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
@@ -68,6 +69,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'type.value',
         'material.value',
         'preservationState.value',
+        'strategy.value',
         'selectedForAnalysis',
         'length',
         'width',
@@ -96,6 +98,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'quantity' => 'exact',
         'type.id' => 'exact',
         'material.id' => 'exact',
+        'strategy.id' => 'exact',
         'preservationState.id' => 'exact',
         'compiler' => 'ipartial',
         'description' => 'ipartial',
@@ -114,6 +117,13 @@ use Symfony\Component\Validator\Constraints as Assert;
         'minDiameter',
         'maxDiameter',
         'weight',
+    ]
+)]
+#[ApiFilter(
+    ExistsFilter::class,
+    properties: [
+        'preservationState',
+        'strategy',
     ]
 )]
 #[UniqueEntity(
