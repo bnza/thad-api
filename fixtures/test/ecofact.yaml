@@ -32,6 +32,7 @@ App\Entity\Ecofact:
     quantity: 3
   ecofact_TH_6_1:
     stratigraphicUnit: '@su_TH_6'
+    collectionDate: <createImmutableDate('2022-04-25')>
     date: <createImmutableDate('2022-04-27')>
     number: 1
     compiler: Some One
@@ -45,6 +46,7 @@ App\Entity\Ecofact:
     maxDiameter: 5.78
   ecofact_WW_1_1:
     stratigraphicUnit: '@su_WW_1'
+    collectionDate: <createImmutableDate('2022-05-05')>
     date: <createImmutableDate('2022-05-06')>
     number: 1
     compiler: Some One Other

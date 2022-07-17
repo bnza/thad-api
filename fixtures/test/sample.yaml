@@ -34,6 +34,7 @@ App\Entity\Sample:
     quantity: 3
   sample_TH_6_1:
     stratigraphicUnit: '@su_TH_6'
+    collectionDate: <createImmutableDate('2022-05-15')>
     date: <createImmutableDate('2022-05-25')>
     number: 1
     compiler: Some One
@@ -48,6 +49,7 @@ App\Entity\Sample:
     maxDiameter: 5.78
   sample_WW_1_1:
     stratigraphicUnit: '@su_WW_1'
+    collectionDate: <createImmutableDate('2022-05-10')>
     date: <createImmutableDate('2022-05-20')>
     number: 1
     compiler: Some One Other

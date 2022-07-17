@@ -77,6 +77,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'maxDiameter',
         'weight',
         'compiler',
+        'collectionDate',
         'date',
         'notes',
         'exhaustive',

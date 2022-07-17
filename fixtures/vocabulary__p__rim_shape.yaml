@@ -13,6 +13,8 @@ App\Entity\Vocabulary\Pottery\RimShape:
     value: flaring
   voc__p__rim_shape_7:
     value: folded
+  voc__p__rim_shape_16:
+    value: hammerhead
   voc__p__rim_shape_8:
     value: ledge
   voc__p__rim_shape_9:

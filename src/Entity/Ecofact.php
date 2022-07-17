@@ -166,6 +166,13 @@ class Ecofact
         'read:Ecofact',
         'write:Ecofact',
     ])]
+    public ?\DateTimeImmutable $collectionDate;
+
+    #[Groups([
+        'export:Ecofact',
+        'read:Ecofact',
+        'write:Ecofact',
+    ])]
     private int $quantity = 1;
 
     #[Groups([
