@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
         'get' => null,
     ],
     shortName: 'SampleStrategy',
-    routePrefix: 'vocabulary/strategy'
+    routePrefix: 'vocabulary/sample'
 )]
 class Strategy
 {

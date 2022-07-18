@@ -87,6 +87,10 @@ use Symfony\Component\Validator\Constraints as Assert;
         'phase' => 'exact',
         'subPhase' => 'exact',
         'date' => 'exact',
+        'relations.dxSU' => 'exact',
+        'relations.relationship' => 'exact',
+        'sequences.dxSU' => 'exact',
+        'sequences.relationship' => 'exact',
     ]
 )]
 #[ApiFilter(
