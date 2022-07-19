@@ -40,7 +40,7 @@ class ViewAppIdSample
 
     #[Groups([
         'read:ViewAppIdSample',
-        'export:SmallFind',
+        'export:Sample',
     ])]
     public string $code;
 
