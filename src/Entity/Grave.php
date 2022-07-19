@@ -381,4 +381,15 @@ class Grave
 
         return $this;
     }
+
+    #[Groups([
+        'export:Grave',
+    ])]
+    public function getStratigraphicUnitsCodes(): string
+    {
+        $codes = $this->stratigraphicUnits->map(function (/* @var SU */ $su) {
+            return $su->appId->code;
+        })->toArray();
+        return implode(',', $codes);
+    }
 }

@@ -445,30 +445,6 @@ class SU
         $this->mediaObjects = new ArrayCollection();
     }
 
-    /*    #[Groups([
-            'export:Grave',
-            'export:SU',
-            'export:Pottery',
-            'export:Sample',
-            'export:Ecofact',
-            'export:SmallFind',
-            'export:ViewCumulativePotterySheet',
-            'read:Sample',
-            'read:Pottery',
-            'read:Ecofact',
-            'read:SmallFind',
-            'read:ViewCumulativePotterySheet',
-        ])]
-        public function getAppId(): ?string
-        {
-            if (!$this->site
-            || !$this->year
-            || !$this->number) {
-                return null;
-            }
-            return sprintf("%s.%d.SU.%'.05d", $this->site->getCode(), substr($this->year, 2), $this->number);
-        }*/
-
     public function getBaseId(): ?string
     {
         if (!$this->site
