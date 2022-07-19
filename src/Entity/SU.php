@@ -115,6 +115,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     properties: [
         'preservationState',
         'period',
+        'grave',
     ]
 )]
 #[ApiFilter(

@@ -8,6 +8,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
 use App\Controller\ResourceExportController;
 use App\Entity\View\ViewAppIdGrave;
 use App\Entity\Vocabulary\Grave\Deposition;
@@ -124,6 +125,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'date',
     ]
 )]
+#[ApiFilter(PropertyFilter::class)]
 #[UniqueEntity(
     fields: ['site', 'number'],
     message: 'Grave {{ value }} already exists in this site',
@@ -344,6 +346,7 @@ class Grave
     public iterable $mediaObjects;
 
     #[Groups([
+        'read:Grave',
         'export:Grave',
         'export:SU',
         'read:SU',

@@ -40,6 +40,7 @@ class ViewAppIdGrave
 
     #[Groups([
         'read:ViewAppIdGrave',
+        'read:Grave',
         'export:Grave',
         'export:SU',
         'read:SU',
