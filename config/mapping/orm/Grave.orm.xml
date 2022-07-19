@@ -33,6 +33,7 @@
         </field>
         <field name="topElevation" column="top_elevation"  type="float" nullable="true"/>
         <field name="bottomElevation" column="bottom_elevation"  type="float" nullable="true"/>
+        <one-to-one field="appId" target-entity="App\Entity\View\ViewAppIdGrave" mapped-by="source"/>
         <many-to-one field="site" target-entity="Site" inversed-by="graves">
             <join-column name="site_id" nullable="false"/>
         </many-to-one>

@@ -20,6 +20,7 @@
         <field name="date" type="date_immutable"/>
         <field name="compiler"/>
         <field name="notes"  type="text" nullable="true"/>
+        <one-to-one field="appId" target-entity="App\Entity\View\ViewAppIdCumulativePotterySheet" mapped-by="source"/>
         <field name="commonWareNonDiagnosticCount" type="smallint">
             <options>
                 <option name="default">0</option>

@@ -9,8 +9,10 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
 use App\Controller\ResourceExportController;
 use App\Entity\Geom\GeomSU;
+use App\Entity\View\ViewAppIdSU;
 use App\Entity\View\ViewCumulativePotterySheet;
 use App\Entity\Vocabulary\Period;
 use App\Entity\Vocabulary\PreservationState;
@@ -141,6 +143,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'phase',
     ]
 )]
+#[ApiFilter(PropertyFilter::class)]
 #[UniqueEntity(
     fields: ['site', 'number'],
     message: 'SU {{ value }} already exists in this site',
@@ -396,6 +399,23 @@ class SU
     #[Assert\Regex('/^[a-z]*$/')]
     public ?string $subPhase;
 
+    #[Groups([
+        'export:Grave',
+        'export:SU',
+        'export:Pottery',
+        'export:Sample',
+        'export:Ecofact',
+        'export:SmallFind',
+        'export:ViewCumulativePotterySheet',
+        'read:Sample',
+        'read:Pottery',
+        'read:Ecofact',
+        'read:SmallFind',
+        'read:ViewCumulativePotterySheet',
+        'read:SU',
+    ])]
+    public ViewAppIdSU $appId;
+
     private iterable $relations;
 
     private iterable $inverseRelations;
@@ -424,29 +444,29 @@ class SU
         $this->mediaObjects = new ArrayCollection();
     }
 
-    #[Groups([
-        'export:Grave',
-        'export:SU',
-        'export:Pottery',
-        'export:Sample',
-        'export:Ecofact',
-        'export:SmallFind',
-        'export:ViewCumulativePotterySheet',
-        'read:Sample',
-        'read:Pottery',
-        'read:Ecofact',
-        'read:SmallFind',
-        'read:ViewCumulativePotterySheet',
-    ])]
-    public function getAppId(): ?string
-    {
-        if (!$this->site
-        || !$this->year
-        || !$this->number) {
-            return null;
-        }
-        return sprintf("%s.%d.SU.%'.05d", $this->site->getCode(), substr($this->year, 2), $this->number);
-    }
+    /*    #[Groups([
+            'export:Grave',
+            'export:SU',
+            'export:Pottery',
+            'export:Sample',
+            'export:Ecofact',
+            'export:SmallFind',
+            'export:ViewCumulativePotterySheet',
+            'read:Sample',
+            'read:Pottery',
+            'read:Ecofact',
+            'read:SmallFind',
+            'read:ViewCumulativePotterySheet',
+        ])]
+        public function getAppId(): ?string
+        {
+            if (!$this->site
+            || !$this->year
+            || !$this->number) {
+                return null;
+            }
+            return sprintf("%s.%d.SU.%'.05d", $this->site->getCode(), substr($this->year, 2), $this->number);
+        }*/
 
     public function getBaseId(): ?string
     {
@@ -455,6 +475,7 @@ class SU
             || !$this->number) {
             return null;
         }
+
         return sprintf("%s.%d.%'.05d", $this->site->getCode(), substr($this->year, 2), $this->number);
     }
 
@@ -472,6 +493,7 @@ class SU
     {
         $this->site = $area->site;
         $this->area = $area;
+
         return $this;
     }
 

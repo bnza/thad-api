@@ -40,6 +40,7 @@
         <field name="areaSupervisor" column="area_supervisor" nullable="true"/>
         <field name="compiler"/>
         <one-to-one field="geom" target-entity="App\Entity\Geom\GeomSU" mapped-by="stratigraphicUnit" />
+        <one-to-one field="appId" target-entity="App\Entity\View\ViewAppIdSU" mapped-by="source"/>
         <one-to-many field="relations" target-entity="App\Entity\View\ViewStratigraphicRelationship" mapped-by="sxSU" />
         <one-to-many field="inverseRelations" target-entity="App\Entity\View\ViewStratigraphicRelationship" mapped-by="dxSU" />
         <one-to-many field="sequences" target-entity="App\Entity\View\ViewStratigraphicSequence" mapped-by="sxSU" />

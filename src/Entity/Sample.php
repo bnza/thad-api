@@ -10,6 +10,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
+use App\Entity\View\ViewAppIdSample;
 use App\Entity\Vocabulary\PreservationState;
 use App\Entity\Vocabulary\Sample\Strategy;
 use App\Entity\Vocabulary\Sample\Type;
@@ -290,25 +291,14 @@ class Sample
 
     public iterable $mediaObjects;
 
-    public function __construct()
-    {
-        $this->mediaObjects = new ArrayCollection();
-    }
-
     #[Groups([
         'export:Sample',
     ])]
-    public function getAppId(): ?string
-    {
-        if (!$this->stratigraphicUnit
-            || !$this->number) {
-            return null;
-        }
+    public ViewAppIdSample $appId;
 
-        return sprintf(
-            '%s.S.%d',
-            $this->stratigraphicUnit->getBaseId(), $this->number
-        );
+    public function __construct()
+    {
+        $this->mediaObjects = new ArrayCollection();
     }
 
     public function getId(): int

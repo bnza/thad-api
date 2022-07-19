@@ -755,17 +755,7 @@ class ViewCumulativePotterySheet
     #[Groups([
         'export:ViewCumulativePotterySheet',
     ])]
-    public function getAppId(): ?string
-    {
-        if (!$this->stratigraphicUnit) {
-            return null;
-        }
-
-        return sprintf(
-            '%s.CP',
-            $this->stratigraphicUnit->getBaseId()
-        );
-    }
+    public ViewAppIdCumulativePotterySheet $appId;
 
     public function getId(): int
     {

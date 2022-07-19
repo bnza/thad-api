@@ -27,6 +27,7 @@
         <field name="compiler"/>
         <field name="notes"  type="text" nullable="true"/>
         <field name="contaminationRisk" type="boolean" />
+        <one-to-one field="appId" target-entity="App\Entity\View\ViewAppIdSample" mapped-by="source"/>
         <one-to-many field="mediaObjects" target-entity="App\Entity\M2M\MediaObjectSample" mapped-by="sample" />
         <many-to-one field="stratigraphicUnit" target-entity="SU" inversed-by="ecofacts">
             <join-column name="su_id" nullable="false"/>

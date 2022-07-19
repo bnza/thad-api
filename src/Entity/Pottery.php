@@ -10,6 +10,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
+use App\Entity\View\ViewAppIdPottery;
 use App\Entity\Vocabulary\Decoration;
 use App\Entity\Vocabulary\Period;
 use App\Entity\Vocabulary\Pottery\BaseShape;
@@ -439,25 +440,14 @@ class Pottery
 
     public iterable $mediaObjects;
 
-    public function __construct()
-    {
-        $this->mediaObjects = new ArrayCollection();
-    }
-
     #[Groups([
         'export:Pottery',
     ])]
-    public function getAppId(): ?string
-    {
-        if (!$this->stratigraphicUnit
-            || !$this->number) {
-            return null;
-        }
+    public ViewAppIdPottery $appId;
 
-        return sprintf(
-            '%s.P.%d',
-            $this->stratigraphicUnit->getBaseId(), $this->number
-        );
+    public function __construct()
+    {
+        $this->mediaObjects = new ArrayCollection();
     }
 
     public function getId(): int

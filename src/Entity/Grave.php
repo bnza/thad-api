@@ -9,6 +9,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
+use App\Entity\View\ViewAppIdGrave;
 use App\Entity\Vocabulary\Grave\Deposition;
 use App\Entity\Vocabulary\Grave\Ritual;
 use App\Entity\Vocabulary\Grave\Type;
@@ -77,6 +78,9 @@ use Symfony\Component\Validator\Constraints as Assert;
         'preservation.id' => 'exact',
         'type.id' => 'exact',
         'date' => 'exact',
+        'earlierThan.id' => 'exact',
+        'laterThan.id' => 'exact',
+        'stratigraphicUnits.id' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -110,6 +114,8 @@ use Symfony\Component\Validator\Constraints as Assert;
         'period',
         'deposition',
         'ritual',
+        'earlierThan',
+        'laterThan',
     ]
 )]
 #[ApiFilter(
@@ -337,25 +343,17 @@ class Grave
 
     public iterable $mediaObjects;
 
-    public function __construct()
-    {
-        $this->stratigraphicUnits = new ArrayCollection();
-        $this->mediaObjects = new ArrayCollection();
-    }
-
     #[Groups([
         'export:Grave',
         'export:SU',
         'read:SU',
     ])]
-    public function getAppId(): ?string
+    public ViewAppIdGrave $appId;
+
+    public function __construct()
     {
-        if (!$this->site
-            || !$this->year
-            || !$this->number) {
-            return null;
-        }
-        return sprintf("%s.%d.G.%'.05d", $this->site->getCode(), substr($this->year, 2), $this->number);
+        $this->stratigraphicUnits = new ArrayCollection();
+        $this->mediaObjects = new ArrayCollection();
     }
 
     public function getId(): int

@@ -10,6 +10,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
+use App\Entity\View\ViewAppIdSmallFind;
 use App\Entity\Vocabulary\Decoration;
 use App\Entity\Vocabulary\Object\Colour;
 use App\Entity\Vocabulary\Object\Material;
@@ -395,25 +396,14 @@ class SmallFind
 
     public iterable $mediaObjects;
 
-    public function __construct()
-    {
-        $this->mediaObjects = new ArrayCollection();
-    }
-
     #[Groups([
         'export:SmallFind',
     ])]
-    public function getAppId(): ?string
-    {
-        if (!$this->stratigraphicUnit
-            || !$this->number) {
-            return null;
-        }
+    public ViewAppIdSmallFind $appId;
 
-        return sprintf(
-            '%s.O.%d',
-            $this->stratigraphicUnit->getBaseId(), $this->number
-        );
+    public function __construct()
+    {
+        $this->mediaObjects = new ArrayCollection();
     }
 
     public function getId(): int

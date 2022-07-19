@@ -20,6 +20,7 @@
         <field name="creator" />
         <field name="buildings" type="simple_array" nullable="true"/>
         <field name="rooms" type="simple_array" nullable="true" />
+        <one-to-one field="appId" target-entity="App\Entity\View\ViewAppIdDocument" mapped-by="source"/>
         <many-to-one field="site" target-entity="Site" inversed-by="graves">
             <join-column name="site_id" nullable="false"/>
         </many-to-one>

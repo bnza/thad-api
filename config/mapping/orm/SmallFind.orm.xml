@@ -31,6 +31,7 @@
         <field name="description"  type="text" nullable="true"/>
         <field name="summary"  type="text" nullable="true"/>
         <field name="notes"  type="text" nullable="true"/>
+        <one-to-one field="appId" target-entity="App\Entity\View\ViewAppIdSmallFind" mapped-by="source"/>
         <one-to-many field="mediaObjects" target-entity="App\Entity\M2M\MediaObjectSmallFind" mapped-by="smallFind" />
         <many-to-one field="stratigraphicUnit" target-entity="SU" inversed-by="smallFinds">
             <join-column name="su_id" nullable="false"/>

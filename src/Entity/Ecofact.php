@@ -10,6 +10,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
+use App\Entity\View\ViewAppIdEcofact;
 use App\Entity\Vocabulary\Ecofact\Type;
 use App\Entity\Vocabulary\PreservationState;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -266,25 +267,14 @@ class Ecofact
 
     public iterable $mediaObjects;
 
-    public function __construct()
-    {
-        $this->mediaObjects = new ArrayCollection();
-    }
-
     #[Groups([
         'export:Ecofact',
     ])]
-    public function getAppId(): ?string
-    {
-        if (!$this->stratigraphicUnit
-            || !$this->number) {
-            return null;
-        }
+    public ViewAppIdEcofact $appId;
 
-        return sprintf(
-            '%s.E.%d',
-            $this->stratigraphicUnit->getBaseId(), $this->number
-        );
+    public function __construct()
+    {
+        $this->mediaObjects = new ArrayCollection();
     }
 
     public function getId(): int

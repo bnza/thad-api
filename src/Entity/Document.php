@@ -8,6 +8,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
+use App\Entity\View\ViewAppIdDocument;
 use App\Entity\Vocabulary\Document\Type;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -252,16 +253,8 @@ class Document
         'read:MediaPottery',
         'read:MediaSU',
     ])]
-    public function getAppId(): ?string
-    {
-        if (!$this->site
-            || !$this->year
-            || !$this->number) {
-            return null;
-        }
+    public ViewAppIdDocument $appId;
 
-        return sprintf("%s.%d.D.%'.05d", $this->site->getCode(), substr($this->year, 2), $this->number);
-    }
 
     public function getId(): int
     {
