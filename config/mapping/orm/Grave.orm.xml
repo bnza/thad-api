@@ -41,8 +41,12 @@
             <join-column name="area_id" nullable="false"/>
         </many-to-one>
         <one-to-many field="stratigraphicUnits" target-entity="SU" mapped-by="grave" />
-        <one-to-one field="earlierThan" target-entity="SU" />
-        <one-to-one field="laterThan" target-entity="SU" />
+        <many-to-one field="earlierThan" target-entity="SU">
+            <join-column name="earlier_than_id" />
+        </many-to-one>
+        <many-to-one field="laterThan" target-entity="SU">
+            <join-column name="later_than_id" />
+        </many-to-one>
         <one-to-many field="mediaObjects" target-entity="App\Entity\M2M\MediaObjectGrave" mapped-by="grave" />
         <many-to-one field="period" target-entity="App\Entity\Vocabulary\Period">
             <join-column name="period_id" />
