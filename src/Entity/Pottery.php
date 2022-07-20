@@ -112,6 +112,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'sizeGroup.id' => 'exact',
         'preservation.id' => 'exact',
         'date' => 'exact',
+        'decorations.decoration' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -133,7 +134,6 @@ use Symfony\Component\Validator\Constraints as Assert;
         'fractureColour.value',
         'manufacturingTechnique.value',
         'firing.value',
-        'decoration.value',
         'vesselShape.value',
         'rimShape.value',
         'baseShape.value',
@@ -352,13 +352,6 @@ class Pottery
         'read:Pottery',
         'write:Pottery',
     ])]
-    private ?Decoration $decoration;
-
-    #[Groups([
-        'export:Pottery',
-        'read:Pottery',
-        'write:Pottery',
-    ])]
     private ?VesselShape $vesselShape;
 
     #[Groups([
@@ -445,9 +438,16 @@ class Pottery
     ])]
     public ViewAppIdPottery $appId;
 
+    #[Groups([
+        'read:Pottery',
+        'write:Pottery',
+    ])]
+    public iterable $decorations;
+
     public function __construct()
     {
         $this->mediaObjects = new ArrayCollection();
+        $this->decorations = new ArrayCollection();
     }
 
     public function getId(): int
@@ -653,18 +653,6 @@ class Pottery
     public function setFiring(?Firing $firing): Pottery
     {
         $this->firing = $firing;
-
-        return $this;
-    }
-
-    public function getDecoration(): ?Decoration
-    {
-        return $this->decoration;
-    }
-
-    public function setDecoration(?Decoration $decoration): Pottery
-    {
-        $this->decoration = $decoration;
 
         return $this;
     }

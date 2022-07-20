@@ -1,0 +1,16 @@
+App\Entity\M2M\DecorationPottery:
+  decoration_pottery_1:
+    pottery: '@pottery_TH_1_1'
+    decoration: '@voc__decoration_10'
+  decoration_pottery_2:
+    pottery: '@pottery_TH_1_1'
+    decoration: '@voc__decoration_7'
+  decoration_pottery_3:
+    pottery: '@pottery_TH_1_1'
+    decoration: '@voc__decoration_2'
+  decoration_pottery_4:
+    pottery: '@pottery_WW_1_1'
+    decoration: '@voc__decoration_2'
+  decoration_pottery_5:
+    pottery: '@pottery_WW_1_1'
+    decoration: '@voc__decoration_1'

@@ -57,9 +57,7 @@
         <many-to-one field="firing" target-entity="App\Entity\Vocabulary\Pottery\Firing">
             <join-column name="firing_id" />
         </many-to-one>
-        <many-to-one field="decoration" target-entity="App\Entity\Vocabulary\Decoration">
-            <join-column name="decoration_id" />
-        </many-to-one>
+        <one-to-many field="decorations" target-entity="App\Entity\M2M\DecorationPottery" mapped-by="pottery" />
         <many-to-one field="vesselShape" target-entity="App\Entity\Vocabulary\Pottery\VesselShape">
             <join-column name="vessel_shape_id" />
         </many-to-one>

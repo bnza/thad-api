@@ -1,0 +1,16 @@
+App\Entity\M2M\DecorationSmallFind:
+  decoration_small_find_1:
+    smallFind: '@small_find_TH_1_1'
+    decoration: '@voc__decoration_10'
+  decoration_small_find_2:
+    smallFind: '@small_find_TH_1_1'
+    decoration: '@voc__decoration_7'
+  decoration_small_find_3:
+    smallFind: '@small_find_TH_1_1'
+    decoration: '@voc__decoration_2'
+  decoration_small_find_4:
+    smallFind: '@small_find_WW_1_1'
+    decoration: '@voc__decoration_2'
+  decoration_small_find_5:
+    smallFind: '@small_find_WW_1_1'
+    decoration: '@voc__decoration_1'

@@ -121,6 +121,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'summary' => 'ipartial',
         'notes' => 'ipartial',
         'date' => 'exact',
+        'decorations.decoration' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -401,9 +402,16 @@ class SmallFind
     ])]
     public ViewAppIdSmallFind $appId;
 
+    #[Groups([
+        'read:SmallFind',
+        'write:SmallFind',
+    ])]
+    public iterable $decorations;
+
     public function __construct()
     {
         $this->mediaObjects = new ArrayCollection();
+        $this->decorations = new ArrayCollection();
     }
 
     public function getId(): int

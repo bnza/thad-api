@@ -16,12 +16,16 @@ use Symfony\Component\Serializer\Annotation\Groups;
 class Decoration
 {
     #[Groups([
+        'read:DecorationSmallFind',
+        'read:DecorationPottery',
         'read:Pottery',
         'read:SmallFind',
     ])]
     private string $id;
 
     #[Groups([
+        'read:DecorationSmallFind',
+        'read:DecorationPottery',
         'export:SmallFind',
         'export:Pottery',
         'read:Pottery',

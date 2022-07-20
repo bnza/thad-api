@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Entity\M2M\DecorationPottery" table="decorations__potteries">
+        <id name="id" type="integer">
+            <generator/>
+        </id>
+        <many-to-one field="pottery" target-entity="App\Entity\Pottery" inversed-by="decorations">
+            <join-column name="pottery_id" nullable="false"/>
+        </many-to-one>
+        <many-to-one field="decoration" target-entity="App\Entity\Vocabulary\Decoration">
+            <join-column name="decoration_id" nullable="false"/>
+        </many-to-one>
+        <unique-constraints>
+            <unique-constraint columns="pottery_id,decoration_id" />
+        </unique-constraints>
+    </entity>
+</doctrine-mapping>
