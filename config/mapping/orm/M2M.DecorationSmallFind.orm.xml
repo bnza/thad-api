@@ -10,7 +10,7 @@
             <generator/>
         </id>
         <many-to-one field="smallFind" target-entity="App\Entity\SmallFind" inversed-by="decorations">
-            <join-column name="small_find_id" nullable="false"/>
+            <join-column name="small_find_id" nullable="false" on-delete="CASCADE"/>
         </many-to-one>
         <many-to-one field="decoration" target-entity="App\Entity\Vocabulary\Decoration">
             <join-column name="decoration_id" nullable="false"/>

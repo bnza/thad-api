@@ -10,10 +10,10 @@
             <generator/>
         </id>
         <many-to-one field="pottery" target-entity="App\Entity\Pottery" inversed-by="mediaObjects">
-            <join-column name="pottery_id" nullable="false"/>
+            <join-column name="pottery_id" nullable="false" on-delete="CASCADE"/>
         </many-to-one>
         <many-to-one field="mediaObject" target-entity="App\Entity\MediaObject" inversed-by="potteries">
-            <join-column name="media_object_id" nullable="false"/>
+            <join-column name="media_object_id" nullable="false" on-delete="CASCADE"/>
         </many-to-one>
         <unique-constraints>
             <unique-constraint columns="pottery_id,media_object_id" />

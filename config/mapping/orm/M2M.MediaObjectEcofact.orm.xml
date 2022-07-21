@@ -10,10 +10,10 @@
             <generator/>
         </id>
         <many-to-one field="ecofact" target-entity="App\Entity\Ecofact" inversed-by="mediaObjects">
-            <join-column name="ecofact_id" nullable="false"/>
+            <join-column name="ecofact_id" nullable="false" on-delete="CASCADE"/>
         </many-to-one>
         <many-to-one field="mediaObject" target-entity="App\Entity\MediaObject" inversed-by="ecofacts">
-            <join-column name="media_object_id" nullable="false"/>
+            <join-column name="media_object_id" nullable="false" on-delete="CASCADE"/>
         </many-to-one>
         <unique-constraints>
             <unique-constraint columns="ecofact_id,media_object_id" />

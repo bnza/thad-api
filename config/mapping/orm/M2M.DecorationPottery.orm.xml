@@ -10,7 +10,7 @@
             <generator/>
         </id>
         <many-to-one field="pottery" target-entity="App\Entity\Pottery" inversed-by="decorations">
-            <join-column name="pottery_id" nullable="false"/>
+            <join-column name="pottery_id" nullable="false" on-delete="CASCADE"/>
         </many-to-one>
         <many-to-one field="decoration" target-entity="App\Entity\Vocabulary\Decoration">
             <join-column name="decoration_id" nullable="false"/>
