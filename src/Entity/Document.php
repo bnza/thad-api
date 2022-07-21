@@ -67,12 +67,14 @@ use Symfony\Component\Validator\Constraints as Assert;
         'compiler' => 'ipartial',
         'description' => 'ipartial',
         'interpretation' => 'ipartial',
-        'rooms' => 'partial',
-        'buildings' => 'partial',
         'summary' => 'ipartial',
         'type.id' => 'exact',
         'creator' => 'ipartial',
         'date' => 'exact',
+        'mediaObject.buildingRooms.building' => 'exact',
+        'mediaObject.buildingRooms.room' => 'exact',
+        'mediaObject.stratigraphicUnits.stratigraphicUnit.id' => 'exact',
+        'mediaObject.graves.grave.id' => 'exact',
     ]
 )]
 #[ApiFilter(
@@ -115,6 +117,7 @@ class Document
     #[Groups([
         'read:Document',
         'read:SU',
+        'read:MediaBuildingRoom',
         'read:MediaGrave',
         'read:MediaSample',
         'read:MediaEcofact',
@@ -246,6 +249,7 @@ class Document
     #[Groups([
         'export:Document',
         'read:Document',
+        'read:MediaBuildingRoom',
         'read:MediaGrave',
         'read:MediaSample',
         'read:MediaEcofact',

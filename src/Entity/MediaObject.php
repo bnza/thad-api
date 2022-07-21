@@ -66,6 +66,7 @@ class MediaObject
     #[ApiProperty(iri: 'http://schema.org/contentUrl')]
     #[Groups([
         'read:Document',
+        'read:MediaBuildingRoom',
         'read:MediaGrave',
         'read:MediaSample',
         'read:MediaEcofact',
@@ -85,6 +86,7 @@ class MediaObject
 
     #[Groups([
         'export:Document',
+        'read:MediaBuildingRoom',
         'read:Document',
         'read:MediaGrave',
         'read:MediaSample',
@@ -102,6 +104,7 @@ class MediaObject
     private ?int $height = null;
 
     #[Groups([
+        'read:MediaBuildingRoom',
         'read:MediaGrave',
         'read:MediaSample',
         'read:MediaEcofact',
@@ -117,6 +120,7 @@ class MediaObject
     public iterable $ecofacts;
     public iterable $samples;
     public iterable $graves;
+    public iterable $buildingRooms;
 
     #[Groups(['media_object:read'])]
     public \DateTimeImmutable $uploadDate;
@@ -129,6 +133,7 @@ class MediaObject
         $this->ecofacts = new ArrayCollection();
         $this->samples = new ArrayCollection();
         $this->graves = new ArrayCollection();
+        $this->buildingRooms = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -138,6 +143,7 @@ class MediaObject
 
     #[Groups([
         'read:Document',
+        'read:MediaBuildingRoom',
         'read:MediaGrave',
         'read:MediaSample',
         'read:MediaEcofact',

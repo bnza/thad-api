@@ -1,0 +1,26 @@
+App\Entity\M2M\MediaObjectBuildingRoom:
+    media_object_building_room_1:
+        mediaObject: '@media_object_1'
+        building: 1
+    media_object__building_room_2:
+        mediaObject: '@media_object_1'
+        building: 1
+        room: C
+    media_object__building_room_3:
+        mediaObject: '@media_object_1'
+        building: 1
+        room: ZZ
+    media_object__building_room_4:
+        mediaObject: '@media_object_2'
+        building: 3
+    media_object__building_room_5:
+        mediaObject: '@media_object_2'
+        building: 3
+        room: A
+    media_object__building_room_6:
+        mediaObject: '@media_object_3'
+        building: 2
+        room: C
+    media_object__building_room_7:
+        mediaObject: '@media_object_3'
+        building: 2

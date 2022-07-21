@@ -1,0 +1,4 @@
+App\Entity\M2M\MediaObjectGrave:
+    media_object__su_1:
+        mediaObject: '@media_object_1'
+        grave: '@grave_TH_2'

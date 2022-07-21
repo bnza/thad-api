@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Entity\M2M\MediaObjectBuildingRoom" table="media_objects__building_room">
+        <id name="id" type="integer">
+            <generator/>
+        </id>
+        <many-to-one field="mediaObject" target-entity="App\Entity\MediaObject" inversed-by="buildingRooms">
+            <join-column name="media_object_id" nullable="false" on-delete="CASCADE"/>
+        </many-to-one>
+        <field name="building"  type="smallint" />
+        <field name="room" length="2" nullable="true"/>
+        <unique-constraints>
+            <unique-constraint columns="building,room,media_object_id" />
+        </unique-constraints>
+    </entity>
+</doctrine-mapping>

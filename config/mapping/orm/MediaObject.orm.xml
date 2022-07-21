@@ -24,5 +24,6 @@
         <one-to-many field="smallFinds" target-entity="App\Entity\M2M\MediaObjectSmallFind" mapped-by="mediaObject" />
         <one-to-many field="ecofacts" target-entity="App\Entity\M2M\MediaObjectEcofact" mapped-by="mediaObject" />
         <one-to-many field="graves" target-entity="App\Entity\M2M\MediaObjectGrave" mapped-by="mediaObject" />
+        <one-to-many field="buildingRooms" target-entity="App\Entity\M2M\MediaObjectBuildingRoom" mapped-by="mediaObject" />
     </entity>
 </doctrine-mapping>

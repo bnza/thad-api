@@ -17,8 +17,6 @@ App\Entity\Document:
     number: 2
     year: 2022
     type: '@voc__d__type_1'
-    buildings: [1,5]
-    rooms: ['A','X']
     creator: 'The Creator'
     areaSupervisor: 'Some Supervisor'
     date: <createImmutableDate('2022-06-25')>
@@ -31,8 +29,6 @@ App\Entity\Document:
     number: 3
     year: 2022
     type: '@voc__d__type_4'
-    buildings: [ 2,4 ]
-    rooms: [ 'B','B','W' ]
     creator: 'Another Creator'
     areaSupervisor: 'The Supervisor'
     date: <createImmutableDate('2022-06-25')>
