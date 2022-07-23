@@ -18,6 +18,7 @@
         <field name="description"  type="text" nullable="true"/>
         <one-to-many field="stratigraphicUnits" target-entity="SU" mapped-by="area" />
         <one-to-many field="graves" target-entity="App\Entity\Grave" mapped-by="area" />
+        <one-to-many field="documents" target-entity="App\Entity\Document" mapped-by="area" />
         <many-to-one field="site" target-entity="Site" inversed-by="areas">
             <join-column name="site_id" />
         </many-to-one>

@@ -10,6 +10,7 @@ use App\Controller\ResourceExportController;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\Validator\AreaIsNotReferenced;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
@@ -81,6 +82,9 @@ use Symfony\Component\Validator\Constraints as Assert;
     fields: ['site', 'name'],
     message: 'This area name is already used in that site.',
     errorPath: 'name',
+)]
+#[AreaIsNotReferenced(
+    groups: ['Delete']
 )]
 class Area
 {
@@ -159,10 +163,13 @@ class Area
 
     public iterable $graves;
 
+    public iterable $documents;
+
     public function __construct()
     {
         $this->stratigraphicUnits = new ArrayCollection();
         $this->graves = new ArrayCollection();
+        $this->documents = new ArrayCollection();
     }
 
     public function getId(): int

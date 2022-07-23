@@ -51,6 +51,10 @@ services:
         arguments:
             $slugger: '@Symfony\Component\String\Slugger\SluggerInterface'
 
+    App\DataPersister\AppDataPersister:
+        bind:
+            $decorated: '@api_platform.doctrine.orm.data_persister'
+
     app.serializer.normalizer.item.json:
         class: 'App\Serializer\CsvFlatNormalizer'
         decorates: 'api_platform.serializer.normalizer.item'

@@ -11,6 +11,7 @@ use App\Entity\Geom\GeomSite;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\Validator\SiteIsNotReferenced;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
@@ -80,6 +81,9 @@ use Symfony\Component\Validator\Constraints as Assert;
     fields: ['name'],
     message: 'Duplicate site name.',
     errorPath: 'name',
+)]
+#[SiteIsNotReferenced(
+    groups: ['Delete']
 )]
 class Site
 {
@@ -159,6 +163,8 @@ class Site
 
     public iterable $graves;
 
+    public iterable $documents;
+
     private GeomSite $geom;
 
     public function __construct()
@@ -166,6 +172,7 @@ class Site
         $this->areas = new ArrayCollection();
         $this->stratigraphicUnits = new ArrayCollection();
         $this->graves = new ArrayCollection();
+        $this->documents = new ArrayCollection();
     }
 
     public function getId(): int

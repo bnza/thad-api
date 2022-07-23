@@ -21,6 +21,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\Validator\SUIsNotReferenced;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
@@ -149,6 +150,9 @@ use Symfony\Component\Validator\Constraints as Assert;
     fields: ['site', 'number'],
     message: 'SU {{ value }} already exists in this site',
     errorPath: 'number',
+)]
+#[SUIsNotReferenced(
+    groups: ['Delete']
 )]
 class SU
 {
@@ -437,6 +441,8 @@ class SU
 
     private iterable $smallFinds;
 
+    private iterable $samples;
+
     private iterable $mediaObjects;
 
     public function __construct()
@@ -448,6 +454,7 @@ class SU
         $this->potteries = new ArrayCollection();
         $this->ecofacts = new ArrayCollection();
         $this->smallFinds = new ArrayCollection();
+        $this->samples = new ArrayCollection();
         $this->mediaObjects = new ArrayCollection();
     }
 
@@ -536,6 +543,18 @@ class SU
     public function setSmallFinds(iterable|ArrayCollection $smallFinds): SU
     {
         $this->smallFinds = $smallFinds;
+
+        return $this;
+    }
+
+    public function getSamples(): iterable|ArrayCollection
+    {
+        return $this->samples;
+    }
+
+    public function setSamples(iterable|ArrayCollection $samples): SU
+    {
+        $this->samples = $samples;
 
         return $this;
     }
