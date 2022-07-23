@@ -20,6 +20,7 @@ use App\Entity\Vocabulary\Period;
 use App\Entity\Vocabulary\PreservationState;
 use App\Entity\Vocabulary\Subperiod;
 use App\Validator\CoordinateIsATriple;
+use App\Validator\IsValidSubPeriod;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -164,6 +165,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     errorPath: 'number',
 )]
 #[CoordinateIsATriple]
+#[IsValidSubPeriod]
 class SmallFind
 {
     #[Groups([

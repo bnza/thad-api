@@ -12,11 +12,17 @@ use Symfony\Component\Serializer\Annotation\Groups;
     itemOperations: [
         'get' => null,
     ],
+    normalizationContext: [
+        'groups' => [
+            'read:Voc:Subperiod',
+        ],
+    ],
     routePrefix: 'vocabulary',
 )]
 class Subperiod
 {
     #[Groups([
+        'read:Voc:Subperiod',
         'read:Area',
         'read:Pottery',
         'read:SmallFind',
@@ -26,6 +32,7 @@ class Subperiod
     private int $id;
 
     #[Groups([
+        'read:Voc:Subperiod',
         'read:Area',
         'read:Pottery',
         'read:SmallFind',
@@ -34,6 +41,7 @@ class Subperiod
     public ?Period $period;
 
     #[Groups([
+        'read:Voc:Subperiod',
         'read:Area',
         'read:Pottery',
         'read:SmallFind',
@@ -43,6 +51,7 @@ class Subperiod
     public string $code;
 
     #[Groups([
+        'read:Voc:Subperiod',
         'export:SmallFind',
         'export:Pottery',
         'read:Area',

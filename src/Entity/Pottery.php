@@ -11,7 +11,6 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
 use App\Entity\View\ViewAppIdPottery;
-use App\Entity\Vocabulary\Decoration;
 use App\Entity\Vocabulary\Period;
 use App\Entity\Vocabulary\Pottery\BaseShape;
 use App\Entity\Vocabulary\Pottery\Body;
@@ -33,6 +32,7 @@ use App\Entity\Vocabulary\Pottery\SurfaceTreatment;
 use App\Entity\Vocabulary\Pottery\VesselShape;
 use App\Entity\Vocabulary\Pottery\Ware;
 use App\Entity\Vocabulary\Subperiod;
+use App\Validator\IsValidSubPeriod;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -203,6 +203,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     message: 'Pottery number {{ value }} already exists in this SU',
     errorPath: 'number',
 )]
+#[IsValidSubPeriod]
 class Pottery
 {
     #[Groups([

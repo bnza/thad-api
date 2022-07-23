@@ -18,6 +18,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 class Period
 {
     #[Groups([
+        'read:Voc:Subperiod',
         'read:Area',
         'read:Pottery',
         'read:SmallFind',
