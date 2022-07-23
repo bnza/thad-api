@@ -17,27 +17,27 @@ class UniqueSUNumberInSiteValidator extends ConstraintValidator
     }
 
     /**
-     * @param SU $protocol
+     * @param SU $value
      */
-    public function validate($protocol, Constraint $constraint)
+    public function validate($value, Constraint $constraint)
     {
         if (!$constraint instanceof UniqueSUNumberInSite) {
             throw new UnexpectedTypeException($constraint, UniqueSUNumberInSite::class);
         }
 
-        if (null === $protocol) {
+        if (null === $value) {
             return;
         }
 
-        if (!$protocol instanceof SU) {
-            throw new UnexpectedValueException($protocol, SU::class);
+        if (!$value instanceof SU) {
+            throw new UnexpectedValueException($value, SU::class);
         }
         /** @var SURepository $repo */
         $repo = $this->entityManager->getRepository(SU::class);
-        if ($repo->numberExistsInSite($protocol->getNumber(), $protocol->getArea())) {
+        if ($repo->numberExistsInSite($value->getNumber(), $value->getArea())) {
             $this->context->buildViolation($constraint->message)
-                ->setParameter('{{ number }}', $protocol->getNumber())
-                ->setParameter('{{ site }}', $protocol->getArea()->getSite()->getCode())
+                ->setParameter('{{ number }}', $value->getNumber())
+                ->setParameter('{{ site }}', $value->getArea()->getSite()->getCode())
                 ->addViolation();
         }
     }

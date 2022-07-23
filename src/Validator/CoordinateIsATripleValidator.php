@@ -11,27 +11,27 @@ use Symfony\Component\Validator\Exception\UnexpectedValueException;
 class CoordinateIsATripleValidator extends ConstraintValidator
 {
     /**
-     * @param SmallFind $protocol
+     * @param SmallFind $value
      */
-    public function validate($protocol, Constraint $constraint)
+    public function validate($value, Constraint $constraint)
     {
         if (!$constraint instanceof CoordinateIsATriple) {
             throw new UnexpectedTypeException($constraint, CoordinateIsATriple::class);
         }
 
-        if (null === $protocol) {
+        if (null === $value) {
             return;
         }
 
-        if (!$protocol instanceof SmallFind) {
-            throw new UnexpectedValueException($protocol, SmallFind::class);
+        if (!$value instanceof SmallFind) {
+            throw new UnexpectedValueException($value, SmallFind::class);
         }
 
-        if (!$protocol->coordE && !$protocol->coordN && !$protocol->coordZ) {
+        if (!$value->coordE && !$value->coordN && !$value->coordZ) {
             return;
         }
 
-        if ($protocol->coordE && $protocol->coordN && $protocol->coordZ) {
+        if ($value->coordE && $value->coordN && $value->coordZ) {
             return;
         }
 

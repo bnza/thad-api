@@ -16,22 +16,22 @@ class InverseSURelationAbsentValidator extends ConstraintValidator
     {
     }
 
-    public function validate($protocol, Constraint $constraint)
+    public function validate($value, Constraint $constraint)
     {
         if (!$constraint instanceof InverseSURelationAbsent) {
             throw new UnexpectedTypeException($constraint, InverseSURelationAbsent::class);
         }
 
-        if (null === $protocol) {
+        if (null === $value) {
             return;
         }
 
-        if (!$protocol instanceof ViewStratigraphicRelationship) {
-            throw new UnexpectedValueException($protocol, ViewStratigraphicRelationship::class);
+        if (!$value instanceof ViewStratigraphicRelationship) {
+            throw new UnexpectedValueException($value, ViewStratigraphicRelationship::class);
         }
         /** @var ViewStratigraphicRelationshipRepository $repo */
         $repo = $this->entityManager->getRepository(ViewStratigraphicRelationship::class);
-        if ($repo->inverseRelationExists($protocol->getSxSU(), $protocol->getDxSU())) {
+        if ($repo->inverseRelationExists($value->getSxSU(), $value->getDxSU())) {
             $this->context->buildViolation($constraint->message)->addViolation();
         }
     }

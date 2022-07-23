@@ -16,25 +16,25 @@ class IsValidSubPeriodValidator extends ConstraintValidator
     ) {
     }
 
-    public function validate($protocol, Constraint $constraint)
+    public function validate(mixed $value, Constraint $constraint)
     {
         if (!$constraint instanceof IsValidSubPeriod) {
             throw new UnexpectedTypeException($constraint, IsValidSubPeriod::class);
         }
 
-        if (null === $protocol) {
+        if (null === $value) {
             return;
         }
 
         /** @var Subperiod */
-        $subperiod = $this->propertyAccessor->getValue($protocol, $constraint->subPeriodField);
+        $subperiod = $this->propertyAccessor->getValue($value, 'subperiod');
 
         if (!$subperiod) {
             return;
         }
 
         /** @var Period $period */
-        $period = $this->propertyAccessor->getValue($protocol, $constraint->periodField);
+        $period = $this->propertyAccessor->getValue($value, 'period');
 
         if ($period && $subperiod->period->getId() !== $period->getId()) {
             $this->context->buildViolation($constraint->message)->addViolation();
