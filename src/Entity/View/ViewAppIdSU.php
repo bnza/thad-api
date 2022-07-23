@@ -51,6 +51,7 @@ class ViewAppIdSU
         'export:SmallFind',
         'export:ViewCumulativePotterySheet',
         'read:Sample',
+        'read:collection:Pottery',
         'read:Pottery',
         'read:Ecofact',
         'read:SmallFind',

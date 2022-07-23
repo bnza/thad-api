@@ -43,6 +43,11 @@ use Symfony\Component\Validator\Constraints as Assert;
         'post' => null,
         'get' => [
             'security' => 'is_granted("ROLE_USER")',
+            'normalization_context' => [
+                'groups' => [
+                    'read:collection:Pottery',
+                ],
+            ],
         ],
         'export' => [
             'controller' => ResourceExportController::class,
@@ -74,6 +79,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     normalizationContext: [
         'groups' => [
             'read:Pottery',
+'read:collection:Pottery',
         ],
     ],
     security: 'is_granted("ROLE_EDITOR")'
@@ -208,11 +214,13 @@ class Pottery
 {
     #[Groups([
         'read:Pottery',
+    'read:collection:Pottery',
     ])]
     private int $id;
 
     #[Groups([
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
         'export:Pottery',
     ])]
@@ -221,6 +229,7 @@ class Pottery
 
     #[Groups([
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
         'export:Pottery',
     ])]
@@ -229,6 +238,7 @@ class Pottery
 
     #[Groups([
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
         'export:Pottery',
     ])]
@@ -237,6 +247,7 @@ class Pottery
 
     #[Groups([
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
         'export:Pottery',
     ])]
@@ -244,6 +255,7 @@ class Pottery
 
     #[Groups([
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
         'export:Pottery',
     ])]
@@ -251,6 +263,7 @@ class Pottery
 
     #[Groups([
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
         'export:Pottery',
     ])]
@@ -258,6 +271,7 @@ class Pottery
 
     #[Groups([
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
         'export:Pottery',
     ])]
@@ -266,6 +280,7 @@ class Pottery
 
     #[Groups([
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
         'export:Pottery',
     ])]
@@ -273,6 +288,7 @@ class Pottery
 
     #[Groups([
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
         'export:Pottery',
     ])]
@@ -280,6 +296,7 @@ class Pottery
 
     #[Groups([
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
         'export:Pottery',
     ])]
@@ -287,6 +304,7 @@ class Pottery
 
     #[Groups([
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
         'export:Pottery',
     ])]
@@ -294,6 +312,7 @@ class Pottery
 
     #[Groups([
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
         'export:Pottery',
     ])]
@@ -301,6 +320,7 @@ class Pottery
 
     #[Groups([
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
         'export:Pottery',
     ])]
@@ -309,6 +329,7 @@ class Pottery
     #[Groups([
         'export:Pottery',
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
     ])]
     private ?Ware $ware;
@@ -316,6 +337,7 @@ class Pottery
     #[Groups([
         'export:Pottery',
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
     ])]
     private ?Fabric $fabric;
@@ -323,6 +345,7 @@ class Pottery
     #[Groups([
         'export:Pottery',
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
     ])]
     private ?SurfaceCharacteristic $surfaceCharacteristic;
@@ -330,6 +353,7 @@ class Pottery
     #[Groups([
         'export:Pottery',
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
     ])]
     private ?SurfaceTreatment $surfaceTreatment;
@@ -337,6 +361,7 @@ class Pottery
     #[Groups([
         'export:Pottery',
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
     ])]
     private ?ManufacturingTechnique $manufacturingTechnique;
@@ -344,6 +369,7 @@ class Pottery
     #[Groups([
         'export:Pottery',
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
     ])]
     private ?Firing $firing;
@@ -351,6 +377,7 @@ class Pottery
     #[Groups([
         'export:Pottery',
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
     ])]
     private ?VesselShape $vesselShape;
@@ -358,6 +385,7 @@ class Pottery
     #[Groups([
         'export:Pottery',
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
     ])]
     private ?RimShape $rimShape;
@@ -365,6 +393,7 @@ class Pottery
     #[Groups([
         'export:Pottery',
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
     ])]
     private ?RimDirection $rimDirection;
@@ -372,6 +401,7 @@ class Pottery
     #[Groups([
         'export:Pottery',
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
     ])]
     private ?RimCharacterization $rimCharacterization;
@@ -379,6 +409,7 @@ class Pottery
     #[Groups([
         'export:Pottery',
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
     ])]
     private ?Neck $neck;
@@ -386,6 +417,7 @@ class Pottery
     #[Groups([
         'export:Pottery',
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
     ])]
     private ?NeckLength $neckLength;
@@ -393,6 +425,7 @@ class Pottery
     #[Groups([
         'export:Pottery',
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
     ])]
     private ?Body $body;
@@ -400,6 +433,7 @@ class Pottery
     #[Groups([
         'export:Pottery',
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
     ])]
     private ?Spout $spout;
@@ -407,6 +441,7 @@ class Pottery
     #[Groups([
         'export:Pottery',
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
     ])]
     private ?Handle $handle;
@@ -414,6 +449,7 @@ class Pottery
     #[Groups([
         'export:Pottery',
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
     ])]
     private ?BaseShape $baseShape;
@@ -421,6 +457,7 @@ class Pottery
     #[Groups([
         'export:Pottery',
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
     ])]
     private ?SizeGroup $sizeGroup;
@@ -428,6 +465,7 @@ class Pottery
     #[Groups([
         'export:Pottery',
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
     ])]
     private ?Preservation $preservation;
@@ -441,6 +479,7 @@ class Pottery
 
     #[Groups([
         'read:Pottery',
+        'read:collection:Pottery',
         'write:Pottery',
     ])]
     public iterable $decorations;

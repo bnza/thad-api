@@ -91,6 +91,7 @@ class Site
         'read:SmallFind',
         'read:Site',
         'read:SU',
+        'read:collection:Pottery',
         'read:Pottery',
         'read:Grave',
         'read:ViewCumulativePotterySheet',
@@ -115,6 +116,7 @@ class Site
         'read:Site',
         'read:SU',
         'write:Site',
+        'read:collection:Pottery',
         'read:Pottery',
         'read:Grave',
     ])]

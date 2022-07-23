@@ -62,6 +62,7 @@ class DecorationPottery
     public Pottery $pottery;
 
     #[Groups([
+        'read:collection:Pottery',
         'read:Pottery',
         'read:DecorationPottery',
         'write:DecorationPottery',

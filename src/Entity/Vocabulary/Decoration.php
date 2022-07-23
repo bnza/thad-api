@@ -18,6 +18,7 @@ class Decoration
     #[Groups([
         'read:DecorationSmallFind',
         'read:DecorationPottery',
+        'read:collection:Pottery',
         'read:Pottery',
         'read:SmallFind',
     ])]
@@ -27,6 +28,7 @@ class Decoration
         'read:DecorationSmallFind',
         'read:DecorationPottery',
         'export:SmallFind',
+        'read:collection:Pottery',
         'export:Pottery',
         'read:Pottery',
         'read:SmallFind',

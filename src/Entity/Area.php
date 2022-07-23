@@ -93,6 +93,7 @@ class Area
         'read:SmallFind',
         'read:Site',
         'read:SU',
+        'read:collection:Pottery',
         'read:Pottery',
         'read:ViewCumulativePotterySheet',
     ])]
@@ -116,6 +117,7 @@ class Area
         'read:Site',
         'read:SU',
         'write:Area',
+        'read:collection:Pottery',
         'read:Pottery',
         'read:ViewCumulativePotterySheet',
     ])]
