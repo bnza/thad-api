@@ -94,6 +94,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'relations.relationship' => 'exact',
         'sequences.dxSU' => 'exact',
         'sequences.relationship' => 'exact',
+        'appId.code' => 'partial',
     ]
 )]
 #[ApiFilter(
@@ -138,11 +139,11 @@ use Symfony\Component\Validator\Constraints as Assert;
         'topElevation',
         'type.value',
         'period.code',
-        'subperiod.value',
         'grave.number',
         'building',
         'room',
         'phase',
+        'appId.code',
     ]
 )]
 #[ApiFilter(PropertyFilter::class)]

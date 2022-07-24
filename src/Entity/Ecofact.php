@@ -81,6 +81,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'compiler',
         'date',
         'notes',
+        'appId.code',
     ]
 )]
 #[ApiFilter(
@@ -102,6 +103,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'date' => 'exact',
         'collectionDate' => 'exact',
         'selectedForAnalysis' => 'exact',
+        'appId.code' => 'partial',
     ]
 )]
 #[ApiFilter(

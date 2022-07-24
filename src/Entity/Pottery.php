@@ -119,6 +119,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'preservation.id' => 'exact',
         'date' => 'exact',
         'decorations.decoration' => 'exact',
+        'appId.code' => 'partial',
     ]
 )]
 #[ApiFilter(
@@ -158,6 +159,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'compiler',
         'date',
         'note',
+        'appId.code',
     ]
 )]
 #[ApiFilter(
@@ -174,7 +176,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'surfaceTreatment',
         'manufacturingTechnique',
         'firing',
-        'decoration',
+        'decorations',
         'vesselShape',
         'rimShape',
         'baseShape',
@@ -214,7 +216,7 @@ class Pottery
 {
     #[Groups([
         'read:Pottery',
-    'read:collection:Pottery',
+        'read:collection:Pottery',
     ])]
     private int $id;
 

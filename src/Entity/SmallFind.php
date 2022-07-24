@@ -96,6 +96,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'summary',
         'description',
         'notes',
+        'appId.code',
     ]
 )]
 #[ApiFilter(
@@ -123,6 +124,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'notes' => 'ipartial',
         'date' => 'exact',
         'decorations.decoration' => 'exact',
+        'appId.code' => 'partial',
     ]
 )]
 #[ApiFilter(

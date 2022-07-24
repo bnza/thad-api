@@ -75,6 +75,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'mediaObject.buildingRooms.room' => 'exact',
         'mediaObject.stratigraphicUnits.stratigraphicUnit.id' => 'exact',
         'mediaObject.graves.grave.id' => 'exact',
+        'appId.code' => 'partial',
     ]
 )]
 #[ApiFilter(
@@ -94,6 +95,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'interpretation',
         'summary',
         'date',
+        'appId.code',
     ]
 )]
 #[ApiFilter(

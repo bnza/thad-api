@@ -82,6 +82,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'earlierThan.id' => 'exact',
         'laterThan.id' => 'exact',
         'stratigraphicUnits.id' => 'exact',
+        'appId.code' => 'partial',
     ]
 )]
 #[ApiFilter(
@@ -106,6 +107,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'deposition.value',
         'ritual.value',
         'date',
+        'appId.code',
     ]
 )]
 #[ApiFilter(

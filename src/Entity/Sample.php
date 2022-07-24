@@ -86,6 +86,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'notes',
         'exhaustive',
         'contaminationRisk',
+        'appId.code',
     ]
 )]
 #[ApiFilter(
@@ -109,6 +110,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'collectionDate' => 'exact',
         'selectedForAnalysis' => 'exact',
         'contaminationRisk' => 'exact',
+        'appId.code' => 'partial',
     ]
 )]
 #[ApiFilter(
