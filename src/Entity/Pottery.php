@@ -302,7 +302,7 @@ class Pottery
         'write:Pottery',
         'export:Pottery',
     ])]
-    private ?Subperiod $subperiod;
+    private ?Subperiod $subperiod = null;
 
     #[Groups([
         'read:Pottery',

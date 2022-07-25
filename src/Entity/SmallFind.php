@@ -231,7 +231,7 @@ class SmallFind
         'read:SmallFind',
         'write:SmallFind',
     ])]
-    private ?Subperiod $subperiod;
+    private ?Subperiod $subperiod = null;
 
     #[Groups([
         'export:SmallFind',
