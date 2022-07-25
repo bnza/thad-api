@@ -270,6 +270,7 @@ class Ecofact
     public iterable $mediaObjects;
 
     #[Groups([
+        'read:Ecofact',
         'export:Ecofact',
     ])]
     public ViewAppIdEcofact $appId;

@@ -39,6 +39,7 @@ class ViewAppIdEcofact
     private int $id;
 
     #[Groups([
+        'read:Ecofact',
         'read:ViewAppIdEcofact',
         'export:Ecofact',
     ])]

@@ -475,13 +475,13 @@ class Pottery
     public iterable $mediaObjects;
 
     #[Groups([
+        'read:collection:Pottery',
         'export:Pottery',
     ])]
     public ViewAppIdPottery $appId;
 
     #[Groups([
         'read:Pottery',
-        'read:collection:Pottery',
         'write:Pottery',
     ])]
     public iterable $decorations;

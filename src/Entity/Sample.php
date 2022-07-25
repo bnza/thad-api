@@ -294,6 +294,7 @@ class Sample
     public iterable $mediaObjects;
 
     #[Groups([
+        'read:Sample',
         'export:Sample',
     ])]
     public ViewAppIdSample $appId;

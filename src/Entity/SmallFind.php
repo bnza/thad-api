@@ -402,6 +402,7 @@ class SmallFind
     public iterable $mediaObjects;
 
     #[Groups([
+        'read:SmallFind',
         'export:SmallFind',
     ])]
     public ViewAppIdSmallFind $appId;
