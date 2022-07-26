@@ -30,7 +30,11 @@ class SUIsNotReferencedValidator extends ConstraintValidator
                 $value->getEcofacts()->count() ||
                 $value->getSmallFinds()->count() ||
                 $value->getSamples()->count() ||
-                $value->cumulativePotterySheet
+                $value->cumulativePotterySheet ||
+                $value->getRelations()->count() ||
+                $value->getInverseRelations()->count() ||
+                $value->getSequences()->count() ||
+                $value->getInverseSequences()->count()
             )
         ) {
             $this->context->buildViolation($constraint->message)->addViolation();
