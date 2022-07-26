@@ -186,16 +186,14 @@ class Document
         'write:Document',
         'read:Document',
     ])]
-    #[Assert\NotNull]
-    public string $description;
+    public ?string $description;
 
     #[Groups([
         'export:Document',
         'write:Document',
         'read:Document',
     ])]
-    #[Assert\NotNull]
-    public string $interpretation;
+    public ?string $interpretation;
 
     #[Groups([
         'export:Document',

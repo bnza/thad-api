@@ -13,8 +13,8 @@
         <field name="number" type="smallint"/>
         <field name="year" type="integer"/>
         <field name="date" type="date_immutable"/>
-        <field name="description" type="text" />
-        <field name="interpretation"  type="text" />
+        <field name="description" type="text" nullable="true"/>
+        <field name="interpretation" type="text" nullable="true"/>
         <field name="summary" type="text" nullable="true"/>
         <field name="areaSupervisor" column="area_supervisor" nullable="true"/>
         <field name="creator" />
