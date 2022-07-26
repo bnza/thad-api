@@ -38,6 +38,7 @@ class ViewAppIdCumulativePotterySheet
     private int $id;
 
     #[Groups([
+        'read:ViewCumulativePotterySheet',
         'export:ViewCumulativePotterySheet',
         'read:ViewAppIdCumulativePotterySheet',
     ])]

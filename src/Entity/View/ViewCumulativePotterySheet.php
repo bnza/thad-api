@@ -120,6 +120,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'periodBYZCount' => 'exact',
         'periodSASCount' => 'exact',
         'periodISLCount' => 'exact',
+        'appId.code' => 'partial',
     ]
 )]
 #[ApiFilter(
@@ -184,6 +185,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'periodBYZCount',
         'periodSASCount',
         'periodISLCount',
+        'appId.code',
     ]
 )]
 #[ApiFilter(
@@ -753,6 +755,7 @@ class ViewCumulativePotterySheet
     public int $periodISLCount = 0;
 
     #[Groups([
+        'read:ViewCumulativePotterySheet',
         'export:ViewCumulativePotterySheet',
     ])]
     public ViewAppIdCumulativePotterySheet $appId;
