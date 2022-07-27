@@ -10,6 +10,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
+use App\Entity\M2M\DecorationPottery;
 use App\Entity\View\ViewAppIdPottery;
 use App\Entity\Vocabulary\Period;
 use App\Entity\Vocabulary\Pottery\BaseShape;
@@ -481,6 +482,7 @@ class Pottery
     public ViewAppIdPottery $appId;
 
     #[Groups([
+        'read:collection:Pottery',
         'read:Pottery',
         'write:Pottery',
     ])]
@@ -877,5 +879,17 @@ class Pottery
         $this->preservation = $preservation;
 
         return $this;
+    }
+
+    #[Groups([
+        'export:Pottery',
+    ])]
+    public function getDecorationList(): string
+    {
+        $codes = $this->decorations->map(function (/* @var DecorationPottery */ $item) {
+            return $item->decoration->getValue();
+        })->toArray();
+
+        return implode(',', $codes);
     }
 }

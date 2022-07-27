@@ -10,8 +10,8 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
+use App\Entity\M2M\DecorationSmallFind;
 use App\Entity\View\ViewAppIdSmallFind;
-use App\Entity\Vocabulary\Decoration;
 use App\Entity\Vocabulary\Object\Colour;
 use App\Entity\Vocabulary\Object\Material;
 use App\Entity\Vocabulary\Object\Preservation;
@@ -246,13 +246,6 @@ class SmallFind
         'write:SmallFind',
     ])]
     private ?PreservationState $preservationState;
-
-    #[Groups([
-        'export:SmallFind',
-        'read:SmallFind',
-        'write:SmallFind',
-    ])]
-    private ?Decoration $decoration;
 
     #[Groups([
         'export:SmallFind',
@@ -600,6 +593,7 @@ class SmallFind
     public function setMaterial(Material $material): SmallFind
     {
         $this->material = $material;
+
         return $this;
     }
 
@@ -611,6 +605,7 @@ class SmallFind
     public function setExternalSurfaceColour(?Colour $externalSurfaceColour): SmallFind
     {
         $this->externalSurfaceColour = $externalSurfaceColour;
+
         return $this;
     }
 
@@ -622,6 +617,7 @@ class SmallFind
     public function setInternalSurfaceColour(?Colour $internalSurfaceColour): SmallFind
     {
         $this->internalSurfaceColour = $internalSurfaceColour;
+
         return $this;
     }
 
@@ -633,6 +629,7 @@ class SmallFind
     public function setFractureColour(?Colour $fractureColour): SmallFind
     {
         $this->fractureColour = $fractureColour;
+
         return $this;
     }
 
@@ -644,6 +641,7 @@ class SmallFind
     public function setPeriod(?Period $period): SmallFind
     {
         $this->period = $period;
+
         return $this;
     }
 
@@ -658,6 +656,7 @@ class SmallFind
             $this->period = $subperiod->period;
         }
         $this->subperiod = $subperiod;
+
         return $this;
     }
 
@@ -669,17 +668,7 @@ class SmallFind
     public function setPreservation(Preservation $preservation): SmallFind
     {
         $this->preservation = $preservation;
-        return $this;
-    }
 
-    public function getDecoration(): ?Decoration
-    {
-        return $this->decoration;
-    }
-
-    public function setDecoration(?Decoration $decoration): SmallFind
-    {
-        $this->decoration = $decoration;
         return $this;
     }
 
@@ -691,6 +680,7 @@ class SmallFind
     public function setDescription(?string $description): SmallFind
     {
         $this->description = $description;
+
         return $this;
     }
 
@@ -702,6 +692,7 @@ class SmallFind
     public function setSummary(?string $summary): SmallFind
     {
         $this->summary = $summary;
+
         return $this;
     }
 
@@ -713,6 +704,7 @@ class SmallFind
     public function setMinWidth(?float $minWidth): SmallFind
     {
         $this->minWidth = $minWidth;
+
         return $this;
     }
 
@@ -724,6 +716,7 @@ class SmallFind
     public function setMaxWidth(?float $maxWidth): SmallFind
     {
         $this->maxWidth = $maxWidth;
+
         return $this;
     }
 
@@ -735,6 +728,19 @@ class SmallFind
     public function setBaseDiameter(?float $baseDiameter): SmallFind
     {
         $this->baseDiameter = $baseDiameter;
+
         return $this;
+    }
+
+    #[Groups([
+        'export:SmallFind',
+    ])]
+    public function getDecorationList(): string
+    {
+        $codes = $this->decorations->map(function (/* @var DecorationSmallFind */ $item) {
+            return $item->decoration->getValue();
+        })->toArray();
+
+        return implode(',', $codes);
     }
 }
