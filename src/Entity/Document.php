@@ -71,6 +71,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'type.id' => 'exact',
         'creator' => 'ipartial',
         'date' => 'exact',
+        'number' => 'exact',
         'mediaObject.buildingRooms.building' => 'exact',
         'mediaObject.buildingRooms.room' => 'exact',
         'mediaObject.stratigraphicUnits.stratigraphicUnit.id' => 'exact',
