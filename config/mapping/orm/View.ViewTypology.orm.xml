@@ -5,10 +5,10 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="App\Entity\View\ViewNominative"
-            table="vw_nominative"
+    <entity name="App\Entity\View\ViewTypology"
+            table="vw_typology"
     >
         <id name="id" type="string"/>
-        <field name="name" />
+        <field name="code" />
     </entity>
 </doctrine-mapping>

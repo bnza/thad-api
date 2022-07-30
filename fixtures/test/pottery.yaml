@@ -24,6 +24,7 @@ App\Entity\Pottery:
     thickness: 1.24
     rimDiameter: 12.45
     baseDiameter: 5.76
+    typology: TY.453a
   pottery_TH_1_2:
     stratigraphicUnit: '@su_TH_1'
     date: <createImmutableDate('2022-04-26')>
@@ -43,6 +44,7 @@ App\Entity\Pottery:
     thickness: 1.45
     rimDiameter: 7.23
     baseDiameter: 4.16
+    typology: TU.45x
   pottery_TH_1_3:
     stratigraphicUnit: '@su_TH_1'
     date: <createImmutableDate('2022-04-27')>
@@ -62,6 +64,7 @@ App\Entity\Pottery:
     rimCharacterization: '@voc__p__rim_characterization_3'
     neck: '@voc__p__neck_2'
     neckLength: '@voc__p__neck_length_2'
+    typology: TY.434x
   pottery_TH_5_1:
     stratigraphicUnit: '@su_TH_5'
     date: <createImmutableDate('2022-04-28')>

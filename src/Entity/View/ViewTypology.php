@@ -20,24 +20,24 @@ use Symfony\Component\Serializer\Annotation\Groups;
             'output' => false,
         ],
     ],
-    shortName: 'Nominative',
+    shortName: 'Typology',
     normalizationContext: [
         'groups' => [
-            'read:ViewNominative',
+            'read:ViewTypology',
         ],
     ]
 )]
 #[ApiFilter(
     SearchFilter::class,
     properties: [
-        'name' => 'ipartial',
+        'code' => 'ipartial',
     ]
 )]
-class ViewNominative
+class ViewTypology
 {
     public string $id;
     #[Groups([
-        'read:ViewNominative',
+        'read:ViewTypology',
     ])]
-    public string $name;
+    public string $code;
 }

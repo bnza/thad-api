@@ -17,6 +17,7 @@
         <field name="rimDiameter" type="float" nullable="true"/>
         <field name="baseDiameter" type="float" nullable="true"/>
         <field name="date" type="date_immutable"/>
+        <field name="typology" nullable="true"/>
         <field name="compiler"/>
         <field name="notes"  type="text" nullable="true"/>
         <one-to-one field="appId" target-entity="App\Entity\View\ViewAppIdPottery" mapped-by="source"/>

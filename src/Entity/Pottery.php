@@ -94,6 +94,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'stratigraphicUnit.area.code' => 'exact',
         'stratigraphicUnit.site.code' => 'exact',
         'number' => 'exact',
+        'typology' => 'partial',
         'period.id' => 'exact',
         'subperiod.id' => 'exact',
         'ware.id' => 'exact',
@@ -131,6 +132,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'stratigraphicUnit.site.code',
         'stratigraphicUnit.number',
         'number',
+        'typology',
         'period.code',
         'subperiod.code',
         'ware.value',
@@ -166,6 +168,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(
     ExistsFilter::class,
     properties: [
+        'typology',
         'period',
         'subperiod',
         'externalSurfaceColour',
@@ -288,6 +291,14 @@ class Pottery
         'export:Pottery',
     ])]
     private ?string $notes;
+
+    #[Groups([
+        'read:Pottery',
+        'read:collection:Pottery',
+        'write:Pottery',
+        'export:Pottery',
+    ])]
+    public ?string $typology;
 
     #[Groups([
         'read:Pottery',
