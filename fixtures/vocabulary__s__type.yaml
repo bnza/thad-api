@@ -11,6 +11,8 @@ App\Entity\Vocabulary\Sample\Type:
     value: human bone
   voc__s__type_6:
     value: metal
+  voc__s__type_18:
+    value: mortar
   voc__s__type_7:
     value: phytoliths
   voc__s__type_8:
