@@ -90,6 +90,15 @@ CREATE VIEW vw_app_id__document AS
     FROM document o
         LEFT JOIN site s ON o.site_id = s.id
 EOF);
+        $this->addSql(<<<EOF
+CREATE VIEW vw_app_id__area AS
+    SELECT
+        a.id,
+        s.id as site_id,
+        s.code || '.' || a.code as code
+    FROM area a
+    LEFT JOIN site s on a.site_id = s.id
+EOF);
 
 
 
@@ -97,6 +106,7 @@ EOF);
 
     public function down(Schema $schema): void
     {
+        $this->addSql('DROP VIEW vw_app_id__area;');
         $this->addSql('DROP VIEW vw_app_id__su;');
         $this->addSql('DROP VIEW vw_app_id__pottery;');
         $this->addSql('DROP VIEW vw_app_id__sample;');

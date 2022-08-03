@@ -19,13 +19,14 @@ final class Version20220709132714 extends AbstractMigration
         $this->addSql(<<<EOF
 CREATE VIEW public.vw_nominative
  AS
+WITH nominatives AS (
     SELECT DISTINCT compiler as name FROM su
     UNION
-    SELECT DISTINCT area_supervisor as name FROM su
+    SELECT DISTINCT area_supervisor as name FROM su WHERE area_supervisor IS NOT NULL
     UNION
     SELECT DISTINCT compiler as name FROM grave
     UNION
-    SELECT DISTINCT area_supervisor as name FROM grave
+    SELECT DISTINCT area_supervisor as name FROM grave WHERE area_supervisor IS NOT NULL
     UNION
     SELECT DISTINCT compiler as name FROM ecofact
     UNION
@@ -35,9 +36,22 @@ CREATE VIEW public.vw_nominative
     UNION
     SELECT DISTINCT creator as name FROM document
     UNION
-    SELECT DISTINCT area_supervisor as name FROM document
+    SELECT DISTINCT area_supervisor as name FROM document WHERE area_supervisor IS NOT NULL
     GROUP BY name
-    ORDER BY name;
+    ORDER BY name
+)
+SELECT
+    REPLACE(
+            REPLACE(
+                    ENCODE(name::bytea, 'base64'),
+                    '+',
+                    '-'
+                ),
+            '/',
+            '_'
+        ) as id,
+    name
+FROM nominatives;
 EOF
         );
     }

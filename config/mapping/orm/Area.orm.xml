@@ -16,6 +16,7 @@
         <field name="code" length="3"/>
         <field name="name" length="64"/>
         <field name="description"  type="text" nullable="true"/>
+        <one-to-one field="appId" target-entity="App\Entity\View\ViewAppIdArea" mapped-by="source"/>
         <one-to-many field="stratigraphicUnits" target-entity="SU" mapped-by="area" />
         <one-to-many field="graves" target-entity="App\Entity\Grave" mapped-by="area" />
         <one-to-many field="documents" target-entity="App\Entity\Document" mapped-by="area" />

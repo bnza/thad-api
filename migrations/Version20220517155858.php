@@ -95,7 +95,7 @@ final class Version20220517155858 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_B99701241EBC97E5 ON decorations__small_finds (small_find_id)');
         $this->addSql('CREATE INDEX IDX_B99701243446DFC4 ON decorations__small_finds (decoration_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_B99701241EBC97E53446DFC4 ON decorations__small_finds (small_find_id, decoration_id)');
-        $this->addSql('CREATE TABLE document (id INT NOT NULL, media_object_id INT DEFAULT NULL, site_id INT NOT NULL, area_id INT NOT NULL, type_id SMALLINT NOT NULL, number SMALLINT NOT NULL, year INT NOT NULL, date DATE NOT NULL, description TEXT NOT NULL, interpretation TEXT NOT NULL, summary TEXT DEFAULT NULL, area_supervisor VARCHAR(255) DEFAULT NULL, creator VARCHAR(255) NOT NULL, buildings TEXT DEFAULT NULL, rooms TEXT DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE document (id INT NOT NULL, media_object_id INT DEFAULT NULL, site_id INT NOT NULL, area_id INT NOT NULL, type_id SMALLINT NOT NULL, number SMALLINT NOT NULL, year INT NOT NULL, date DATE NOT NULL, description TEXT DEFAULT NULL, interpretation TEXT DEFAULT NULL, summary TEXT DEFAULT NULL, area_supervisor VARCHAR(255) DEFAULT NULL, creator VARCHAR(255) NOT NULL, buildings TEXT DEFAULT NULL, rooms TEXT DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_D8698A76F6BD1646 ON document (site_id)');
         $this->addSql('CREATE INDEX IDX_D8698A76BD0F409C ON document (area_id)');
         $this->addSql('CREATE INDEX IDX_D8698A76C54C8C93 ON document (type_id)');
@@ -153,7 +153,7 @@ final class Version20220517155858 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_BF40F0ECBDB1218E ON media_objects__sus (su_id)');
         $this->addSql('CREATE INDEX IDX_BF40F0EC64DE5A5 ON media_objects__sus (media_object_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_BF40F0ECBDB1218E64DE5A5 ON media_objects__sus (su_id, media_object_id)');
-        $this->addSql('CREATE TABLE pottery (id INT NOT NULL, su_id INT NOT NULL, period_id SMALLINT DEFAULT NULL, subperiod_id SMALLINT DEFAULT NULL, ext_surface_color_id SMALLINT DEFAULT NULL, int_surface_color_id SMALLINT DEFAULT NULL, fracture_color_id SMALLINT DEFAULT NULL, ware_id SMALLINT DEFAULT NULL, fabric_id SMALLINT DEFAULT NULL, surface_characteristic_id SMALLINT DEFAULT NULL, surface_treatment_id SMALLINT DEFAULT NULL, manufacturing_technique_id SMALLINT DEFAULT NULL, firing_id SMALLINT DEFAULT NULL, vessel_shape_id SMALLINT DEFAULT NULL, rim_shape_id SMALLINT DEFAULT NULL, rim_direction_id SMALLINT DEFAULT NULL, rim_characterization_id SMALLINT DEFAULT NULL, neck_id SMALLINT DEFAULT NULL, neck_length_id SMALLINT DEFAULT NULL, body_id SMALLINT DEFAULT NULL, handle_id SMALLINT DEFAULT NULL, spout_id SMALLINT DEFAULT NULL, size_group_id SMALLINT DEFAULT NULL, base_shape_id SMALLINT DEFAULT NULL, preservation_id SMALLINT DEFAULT NULL, number SMALLINT NOT NULL, thickness DOUBLE PRECISION DEFAULT NULL, rim_diameter DOUBLE PRECISION DEFAULT NULL, base_diameter DOUBLE PRECISION DEFAULT NULL, date DATE NOT NULL, compiler VARCHAR(255) NOT NULL, notes TEXT DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE pottery (id INT NOT NULL, su_id INT NOT NULL, period_id SMALLINT DEFAULT NULL, subperiod_id SMALLINT DEFAULT NULL, ext_surface_color_id SMALLINT DEFAULT NULL, int_surface_color_id SMALLINT DEFAULT NULL, fracture_color_id SMALLINT DEFAULT NULL, ware_id SMALLINT DEFAULT NULL, fabric_id SMALLINT DEFAULT NULL, surface_characteristic_id SMALLINT DEFAULT NULL, surface_treatment_id SMALLINT DEFAULT NULL, manufacturing_technique_id SMALLINT DEFAULT NULL, firing_id SMALLINT DEFAULT NULL, vessel_shape_id SMALLINT DEFAULT NULL, rim_shape_id SMALLINT DEFAULT NULL, rim_direction_id SMALLINT DEFAULT NULL, rim_characterization_id SMALLINT DEFAULT NULL, neck_id SMALLINT DEFAULT NULL, neck_length_id SMALLINT DEFAULT NULL, body_id SMALLINT DEFAULT NULL, handle_id SMALLINT DEFAULT NULL, spout_id SMALLINT DEFAULT NULL, size_group_id SMALLINT DEFAULT NULL, base_shape_id SMALLINT DEFAULT NULL, preservation_id SMALLINT DEFAULT NULL, number SMALLINT NOT NULL, thickness DOUBLE PRECISION DEFAULT NULL, rim_diameter DOUBLE PRECISION DEFAULT NULL, base_diameter DOUBLE PRECISION DEFAULT NULL, date DATE NOT NULL, typology VARCHAR(255) DEFAULT NULL, compiler VARCHAR(255) NOT NULL, notes TEXT DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_1A651839BDB1218E ON pottery (su_id)');
         $this->addSql('CREATE INDEX IDX_1A651839EC8B7ADE ON pottery (period_id)');
         $this->addSql('CREATE INDEX IDX_1A65183978E4D1E7 ON pottery (subperiod_id)');
@@ -195,7 +195,7 @@ final class Version20220517155858 extends AbstractMigration
         $this->addSql('CREATE TABLE site (id INT NOT NULL, code VARCHAR(3) NOT NULL, name VARCHAR(64) NOT NULL, description TEXT DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_694309E45E237E06 ON site (name)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_694309E477153098 ON site (code)');
-        $this->addSql('CREATE TABLE small_find (id INT NOT NULL, su_id INT NOT NULL, material_id SMALLINT NOT NULL, type_id SMALLINT NOT NULL, period_id SMALLINT DEFAULT NULL, subperiod_id SMALLINT DEFAULT NULL, preservation_id SMALLINT NOT NULL, preservation_state_id SMALLINT DEFAULT NULL, decoration_id SMALLINT DEFAULT NULL, ext_surface_color_id SMALLINT DEFAULT NULL, int_surface_color_id SMALLINT DEFAULT NULL, fracture_color_id SMALLINT DEFAULT NULL, date DATE NOT NULL, number SMALLINT NOT NULL, height DOUBLE PRECISION DEFAULT NULL, width DOUBLE PRECISION DEFAULT NULL, min_width DOUBLE PRECISION DEFAULT NULL, max_width DOUBLE PRECISION DEFAULT NULL, length DOUBLE PRECISION DEFAULT NULL, thickness DOUBLE PRECISION DEFAULT NULL, min_diameter DOUBLE PRECISION DEFAULT NULL, max_diameter DOUBLE PRECISION DEFAULT NULL, base_diameter DOUBLE PRECISION DEFAULT NULL, weight DOUBLE PRECISION DEFAULT NULL, coord_n DOUBLE PRECISION DEFAULT NULL, coord_e DOUBLE PRECISION DEFAULT NULL, coord_z DOUBLE PRECISION DEFAULT NULL, compiler VARCHAR(255) NOT NULL, description TEXT DEFAULT NULL, summary TEXT DEFAULT NULL, notes TEXT DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE small_find (id INT NOT NULL, su_id INT NOT NULL, material_id SMALLINT NOT NULL, type_id SMALLINT NOT NULL, period_id SMALLINT DEFAULT NULL, subperiod_id SMALLINT DEFAULT NULL, preservation_id SMALLINT NOT NULL, preservation_state_id SMALLINT DEFAULT NULL, ext_surface_color_id SMALLINT DEFAULT NULL, int_surface_color_id SMALLINT DEFAULT NULL, fracture_color_id SMALLINT DEFAULT NULL, date DATE NOT NULL, number SMALLINT NOT NULL, height DOUBLE PRECISION DEFAULT NULL, width DOUBLE PRECISION DEFAULT NULL, min_width DOUBLE PRECISION DEFAULT NULL, max_width DOUBLE PRECISION DEFAULT NULL, length DOUBLE PRECISION DEFAULT NULL, thickness DOUBLE PRECISION DEFAULT NULL, min_diameter DOUBLE PRECISION DEFAULT NULL, max_diameter DOUBLE PRECISION DEFAULT NULL, base_diameter DOUBLE PRECISION DEFAULT NULL, weight DOUBLE PRECISION DEFAULT NULL, coord_n DOUBLE PRECISION DEFAULT NULL, coord_e DOUBLE PRECISION DEFAULT NULL, coord_z DOUBLE PRECISION DEFAULT NULL, compiler VARCHAR(255) NOT NULL, description TEXT DEFAULT NULL, summary TEXT DEFAULT NULL, notes TEXT DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_2E109A89BDB1218E ON small_find (su_id)');
         $this->addSql('CREATE INDEX IDX_2E109A89E308AC6F ON small_find (material_id)');
         $this->addSql('CREATE INDEX IDX_2E109A89C54C8C93 ON small_find (type_id)');
@@ -203,7 +203,6 @@ final class Version20220517155858 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_2E109A8978E4D1E7 ON small_find (subperiod_id)');
         $this->addSql('CREATE INDEX IDX_2E109A89B806376B ON small_find (preservation_id)');
         $this->addSql('CREATE INDEX IDX_2E109A89FE71FA16 ON small_find (preservation_state_id)');
-        $this->addSql('CREATE INDEX IDX_2E109A893446DFC4 ON small_find (decoration_id)');
         $this->addSql('CREATE INDEX IDX_2E109A89AD1FCB98 ON small_find (ext_surface_color_id)');
         $this->addSql('CREATE INDEX IDX_2E109A89F0B7C66A ON small_find (int_surface_color_id)');
         $this->addSql('CREATE INDEX IDX_2E109A89ABB639B3 ON small_find (fracture_color_id)');
@@ -384,7 +383,6 @@ final class Version20220517155858 extends AbstractMigration
         $this->addSql('ALTER TABLE small_find ADD CONSTRAINT FK_2E109A8978E4D1E7 FOREIGN KEY (subperiod_id) REFERENCES voc__subperiod (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE small_find ADD CONSTRAINT FK_2E109A89B806376B FOREIGN KEY (preservation_id) REFERENCES voc__o__preservation (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE small_find ADD CONSTRAINT FK_2E109A89FE71FA16 FOREIGN KEY (preservation_state_id) REFERENCES voc__preservation_state (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
-        $this->addSql('ALTER TABLE small_find ADD CONSTRAINT FK_2E109A893446DFC4 FOREIGN KEY (decoration_id) REFERENCES voc__decoration (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE small_find ADD CONSTRAINT FK_2E109A89AD1FCB98 FOREIGN KEY (ext_surface_color_id) REFERENCES voc__o__colour (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE small_find ADD CONSTRAINT FK_2E109A89F0B7C66A FOREIGN KEY (int_surface_color_id) REFERENCES voc__o__colour (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE small_find ADD CONSTRAINT FK_2E109A89ABB639B3 FOREIGN KEY (fracture_color_id) REFERENCES voc__o__colour (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
@@ -409,7 +407,7 @@ final class Version20220517155858 extends AbstractMigration
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        // $this->addSql('ALTER TABLE document DROP CONSTRAINT FK_D8698A76BD0F409C');
+        $this->addSql('ALTER TABLE document DROP CONSTRAINT FK_D8698A76BD0F409C');
         $this->addSql('ALTER TABLE grave DROP CONSTRAINT FK_21AEDEE7BD0F409C');
         $this->addSql('ALTER TABLE su DROP CONSTRAINT FK_65A4BD79BD0F409C');
         $this->addSql('ALTER TABLE media_objects__ecofacts DROP CONSTRAINT FK_294F5CED30602B60');
@@ -449,7 +447,6 @@ final class Version20220517155858 extends AbstractMigration
         $this->addSql('ALTER TABLE document DROP CONSTRAINT FK_D8698A76C54C8C93');
         $this->addSql('ALTER TABLE decorations__potteries DROP CONSTRAINT FK_5E405C873446DFC4');
         $this->addSql('ALTER TABLE decorations__small_finds DROP CONSTRAINT FK_B99701243446DFC4');
-        $this->addSql('ALTER TABLE small_find DROP CONSTRAINT FK_2E109A893446DFC4');
         $this->addSql('ALTER TABLE ecofact DROP CONSTRAINT FK_9F00A5DDC54C8C93');
         $this->addSql('ALTER TABLE grave DROP CONSTRAINT FK_21AEDEE7C7CC72F8');
         $this->addSql('ALTER TABLE grave DROP CONSTRAINT FK_21AEDEE7F8922643');

@@ -7,6 +7,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Controller\ResourceExportController;
+use App\Entity\View\ViewAppIdArea;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -61,6 +62,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'code' => 'exact',
         'name' => 'ipartial',
         'description' => 'ipartial',
+        'appId.code' => 'partial',
     ]
 )]
 #[ApiFilter(
@@ -164,6 +166,12 @@ class Area
     public iterable $graves;
 
     public iterable $documents;
+
+    #[Groups([
+        'read:Area',
+        'export:Area',
+    ])]
+    public ViewAppIdArea $appId;
 
     public function __construct()
     {
