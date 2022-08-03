@@ -8,6 +8,9 @@ services:
       - ./var:/srv/api/var:rw
     environment:
       APP_ENV: dev
+  nginx:
+    volumes:
+      - ./docker/nginx/templates/site.conf.dev.template:/etc/nginx/templates/site.conf.template
 ###> doctrine/doctrine-bundle ###
   database:
     ports:
