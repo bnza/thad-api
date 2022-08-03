@@ -18,6 +18,11 @@ services:
       start_period: 30s
     environment:
       - DATABASE_URL=${DATABASE_URL}
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: 3
   nginx:
     image: nginx:1.21-alpine
     depends_on:
@@ -36,11 +41,21 @@ services:
       - php_socket:/var/run/php
     environment:
       - NGINX_HOST=${NGINX_HOST:-localhost}
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: 3
   certbot:
     image: certbot/certbot:latest
     volumes:
       - ./docker/certbot/www/:/var/www/certbot/:rw
       - ./docker/certbot/conf/:/etc/letsencrypt/:rw
+    logging:
+      driver: local
+      options:
+        max-size: 5m
+        max-file: 2
 ###> doctrine/doctrine-bundle ###
   database:
     image: postgis/postgis:13-3.2-alpine
@@ -54,6 +69,11 @@ services:
     volumes:
       - ${POSTGRES_DATA_DIR}:/var/lib/postgresql/data:rw
       # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: 3
 ###< doctrine/doctrine-bundle ###
 
 volumes:
