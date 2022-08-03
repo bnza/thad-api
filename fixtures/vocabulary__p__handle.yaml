@@ -1,8 +1,12 @@
 App\Entity\Vocabulary\Pottery\Handle:
+  voc__p__handle_8:
+    value: basket handle
   voc__p__handle_1:
     value: crescent-shaped lug
   voc__p__handle_2:
     value: handle, circular section
+  voc__p__handle_7:
+    value: handle, oval section
   voc__p__handle_3:
     value: handle, ovoidal section
   voc__p__handle_4:

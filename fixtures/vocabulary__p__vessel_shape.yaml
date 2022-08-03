@@ -15,6 +15,8 @@ App\Entity\Vocabulary\Pottery\VesselShape:
     value: deep bowl
   voc__p__vessel_shape_8:
     value: fenestrated stand
+  voc__p__vessel_shape_24:
+    value: flask
   voc__p__vessel_shape_9:
     value: fruit-stand
   voc__p__vessel_shape_10:

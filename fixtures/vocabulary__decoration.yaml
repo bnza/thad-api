@@ -13,12 +13,20 @@ App\Entity\Vocabulary\Decoration:
     value: excised
   voc__decoration_6:
     value: glazed
+  voc__decoration_14:
+    value: grooved
   voc__decoration_7:
     value: impressed
   voc__decoration_8:
     value: incised
   voc__decoration_9:
     value: incised-excised
+  voc__decoration_13:
+    value: moulded
   voc__decoration_10:
     value: painted
+  voc__decoration_15:
+    value: slip painted
+  voc__decoration_12:
+    value: stamped
 

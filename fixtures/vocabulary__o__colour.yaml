@@ -29,3 +29,5 @@ App\Entity\Vocabulary\Object\Colour:
     value: white
   voc__o__colour_15:
     value: yellow
+  voc__o__colour_16:
+    value: undetermined

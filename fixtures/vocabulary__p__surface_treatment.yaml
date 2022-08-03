@@ -6,10 +6,12 @@ App\Entity\Vocabulary\Pottery\SurfaceTreatment:
   voc__p__surface_treatment_3:
     value: burnished
   voc__p__surface_treatment_4:
-    value: polished
+    value: glazed
   voc__p__surface_treatment_5:
-    value: scraped
+    value: polished
   voc__p__surface_treatment_6:
-    value: smoothed
+    value: scraped
   voc__p__surface_treatment_7:
+    value: smoothed
+  voc__p__surface_treatment_8:
     value: undetermined
