@@ -21,8 +21,8 @@ services:
     logging:
       driver: local
       options:
-        max-size: 10m
-        max-file: 3
+        max-size: "10m"
+        max-file: "3"
   nginx:
     image: nginx:1.21-alpine
     depends_on:
@@ -44,8 +44,8 @@ services:
     logging:
       driver: local
       options:
-        max-size: 10m
-        max-file: 3
+        max-size: "10m"
+        max-file: "3"
   certbot:
     image: certbot/certbot:latest
     volumes:
@@ -54,8 +54,8 @@ services:
     logging:
       driver: local
       options:
-        max-size: 5m
-        max-file: 2
+        max-size: "5m"
+        max-file: "2"
 ###> doctrine/doctrine-bundle ###
   database:
     image: postgis/postgis:13-3.2-alpine
@@ -74,8 +74,8 @@ services:
     logging:
       driver: local
       options:
-        max-size: 10m
-        max-file: 3
+        max-size: "10m"
+        max-file: "3"
 ###< doctrine/doctrine-bundle ###
 
 volumes:
