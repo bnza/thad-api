@@ -1,6 +1,6 @@
 api_platform:
     title: 'LoNAP excavation database API'
-    version: '1.0.0-alpha'
+    version: '1.0.0-beta'
     show_webby: false
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
