@@ -174,6 +174,7 @@ class Ecofact
         'write:Ecofact',
     ])]
     #[Assert\NotBlank]
+    #[Assert\Positive]
     private int $number;
 
     #[Groups([

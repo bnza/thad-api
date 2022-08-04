@@ -190,6 +190,7 @@ class Sample
         'write:Sample',
     ])]
     #[Assert\NotBlank]
+    #[Assert\Positive]
     private int $number;
 
     #[Groups([

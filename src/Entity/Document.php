@@ -137,6 +137,7 @@ class Document
         'read:SU',
     ])]
     #[Assert\NotNull]
+    #[Assert\Positive]
     public int $number;
 
     #[Groups([

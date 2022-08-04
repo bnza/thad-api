@@ -240,6 +240,7 @@ class Pottery
         'export:Pottery',
     ])]
     #[Assert\NotNull]
+    #[Assert\Positive]
     private int $number;
 
     #[Groups([

@@ -253,6 +253,7 @@ class SmallFind
         'write:SmallFind',
     ])]
     #[Assert\NotNull]
+    #[Assert\Positive]
     private int $number;
 
     #[Groups([
