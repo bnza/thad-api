@@ -31,7 +31,7 @@ class InverseSURelationAbsentValidator extends ConstraintValidator
         }
         /** @var ViewStratigraphicRelationshipRepository $repo */
         $repo = $this->entityManager->getRepository(ViewStratigraphicRelationship::class);
-        if ($repo->inverseRelationExists($value->getSxSU(), $value->getDxSU())) {
+        if ($repo->inverseRelationExists($value->sxSU, $value->dxSU)) {
             $this->context->buildViolation($constraint->message)->addViolation();
         }
     }

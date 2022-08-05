@@ -50,7 +50,8 @@ use Symfony\Component\Validator\Constraints as Assert;
     message: 'Stratigraphic relationship between given SUs already exists',
     errorPath: 'sxSU',
 )]
-#[AppValidator\InverseSURelationAbsent()]
+#[AppValidator\InverseSURelationAbsent]
+#[AppValidator\SURelationshipIsNotSelfReferencing]
 class ViewStratigraphicRelationship
 {
     #[Groups([
@@ -63,14 +64,14 @@ class ViewStratigraphicRelationship
         'write:ViewStratigraphicRelationship',
     ])]
     #[Assert\NotNull]
-    private SU $sxSU;
+    public SU $sxSU;
 
     #[Groups([
         'read:ViewStratigraphicRelationship',
         'write:ViewStratigraphicRelationship',
     ])]
     #[Assert\NotNull]
-    private Relationship $relationship;
+    public Relationship $relationship;
 
     #[Groups([
         'read:ViewStratigraphicRelationship',
@@ -79,46 +80,10 @@ class ViewStratigraphicRelationship
     #[Assert\NotNull(
         message: 'Related SU is required'
     )]
-    private SU $dxSU;
+    public SU $dxSU;
 
     public function getId(): int
     {
         return $this->id;
-    }
-
-    public function getSxSU(): SU
-    {
-        return $this->sxSU;
-    }
-
-    public function setSxSU(SU $sxSU): ViewStratigraphicRelationship
-    {
-        $this->sxSU = $sxSU;
-
-        return $this;
-    }
-
-    public function getRelationship(): Relationship
-    {
-        return $this->relationship;
-    }
-
-    public function setRelationship(Relationship $relationship): ViewStratigraphicRelationship
-    {
-        $this->relationship = $relationship;
-
-        return $this;
-    }
-
-    public function getDxSU(): SU
-    {
-        return $this->dxSU;
-    }
-
-    public function setDxSU(SU $dxSU): ViewStratigraphicRelationship
-    {
-        $this->dxSU = $dxSU;
-
-        return $this;
     }
 }

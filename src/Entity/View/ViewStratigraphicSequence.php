@@ -9,6 +9,7 @@ use App\Entity\SU;
 use App\Entity\Vocabulary\SU\Sequence;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\Validator as AppValidator;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
@@ -49,6 +50,8 @@ use Symfony\Component\Validator\Constraints as Assert;
     message: 'Sequence relationship between given SUs already exists',
     errorPath: 'sxSU',
 )]
+#[AppValidator\InverseSURelationAbsent]
+#[AppValidator\SURelationshipIsNotSelfReferencing]
 class ViewStratigraphicSequence
 {
     #[Groups([
