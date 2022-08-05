@@ -10,6 +10,7 @@ use App\Entity\Vocabulary\SU\Relationship;
 use App\Validator as AppValidator;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
     collectionOperations: [
@@ -61,18 +62,23 @@ class ViewStratigraphicRelationship
         'read:ViewStratigraphicRelationship',
         'write:ViewStratigraphicRelationship',
     ])]
+    #[Assert\NotNull]
     private SU $sxSU;
 
     #[Groups([
         'read:ViewStratigraphicRelationship',
         'write:ViewStratigraphicRelationship',
     ])]
+    #[Assert\NotNull]
     private Relationship $relationship;
 
     #[Groups([
         'read:ViewStratigraphicRelationship',
         'write:ViewStratigraphicRelationship',
     ])]
+    #[Assert\NotNull(
+        message: 'Related SU is required'
+    )]
     private SU $dxSU;
 
     public function getId(): int

@@ -9,6 +9,7 @@ use App\Entity\MediaObject;
 use App\Entity\Ecofact;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
     collectionOperations: [
@@ -59,12 +60,14 @@ class MediaObjectEcofact
         'read:MediaEcofact',
         'write:MediaEcofact',
     ])]
+    #[Assert\NotNull]
     public Ecofact $ecofact;
 
     #[Groups([
         'read:MediaEcofact',
         'write:MediaEcofact',
     ])]
+    #[Assert\NotNull]
     public MediaObject $mediaObject;
 
 

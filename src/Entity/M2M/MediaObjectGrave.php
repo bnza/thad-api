@@ -9,6 +9,7 @@ use App\Entity\MediaObject;
 use App\Entity\Grave;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
     collectionOperations: [
@@ -59,12 +60,14 @@ class MediaObjectGrave
         'read:MediaGrave',
         'write:MediaGrave',
     ])]
+    #[Assert\NotNull]
     public Grave $grave;
 
     #[Groups([
         'read:MediaGrave',
         'write:MediaGrave',
     ])]
+    #[Assert\NotNull]
     public MediaObject $mediaObject;
 
 

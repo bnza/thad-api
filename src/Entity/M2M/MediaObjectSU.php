@@ -9,6 +9,7 @@ use App\Entity\MediaObject;
 use App\Entity\SU;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
     collectionOperations: [
@@ -60,12 +61,14 @@ class MediaObjectSU
         'read:MediaSU',
         'write:MediaSU',
     ])]
+    #[Assert\NotNull]
     public SU $stratigraphicUnit;
 
     #[Groups([
         'read:MediaSU',
         'write:MediaSU',
     ])]
+    #[Assert\NotNull]
     public MediaObject $mediaObject;
 
 

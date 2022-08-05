@@ -10,13 +10,13 @@
             <generator/>
         </id>
         <many-to-one field="sxSU" target-entity="SU">
-            <join-column name="sx_su_id" />
+            <join-column name="sx_su_id" nullable="false"/>
         </many-to-one>
         <many-to-one field="dxSU" target-entity="SU">
-            <join-column name="dx_su_id" />
+            <join-column name="dx_su_id" nullable="false"/>
         </many-to-one>
         <many-to-one field="relationship" target-entity="App\Entity\Vocabulary\SU\Relationship">
-            <join-column name="relationship_id" />
+            <join-column name="relationship_id" nullable="false"/>
         </many-to-one>
         <unique-constraints>
             <unique-constraint columns="sx_su_id,dx_su_id" />

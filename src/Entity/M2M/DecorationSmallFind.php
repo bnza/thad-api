@@ -9,6 +9,7 @@ use App\Entity\SmallFind;
 use App\Entity\Vocabulary\Decoration;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
     collectionOperations: [
@@ -59,6 +60,7 @@ class DecorationSmallFind
         'read:DecorationSmallFind',
         'write:DecorationSmallFind',
     ])]
+    #[Assert\NotNull]
     public SmallFind $smallFind;
 
     #[Groups([
@@ -66,6 +68,7 @@ class DecorationSmallFind
         'read:DecorationSmallFind',
         'write:DecorationSmallFind',
     ])]
+    #[Assert\NotNull]
     public Decoration $decoration;
 
 

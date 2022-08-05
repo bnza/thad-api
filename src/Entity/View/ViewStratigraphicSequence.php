@@ -9,6 +9,7 @@ use App\Entity\SU;
 use App\Entity\Vocabulary\SU\Sequence;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
     collectionOperations: [
@@ -59,18 +60,23 @@ class ViewStratigraphicSequence
         'read:ViewStratigraphicSequence',
         'write:ViewStratigraphicSequence',
     ])]
+    #[Assert\NotNull]
     public SU $sxSU;
 
     #[Groups([
         'read:ViewStratigraphicSequence',
         'write:ViewStratigraphicSequence',
     ])]
+    #[Assert\NotNull]
     public Sequence $relationship;
 
     #[Groups([
         'read:ViewStratigraphicSequence',
         'write:ViewStratigraphicSequence',
     ])]
+    #[Assert\NotNull(
+        message: 'Related SU is required'
+    )]
     public SU $dxSU;
 
     public function getId(): int

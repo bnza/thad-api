@@ -9,6 +9,7 @@ use App\Entity\MediaObject;
 use App\Entity\Sample;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
     collectionOperations: [
@@ -59,12 +60,14 @@ class MediaObjectSample
         'read:MediaSample',
         'write:MediaSample',
     ])]
+    #[Assert\NotNull]
     public Sample $sample;
 
     #[Groups([
         'read:MediaSample',
         'write:MediaSample',
     ])]
+    #[Assert\NotNull]
     public MediaObject $mediaObject;
 
 

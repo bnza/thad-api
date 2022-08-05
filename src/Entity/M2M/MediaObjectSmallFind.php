@@ -6,10 +6,10 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Entity\MediaObject;
-use App\Entity\Pottery;
 use App\Entity\SmallFind;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
     collectionOperations: [
@@ -60,12 +60,14 @@ class MediaObjectSmallFind
         'read:MediaSmallFind',
         'write:MediaSmallFind',
     ])]
+    #[Assert\NotNull]
     public SmallFind $smallFind;
 
     #[Groups([
         'read:MediaSmallFind',
         'write:MediaSmallFind',
     ])]
+    #[Assert\NotNull]
     public MediaObject $mediaObject;
 
 
