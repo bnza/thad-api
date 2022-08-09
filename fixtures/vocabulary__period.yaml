@@ -20,9 +20,6 @@ App\Entity\Vocabulary\Period:
   voc__period_EMT:
     code: EMT
     value: Early Middle Tigris
-  voc__period_EBA:
-    code: EBA
-    value: Early Bronze Age
   voc__period_MBA:
     code: MBA
     value: Middle Bronze Age
