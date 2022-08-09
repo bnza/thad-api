@@ -62,6 +62,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'stratigraphicUnit.id' => 'exact',
         'stratigraphicUnit.site.id' => 'exact',
         'date' => 'exact',
+        'compiler' => 'ipartial',
         'commonWareNonDiagnosticCount' => 'exact',
         'commonWareDiagnosticCount' => 'exact',
         'fineWareNonDiagnosticCount' => 'exact',
