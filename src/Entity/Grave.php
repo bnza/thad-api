@@ -69,6 +69,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'area.id' => 'exact',
         'area.code' => 'exact',
         'area.site.code' => 'exact',
+        'deposition.id' => 'exact',
         'number' => 'exact',
         'areaSupervisor' => 'ipartial',
         'compiler' => 'ipartial',
