@@ -99,9 +99,6 @@ CREATE VIEW vw_app_id__area AS
     FROM area a
     LEFT JOIN site s on a.site_id = s.id
 EOF);
-
-
-
     }
 
     public function down(Schema $schema): void
@@ -114,5 +111,6 @@ EOF);
         $this->addSql('DROP VIEW vw_app_id__ecofact;');
         $this->addSql('DROP VIEW vw_app_id__cumulative_pottery_sheet;');
         $this->addSql('DROP VIEW vw_app_id__grave;');
+        $this->addSql('DROP VIEW vw_app_id__document;');
     }
 }
