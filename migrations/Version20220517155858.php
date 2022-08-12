@@ -149,7 +149,7 @@ final class Version20220517155858 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_12A190F01EBC97E5 ON media_objects__small_finds (small_find_id)');
         $this->addSql('CREATE INDEX IDX_12A190F064DE5A5 ON media_objects__small_finds (media_object_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_12A190F01EBC97E564DE5A5 ON media_objects__small_finds (small_find_id, media_object_id)');
-        $this->addSql('CREATE TABLE media_objects__sus (id INT NOT NULL, su_id INT DEFAULT NULL, media_object_id INT DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE media_objects__sus (id INT NOT NULL, su_id INT NOT NULL, media_object_id INT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_BF40F0ECBDB1218E ON media_objects__sus (su_id)');
         $this->addSql('CREATE INDEX IDX_BF40F0EC64DE5A5 ON media_objects__sus (media_object_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_BF40F0ECBDB1218E64DE5A5 ON media_objects__sus (su_id, media_object_id)');
@@ -208,12 +208,12 @@ final class Version20220517155858 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_2E109A89ABB639B3 ON small_find (fracture_color_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_2E109A89BDB1218E96901F54 ON small_find (su_id, number)');
         $this->addSql('COMMENT ON COLUMN small_find.date IS \'(DC2Type:date_immutable)\'');
-        $this->addSql('CREATE TABLE stratigraphic_relationships (id INT NOT NULL, sx_su_id INT DEFAULT NULL, dx_su_id INT DEFAULT NULL, relationship_id CHAR(1) DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE stratigraphic_relationships (id INT NOT NULL, sx_su_id INT NOT NULL, dx_su_id INT NOT NULL, relationship_id CHAR(1) NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_B9A4EF171E31BBE7 ON stratigraphic_relationships (sx_su_id)');
         $this->addSql('CREATE INDEX IDX_B9A4EF17684F83D5 ON stratigraphic_relationships (dx_su_id)');
         $this->addSql('CREATE INDEX IDX_B9A4EF172C41D668 ON stratigraphic_relationships (relationship_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_B9A4EF171E31BBE7684F83D5 ON stratigraphic_relationships (sx_su_id, dx_su_id)');
-        $this->addSql('CREATE TABLE stratigraphic_sequence (id INT NOT NULL, sx_su_id INT DEFAULT NULL, dx_su_id INT DEFAULT NULL, relationship_id SMALLINT DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE stratigraphic_sequence (id INT NOT NULL, sx_su_id INT NOT NULL, dx_su_id INT NOT NULL, relationship_id SMALLINT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_4DAEB91F1E31BBE7 ON stratigraphic_sequence (sx_su_id)');
         $this->addSql('CREATE INDEX IDX_4DAEB91F684F83D5 ON stratigraphic_sequence (dx_su_id)');
         $this->addSql('CREATE INDEX IDX_4DAEB91F2C41D668 ON stratigraphic_sequence (relationship_id)');

@@ -30,9 +30,9 @@ final class Version20220517155856 extends AbstractMigration
             $this->addSql('CREATE ROLE gis_base NOSUPERUSER;');
             $this->addSql('CREATE ROLE gis_editor NOSUPERUSER IN ROLE gis_base;');
             $this->addSql('CREATE ROLE gis_admin NOSUPERUSER IN ROLE gis_editor;');
-            $this->addSql(sprintf('CREATE USER gis_admin_user NOSUPERUSER IN ROLE gis_admin ENCRYPTED PASSWORD \'%s\'', $_ENV['USER_GIS_ADMIN_PW']));
-            $this->addSql(sprintf('CREATE USER gis_editor_user NOSUPERUSER IN ROLE gis_editor ENCRYPTED PASSWORD \'%s\'', $_ENV['USER_GIS_EDITOR_PW']));
-            $this->addSql(sprintf('CREATE USER gis_base_user NOSUPERUSER IN ROLE gis_base ENCRYPTED PASSWORD \'%s\'', $_ENV['USER_GIS_BASE_PW']));
+//            $this->addSql(sprintf('CREATE USER gis_admin_user NOSUPERUSER IN ROLE gis_admin ENCRYPTED PASSWORD \'%s\'', $_ENV['USER_GIS_ADMIN_PW']));
+//            $this->addSql(sprintf('CREATE USER gis_editor_user NOSUPERUSER IN ROLE gis_editor ENCRYPTED PASSWORD \'%s\'', $_ENV['USER_GIS_EDITOR_PW']));
+//            $this->addSql(sprintf('CREATE USER gis_base_user NOSUPERUSER IN ROLE gis_base ENCRYPTED PASSWORD \'%s\'', $_ENV['USER_GIS_BASE_PW']));
         }
     }
 
@@ -41,8 +41,8 @@ final class Version20220517155856 extends AbstractMigration
         $this->addSql('DROP ROLE IF EXISTS gis_admin_user;');
         $this->addSql('DROP ROLE IF EXISTS gis_editor_user;');
         $this->addSql('DROP ROLE IF EXISTS gis_base_user;');
-        $this->addSql('DROP ROLE gis_admin;');
-        $this->addSql('DROP ROLE gis_editor;');
-        $this->addSql('DROP ROLE gis_base;');
+//        $this->addSql('DROP ROLE gis_admin;');
+//        $this->addSql('DROP ROLE gis_editor;');
+//        $this->addSql('DROP ROLE gis_base;');
     }
 }

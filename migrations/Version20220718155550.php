@@ -14,7 +14,7 @@ final class Version20220718155550 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'CREATE appId VIEWS';
+        return 'Generate appId VIEWS';
     }
 
     public function up(Schema $schema): void
