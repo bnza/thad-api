@@ -299,7 +299,7 @@ UPDATE public.cumulative_pottery_sheet
 	coarse_ware_diagnostic_count=NEW.coarse_ware_diagnostic_count, 
 	kitchen_ware_non_diagnostic_count=NEW.kitchen_ware_non_diagnostic_count,
 	kitchen_ware_diagnostic_count=NEW.kitchen_ware_diagnostic_count, 
-	subperiod_epn_count=NEW.kitchen_ware_diagnostic_count, 
+	subperiod_epn_count=NEW.subperiod_epn_count, 
 	subperiod_has_count=NEW.subperiod_has_count, 
 	subperiod_sam_count=NEW.subperiod_sam_count, 
 	subperiod_hal_count=NEW.subperiod_hal_count, 
