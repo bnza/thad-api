@@ -305,7 +305,7 @@ UPDATE public.cumulative_pottery_sheet
 	subperiod_hal_count=NEW.subperiod_hal_count, 
 	subperiod_nub_count=NEW.subperiod_nub_count, 
 	subperiod_lca_count=NEW.subperiod_lca_count, 
-	subperiod_lca1_count=NEW.subperiod_lca_count, 
+	subperiod_lca1_count=NEW.subperiod_lca1_count, 
 	subperiod_lca2_count=NEW.subperiod_lca2_count, 
 	subperiod_lca3_count=NEW.subperiod_lca3_count, 
 	subperiod_lca4_count=NEW.subperiod_lca4_count, 
