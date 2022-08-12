@@ -165,7 +165,7 @@ CREATE OR REPLACE VIEW public.vw_cumulative_pottery_sheet
     cumulative_pottery_sheet.subperiod_hal_count AS period_hal_count,
     cumulative_pottery_sheet.subperiod_nub_count AS period_nub_count,
     ( SELECT cumulative_pottery_sheet.subperiod_lca_count + cumulative_pottery_sheet.subperiod_lca1_count + cumulative_pottery_sheet.subperiod_lca2_count + cumulative_pottery_sheet.subperiod_lca3_count + cumulative_pottery_sheet.subperiod_lca4_count + cumulative_pottery_sheet.subperiod_lca5_count + cumulative_pottery_sheet.subperiod_sur_count) AS period_lca_count,
-    ( SELECT cumulative_pottery_sheet.subperiod_emt_count + cumulative_pottery_sheet.subperiod_emt0_count + cumulative_pottery_sheet.subperiod_emt1_count + cumulative_pottery_sheet.subperiod_emt2_count + cumulative_pottery_sheet.subperiod_emt3_count + cumulative_pottery_sheet.subperiod_emt4_count + cumulative_pottery_sheet.subperiod_emt5_count) AS period_eba_count,
+    ( SELECT cumulative_pottery_sheet.subperiod_emt_count + cumulative_pottery_sheet.subperiod_emt0_count + cumulative_pottery_sheet.subperiod_emt1_count + cumulative_pottery_sheet.subperiod_emt2_count + cumulative_pottery_sheet.subperiod_emt3_count + cumulative_pottery_sheet.subperiod_emt4_count + cumulative_pottery_sheet.subperiod_emt5_count) AS period_emt_count,
     ( SELECT cumulative_pottery_sheet.subperiod_mba_count + cumulative_pottery_sheet.subperiod_mba1_count + cumulative_pottery_sheet.subperiod_mba2_count) AS period_mba_count,
     ( SELECT cumulative_pottery_sheet.subperiod_lba1_count + cumulative_pottery_sheet.subperiod_lba2_count) AS period_lba_count,
     ( SELECT cumulative_pottery_sheet.subperiod_ira1_count + cumulative_pottery_sheet.subperiod_ira2_count) AS period_ira_count,

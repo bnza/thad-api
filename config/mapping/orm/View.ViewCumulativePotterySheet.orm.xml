@@ -244,7 +244,7 @@
         <field name="periodHALCount" type="smallint" column="period_hal_count" />
         <field name="periodNUBCount" type="smallint" column="period_nub_count" />
         <field name="periodLCACount" type="smallint" column="period_lca_count" />
-        <field name="periodEBACount" type="smallint" column="period_eba_count" />
+        <field name="periodEMTCount" type="smallint" column="period_emt_count" />
         <field name="periodMBACount" type="smallint" column="period_mba_count" />
         <field name="periodLBACount" type="smallint" column="period_lba_count" />
         <field name="periodIRACount" type="smallint" column="period_ira_count" />

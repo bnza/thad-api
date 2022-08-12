@@ -24,7 +24,7 @@ App\Entity\CumulativePotterySheet:
     subperiodUndeterminedCount: 9
     notes: Some interesting notes about the the cumulative pottery sheet of that US
   cps_WW_1_2:
-    stratigraphicUnit: '@su_WW_1'
+    stratigraphicUnit: '@su_WW_2'
     date: <createImmutableDate('2022-07-13')>
     compiler: Some One
     commonWareDiagnosticCount: 5
@@ -36,5 +36,16 @@ App\Entity\CumulativePotterySheet:
     subperiodSASCount: 8
     subperiodHELCount: 1
     subperiodUndeterminedCount: 9
-    notes: Some interesting notes about the the cumulative pottery sheet of WW US
+    notes: Some interesting notes about the the cumulative pottery sheet of WW US 2
+  cps_WW_1_1:
+    stratigraphicUnit: '@su_WW_1'
+    date: <createImmutableDate('2022-08-11')>
+    compiler: Some One Other
+    coarseWareDiagnosticCount: 18
+    fineWareDiagnosticCount: 2
+    fineWareNonDiagnosticCount: 7
+    subperiodEMT0Count: 4
+    subperiodEMT2Count: 5
+    subperiodUndeterminedCount: 9
+    notes: Some interesting notes about the the cumulative pottery sheet of WW US 1
 

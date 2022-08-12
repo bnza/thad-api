@@ -112,7 +112,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'periodHALCount' => 'exact',
         'periodNUBCount' => 'exact',
         'periodLCACount' => 'exact',
-        'periodEBACount' => 'exact',
+        'periodEMTCount' => 'exact',
         'periodMBACount' => 'exact',
         'periodLBACount' => 'exact',
         'periodIRACount' => 'exact',
@@ -177,7 +177,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'periodHALCount',
         'periodNUBCount',
         'periodLCACount',
-        'periodEBACount',
+        'periodEMTCount',
         'periodMBACount',
         'periodLBACount',
         'periodIRACount',
@@ -248,7 +248,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         'periodHALCount',
         'periodNUBCount',
         'periodLCACount',
-        'periodEBACount',
+        'periodEMTCount',
         'periodMBACount',
         'periodLBACount',
         'periodIRACount',
@@ -705,7 +705,7 @@ class ViewCumulativePotterySheet
         'export:ViewCumulativePotterySheet',
         'read:ViewCumulativePotterySheet',
     ])]
-    public int $periodEBACount = 0;
+    public int $periodEMTCount = 0;
 
     #[Groups([
         'export:ViewCumulativePotterySheet',
