@@ -1,4 +1,6 @@
 App\Entity\Vocabulary\Object\Material:
+  voc__o__material_0:
+    value: amber
   voc__o__material_1:
     value: agate
   voc__o__material_2:

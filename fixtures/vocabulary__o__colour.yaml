@@ -24,10 +24,12 @@ App\Entity\Vocabulary\Object\Colour:
   voc__o__colour_12:
     value: red
   voc__o__colour_13:
-    value: turquoise
+    value: transparent
   voc__o__colour_14:
-    value: white
+    value: turquoise
   voc__o__colour_15:
-    value: yellow
+    value: white
   voc__o__colour_16:
+    value: yellow
+  voc__o__colour_17:
     value: undetermined
