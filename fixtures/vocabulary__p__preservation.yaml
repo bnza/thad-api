@@ -17,12 +17,16 @@ App\Entity\Vocabulary\Pottery\preservation:
     value: neck
   voc__preservation_9:
     value: neck+body
+  voc__preservation_21:
+    value: neck+handle
   voc__preservation_11:
     value: neck+spout
   voc__preservation_12:
     value: rim
   voc__preservation_13:
     value: rim+body
+  voc__preservation_20:
+    value: rim+handle
   voc__preservation_10:
     value: rim+neck
   voc__preservation_14:

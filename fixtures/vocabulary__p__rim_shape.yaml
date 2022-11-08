@@ -5,6 +5,8 @@ App\Entity\Vocabulary\Pottery\RimShape:
     value: beaked
   voc__p__rim_shape_3:
     value: bended/indented
+  voc__p__rim_shape_17:
+    value: bent
   voc__p__rim_shape_4:
     value: bevelled
   voc__p__rim_shape_5:
@@ -21,6 +23,8 @@ App\Entity\Vocabulary\Pottery\RimShape:
     value: lid-seated
   voc__p__rim_shape_10:
     value: pie-crust
+  voc__p__rim_shape_19:
+    value: ribbed
   voc__p__rim_shape_11:
     value: ribbon
   voc__p__rim_shape_12:
@@ -31,3 +35,5 @@ App\Entity\Vocabulary\Pottery\RimShape:
     value: thickened outside
   voc__p__rim_shape_15:
     value: thickened outside and inside
+  voc__p__rim_shape_18:
+    value: trefoiled
